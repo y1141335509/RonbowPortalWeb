@@ -8,20 +8,10 @@ const { Header, Content, Sider } = Layout;
 const featureList = ['Homepage', 'Schedule', 'Contact Info', 'Project Info', 
                     'Sales Target', 'Commission', 'Design Tool', 'Communication',
                     'Profile', 'Useful tools', 'Training Materials', 'Internal Contact',
-                    'News', 'Notification'].map((key) => ({
+                    'News', 'Notification'].map((key, index) => ({
   key,
-  label: `nav ${key}`,
+  index: index,
 }));
-
-
-
-let data = [
-  {id: 1, feature: 'Homepage', icon: ICONS.HomeOutlined},
-  {id: 2, feature: 'Schedule', icon: ICONS.ScheduleOutlined},
-];
-
-let dictionary = Object.assign({}, ...data.map((x) => ({[x.id]: x.country})));
-
 
 
 const items2 = [
@@ -34,10 +24,11 @@ const items2 = [
   return {
     key: `sub${key}`,
     icon: React.createElement(icon),
-    label: `${key}`,
-    // add children here
+    label: featureList[index].key,
   };
 });
+
+
 const Homepage = () => {
   const {
     token: { colorBgContainer },
@@ -51,7 +42,7 @@ const Homepage = () => {
         }}
       >
         <div className="demo-logo" />
-        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']} items={featureList} />
+        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']} items={items2} />
       </Header>
       <Layout>
         <Sider
@@ -76,15 +67,8 @@ const Homepage = () => {
             padding: '0 24px 24px',
           }}
         >
-          <Breadcrumb
-            style={{
-              margin: '16px 0',
-            }}
-          >
-            <Breadcrumb.Item>Home</Breadcrumb.Item>
-            <Breadcrumb.Item>List</Breadcrumb.Item>
-            <Breadcrumb.Item>App</Breadcrumb.Item>
-          </Breadcrumb>
+          
+
           <Content
             style={{
               padding: 24,
@@ -93,7 +77,7 @@ const Homepage = () => {
               background: colorBgContainer,
             }}
           >
-            Content
+            Content PLACEHOLDER
           </Content>
         </Layout>
       </Layout>
