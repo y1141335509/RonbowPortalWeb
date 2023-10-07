@@ -1,0 +1,17 @@
+.custom-header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 16px; /* Adjust padding as per your design */
+  }
+  
+  #components-dropdown-demo-arrow .ant-btn {
+    margin-right: 8px;
+    margin-bottom: 8px;
+  }
+  .ant-row-rtl #components-dropdown-demo-arrow .ant-btn {
+    margin-right: 0;
+    margin-bottom: 8px;
+    margin-left: 8px;
+  }
+  

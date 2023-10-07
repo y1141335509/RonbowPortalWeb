@@ -1,0 +1,37 @@
+/* Customize the header of the Collapse Panel */
+.ant-collapse-header {
+    color: white;
+    border-radius: 0px;
+    font-style: roboto;
+  }
+  
+  /* Customize the content of the Collapse Panel */
+  .ant-collapse-content {
+    background-color: #e9f7fe;
+  }
+  
+  .ant-collapse-content-box {
+    padding: 16px;
+    color: #333;
+  }
+  
+  /* Customize the arrow icon */
+  .ant-collapse-arrow {
+    color: white;
+  }
+
+/* Move the arrow to the right */
+.ant-collapse-header {
+    justify-content: space-between;
+  }
+  
+  /* Remove border from each collapse panel */
+  .ant-collapse-item {
+    border-bottom: none !important;
+  }
+  
+  /* If you want to remove the border from the entire collapse component */
+  .ant-collapse {
+    border: none !important;
+  }
+  

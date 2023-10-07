@@ -1,22 +1,18 @@
-// import React from 'react';
-// import { createRoot } from 'react-dom/client';
-// import Homepage from './components/homepage/homepage';
-
-
-// createRoot(document.getElementById('container')).render(<Homepage />);
-
-
-
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Homepage from './components/homepage/homepage.js';
+import { BrowserRouter as Router } from 'react-router-dom';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
+
+
 ReactDOM.render(
   <React.StrictMode>
-    <Homepage />
+    <Router>
+      <Homepage />
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
