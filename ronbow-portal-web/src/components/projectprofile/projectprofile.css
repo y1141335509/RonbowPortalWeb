@@ -1,10 +1,3 @@
-/* Customize the header of the Collapse Panel */
-.ant-collapse-header {
-    color: white;
-    border-radius: 0px;
-    font-style: roboto;
-  }
-  
   /* Customize the content of the Collapse Panel */
   .ant-collapse-content {
     background-color: #e9f7fe;
@@ -30,7 +23,6 @@
     border-bottom: none !important;
   }
   
-  /* If you want to remove the border from the entire collapse component */
   .ant-collapse {
     border: none !important;
   }
@@ -43,6 +35,17 @@
   line-height: 14px;
   letter-spacing: 0.02em;
   text-align: left;
+
 }
 
-  
+
+/* Adjust the direction of the arrow icon */
+.ant-collapse-item-active .ant-collapse-header .ant-collapse-arrow {
+  transform: rotate(180deg);
+}
+
+.ant-collapse-header .ant-collapse-arrow {
+  rotate: -180deg;
+}
+
+

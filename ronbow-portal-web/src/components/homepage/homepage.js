@@ -3,7 +3,7 @@ import {
   HomeOutlined, ScheduleOutlined, ContactsOutlined, ProjectOutlined,
   DollarOutlined, FireOutlined, AntDesignOutlined, CommentOutlined,
   UserOutlined, ToolOutlined, BookOutlined, CustomerServiceOutlined, 
-  VideoCameraOutlined, PlusSquareOutlined,
+  VideoCameraOutlined, PlusSquareOutlined, ReadOutlined, 
 } from '@ant-design/icons';
 import { Dropdown, Layout, Menu, theme, Avatar, Switch } from 'antd';
 import ProjectProfile from '../projectprofile/projectprofile';
@@ -16,6 +16,7 @@ import CalendarComponent from '../calendar/calendar';
 import Chat from '../chat/chat';
 import Zoom from '../zoom/zoom';
 import AddShortcut from '../addshortcut/addshortcut';
+import KnowledgeBase from '../knowledgebase/knowledgebase';
 
 
 
@@ -27,11 +28,10 @@ const { Header, Content, Sider } = Layout;
 const featureList = [
   // {key: '1', icon: () => <img src={ronbowLogo} alt='Ronbow' />, label: 'Ronbow'}, 
   {key: '1', icon: <HomeOutlined/>, label: 'Homepage'},
-  {key: '2', icon: <ScheduleOutlined/>, label: 'Calendar'},
-  {key: '3', icon: <AntDesignOutlined/>, label: 'Design Studio'},
-  {key: '4', icon: <CommentOutlined/>, label: 'Chat'},
-  {key: '5', icon: <VideoCameraOutlined />, label: 'Zoom'},
-  {key: '6', icon: <PlusSquareOutlined />, label: 'Add Shortcut', iconStyle: {bottom: '10%', position: 'absolute', }}, 
+  {key: '2', icon: <AntDesignOutlined/>, label: 'Design Studio'},
+  {key: '3', icon: <CommentOutlined/>, label: 'Chat'},
+  {key: '4', icon: <VideoCameraOutlined />, label: 'Zoom'},
+  {key: '5', icon: <PlusSquareOutlined />, label: 'Add Shortcut', iconStyle: {bottom: '10%', position: 'absolute', }}, 
 
 ];
 
@@ -48,10 +48,12 @@ const Homepage = () => {
   
   const handleClickNavigation = () => {
     switch(showContent) {
-      case 'customer-profile':
-        return <CustomerProfile />;
+      case 'calendar':
+        return <CalendarComponent />;
       case 'project-profile':
         return <ProjectProfile />;
+      case 'knowledge-base':
+        return <KnowledgeBase />;
       default:
         return
     }
@@ -64,15 +66,14 @@ const Homepage = () => {
     // Define the paths for each key
     const paths = {
       '1': '/',
-      '2': '/calendar',
-      '3': 'https://www.coohom.com/',
-      '4': '/chat',
-      '5': '/zoom',
-      '6': '/add-shortcut',
+      '2': 'https://designstudio.ronbow.com/',
+      '3': '/chat',
+      '4': '/zoom',
+      '5': '/add-shortcut',
     };
   
     // Open a new tab with the path corresponding to the clicked item
-    if (key === '3') {
+    if (key === '2') {
       window.open(paths[key], '_blank');
     } else {
       window.open(window.location.origin + paths[key], '_blank');
@@ -88,7 +89,7 @@ const Homepage = () => {
     <Layout style={{ minHeight: '100vh',  }}>
 
       <Sider collapsible collapsed={collapsed} onCollapse={value => setCollapsed(value)}>
-        <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', height: '150vh' }}>
           <Menu
             theme="dark"
             mode="inline"
@@ -127,14 +128,18 @@ const Homepage = () => {
           <Menu theme='dark' mode='horizontal' >
             <Menu.Item 
               key="1" 
-              icon={<CustomerServiceOutlined />} 
-              onClick={() => setShowContent('customer-profile')}
+              icon={<ScheduleOutlined />} 
+              onClick={() => setShowContent('calendar')}
             >
-              <Link to="/">Customer Profile</Link>
+              <Link to="/">Calendar</Link>
             </Menu.Item>
 
             <Menu.Item key="2" icon={<UserOutlined />} onClick={() => setShowContent('project-profile')}>
               <Link to="/">Project Profile</Link>
+            </Menu.Item>
+
+            <Menu.Item key='3' icon={<ReadOutlined />} onClick={() => setShowContent('knowledge-base')}>
+              <Link to="/">Knowledge Base</Link>
             </Menu.Item>
               
           </Menu>
@@ -149,9 +154,9 @@ const Homepage = () => {
             padding: 24,
             minHeight: 280,
             maxHeight: 500,
-            width: '100%', 
+            width: 'auto', 
             height: 'auto',
-            maxWidth: '100%',
+            // maxWidth: '100%',
             fontFamily: 'Roboto, sans-serif', 
             fontSize: '18px', 
             fontWeight: "300",
@@ -169,7 +174,6 @@ const Homepage = () => {
         
           <Routes>
             <Route path="/" component={Homepage}></Route>
-            <Route path="/calendar" element={ <CalendarComponent /> }></Route>
             <Route path="https://www.coohom.com/"></Route>
             <Route path="/chat" element={ <Chat /> }></Route>
             <Route path="/zoom" element={ <Zoom /> }></Route>

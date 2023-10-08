@@ -1,7 +1,7 @@
 import React from 'react';
 import { Collapse, Divider } from 'antd';
-import './projectprofile.css';
-import { ExportOutlined } from '@ant-design/icons';
+import './knowledgebase.css';
+import { ExportOutlined, FilterOutlined, SearchOutlined } from '@ant-design/icons';
 
 
 
@@ -16,31 +16,53 @@ const { Panel } = Collapse;
 const items = [
   {
     key: '1',
-    label: 'FLOOR PLAN',
-    children: <p>{text}</p>,
+    label: 'COMPANY OVERVIEW',
+    children: <>
+        <p>{text}
+            <a 
+            href="https://cdn.ronbow.com/resources/Ronbow-Company-Profile-V6.pdf" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            style={{color: 'blue', textDecoration: 'underline'}}
+            >
+            Download PDF
+            </a>
+        </p>
+    </>,
     headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
   },
   {
     key: '2',
-    label: 'BUDGET',
+    label: 'BRAND VALUE AND CULTURE',
     children: <p>Hello world, check out this <a href="https://www.ronbow.com" target="_blank" rel="noopener noreferrer">Ronbow Site <ExportOutlined /></a>.</p>,
     headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
   },
   {
     key: '3',
-    label: 'INSPIRATION',
-    children: <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>, 
+    label: 'INTRODUCTION TO CABINETS',
+    children: 
+        <div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <iframe 
+                width="560" 
+                height="315" 
+                src="https://www.youtube.com/embed/pXafDypqbdA" 
+                frameborder="0" 
+                allowfullscreen>
+            </iframe>
+        </div>
+    , 
     headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
 },
   {
     key: '4',
-    label: 'PROJECT STATUS VISUALIZER',
+    label: 'MATERIAL AND CONSTRUCTION',
     children: <div><img src="https://cdn.ronbow.com/images/video-poster.jpg" alt="Description" className='responsive-image'/></div>,
     headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
   },
   {
     key: '5',
-    label: 'JOB SITE LOCATION',
+    label: 'DESIGN AND STYLE',
     children: <div><img src="https://cdn.ronbow.com/images/video-poster.jpg" alt="Description" className='responsive-image'/></div>,
     headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
   },
@@ -70,28 +92,37 @@ const items = [
   },
 ];
 
-const ProjectProfile = () => (
+const KnowledgeBase = () => (
 
   <div >
-      <span style={{ fontFamily: 'Roboto, sans-serif', 
-                      fontSize: '18px', 
-                      fontWeight: "400",
-                      lineHeight: "14px",
-                      letterSpacing: "0.02em",
-                      textAlign: "left" }}
-      >
-        Kevin's Kitchen - San Mateo
+    <div className="header">
+      <span style={{ 
+          fontFamily: 'Roboto, sans-serif', 
+          fontSize: '18px', 
+          fontWeight: "400",
+          lineHeight: "14px",
+          letterSpacing: "0.02em",
+          textAlign: "left" 
+      }}>
+        Academy
       </span>
+      <div>
+        <FilterOutlined className="icon" />
+        <SearchOutlined className="icon" />
+      </div>
+    </div>
+
+
   
       <Divider style={{ opacity: '0', }}/>
       <Collapse accordion style={{ width: 'auto' }} expandIconPosition='right'>
         <div  style={{fontFamily: 'Roboto, sans-serif', fontSize: '18px', fontWeight: '300',
                       lineHeight: '30px', letterSpacing: '0.02em', textAlign: 'left', 
                       backgroundColor: 'white', paddingTop: '20px', paddingBottom: '10px', }}>
-          <span>Project Info</span>
+          <span>Introduction</span>
         </div>
 
-        {items.slice(0, 5).map((item, index) => (
+        {items.slice(0, 2).map((item, index) => (
           <Panel header={<span style={item.headerStyle}>{item.label}</span>} 
                  key={item.key} 
                  style={{ borderTop: '1px solid #f0f0f0', }}
@@ -107,10 +138,10 @@ const ProjectProfile = () => (
         <div  style={{fontFamily: 'Roboto, sans-serif', fontSize: '18px', fontWeight: '300',
                       lineHeight: '30px', letterSpacing: '0.02em', textAlign: 'left', 
                       backgroundColor: 'white', paddingTop: '20px', paddingBottom: '10px',  }}>
-          <span>Customer Info</span>
+          <span>Cabinet Product Knowledge</span>
         </div>
 
-        {items.slice(5, 9).map((item, index) => (
+        {items.slice(2, 10).map((item, index) => (
           <Panel header={<span style={item.headerStyle}>{item.label}</span>} 
                  key={item.key} 
                  style={{ borderTop: '1px solid #f0f0f0', }}
@@ -128,4 +159,4 @@ const ProjectProfile = () => (
   );
 
 
-export default ProjectProfile;
+export default KnowledgeBase;

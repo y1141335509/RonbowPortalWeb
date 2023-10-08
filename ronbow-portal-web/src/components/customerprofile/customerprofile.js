@@ -93,7 +93,7 @@ const CustomerProfile = () => (
         Customer Profile
       </span>
   
-      <Collapse accordion style={{ width: '50%', }}>
+      <Collapse accordion style={{ width: 'auto', }}>
         {items.map(item => (
           <Panel header={<span style={item.headerStyle}>{item.label}</span>} key={item.key} >
             {/* The div below contains detail contents */}

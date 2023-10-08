@@ -1,0 +1,17 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+
+  
+  .icon {
+    cursor: pointer;
+    margin-left: 10px; /* Optional: to provide some space between the icons */
+  }
+  
+  .icon:hover {
+    color: #1890ff; /* Optional: change color on hover, you can choose your own color */
+  }
+  
