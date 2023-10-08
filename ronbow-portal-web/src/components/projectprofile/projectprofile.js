@@ -1,6 +1,8 @@
 import React from 'react';
 import { Collapse } from 'antd';
 import './projectprofile.css';
+import { ExportOutlined } from '@ant-design/icons';
+
 
 
 const text = `
@@ -21,7 +23,7 @@ const items = [
   {
     key: '2',
     label: 'FLOOR PLAN',
-    children: <p>Hello world</p>,
+    children: <p>Hello world, check out this <a href="https://www.ronbow.com" target="_blank" rel="noopener noreferrer">Ronbow Site <ExportOutlined /></a>.</p>,
     headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
   },
   {

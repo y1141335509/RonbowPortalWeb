@@ -13,3 +13,14 @@
   width: 100%;  /* make width 100% to fill the container */
   height: auto;  /* maintain aspect ratio */
 }
+
+
+.ant-collapse-header {
+  background-color: white;
+}
+
+
+
+
+
+

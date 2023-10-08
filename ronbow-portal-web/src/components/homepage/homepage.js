@@ -2,16 +2,20 @@ import React, { useState } from 'react';
 import {
   HomeOutlined, ScheduleOutlined, ContactsOutlined, ProjectOutlined,
   DollarOutlined, FireOutlined, AntDesignOutlined, CommentOutlined,
-  UserOutlined, ToolOutlined, BookOutlined,
-  NotificationOutlined, MessageOutlined,
-  MenuUnfoldOutlined, MenuFoldOutlined, SettingOutlined, CustomerServiceOutlined, 
+  UserOutlined, ToolOutlined, BookOutlined, CustomerServiceOutlined, 
+  VideoCameraOutlined, PlusSquareOutlined,
 } from '@ant-design/icons';
 import { Dropdown, Layout, Menu, theme, Avatar, Switch } from 'antd';
 import ProjectProfile from '../projectprofile/projectprofile';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
 import './homepage.css';
 import '../../index.css';
 import CustomerProfile from '../customerprofile/customerprofile';
+import ronbowLogo from '../../images/ronbow.png';
+import CalendarComponent from '../calendar/calendar';
+import Chat from '../chat/chat';
+import Zoom from '../zoom/zoom';
+import AddShortcut from '../addshortcut/addshortcut';
 
 
 
@@ -21,17 +25,14 @@ import CustomerProfile from '../customerprofile/customerprofile';
 const { Header, Content, Sider } = Layout;
 
 const featureList = [
+  // {key: '1', icon: () => <img src={ronbowLogo} alt='Ronbow' />, label: 'Ronbow'}, 
   {key: '1', icon: <HomeOutlined/>, label: 'Homepage'},
-  {key: '2', icon: <ScheduleOutlined/>, label: 'Schedule'},
-  {key: '3', icon: <ContactsOutlined/>, label: 'Contact Info'},
-  {key: '4', icon: <ProjectOutlined/>, label: 'Project Info'},
-  {key: '5', icon: <DollarOutlined/>, label: 'Sales Target'},
-  {key: '6', icon: <FireOutlined/>, label: 'Commission'},
-  {key: '7', icon: <AntDesignOutlined/>, label: 'Design Tool'},
-  {key: '8', icon: <CommentOutlined/>, label: 'Communication'},
-  {key: '9', icon: <ToolOutlined/>, label: 'Userful Tools'},
-  {key: '10', icon: <BookOutlined/>, label: 'Training Materials'},
-  {key: '11', icon: <ContactsOutlined/>, label: 'Internal Contact'},
+  {key: '2', icon: <ScheduleOutlined/>, label: 'Calendar'},
+  {key: '3', icon: <AntDesignOutlined/>, label: 'Design Studio'},
+  {key: '4', icon: <CommentOutlined/>, label: 'Chat'},
+  {key: '5', icon: <VideoCameraOutlined />, label: 'Zoom'},
+  {key: '6', icon: <PlusSquareOutlined />, label: 'Add Shortcut', iconStyle: {bottom: '10%', position: 'absolute', }}, 
+
 ];
 
 
@@ -41,6 +42,9 @@ const featureList = [
 const Homepage = () => {
   const [collapsed, setCollapsed] = useState(false);
   const [showContent, setShowContent] = useState("");
+  const [selectedKey, setSelectedKey] = useState('1');
+  const navigate = useNavigate();
+
   
   const handleClickNavigation = () => {
     switch(showContent) {
@@ -54,6 +58,29 @@ const Homepage = () => {
   }
 
 
+  const handleItemClick = key => {
+    setSelectedKey(key);
+  
+    // Define the paths for each key
+    const paths = {
+      '1': '/',
+      '2': '/calendar',
+      '3': 'https://www.coohom.com/',
+      '4': '/chat',
+      '5': '/zoom',
+      '6': '/add-shortcut',
+    };
+  
+    // Open a new tab with the path corresponding to the clicked item
+    if (key === '3') {
+      window.open(paths[key], '_blank');
+    } else {
+      window.open(window.location.origin + paths[key], '_blank');
+    }
+  };
+  
+
+
   const {
     token: { colorBgContainer },
   } = theme.useToken();
@@ -61,8 +88,34 @@ const Homepage = () => {
     <Layout style={{ minHeight: '100vh',  }}>
 
       <Sider collapsible collapsed={collapsed} onCollapse={value => setCollapsed(value)}>
-        <div className="logo" />
-        <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={featureList} />
+        <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+          <Menu
+            theme="dark"
+            mode="inline"
+            onClick={({ key }) => handleItemClick(key)}
+            style={{ flex: 1 }}
+          >
+            {featureList.slice(0, -1).map(item => (
+              <Menu.Item key={item.key} icon={item.icon}>
+                {item.label}
+              </Menu.Item>
+            ))}
+          </Menu>
+
+          <Menu
+            theme="dark"
+            mode="inline"
+            onClick={({ key }) => handleItemClick(key)}
+            style={{ borderTop: '2px solid #333' }}
+          >
+            {featureList.slice(-1).map(item => (
+              <Menu.Item key={item.key} icon={item.icon}>
+                {item.label}
+              </Menu.Item>
+            ))}
+          </Menu>
+        </div>
+
       </Sider>
 
       {/* inner Layout starts here */}
@@ -113,11 +166,18 @@ const Homepage = () => {
         >
           { handleClickNavigation() }
 
-        {/* <Switch>
-          <Route path="/" exact component={Homepage}></Route>
-          <Route path="/user-profile" component={UserProfile}></Route>
-          <Route path="/" component={ProjectProfile}></Route>
-        </Switch> */}
+        
+          <Routes>
+            <Route path="/" component={Homepage}></Route>
+            <Route path="/calendar" element={ <CalendarComponent /> }></Route>
+            <Route path="https://www.coohom.com/"></Route>
+            <Route path="/chat" element={ <Chat /> }></Route>
+            <Route path="/zoom" element={ <Zoom /> }></Route>
+            <Route path="/add-shortcut" element={ <AddShortcut /> }></Route>
+
+          </Routes>
+
+        
           
         </Content>
         {/* Main Content ends here */}

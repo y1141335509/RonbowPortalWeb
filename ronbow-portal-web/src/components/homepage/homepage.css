@@ -14,4 +14,15 @@
     margin-bottom: 8px;
     margin-left: 8px;
   }
+  
+  .bottom-icon {
+    position: absolute;
+    bottom: 0px;
+    padding: 10px;
+    text-align: center;
+  }
+/* Add a hover effect to menu items */
+.ant-menu-dark .ant-menu-item:hover {
+  background-color: #1890ff;
+}
 
