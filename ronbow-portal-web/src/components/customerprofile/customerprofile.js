@@ -1,6 +1,6 @@
 import React from 'react';
 import { Collapse } from 'antd';
-import './projectprofile.css';
+import './customerprofile.css';
 
 
 const text = `
@@ -80,34 +80,32 @@ const items = [
   },
 ];
 
-const ProjectProfile = () => (
-
-  <div >
+const CustomerProfile = () => (
+    <div >
       <span style={{ fontFamily: 'Roboto, sans-serif', 
                       fontSize: '12px', 
                       fontWeight: "400",
                       lineHeight: "14px",
                       letterSpacing: "0.02em",
-                      textAlign: "left" }}
+                      textAlign: "left",
+                     }}
       >
-        The Process
+        Customer Profile
       </span>
   
-      <Collapse accordion style={{ width: '50%' }}>
+      <Collapse accordion style={{ width: '50%', }}>
         {items.map(item => (
           <Panel header={<span style={item.headerStyle}>{item.label}</span>} key={item.key} >
-          {/* The div below contains detail contents */}
+            {/* The div below contains detail contents */}
             <div style={{ fontFamily: 'Roboto, sans-serif', fontSize: '18px', fontWeight: '300',
                           lineHeight: '30px', letterSpacing: '0.02em', textAlign: 'left', 
                           paddingLeft: '30px'}}>
                 {item.children}
             </div>
-            
           </Panel>
         ))}
       </Collapse>
     </div>
   );
 
-
-export default ProjectProfile;
+export default CustomerProfile;
