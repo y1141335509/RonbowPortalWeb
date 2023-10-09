@@ -89,7 +89,7 @@ const items = [
     label: 'MEETING NOTES',
     children: <div><img src="https://cdn.ronbow.com/images/video-poster.jpg" alt="Description" className='responsive-image'/></div>,
     headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
-  },
+  }
 ];
 
 const KnowledgeBase = () => (
@@ -104,7 +104,7 @@ const KnowledgeBase = () => (
           letterSpacing: "0.02em",
           textAlign: "left" 
       }}>
-        Academy
+        Academy - Designer
       </span>
       <div>
         <FilterOutlined className="icon" />

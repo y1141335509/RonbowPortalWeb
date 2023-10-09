@@ -3,7 +3,7 @@ import {
   HomeOutlined, ScheduleOutlined, ContactsOutlined, ProjectOutlined,
   DollarOutlined, FireOutlined, AntDesignOutlined, CommentOutlined,
   UserOutlined, ToolOutlined, BookOutlined, CustomerServiceOutlined, 
-  VideoCameraOutlined, PlusSquareOutlined, ReadOutlined, 
+  VideoCameraOutlined, PlusSquareOutlined, ReadOutlined, CheckCircleOutlined, 
 } from '@ant-design/icons';
 import { Dropdown, Layout, Menu, theme, Avatar, Switch } from 'antd';
 import ProjectProfile from '../projectprofile/projectprofile';
@@ -41,7 +41,7 @@ const featureList = [
 
 
 const Homepage = () => {
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(true);
   const [showContent, setShowContent] = useState("");
   const [selectedKey, setSelectedKey] = useState('1');
   const navigate = useNavigate();
@@ -89,15 +89,18 @@ const Homepage = () => {
     token: { colorBgContainer },
   } = theme.useToken();
   return (
-    <Layout style={{ minHeight: '100vh',  }}>
+    <Layout style={{ minHeight: '100vh', }}>
 
-      <Sider collapsible collapsed={collapsed} onCollapse={value => setCollapsed(value)}>
-        <div style={{ display: 'flex', flexDirection: 'column', height: '150vh' }}>
+      <Sider collapsible collapsed={collapsed} 
+            theme='light'
+            onCollapse={value => setCollapsed(value)}
+            style={{ marginTop: '50px', backgroundColor: 'white', }}      
+      >
+        <div style={{ display: 'flex', flexDirection: 'column', height: '150vh', }}>
           <Menu
-            theme="dark"
             mode="inline"
             onClick={({ key }) => handleItemClick(key)}
-            style={{ flex: 1 }}
+            style={{ flex: 1, }}
           >
             {featureList.slice(0, -1).map(item => (
               <Menu.Item key={item.key} icon={item.icon}>
@@ -107,10 +110,9 @@ const Homepage = () => {
           </Menu>
 
           <Menu
-            theme="dark"
             mode="inline"
             onClick={({ key }) => handleItemClick(key)}
-            style={{ borderTop: '2px solid #333' }}
+            style={{  borderTop: '2px solid #333' }}
           >
             {featureList.slice(-1).map(item => (
               <Menu.Item key={item.key} icon={item.icon}>
@@ -124,28 +126,34 @@ const Homepage = () => {
 
       {/* inner Layout starts here */}
       <Layout style={{ padding: '0 5px 24px', backgroundColor: 'white', }} >
-        <Header className="site-layout-background custom-header" style={{ padding: 0, }}>
+        <Header className="site-layout-background custom-header" 
+                style={{ padding: 0, backgroundColor: 'white', }}>
 
           {/* Navigation on Header starts here */}
           <div className="logo" />
-          <Menu theme='dark' mode='horizontal' >
+          <Menu mode='horizontal' >
             <Menu.Item 
               key="1" 
               icon={<ScheduleOutlined />} 
               onClick={() => setShowContent('calendar')}
+              style={{ fontWeight: '200', color: 'black', }}
             >
               <Link to="/">Calendar</Link>
             </Menu.Item>
 
-            <Menu.Item key="2" icon={<UserOutlined />} onClick={() => setShowContent('project-profile')}>
+            <Menu.Item 
+              key="2" 
+              icon={<UserOutlined />} 
+              onClick={() => setShowContent('project-profile')} 
+              style={{ fontWeight: '200',  color: 'black', }}>
               <Link to="/">Project Profile</Link>
             </Menu.Item>
 
-            <Menu.Item key='3' icon={<ReadOutlined />} onClick={() => setShowContent('knowledge-base')}>
+            <Menu.Item key='3' icon={<ReadOutlined />} onClick={() => setShowContent('knowledge-base')} style={{ fontWeight: '200',  color: 'black', }}>
               <Link to="/">Knowledge Base</Link>
             </Menu.Item>
 
-            <Menu.Item key='4' icon={<ReadOutlined />} onClick={() => setShowContent('todo-list')}>
+            <Menu.Item key='4' icon={<CheckCircleOutlined />} onClick={() => setShowContent('todo-list')} style={{ fontWeight: '200',  color: 'black', }}>
               <Link to="/">Todo</Link>
             </Menu.Item>
               
@@ -187,7 +195,6 @@ const Homepage = () => {
             <Route path="/add-shortcut" element={ <AddShortcut /> }></Route>
 
           </Routes>
-
         
           
         </Content>

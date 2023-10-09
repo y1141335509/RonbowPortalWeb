@@ -2,6 +2,7 @@ import React from 'react';
 import { Collapse, Divider } from 'antd';
 import './projectprofile.css';
 import { ExportOutlined } from '@ant-design/icons';
+import Progress from './progress';
 
 
 
@@ -29,45 +30,50 @@ const items = [
   {
     key: '3',
     label: 'INSPIRATION',
-    children: <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>, 
-    headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
-},
-  {
-    key: '4',
-    label: 'PROJECT STATUS VISUALIZER',
-    children: <div><img src="https://cdn.ronbow.com/images/video-poster.jpg" alt="Description" className='responsive-image'/></div>,
+    children: <div>
+                <img src="https://cdn.ronbow.com/images/video-poster.jpg" alt="Description" className='responsive-image'/>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              </div>,
     headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
   },
   {
-    key: '5',
+    key: '4',
     label: 'JOB SITE LOCATION',
     children: <div><img src="https://cdn.ronbow.com/images/video-poster.jpg" alt="Description" className='responsive-image'/></div>,
     headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
   },
   {
-    key: '6',
+    key: '5',
     label: 'CUSTOMER INFO',
     children: <div><img src="https://cdn.ronbow.com/images/video-poster.jpg" alt="Description" className='responsive-image'/></div>,
     headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
   },
   {
-    key: '7',
+    key: '6',
     label: 'CONTACT METHOD',
     children: <div><img src="https://cdn.ronbow.com/images/video-poster.jpg" alt="Description" className='responsive-image'/></div>,
     headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
   },
   {
-    key: '8',
+    key: '7',
     label: 'LIFESTYLE',
     children: <div><img src="https://cdn.ronbow.com/images/video-poster.jpg" alt="Description" className='responsive-image'/></div>,
     headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
   },
   {
-    key: '9',
+    key: '8',
     label: 'MEETING NOTES',
     children: <div><img src="https://cdn.ronbow.com/images/video-poster.jpg" alt="Description" className='responsive-image'/></div>,
     headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
   },
+  {
+    key: '9',
+    label: 'CTA',
+    children: <div>
+
+    </div>,
+    headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
+  }
 ];
 
 const ProjectProfile = () => (
@@ -88,10 +94,11 @@ const ProjectProfile = () => (
         <div  style={{fontFamily: 'Roboto, sans-serif', fontSize: '18px', fontWeight: '300',
                       lineHeight: '30px', letterSpacing: '0.02em', textAlign: 'left', 
                       backgroundColor: 'white', paddingTop: '20px', paddingBottom: '10px', }}>
-          <span>Project Info</span>
+          <span>Project</span>
+          <Progress />
         </div>
 
-        {items.slice(0, 5).map((item, index) => (
+        {items.slice(0, 4).map((item, index) => (
           <Panel header={<span style={item.headerStyle}>{item.label}</span>} 
                  key={item.key} 
                  style={{ borderTop: '1px solid #f0f0f0', }}
@@ -110,7 +117,7 @@ const ProjectProfile = () => (
           <span>Customer Info</span>
         </div>
 
-        {items.slice(5, 9).map((item, index) => (
+        {items.slice(4, 9).map((item, index) => (
           <Panel header={<span style={item.headerStyle}>{item.label}</span>} 
                  key={item.key} 
                  style={{ borderTop: '1px solid #f0f0f0', }}
