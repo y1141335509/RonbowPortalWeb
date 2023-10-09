@@ -1,8 +1,10 @@
 import React from 'react';
-import { Collapse, Divider } from 'antd';
+import { Collapse, Divider, Button, ConfigProvider } from 'antd';
 import './projectprofile.css';
 import { ExportOutlined } from '@ant-design/icons';
 import Progress from './progress';
+import Zoom from '../zoom/zoom';
+import CustomerInfo from './customerinfo/customerinfo';
 
 
 
@@ -44,8 +46,8 @@ const items = [
   },
   {
     key: '5',
-    label: 'CUSTOMER INFO',
-    children: <div><img src="https://cdn.ronbow.com/images/video-poster.jpg" alt="Description" className='responsive-image'/></div>,
+    label: 'BASIC INFO',
+    children: <div><CustomerInfo /></div>,
     headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
   },
   {
@@ -68,13 +70,17 @@ const items = [
   },
   {
     key: '9',
-    label: 'CTA',
+    label: 'ALL PROJECTS',
     children: <div>
-
+      <Zoom />
     </div>,
     headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
   }
 ];
+
+const handleButton = () => {
+  window.open('https://designstudio.ronbow.com/');
+}
 
 const ProjectProfile = () => (
 
@@ -131,6 +137,15 @@ const ProjectProfile = () => (
           </Panel>
         ))}
       </Collapse>
+      <div style={{ display: 'flex', float: 'right', marginRight: '20px', }}>
+
+        <Button size='large' onClick={() => handleButton()}>
+          Design Now!
+        </Button>
+
+        
+      </div>
+      
     </div>
   );
 

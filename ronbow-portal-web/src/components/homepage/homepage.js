@@ -5,7 +5,7 @@ import {
   UserOutlined, ToolOutlined, BookOutlined, CustomerServiceOutlined, 
   VideoCameraOutlined, PlusSquareOutlined, ReadOutlined, CheckCircleOutlined, 
 } from '@ant-design/icons';
-import { Dropdown, Layout, Menu, theme, Avatar, Switch } from 'antd';
+import { Dropdown, Layout, Menu, theme, Avatar, Image } from 'antd';
 import ProjectProfile from '../projectprofile/projectprofile';
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
 import './homepage.css';
@@ -17,7 +17,7 @@ import Chat from '../chat/chat';
 import Zoom from '../zoom/zoom';
 import AddShortcut from '../addshortcut/addshortcut';
 import KnowledgeBase from '../knowledgebase/knowledgebase';
-import TodoList from '../todolist/todolist';
+import Dashboard from '../dashboard/dashboard';
 
 
 
@@ -27,7 +27,6 @@ import TodoList from '../todolist/todolist';
 const { Header, Content, Sider } = Layout;
 
 const featureList = [
-  // {key: '1', icon: () => <img src={ronbowLogo} alt='Ronbow' />, label: 'Ronbow'}, 
   {key: '1', icon: <HomeOutlined/>, label: 'Homepage'},
   {key: '2', icon: <AntDesignOutlined/>, label: 'Design Studio'},
   {key: '3', icon: <CommentOutlined/>, label: 'Chat'},
@@ -55,10 +54,31 @@ const Homepage = () => {
         return <ProjectProfile />;
       case 'knowledge-base':
         return <KnowledgeBase />;
-      case 'todo-list':
-        return <TodoList />
+      case 'dashboard':
+        return <Dashboard />
       default:
-        return
+        return <Content
+        className="site-layout-background"
+        style={{
+          margin: '24px 16px',
+          padding: 24,
+          minHeight: 280,
+          maxHeight: 500,
+          width: 'auto', 
+          height: 'auto',
+          // maxWidth: '100%',
+          fontFamily: 'Roboto, sans-serif', 
+          fontSize: '18px', 
+          fontWeight: "300",
+          lineHeight: "30px",
+          letterSpacing: "0.02em",
+          textAlign: "left",
+          alignItems: 'center', // horizontally center children
+          justifyContent: 'center', // vertically center children
+          height: '100vh', // or whatever height you want for the parent
+          backgroundColor: 'white',
+        }}
+      ></Content>
     }
   }
 
@@ -78,6 +98,8 @@ const Homepage = () => {
     // Open a new tab with the path corresponding to the clicked item
     if (key === '2') {
       window.open(paths[key], '_blank');
+    } else if (key === '1') {
+      navigate(paths[key]);
     } else {
       window.open(window.location.origin + paths[key], '_blank');
     }
@@ -97,16 +119,34 @@ const Homepage = () => {
             style={{ marginTop: '50px', backgroundColor: 'white', }}      
       >
         <div style={{ display: 'flex', flexDirection: 'column', height: '150vh', }}>
+          
           <Menu
             mode="inline"
             onClick={({ key }) => handleItemClick(key)}
             style={{ flex: 1, }}
           >
-            {featureList.slice(0, -1).map(item => (
-              <Menu.Item key={item.key} icon={item.icon}>
-                {item.label}
-              </Menu.Item>
-            ))}
+            {featureList.slice(0, -1).map((item, index) => {
+              if (index === 0) {
+                return (
+                  <Menu.Item key="1">
+                    <Image
+                      preview={false}
+                      sizes={'500%'}
+                      src="https://assets.wfcdn.com/im/29929773/resize-h110-w290%5Ecompr-r85/2228/222857539/default_name.jpg"
+                      alt="Home"
+                      onClick={() => navigate("/")} // using useNavigate hook for navigation
+                    />
+                  </Menu.Item>
+
+                )
+              } else {
+                return (
+                  <Menu.Item key={item.key} icon={item.icon}>
+                    {item.label}
+                  </Menu.Item>
+                )
+              }
+            })}
           </Menu>
 
           <Menu
@@ -132,15 +172,10 @@ const Homepage = () => {
           {/* Navigation on Header starts here */}
           <div className="logo" />
           <Menu mode='horizontal' >
-            <Menu.Item 
-              key="1" 
-              icon={<ScheduleOutlined />} 
-              onClick={() => setShowContent('calendar')}
-              style={{ fontWeight: '200', color: 'black', }}
-            >
-              <Link to="/">Calendar</Link>
+            <Menu.Item key='1' icon={<CheckCircleOutlined />} onClick={() => setShowContent('dashboard')} style={{ fontWeight: '200',  color: 'black', }}>
+              <Link to="/">Dashboard</Link>
             </Menu.Item>
-
+            
             <Menu.Item 
               key="2" 
               icon={<UserOutlined />} 
@@ -152,11 +187,16 @@ const Homepage = () => {
             <Menu.Item key='3' icon={<ReadOutlined />} onClick={() => setShowContent('knowledge-base')} style={{ fontWeight: '200',  color: 'black', }}>
               <Link to="/">Knowledge Base</Link>
             </Menu.Item>
-
-            <Menu.Item key='4' icon={<CheckCircleOutlined />} onClick={() => setShowContent('todo-list')} style={{ fontWeight: '200',  color: 'black', }}>
-              <Link to="/">Todo</Link>
-            </Menu.Item>
               
+            <Menu.Item 
+              key="4" 
+              icon={<ScheduleOutlined />} 
+              onClick={() => setShowContent('calendar')}
+              style={{ fontWeight: '200', color: 'black', }}
+            >
+              <Link to="/">Calendar</Link>
+            </Menu.Item>
+
           </Menu>
 
         </Header>

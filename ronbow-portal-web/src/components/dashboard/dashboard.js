@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Input, List, Button, Checkbox, Divider, DatePicker } from 'antd';
 import moment from 'moment';
-import './todolist.css';
+import './dashboard.css';
 
 const App = () => {
   const [todos, setTodos] = useState([]);
