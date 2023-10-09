@@ -17,6 +17,7 @@ import Chat from '../chat/chat';
 import Zoom from '../zoom/zoom';
 import AddShortcut from '../addshortcut/addshortcut';
 import KnowledgeBase from '../knowledgebase/knowledgebase';
+import TodoList from '../todolist/todolist';
 
 
 
@@ -54,6 +55,8 @@ const Homepage = () => {
         return <ProjectProfile />;
       case 'knowledge-base':
         return <KnowledgeBase />;
+      case 'todo-list':
+        return <TodoList />
       default:
         return
     }
@@ -140,6 +143,10 @@ const Homepage = () => {
 
             <Menu.Item key='3' icon={<ReadOutlined />} onClick={() => setShowContent('knowledge-base')}>
               <Link to="/">Knowledge Base</Link>
+            </Menu.Item>
+
+            <Menu.Item key='4' icon={<ReadOutlined />} onClick={() => setShowContent('todo-list')}>
+              <Link to="/">Todo</Link>
             </Menu.Item>
               
           </Menu>

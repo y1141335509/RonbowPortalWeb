@@ -1,0 +1,17 @@
+.ant-list-empty-text {
+    border-radius: 0px;
+}
+
+.ant-list-item {
+    border-radius: 0px;
+}
+
+
+/* in your .css file */
+.redDate .ant-picker-input > input {
+    color: red;
+}
+
+
+
+
