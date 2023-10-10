@@ -1,6 +1,6 @@
 
 import React, { useRef, useState } from 'react';
-import { PlusOutlined } from '@ant-design/icons';
+import { PlusOutlined, ExportOutlined } from '@ant-design/icons';
 // import type { ActionType, ProColumns } from '@ant-design/pro-components';
 import {
   EditableProTable,
@@ -62,22 +62,16 @@ const TagList = ({ value, onChange }) => {
   );
 };
 
-// type DataSourceType = {
-//   id: React.Key;
-//   title?: string;
-//   labels?: {
-//     key: string;
-//     label: string;
-//   }[];
-//   state?: string;
-//   created_at?: number;
-//   children?: DataSourceType[];
-// };
 
 const defaultData = [
   {
     id: 624748504,
-    title: 'Project 1',
+    title: <div>
+              <span>Project 1  </span> 
+              <a href="https://www.ronbow.com/products" rel="noopener noreferrer" target="_blank">
+                <ExportOutlined style={{cursor: 'pointer'}} /> 
+              </a>  
+            </div>,
     labels: [{ key: 'woman', label: 'Modern' }],
     state: 'open',
     client: 'client 1',
@@ -86,7 +80,12 @@ const defaultData = [
   },
   {
     id: 624691229,
-    title: 'Project 2',
+    title: <div>
+    <span>Project 2  </span> 
+    <a href="https://www.ronbow.com/products" rel="noopener noreferrer" target="_blank">
+      <ExportOutlined style={{cursor: 'pointer'}} /> 
+    </a>  
+  </div>,
     labels: [{ key: 'man', label: 'L-shape' }],
     state: 'closed',
     client: 'client 2',
@@ -152,30 +151,7 @@ const columns = [
     title: 'Trade Pro',
     dataIndex: 'tradePro',
   },
-  // {
-  //   title: '操作',
-  //   valueType: 'option',
-  //   width: 250,
-  //   render: (text, record, _, action) => [
-  //     <a
-  //       key="editable"
-  //       onClick={() => {
-  //         action?.startEditable?.(record.id);
-  //       }}
-  //     >
-  //       编辑
-  //     </a>,
-  //     <EditableProTable.RecordCreator
-  //       key="copy"
-  //       record={{
-  //         ...record,
-  //         id: (Math.random() * 1000000).toFixed(0),
-  //       }}
-  //     >
-  //       <a>复制此项到末尾</a>
-  //     </EditableProTable.RecordCreator>,
-  //   ],
-  // },
+
 ];
 
 const EditableTable = () => {
@@ -185,28 +161,6 @@ const EditableTable = () => {
   const [form] = Form.useForm();
   return (
     <>
-      {/* <Space>
-        <Button
-          type="primary"
-          onClick={() => {
-            actionRef.current?.addEditRecord?.({
-              id: (Math.random() * 1000000).toFixed(0),
-              title: '新的一行',
-            });
-          }}
-          icon={<PlusOutlined />}
-        >
-          新建一行
-        </Button>
-        <Button
-          key="rest"
-          onClick={() => {
-            form.resetFields();
-          }}
-        >
-          重置表单
-        </Button>
-      </Space> */}
 
       <EditableProTable
         rowKey="id"
@@ -216,7 +170,6 @@ const EditableTable = () => {
         actionRef={actionRef}
         headerTitle="Project List"
         maxLength={5}
-        // 关闭默认的新建按钮
         recordCreatorProps={false}
         columns={columns}
         request={async () => ({
@@ -236,19 +189,7 @@ const EditableTable = () => {
           actionRender: (row, config, dom) => [dom.save, dom.cancel],
         }}
       />
-      {/* <ProCard title="表格数据" headerBordered collapsible defaultCollapsed>
-        <ProFormField
-          ignoreFormItem
-          fieldProps={{
-            style: {
-              width: '100%',
-            },
-          }}
-          mode="read"
-          valueType="jsonCode"
-          text={JSON.stringify(dataSource)}
-        />
-      </ProCard> */}
+      
     </>
   );
 };
