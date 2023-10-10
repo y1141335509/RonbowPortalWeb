@@ -185,7 +185,7 @@ const EditableTable = () => {
   const [form] = Form.useForm();
   return (
     <>
-      <Space>
+      {/* <Space>
         <Button
           type="primary"
           onClick={() => {
@@ -206,7 +206,7 @@ const EditableTable = () => {
         >
           重置表单
         </Button>
-      </Space>
+      </Space> */}
 
       <EditableProTable
         rowKey="id"
@@ -214,7 +214,7 @@ const EditableTable = () => {
           x: 960,
         }}
         actionRef={actionRef}
-        headerTitle="可编辑表格"
+        headerTitle="Project List"
         maxLength={5}
         // 关闭默认的新建按钮
         recordCreatorProps={false}
@@ -236,7 +236,7 @@ const EditableTable = () => {
           actionRender: (row, config, dom) => [dom.save, dom.cancel],
         }}
       />
-      <ProCard title="表格数据" headerBordered collapsible defaultCollapsed>
+      {/* <ProCard title="表格数据" headerBordered collapsible defaultCollapsed>
         <ProFormField
           ignoreFormItem
           fieldProps={{
@@ -248,7 +248,7 @@ const EditableTable = () => {
           valueType="jsonCode"
           text={JSON.stringify(dataSource)}
         />
-      </ProCard>
+      </ProCard> */}
     </>
   );
 };
