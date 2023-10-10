@@ -1,0 +1,47 @@
+  /* Customize the content of the Collapse Panel */
+  .ant-collapse-content {
+    background-color: #e9f7fe;
+  }
+  
+  .ant-collapse-content-box {
+    padding: 16px;
+    color: #333;
+  }
+  
+  /* Customize the arrow icon */
+  .ant-collapse-arrow {
+    color: white;
+  }
+
+/* Move the arrow to the right */
+.ant-collapse-header {
+    justify-content: space-between;
+  }
+  
+  /* Remove border from each collapse panel */
+  .ant-collapse-item {
+    border-bottom: none !important;
+  }
+  
+  .ant-collapse {
+    border: none !important;
+  }
+
+  /* Styling for Panel header */
+.ant-collapse-header {
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14px;
+  letter-spacing: 0.02em;
+  text-align: left;
+
+}
+
+
+
+
+
+
+
+

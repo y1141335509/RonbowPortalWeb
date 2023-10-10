@@ -6,9 +6,9 @@ import './myaccount.css';
 
 const MyAccount = () => {
   const [formData, setFormData] = useState({
-    username: 'JohnDoe',
-    password: 'password123',
-    position: 'Developer',
+    currPassword: 'password456',
+    newPassword: 'password123',
+    bio: 'I am a good guy!',
   });
 
   const handleChange = (e) => {
@@ -27,29 +27,29 @@ const MyAccount = () => {
 
   return (
     <div className="account-container">
-      <Avatar size={64} style={{ color: '#f56a00', backgroundColor: '#fde3cf' }}>
-        JD
+      <Avatar size={64} style={{ color: '#464F50', backgroundColor: '#F0ECEC' }}>
+        KX
       </Avatar>
-      <h1>My Account</h1>
       <Form layout="vertical" onFinish={handleSubmit}>
-        <Form.Item label="Username">
-          <Input
-            name="username"
-            value={formData.username}
-            onChange={handleChange}
-          />
-        </Form.Item>
-        <Form.Item label="Password">
+        <Form.Item label="Current Password" >
           <Input.Password
-            name="password"
-            value={formData.password}
+            
+            name="currPassword"
+            value={formData.currPassword}
             onChange={handleChange}
           />
         </Form.Item>
-        <Form.Item label="Position">
+        <Form.Item label="New Password">
+          <Input.Password
+            name="newPassword"
+            value={formData.newPassword}
+            onChange={handleChange}
+          />
+        </Form.Item>
+        <Form.Item label="bio">
           <Input
-            name="position"
-            value={formData.position}
+            name="bio"
+            value={formData.bio}
             onChange={handleChange}
           />
         </Form.Item>

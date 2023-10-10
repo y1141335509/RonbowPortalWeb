@@ -2,7 +2,6 @@
   max-width: 400px;
   margin: auto;
   padding: 20px;
-  background-color: #F0ECEC;
   border-radius: 8px;
   text-align: center;
 }
@@ -28,3 +27,7 @@
 .account-container button:hover {
   background-color: #464F50;
 }
+
+
+
+
