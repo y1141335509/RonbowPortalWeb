@@ -13,36 +13,18 @@ const data = [
 ];
 const App = () => (
   <>
-    <Divider orientation="left">Project List</Divider>
     <List
-      header={<div>Header</div>}
-      footer={<div>Footer</div>}
+      header={<div>Projects</div>}
+      footer={<div></div>}
       bordered
       dataSource={data}
       renderItem={(item) => (
         <List.Item>
-          <Typography.Text mark>[ITEM]</Typography.Text> {item}
+          {item}
         </List.Item>
       )}
     />
-    {/* <Divider orientation="left">Small Size</Divider>
-    <List
-      size="small"
-      header={<div>Header</div>}
-      footer={<div>Footer</div>}
-      bordered
-      dataSource={data}
-      renderItem={(item) => <List.Item>{item}</List.Item>}
-    />
-    <Divider orientation="left">Large Size</Divider>
-    <List
-      size="large"
-      header={<div>Header</div>}
-      footer={<div>Footer</div>}
-      bordered
-      dataSource={data}
-      renderItem={(item) => <List.Item>{item}</List.Item>}
-    /> */}
+   
   </>
 );
 export default App;

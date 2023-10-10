@@ -63,30 +63,46 @@ const items = [
   },
   {
     key: '5',
+    label: 'CUSTOMER LIST',
+    children: <div>
+        <CustomerList />
+      </div>,
+    headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
+  },
+  {
+    key: '6',
     label: 'BASIC INFO',
     children: <div><CustomerInfo /></div>,
     headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
   },
   {
-    key: '6',
+    key: '7',
     label: 'LIFESTYLE',
     children: <div><img src="https://cdn.ronbow.com/images/video-poster.jpg" alt="Description" className='responsive-image'/></div>,
     headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
   },
   {
-    key: '7',
+    key: '8',
     label: 'MEETING NOTES',
     children: <div><img src="https://cdn.ronbow.com/images/video-poster.jpg" alt="Description" className='responsive-image'/></div>,
     headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
   },
   {
-    key: '8',
+    key: '9',
     label: 'ALL PROJECTS',
     children: <div>
       <Zoom />
     </div>,
     headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
-  }
+  },
+  {
+    key: '10',
+    label: 'PROJECT LIST',
+    children: <div>
+      <ProjectList />
+    </div>,
+    headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
+  },
 ];
 
 const handleButton = () => {
@@ -117,18 +133,10 @@ const ProjectProfile = () => (
               <SearchOutlined className="icon" />
           </div>
           <Progress />
-          <div style={{ width: '100%', }}>
-            <div style={{ width: '50%', float: 'left', }}>
-              <ProjectList />
-            </div>
-            <div style={{ width: '50%', float: 'right', }}>
-              <CustomerList />
-            </div>
-          </div>
           
         </div>
 
-        {items.slice(0, 4).map((item, index) => (
+        {items.slice(0, 5).map((item, index) => (
           <Panel header={<span style={item.headerStyle}>{item.label}</span>} 
                  key={item.key} 
                  style={{ borderTop: '1px solid #f0f0f0', }}
@@ -147,7 +155,7 @@ const ProjectProfile = () => (
           <span>Customer Info</span>
         </div>
 
-        {items.slice(4, 9).map((item, index) => (
+        {items.slice(5, 10).map((item, index) => (
           <Panel header={<span style={item.headerStyle}>{item.label}</span>} 
                  key={item.key} 
                  style={{ borderTop: '1px solid #f0f0f0', }}

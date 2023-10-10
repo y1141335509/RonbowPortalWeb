@@ -6,13 +6,12 @@ import {
   VideoCameraOutlined, PlusSquareOutlined, ReadOutlined, CheckCircleOutlined, 
   FundProjectionScreenOutlined, BulbOutlined, SolutionOutlined, 
 } from '@ant-design/icons';
-import { Dropdown, Layout, Menu, theme, Avatar, Image } from 'antd';
+import { Dropdown, Layout, Menu, theme, Avatar, Image, Input } from 'antd';
 import ProjectProfile from '../projectprofile/projectprofile';
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
 import './homepage.css';
 import '../../index.css';
 import CustomerProfile from '../customerprofile/customerprofile';
-import ronbowLogo from '../../images/ronbow.png';
 import CalendarComponent from '../calendar/calendar';
 import Chat from '../chat/chat';
 import Zoom from '../zoom/zoom';
@@ -30,6 +29,8 @@ import MyAccount from '../myaccount/myaccount';
 // ref: https://stackblitz.com/run?file=demo.js
 
 const { Header, Content, Sider } = Layout;
+const { Search } = Input;
+
 
 const featureList = [
   {key: '1', icon: <HomeOutlined/>, label: 'Homepage'},
@@ -48,6 +49,12 @@ const Homepage = () => {
   const [showContent, setShowContent] = useState("");
   const [selectedKey, setSelectedKey] = useState('1');
   const navigate = useNavigate();
+
+
+  const handleSearch = (value) => {
+    console.log('Search:', value);
+    // Implement search functionality here
+  };
 
   
   const handleClickNavigation = () => {
@@ -162,6 +169,16 @@ const Homepage = () => {
       <Layout style={{ padding: '0 5px 24px', backgroundColor: 'white', }} >
         <Header className="site-layout-background custom-header" 
                 style={{ padding: 0, backgroundColor: 'white', }}>
+          
+          {/* Search Bar starts here */}
+          <Search
+            placeholder="Search..."
+            onSearch={handleSearch()}
+            style={{
+              width: 200,
+            }}
+          />
+          {/* Search Bar ends here */}
 
           {/* Navigation on Header starts here */}
           <div className="logo" />

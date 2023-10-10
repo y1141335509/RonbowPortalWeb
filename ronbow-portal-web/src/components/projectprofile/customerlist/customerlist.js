@@ -13,15 +13,14 @@ const data = [
 ];
 const App = () => (
   <>
-    <Divider orientation="left">Customer List</Divider>
     <List
-      header={<div>Header</div>}
-      footer={<div>Footer</div>}
+      header={<div>Customers</div>}
+      footer={<div></div>}
       bordered
       dataSource={data}
       renderItem={(item) => (
         <List.Item>
-          <Typography.Text mark>[ITEM]</Typography.Text> {item}
+          {'> '} {item}
         </List.Item>
       )}
     />
