@@ -4,7 +4,7 @@ import {
   DollarOutlined, FireOutlined, AntDesignOutlined, CommentOutlined,
   UserOutlined, ToolOutlined, BookOutlined, CustomerServiceOutlined, 
   VideoCameraOutlined, PlusSquareOutlined, ReadOutlined, CheckCircleOutlined, 
-  FundProjectionScreenOutlined, BulbOutlined, SolutionOutlined, 
+  FundProjectionScreenOutlined, BulbOutlined, SolutionOutlined, FormOutlined, 
 } from '@ant-design/icons';
 import { Dropdown, Layout, Menu, theme, Avatar, Image, Input } from 'antd';
 import ProjectProfile from '../projectlist/projectprofile/projectprofile';
@@ -35,7 +35,7 @@ const { Search } = Input;
 
 const featureList = [
   {key: '1', icon: <HomeOutlined/>, label: 'Homepage'},
-  {key: '2', icon: <ToolOutlined/>, label: 'Design Studio'},
+  {key: '2', icon: <FormOutlined />, label: 'Design Studio'},
   {key: '3', icon: <CommentOutlined/>, label: 'Chat'},
   {key: '4', icon: <VideoCameraOutlined />, label: 'Zoom'},
   {key: '5', icon: <ScheduleOutlined />, label: 'Calendar'}, 

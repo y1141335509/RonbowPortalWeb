@@ -83,7 +83,15 @@ const defaultData = [
             </div>,
     labels: [{ key: 'woman', label: 'Modern' }],
     state: 'open',
-    client: 'client 1',
+    client: <div key='1'>
+              <span 
+                style={{textDecoration: 'underline', }} 
+              >
+                <Link to={`/customer-profile/${624691229}`} target="_blank">
+                  <span style={{ textDecoration: 'underline' }}>Kevin</span>
+                </Link>
+              </span> 
+            </div>,
     tradePro: 'trade pro 1', 
     created_at: 1590486176000,
   },
@@ -101,7 +109,15 @@ const defaultData = [
 
     labels: [{ key: 'man', label: 'L-shape' }],
     state: 'closed',
-    client: 'client 2',
+    client: <div key='1'>
+              <span 
+                style={{textDecoration: 'underline', }} 
+              >
+                <Link to={`/customer-profile/${624691229}`} target="_blank">
+                  <span style={{ textDecoration: 'underline' }}>John</span>
+                </Link>
+              </span> 
+            </div>,
     tradePro: 'trade pro 2', 
     created_at: 1590481162000,
   },
