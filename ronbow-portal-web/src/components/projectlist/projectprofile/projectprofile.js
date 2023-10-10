@@ -1,15 +1,12 @@
 import React from 'react';
-import { Collapse, Divider, Button, ConfigProvider } from 'antd';
+import { Collapse, Divider, Button, ConfigProvider, Menu, Dropdown  } from 'antd';
 import './projectprofile.css';
-import { ExportOutlined, FilterOutlined, SearchOutlined, DownloadOutlined, ToolOutlined, 
- } from '@ant-design/icons';
+import { ExportOutlined, FilterOutlined, SearchOutlined, DownloadOutlined, 
+  ToolOutlined, PrinterOutlined, MailOutlined 
+} from '@ant-design/icons';
 import Progress from './progress';
 import Zoom from '../../zoom/zoom';
 import CustomerInfo from '../projectprofile/customerinfo/customerinfo';
-// import ProjectList from './projectlist/projectlist';
-// import CustomerList from './customerlist/customerlist';
-import GoogleMapReact from 'google-map-react';
-
 
 
 const text = `
@@ -20,13 +17,6 @@ const text = `
 
 const { Panel } = Collapse;
 
-const defaultProps = {
-  center: {
-    lat: 10.99835602,
-    lng: 77.01502627
-  },
-  zoom: 11
-};
 
 const items = [
   {
@@ -74,44 +64,42 @@ const items = [
     key: '5',
     label: 'CUSTOMER LIST',
     children: <div>
-        {/* <CustomerList /> */}
       </div>,
     headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
   },
-  {
-    key: '6',
-    label: 'BASIC INFO',
-    children: <div><CustomerInfo /></div>,
-    headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
-  },
-  {
-    key: '7',
-    label: 'LIFESTYLE',
-    children: <div><img src="https://cdn.ronbow.com/images/video-poster.jpg" alt="Description" className='responsive-image'/></div>,
-    headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
-  },
-  {
-    key: '8',
-    label: 'MEETING NOTES',
-    children: <div><img src="https://cdn.ronbow.com/images/video-poster.jpg" alt="Description" className='responsive-image'/></div>,
-    headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
-  },
-  {
-    key: '9',
-    label: 'ALL PROJECTS',
-    children: <div>
-      <Zoom />
-    </div>,
-    headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
-  },
-  {
-    key: '10',
-    label: 'PROJECT LIST',
-    children: <div>
-      {/* <ProjectList /> */}
-    </div>,
-    headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
-  },
+  // {
+  //   key: '6',
+  //   label: 'BASIC INFO',
+  //   children: <div><CustomerInfo /></div>,
+  //   headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
+  // },
+  // {
+  //   key: '7',
+  //   label: 'LIFESTYLE',
+  //   children: <div><img src="https://cdn.ronbow.com/images/video-poster.jpg" alt="Description" className='responsive-image'/></div>,
+  //   headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
+  // },
+  // {
+  //   key: '8',
+  //   label: 'MEETING NOTES',
+  //   children: <div><img src="https://cdn.ronbow.com/images/video-poster.jpg" alt="Description" className='responsive-image'/></div>,
+  //   headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
+  // },
+  // {
+  //   key: '9',
+  //   label: 'ALL PROJECTS',
+  //   children: <div>
+  //     <Zoom />
+  //   </div>,
+  //   headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
+  // },
+  // {
+  //   key: '10',
+  //   label: 'PROJECT LIST',
+  //   children: <div>
+  //   </div>,
+  //   headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
+  // },
 ];
 
 const handleDownloadButton = () => {
@@ -122,6 +110,33 @@ const handleDownloadButton = () => {
 const handleDesignButton = () => {
   window.open('https://designstudio.ronbow.com/');
 }
+
+const handleEmailUs = () => {
+  window.location.href = "mailto:example@gmail.com";
+};
+
+const handlePrint = () => {
+  window.open("URL_TO_PDF", '_blank').print();
+};
+
+const handleDownload = () => {
+  window.open("URL_TO_PDF", '_blank');
+};
+
+const menu = (
+  <Menu>
+    <Menu.Item key="1" icon={<MailOutlined />} onClick={handleEmailUs}>
+      Email Us
+    </Menu.Item>
+    <Menu.Item key="2" icon={<PrinterOutlined />} onClick={handlePrint}>
+      Print
+    </Menu.Item>
+    <Menu.Item key="3" icon={<DownloadOutlined />} onClick={handleDownload}>
+      Download
+    </Menu.Item>
+  </Menu>
+);
+
 
 const ProjectProfile = () => (
 
@@ -184,7 +199,6 @@ const ProjectProfile = () => (
         ))} */}
       </Collapse>
       <div style={{ textAlign: 'center',  }}>
-
         <Button 
           size='large' 
           icon={<ToolOutlined />}
@@ -194,16 +208,15 @@ const ProjectProfile = () => (
           Design Now!
         </Button>
 
-        <Button 
-          size='large' 
-          icon={<DownloadOutlined /> }
-          onClick={() => handleDownloadButton()}
-          style={{ backgroundColor: '#5D6465', color: '#F0ECEC', marginLeft: '10px', }}
-        >
-          Download Files
-        </Button>
-
-        
+        <Dropdown overlay={menu} trigger={['click']}>
+          <Button 
+            size='large' 
+            icon={<DownloadOutlined />}
+            style={{ backgroundColor: '#5D6465', color: '#F0ECEC', marginLeft: '10px', }}
+          >
+            Download Files
+          </Button>
+        </Dropdown>
       </div>
       
     </div>

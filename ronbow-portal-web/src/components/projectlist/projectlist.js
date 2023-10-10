@@ -93,6 +93,7 @@ const defaultData = [
               </span> 
             </div>,
     tradePro: 'trade pro 1', 
+    address: '7150 Patterson Pass Rd # F, Livermore, CA 94550',
     created_at: 1590486176000,
   },
   {
@@ -119,6 +120,7 @@ const defaultData = [
               </span> 
             </div>,
     tradePro: 'trade pro 2', 
+    address: '680 8th St Suite 166, San Francisco, CA 94103',
     created_at: 1590481162000,
   },
 ];
@@ -135,7 +137,7 @@ const columns = [
         },
       ],
     },
-    width: '30%',
+    width: '20%',
   },
   {
     title: 'Status',
@@ -153,11 +155,12 @@ const columns = [
         status: 'Success',
       },
     },
+    width: '15%',
   },
   {
     title: 'Tag',
     dataIndex: 'labels',
-    width: '20%',
+    width: '15%',
     formItemProps: {
       rules: [
         {
@@ -175,12 +178,18 @@ const columns = [
   {
     title: 'Client Name',
     dataIndex: 'client',
+    width: '15%',
   },
   {
     title: 'Trade Pro',
     dataIndex: 'tradePro',
+    width: '10%',
   },
-
+  {
+    title: 'Address',
+    dataIndex: 'address',
+    width: '23%',
+  },
 ];
 
 const EditableTable = () => {

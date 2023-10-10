@@ -3,7 +3,7 @@ import { Collapse, Divider, Button, ConfigProvider } from 'antd';
 import { ExportOutlined, FilterOutlined, SearchOutlined, DownloadOutlined, ToolOutlined, 
  } from '@ant-design/icons';
 import Zoom from '../../zoom/zoom';
-import './customerlist.css';
+import './customerprofile.css';
 import CustomerInfo from '../projectprofile/customerinfo/customerinfo';
 
 
