@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import {
   HomeOutlined, ScheduleOutlined, ContactsOutlined, ProjectOutlined, 
-  DollarOutlined, FireOutlined, AntDesignOutlined, CommentOutlined,
-  UserOutlined, ToolOutlined, BookOutlined, CustomerServiceOutlined, 
+  DollarOutlined, FireOutlined, AntDesignOutlined, CommentOutlined, SettingOutlined, 
+  UserOutlined, ToolOutlined, BookOutlined, CustomerServiceOutlined, ExportOutlined, 
   VideoCameraOutlined, PlusSquareOutlined, ReadOutlined, CheckCircleOutlined, 
   FundProjectionScreenOutlined, BulbOutlined, SolutionOutlined, FormOutlined, 
 } from '@ant-design/icons';
@@ -23,6 +23,7 @@ import InspirationSpace from '../inspiration/inspiration';
 import HumanResource from '../humanresource/humanresource';
 import MyAccount from '../myaccount/myaccount';
 import ProjectList from '../projectlist/projectlist';
+import AddShortcutModal from './addshortcuts/addshortcuts'; // Ensure path is correct
 
 
 
@@ -33,7 +34,7 @@ const { Header, Content, Sider } = Layout;
 const { Search } = Input;
 
 
-const featureList = [
+const defaultShortcuts = [
   {key: '1', icon: <HomeOutlined/>, label: 'Homepage'},
   {key: '2', icon: <FormOutlined />, label: 'Design Studio'},
   {key: '3', icon: <CommentOutlined/>, label: 'Chat'},
@@ -41,6 +42,18 @@ const featureList = [
   {key: '5', icon: <ScheduleOutlined />, label: 'Calendar'}, 
   {key: '6', icon: <PlusSquareOutlined />, label: 'Add Shortcut', iconStyle: {bottom: '10%', position: 'absolute', }}, 
 
+];
+
+const allShortcuts = [
+  {key: '1', icon: <HomeOutlined/>, label: 'Homepage'},
+  {key: '2', icon: <FormOutlined />, label: 'Design Studio'},
+  {key: '3', icon: <CommentOutlined/>, label: 'Chat'},
+  {key: '4', icon: <VideoCameraOutlined />, label: 'Zoom'},
+  {key: '5', icon: <ScheduleOutlined />, label: 'Calendar'}, 
+  {key: '6', icon: <PlusSquareOutlined />, label: 'Add Shortcut', iconStyle: {bottom: '10%', position: 'absolute', }}, 
+  {key: '7', icon: <ExportOutlined />, label: 'Export'}, 
+  {key: '8', icon: <ToolOutlined />, label: 'Tool'}, 
+  {key: '9', icon: <SettingOutlined />, label: 'Settings'}, 
 ];
 
 
@@ -51,11 +64,37 @@ const Homepage = () => {
   const [showContent, setShowContent] = useState("");
   const [selectedKey, setSelectedKey] = useState('1');
   const navigate = useNavigate();
+  const [isAddShortcutVisible, setIsAddShortcutVisible] = useState(false);
+  const [shortcuts, setShortcuts] = useState(defaultShortcuts);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [selectedShortcuts, setSelectedShortcuts] = useState([]);
+
+  const openModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleOk = () => {
+    setShortcuts(allShortcuts.filter(s => selectedShortcuts.includes(s.key)));
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCheckboxChange = checkedValues => {
+    setSelectedShortcuts(checkedValues);
+  };
 
 
   const handleSearch = (value) => {
     console.log('Search:', value);
     // Implement search functionality here
+  };
+
+
+  const handleSaveShortcut = (newShortcuts) => {
+    setShortcuts(prevShortcuts => [...prevShortcuts, ...newShortcuts]);
   };
 
   
@@ -112,7 +151,6 @@ const Homepage = () => {
   } = theme.useToken();
   return (
     <Layout style={{ minHeight: '100vh', backgroundColor: 'white', }}>
-        
 
       <Sider collapsible collapsed={collapsed} 
             theme='light'
@@ -126,7 +164,7 @@ const Homepage = () => {
             onClick={({ key }) => handleItemClick(key)}
             style={{ flex: 1, }}
           >
-            {featureList.slice(0, -1).map((item, index) => {
+            {defaultShortcuts.slice(0, -1).map((item, index) => {
               if (index === 0) {
                 return (
                   <Menu.Item key="logo">
@@ -154,15 +192,18 @@ const Homepage = () => {
             onClick={({ key }) => handleItemClick(key)}
             style={{  borderTop: '2px solid #333' }}
           >
-            {featureList.slice(-1).map(item => (
+            {defaultShortcuts.slice(-1).map(item => (
               <Menu.Item key={item.key} icon={item.icon}>
                 {item.label}
               </Menu.Item>
             ))}
           </Menu>
+          
         </div>
 
       </Sider>
+
+      
 
       {/* inner Layout starts here */}
       <Layout style={{ padding: '0 5px 24px', backgroundColor: 'white', }} >
@@ -273,6 +314,12 @@ const Homepage = () => {
 
       </Layout>
       {/* inner Layout ends here */}
+
+      <AddShortcutModal
+        isVisible={isAddShortcutVisible}
+        onClose={() => setIsAddShortcutVisible(false)}
+        onSave={handleSaveShortcut}
+      />
 
     </Layout>
   );
