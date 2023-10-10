@@ -1,7 +1,8 @@
 import React from 'react';
-import { Collapse, Divider, Button, ConfigProvider } from 'antd';
-import { ExportOutlined, FilterOutlined, SearchOutlined, DownloadOutlined, ToolOutlined, 
- } from '@ant-design/icons';
+import { Collapse, Divider, Button, ConfigProvider, Menu, Dropdown  } from 'antd';
+import { ExportOutlined, FilterOutlined, SearchOutlined, DownloadOutlined, 
+  ToolOutlined, PrinterOutlined, MailOutlined 
+} from '@ant-design/icons';
 import Zoom from '../../zoom/zoom';
 import './customerprofile.css';
 import CustomerInfo from '../projectprofile/customerinfo/customerinfo';
@@ -62,14 +63,38 @@ const items = [
   },
 ];
 
-const handleDownloadButton = () => {
-  window.open("https://cdn.ronbow.com/resources/Ronbow-Company-Profile-V6.pdf", '_blank');
-}
-
 
 const handleDesignButton = () => {
   window.open('https://designstudio.ronbow.com/');
 }
+
+const handleEmailUs = () => {
+  window.location.href = "mailto:example@gmail.com";
+};
+
+const handlePrint = () => {
+  window.open("URL_TO_PDF", '_blank').print();
+};
+
+const handleDownload = () => {
+  window.open("https://cdn.ronbow.com/resources/Ronbow-Company-Profile-V6.pdf", '_blank');
+};
+
+const menu = (
+  <Menu>
+    <Menu.Item key="1" icon={<MailOutlined />} onClick={handleEmailUs}>
+      Email Us
+    </Menu.Item>
+    <Menu.Item key="2" icon={<PrinterOutlined />} onClick={handlePrint}>
+      Print
+    </Menu.Item>
+    <Menu.Item key="3" icon={<DownloadOutlined />} onClick={handleDownload}>
+      Download
+    </Menu.Item>
+  </Menu>
+);
+
+
 
 const CustomerList = () => (
 
@@ -114,7 +139,6 @@ const CustomerList = () => (
 
       
       <div style={{ textAlign: 'center',  }}>
-
         <Button 
           size='large' 
           icon={<ToolOutlined />}
@@ -124,16 +148,15 @@ const CustomerList = () => (
           Design Now!
         </Button>
 
-        <Button 
-          size='large' 
-          icon={<DownloadOutlined /> }
-          onClick={() => handleDownloadButton()}
-          style={{ backgroundColor: '#5D6465', color: '#F0ECEC', marginLeft: '10px', }}
-        >
-          Download Files
-        </Button>
-
-        
+        <Dropdown overlay={menu} trigger={['click']}>
+          <Button 
+            size='large' 
+            icon={<DownloadOutlined />}
+            style={{ backgroundColor: '#5D6465', color: '#F0ECEC', marginLeft: '10px', }}
+          >
+            Download Files
+          </Button>
+        </Dropdown>
       </div>
       
     </div>

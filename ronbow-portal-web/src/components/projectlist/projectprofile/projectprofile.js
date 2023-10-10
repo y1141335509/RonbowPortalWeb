@@ -102,10 +102,6 @@ const items = [
   // },
 ];
 
-const handleDownloadButton = () => {
-  window.open("https://cdn.ronbow.com/resources/Ronbow-Company-Profile-V6.pdf", '_blank');
-}
-
 
 const handleDesignButton = () => {
   window.open('https://designstudio.ronbow.com/');
@@ -120,7 +116,7 @@ const handlePrint = () => {
 };
 
 const handleDownload = () => {
-  window.open("URL_TO_PDF", '_blank');
+  window.open("https://cdn.ronbow.com/resources/Ronbow-Company-Profile-V6.pdf", '_blank');
 };
 
 const menu = (
