@@ -7,7 +7,7 @@ import {
   FundProjectionScreenOutlined, BulbOutlined, SolutionOutlined, 
 } from '@ant-design/icons';
 import { Dropdown, Layout, Menu, theme, Avatar, Image, Input } from 'antd';
-import ProjectProfile from '../projectprofile/projectprofile';
+import ProjectProfile from '../projectlist/projectprofile/projectprofile';
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
 import './homepage.css';
 import '../../index.css';
@@ -22,7 +22,7 @@ import Dashboard from '../dashboard/dashboard';
 import InspirationSpace from '../inspiration/inspiration';
 import HumanResource from '../humanresource/humanresource';
 import MyAccount from '../myaccount/myaccount';
-import ProjectList from '../projectprofile/projectlist/projectlist';
+import ProjectList from '../projectlist/projectlist';
 
 
 
@@ -182,15 +182,6 @@ const Homepage = () => {
               <Link to="/">Dashboard</Link>
             </Menu.Item>
                           
-              {/* <Menu.Item 
-                key="2" 
-                icon={<ScheduleOutlined />} 
-                onClick={() => setShowContent('calendar')}
-                style={{ fontWeight: '200', color: 'black', }}
-              >
-                <Link to="/">Calendar</Link>
-              </Menu.Item> */}
-
             <Menu.Item 
               key="2" 
               icon={<FundProjectionScreenOutlined />} 
@@ -202,15 +193,6 @@ const Homepage = () => {
             <Menu.Item key='3' icon={<ReadOutlined />} onClick={() => setShowContent('knowledge-base')} style={{ fontWeight: '200',  color: 'black', }}>
               <Link to="/">Knowledge Base</Link>
             </Menu.Item>
-
-            {/* <Menu.Item 
-              key="4" 
-              icon={<DollarOutlined />} 
-              onClick={() => setShowContent('commission')}
-              style={{ fontWeight: '200', color: 'black', }}
-            >
-              <Link to="/">Commission</Link>
-            </Menu.Item> */}
 
             <Menu.Item 
               key="4" 

@@ -9,6 +9,10 @@ import {
 } from '@ant-design/pro-components';
 // import type { InputRef } from 'antd';
 import { Button, Form, Input, Space, Tag } from 'antd';
+import { Link, Routes, Route } from 'react-router-dom';
+import ProjectProfile from './projectprofile/projectprofile';
+
+
 
 const waitTime = (time = 100) => {
   return new Promise((resolve) => {
@@ -43,6 +47,7 @@ const TagList = ({ value, onChange }) => {
     setInputValue('');
   };
 
+
   return (
     <Space>
       {(value || []).concat(newTags).map((item) => (
@@ -63,14 +68,17 @@ const TagList = ({ value, onChange }) => {
 };
 
 
+
 const defaultData = [
   {
     id: 624748504,
-    title: <div>
-              <span style={{textDecoration: 'underline', }}>
-                <a href="https://www.ronbow.com/products" rel="noopener noreferrer" target="_blank">
-                  Project 1
-                </a>    
+    title: <div key='1'>
+              <span 
+                style={{textDecoration: 'underline', }} 
+              >
+                <Link to={`/project-profile/${624748504}`} target="_blank">
+                  <span style={{ textDecoration: 'underline' }}>Project 1</span>
+                </Link>
               </span> 
             </div>,
     labels: [{ key: 'woman', label: 'Modern' }],
@@ -81,19 +89,16 @@ const defaultData = [
   },
   {
     id: 624691229,
-    title: <div>
-            <span style={{textDecoration: 'underline', }}>
-              <a href="https://www.ronbow.com/products" rel="noopener noreferrer" target="_blank">
-                Project 2
-              </a>    
+    title: <div key='1'>
+            <span 
+              style={{textDecoration: 'underline', }} 
+            >
+              <Link to={`/project-profile/${624691229}`} target="_blank">
+                <span style={{ textDecoration: 'underline' }}>Project 2</span>
+              </Link>
             </span> 
           </div>,
-  //   <div>
-  //   <span>Project 2  </span> 
-  //   <a href="https://www.ronbow.com/products" rel="noopener noreferrer" target="_blank">
-  //     <ExportOutlined style={{cursor: 'pointer'}} /> 
-  //   </a>  
-  // </div>,
+
     labels: [{ key: 'man', label: 'L-shape' }],
     state: 'closed',
     client: 'client 2',

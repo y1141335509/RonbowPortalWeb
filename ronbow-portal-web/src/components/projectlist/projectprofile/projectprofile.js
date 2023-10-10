@@ -4,7 +4,7 @@ import './projectprofile.css';
 import { ExportOutlined, FilterOutlined, SearchOutlined, DownloadOutlined, ToolOutlined, 
  } from '@ant-design/icons';
 import Progress from './progress';
-import Zoom from '../zoom/zoom';
+import Zoom from '../../zoom/zoom';
 import CustomerInfo from './customerinfo/customerinfo';
 // import ProjectList from './projectlist/projectlist';
 // import CustomerList from './customerlist/customerlist';
