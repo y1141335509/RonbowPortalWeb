@@ -22,6 +22,7 @@ import Commission from '../commission/commission';
 import InspirationSpace from '../inspiration/inspiration';
 import HumanResource from '../humanresource/humanresource';
 import MyAccount from '../myaccount/myaccount';
+import ProjectList from '../projectprofile/projectlist/projectlist';
 
 
 
@@ -62,7 +63,7 @@ const Homepage = () => {
       case 'calendar':
         return <CalendarComponent />;
       case 'project-profile':
-        return <ProjectProfile />;
+        return <ProjectList />;
       case 'knowledge-base':
         return <KnowledgeBase />;
       case 'dashboard':
@@ -170,22 +171,17 @@ const Homepage = () => {
         <Header className="site-layout-background custom-header" 
                 style={{ padding: 0, backgroundColor: 'white', }}>
           
-          {/* Search Bar starts here */}
-          <Search
-            placeholder="Search..."
-            onSearch={handleSearch()}
-            style={{
-              width: 200,
-            }}
-          />
-          {/* Search Bar ends here */}
 
           {/* Navigation on Header starts here */}
           <div className="logo" />
           <Menu mode='horizontal' >
-              
+
+            <Menu.Item key='1' icon={<ProjectOutlined />} onClick={() => setShowContent('dashboard')} style={{ fontWeight: '200',  color: 'black', }}>
+              <Link to="/">Dashboard</Link>
+            </Menu.Item>
+                          
               <Menu.Item 
-                key="1" 
+                key="2" 
                 icon={<ScheduleOutlined />} 
                 onClick={() => setShowContent('calendar')}
                 style={{ fontWeight: '200', color: 'black', }}
@@ -193,10 +189,6 @@ const Homepage = () => {
                 <Link to="/">Calendar</Link>
               </Menu.Item>
 
-            <Menu.Item key='2' icon={<ProjectOutlined />} onClick={() => setShowContent('dashboard')} style={{ fontWeight: '200',  color: 'black', }}>
-              <Link to="/">Dashboard</Link>
-            </Menu.Item>
-            
             <Menu.Item 
               key="3" 
               icon={<FundProjectionScreenOutlined />} 
@@ -246,6 +238,16 @@ const Homepage = () => {
             </Menu.Item>
 
           </Menu>
+
+          {/* Search Bar starts here */}
+          <Search
+            placeholder="Search..."
+            onSearch={handleSearch()}
+            style={{
+              width: 200,
+            }}
+          />
+          {/* Search Bar ends here */}
 
         </Header>
 

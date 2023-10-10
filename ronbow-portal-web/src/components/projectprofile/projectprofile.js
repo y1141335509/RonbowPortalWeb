@@ -6,8 +6,8 @@ import { ExportOutlined, FilterOutlined, SearchOutlined, DownloadOutlined, ToolO
 import Progress from './progress';
 import Zoom from '../zoom/zoom';
 import CustomerInfo from './customerinfo/customerinfo';
-import ProjectList from './projectlist/projectlist';
-import CustomerList from './customerlist/customerlist';
+// import ProjectList from './projectlist/projectlist';
+// import CustomerList from './customerlist/customerlist';
 import GoogleMapReact from 'google-map-react';
 
 
@@ -74,7 +74,7 @@ const items = [
     key: '5',
     label: 'CUSTOMER LIST',
     children: <div>
-        <CustomerList />
+        {/* <CustomerList /> */}
       </div>,
     headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
   },
@@ -108,7 +108,7 @@ const items = [
     key: '10',
     label: 'PROJECT LIST',
     children: <div>
-      <ProjectList />
+      {/* <ProjectList /> */}
     </div>,
     headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
   },
@@ -187,20 +187,20 @@ const ProjectProfile = () => (
 
         <Button 
           size='large' 
-          icon={<DownloadOutlined /> }
-          onClick={() => handleDownloadButton()}
+          icon={<ToolOutlined />}
+          onClick={() => handleDesignButton()}
           style={{ backgroundColor: '#5D6465', color: '#F0ECEC', marginRight: '10px', }}
         >
-          Download Project
+          Design Now!
         </Button>
 
         <Button 
           size='large' 
-          icon={<ToolOutlined />}
-          onClick={() => handleDesignButton()}
+          icon={<DownloadOutlined /> }
+          onClick={() => handleDownloadButton()}
           style={{ backgroundColor: '#5D6465', color: '#F0ECEC', marginLeft: '10px', }}
         >
-          Design Now!
+          Download Files
         </Button>
 
         

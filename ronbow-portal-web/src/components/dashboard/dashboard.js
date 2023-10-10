@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Input, List, Button, Checkbox, Divider, DatePicker } from 'antd';
 import moment from 'moment';
 import './dashboard.css';
-import Notification from './notification/notification';
 import IndustryNews from './industrynews/industrynews';
 
 
@@ -38,31 +37,48 @@ const App = () => {
   const displayedTodos = showCompleted ? todos : todos.filter(todo => !todo.completed);
 
   return (
-    <div style={{ maxWidth: '800px', margin: '50px auto' }}>
-      <div>
+    <div style={{ maxWidth: '1000px', margin: '50px auto',}}>
+      <div  style={{ display: 'flex',  justifyContent: 'center', flexDirection: 'row', }}>
 
-        <IndustryNews />
+        <div style={{ float: 'left', width: '620px', marginRight: '30px', float: 'left', }}>
+          <IndustryNews />
+        </div>
+        <div style={{ fontFamily: 'Roboto', width: '320px', marginLeft: '30px', float: 'right', }}>
+          <h2>Notification</h2>
+          <ul>
+            <li>notice 1: We are on pre-IPO stage.</li>
+            <li>notification 1</li>
+            <li>notification 1</li>
+            <li>notification 1</li>
+            <li>notification 1</li>
+            <li>notification 1</li>
+            <li>notification 1</li>
+          </ul>
+        </div>
       </div>
-      <Notification />
-      <br/><br/><br/><br/>
-      <h1 style={{ fontFamily: 'Roboto' }}>Your Todo</h1>
 
-      <div style={{ display: 'flex', justifyContent: 'space-around', }}>
-        <Input
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Add a new task"
-          onPressEnter={addTodo}
-          style={{ height: '40px'}}
-        />
-        <Button onClick={addTodo} type="primary" style={{ height: '40px', marginLeft: '5px', backgroundColor: '#5D6465', }}>
-          +
-        </Button>
-        <Button onClick={toggleShowCompleted} type="primary" 
-                style={{ height: '40px', marginLeft: '5px', backgroundColor: 'white', 
-                         color: '#5D6465', borderColor: '#5D6465'}}>
-          {showCompleted ? 'Hide Completed' : ' Show All Tasks '}
-        </Button>
+      <Divider />
+
+      <div style={{   justifyContent: 'center', flexDirection: 'row', maxWidth: '1000px', }}>
+        <h1 style={{ fontFamily: 'Roboto' }}>Your Todo</h1>
+        <div style={{ display: 'flex', }}>
+          <Input
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            placeholder="Add a new task"
+            onPressEnter={addTodo}
+            style={{ height: '40px'}}
+          />
+          <Button onClick={addTodo} type="primary" style={{ height: '40px', marginLeft: '5px', backgroundColor: '#5D6465', }}>
+            +
+          </Button>
+          <Button onClick={toggleShowCompleted} type="primary" 
+                  style={{ height: '40px', marginLeft: '5px', backgroundColor: 'white', 
+                          color: '#5D6465', borderColor: '#5D6465'}}>
+            {showCompleted ? 'Hide Completed' : ' Show All Tasks '}
+          </Button>
+        </div>
+        
       </div>
       
       <Divider />

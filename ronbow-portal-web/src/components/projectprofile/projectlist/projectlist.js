@@ -1,9 +1,6 @@
+import './projectlist.css';
 import React from 'react';
 import { Divider, List, Typography } from 'antd';
-import './projectlist.css';
-
-
-
 const data = [
   'Racing car sprays burning fuel into crowd.',
   'Japanese princess to wed commoner.',
@@ -13,18 +10,43 @@ const data = [
 ];
 const App = () => (
   <>
+    <Divider orientation="left">Default Size</Divider>
     <List
-      header={<div>Projects</div>}
-      footer={<div></div>}
+      header={<div>Header</div>}
+      footer={<div>Footer</div>}
       bordered
       dataSource={data}
       renderItem={(item) => (
         <List.Item>
-          {item}
+          <div>
+            <span>Project Name: Project 1</span>
+            <span></span>
+          </div>
         </List.Item>
       )}
     />
-   
+    <Divider orientation="left">Small Size</Divider>
+    <List
+      size="small"
+      header={<div>Header</div>}
+      footer={<div>Footer</div>}
+      bordered
+      dataSource={data}
+      renderItem={(item) => <List.Item>{item}</List.Item>}
+    />
+    <Divider orientation="left">Large Size</Divider>
+    <List
+      size="large"
+      header={<div>Header</div>}
+      footer={<div>Footer</div>}
+      bordered
+      dataSource={data}
+      renderItem={(item) => <List.Item>{item}</List.Item>}
+    />
   </>
 );
 export default App;
+
+
+
+
