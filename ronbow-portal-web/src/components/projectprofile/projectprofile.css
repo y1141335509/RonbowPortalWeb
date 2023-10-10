@@ -39,13 +39,9 @@
 }
 
 
-/* Adjust the direction of the arrow icon */
-.ant-collapse-item-active .ant-collapse-header .ant-collapse-arrow {
-  transform: rotate(180deg);
-}
 
-.ant-collapse-header .ant-collapse-arrow {
-  rotate: -180deg;
-}
+
+
+
 
 

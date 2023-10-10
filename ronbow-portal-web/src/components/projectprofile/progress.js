@@ -19,6 +19,7 @@ const App = () => {
         onChange={onChange}
         className="site-navigation-steps"
         style={{ color: '#000', }}
+        
         items={[
           {
             title: 'Design',

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Collapse, Divider, Button, ConfigProvider } from 'antd';
 import './projectprofile.css';
-import { ExportOutlined, FilterOutlined, SearchOutlined,
+import { ExportOutlined, FilterOutlined, SearchOutlined, DownloadOutlined, ToolOutlined, 
  } from '@ant-design/icons';
 import Progress from './progress';
 import Zoom from '../zoom/zoom';
@@ -20,7 +20,13 @@ const text = `
 
 const { Panel } = Collapse;
 
-
+const defaultProps = {
+  center: {
+    lat: 10.99835602,
+    lng: 77.01502627
+  },
+  zoom: 11
+};
 
 const items = [
   {
@@ -36,12 +42,15 @@ const items = [
   {
     key: '2',
     label: 'BASIC INFO',
-    children: <ul>
-      <li>Budget: $80K</li>
-      <li>
-        <p>Location: 680 8th St Suite 166, San Francisco, CA 94103</p>
-      </li>
-    </ul>,
+    children: <div>
+      <ul>
+        <li>Budget: $80K</li>
+        <li>
+          <p>Location: 680 8th St Suite 166, San Francisco, CA 94103 <a href="https://www.google.com/maps/place/Ronbow+-+San+Francisco+Showroom/@37.7705158,-122.4047388,17z/data=!3m1!4b1!4m6!3m5!1s0x808f7ff6c1506edd:0x6e721d2aa659d15b!8m2!3d37.7705158!4d-122.4047388!16s%2Fg%2F11krc64xsh?entry=ttu">(See Google Map) <ExportOutlined /></a></p>
+        </li>
+      </ul>
+      
+    </div>,
     headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
   },
   {
@@ -105,7 +114,12 @@ const items = [
   },
 ];
 
-const handleButton = () => {
+const handleDownloadButton = () => {
+  window.open("https://cdn.ronbow.com/resources/Ronbow-Company-Profile-V6.pdf", '_blank');
+}
+
+
+const handleDesignButton = () => {
   window.open('https://designstudio.ronbow.com/');
 }
 
@@ -123,7 +137,7 @@ const ProjectProfile = () => (
       </span>
   
       <Divider style={{ opacity: '0', }}/>
-      <Collapse accordion style={{ width: 'auto' }} expandIconPosition='right'>
+      <Collapse accordion style={{ width: 'auto' }} expandIconPosition='end' >
         <div  style={{fontFamily: 'Roboto, sans-serif', fontSize: '18px', fontWeight: '300',
                       lineHeight: '30px', letterSpacing: '0.02em', textAlign: 'left', 
                       backgroundColor: 'white', paddingTop: '20px', paddingBottom: '10px', }}>
@@ -173,8 +187,18 @@ const ProjectProfile = () => (
 
         <Button 
           size='large' 
-          onClick={() => handleButton()}
-          style={{ backgroundColor: '#5D6465', color: '#F0ECEC', }}
+          icon={<DownloadOutlined /> }
+          onClick={() => handleDownloadButton()}
+          style={{ backgroundColor: '#5D6465', color: '#F0ECEC', marginRight: '10px', }}
+        >
+          Download Project
+        </Button>
+
+        <Button 
+          size='large' 
+          icon={<ToolOutlined />}
+          onClick={() => handleDesignButton()}
+          style={{ backgroundColor: '#5D6465', color: '#F0ECEC', marginLeft: '10px', }}
         >
           Design Now!
         </Button>

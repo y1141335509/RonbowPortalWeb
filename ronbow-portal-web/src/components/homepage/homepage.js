@@ -34,7 +34,7 @@ const { Search } = Input;
 
 const featureList = [
   {key: '1', icon: <HomeOutlined/>, label: 'Homepage'},
-  {key: '2', icon: <AntDesignOutlined/>, label: 'Design Studio'},
+  {key: '2', icon: <ToolOutlined/>, label: 'Design Studio'},
   {key: '3', icon: <CommentOutlined/>, label: 'Chat'},
   {key: '4', icon: <VideoCameraOutlined />, label: 'Zoom'},
   {key: '5', icon: <PlusSquareOutlined />, label: 'Add Shortcut', iconStyle: {bottom: '10%', position: 'absolute', }}, 
@@ -120,7 +120,7 @@ const Homepage = () => {
             onCollapse={value => setCollapsed(value)}
             style={{ marginTop: '50px', backgroundColor: 'white', }}      
       >
-        <div style={{ display: 'flex', flexDirection: 'column', height: '150vh', }}>
+        <div style={{ display: 'flex', flexDirection: 'column', height: '85vh', }}>
           
           <Menu
             mode="inline"
