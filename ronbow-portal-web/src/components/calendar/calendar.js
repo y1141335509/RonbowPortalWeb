@@ -1,5 +1,9 @@
 import React from 'react';
 import { Badge, Calendar } from 'antd';
+import GoogleCalendar from './googlecalendar/googlecalendar';
+
+
+
 const getListData = (value) => {
   let listData;
   switch (value.date()) {
@@ -98,9 +102,10 @@ const CalendarComponent = () => {
 
   console.log('rendering...');
   return (
-    <>
-      <Calendar cellRender={cellRender} />
-    </>
+    <div  style={{ float: 'left', }} >
+        <GoogleCalendar/> 
+        <Calendar cellRender={cellRender} />
+    </div>
   )
 
 };

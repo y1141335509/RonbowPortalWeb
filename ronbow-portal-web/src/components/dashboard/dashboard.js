@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import { Input, List, Button, Checkbox, Divider, DatePicker } from 'antd';
 import moment from 'moment';
 import './dashboard.css';
+import Notification from './notification/notification';
+import IndustryNews from './industrynews/industrynews';
+
+
 
 const App = () => {
   const [todos, setTodos] = useState([]);
@@ -35,8 +39,14 @@ const App = () => {
 
   return (
     <div style={{ maxWidth: '800px', margin: '50px auto' }}>
-      <h1>Your Todo</h1>
-      
+      <div>
+
+        <IndustryNews />
+      </div>
+      <Notification />
+      <br/><br/><br/><br/>
+      <h1 style={{ fontFamily: 'Roboto' }}>Your Todo</h1>
+
       <div style={{ display: 'flex', justifyContent: 'space-around', }}>
         <Input
           value={input}

@@ -9,6 +9,8 @@
         "@testing-library/user-event": "^13.5.0",
         "antd": "^5.9.4",
         "craco-less": "^3.0.1",
+        "google-map-react": "^2.2.1",
+        "mdb-react-ui-kit": "^6.3.0",
         "moment": "^2.29.4",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",

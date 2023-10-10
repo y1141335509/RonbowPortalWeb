@@ -1,10 +1,14 @@
 import React from 'react';
 import { Collapse, Divider, Button, ConfigProvider } from 'antd';
 import './projectprofile.css';
-import { ExportOutlined } from '@ant-design/icons';
+import { ExportOutlined, FilterOutlined, SearchOutlined,
+ } from '@ant-design/icons';
 import Progress from './progress';
 import Zoom from '../zoom/zoom';
 import CustomerInfo from './customerinfo/customerinfo';
+import ProjectList from './projectlist/projectlist';
+import CustomerList from './customerlist/customerlist';
+import GoogleMapReact from 'google-map-react';
 
 
 
@@ -16,17 +20,28 @@ const text = `
 
 const { Panel } = Collapse;
 
+
+
 const items = [
   {
     key: '1',
     label: 'FLOOR PLAN',
-    children: <p>{text}</p>,
+    children: <div>
+      <p>Hello world, check out this <a href="https://www.ronbow.com" target="_blank" rel="noopener noreferrer">Ronbow Site <ExportOutlined /></a>.</p>
+      <Zoom />
+    </div>
+    ,
     headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
   },
   {
     key: '2',
-    label: 'BUDGET',
-    children: <p>Hello world, check out this <a href="https://www.ronbow.com" target="_blank" rel="noopener noreferrer">Ronbow Site <ExportOutlined /></a>.</p>,
+    label: 'BASIC INFO',
+    children: <ul>
+      <li>Budget: $80K</li>
+      <li>
+        <p>Location: 680 8th St Suite 166, San Francisco, CA 94103</p>
+      </li>
+    </ul>,
     headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
   },
   {
@@ -40,8 +55,10 @@ const items = [
   },
   {
     key: '4',
-    label: 'JOB SITE LOCATION',
-    children: <div><img src="https://cdn.ronbow.com/images/video-poster.jpg" alt="Description" className='responsive-image'/></div>,
+    label: 'DOCUMENTS',
+    children: <div>
+        <Zoom />
+      </div>,
     headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
   },
   {
@@ -52,24 +69,18 @@ const items = [
   },
   {
     key: '6',
-    label: 'CONTACT METHOD',
-    children: <div><img src="https://cdn.ronbow.com/images/video-poster.jpg" alt="Description" className='responsive-image'/></div>,
-    headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
-  },
-  {
-    key: '7',
     label: 'LIFESTYLE',
     children: <div><img src="https://cdn.ronbow.com/images/video-poster.jpg" alt="Description" className='responsive-image'/></div>,
     headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
   },
   {
-    key: '8',
+    key: '7',
     label: 'MEETING NOTES',
     children: <div><img src="https://cdn.ronbow.com/images/video-poster.jpg" alt="Description" className='responsive-image'/></div>,
     headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
   },
   {
-    key: '9',
+    key: '8',
     label: 'ALL PROJECTS',
     children: <div>
       <Zoom />
@@ -101,7 +112,20 @@ const ProjectProfile = () => (
                       lineHeight: '30px', letterSpacing: '0.02em', textAlign: 'left', 
                       backgroundColor: 'white', paddingTop: '20px', paddingBottom: '10px', }}>
           <span>Project</span>
+          <div style={{display: 'flex', float: 'right', marginRight: '30px', }}>
+              <FilterOutlined className="icon" />
+              <SearchOutlined className="icon" />
+          </div>
           <Progress />
+          <div style={{ width: '100%', }}>
+            <div style={{ width: '50%', float: 'left', }}>
+              <ProjectList />
+            </div>
+            <div style={{ width: '50%', float: 'right', }}>
+              <CustomerList />
+            </div>
+          </div>
+          
         </div>
 
         {items.slice(0, 4).map((item, index) => (
@@ -117,7 +141,7 @@ const ProjectProfile = () => (
           </Panel>
         ))}
 
-        <div  style={{fontFamily: 'Roboto, sans-serif', fontSize: '18px', fontWeight: '300',
+        <div style={{fontFamily: 'Roboto, sans-serif', fontSize: '18px', fontWeight: '300',
                       lineHeight: '30px', letterSpacing: '0.02em', textAlign: 'left', 
                       backgroundColor: 'white', paddingTop: '20px', paddingBottom: '10px',  }}>
           <span>Customer Info</span>
@@ -137,9 +161,13 @@ const ProjectProfile = () => (
           </Panel>
         ))}
       </Collapse>
-      <div style={{ display: 'flex', float: 'right', marginRight: '20px', }}>
+      <div style={{ textAlign: 'center',  }}>
 
-        <Button size='large' onClick={() => handleButton()}>
+        <Button 
+          size='large' 
+          onClick={() => handleButton()}
+          style={{ backgroundColor: '#5D6465', color: '#F0ECEC', }}
+        >
           Design Now!
         </Button>
 

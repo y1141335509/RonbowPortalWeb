@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import {
-  HomeOutlined, ScheduleOutlined, ContactsOutlined, ProjectOutlined,
+  HomeOutlined, ScheduleOutlined, ContactsOutlined, ProjectOutlined, 
   DollarOutlined, FireOutlined, AntDesignOutlined, CommentOutlined,
   UserOutlined, ToolOutlined, BookOutlined, CustomerServiceOutlined, 
   VideoCameraOutlined, PlusSquareOutlined, ReadOutlined, CheckCircleOutlined, 
+  FundProjectionScreenOutlined, BulbOutlined, SolutionOutlined, 
 } from '@ant-design/icons';
 import { Dropdown, Layout, Menu, theme, Avatar, Image } from 'antd';
 import ProjectProfile from '../projectprofile/projectprofile';
@@ -18,6 +19,10 @@ import Zoom from '../zoom/zoom';
 import AddShortcut from '../addshortcut/addshortcut';
 import KnowledgeBase from '../knowledgebase/knowledgebase';
 import Dashboard from '../dashboard/dashboard';
+import Commission from '../commission/commission';
+import InspirationSpace from '../inspiration/inspiration';
+import HumanResource from '../humanresource/humanresource';
+import MyAccount from '../myaccount/myaccount';
 
 
 
@@ -34,7 +39,6 @@ const featureList = [
   {key: '5', icon: <PlusSquareOutlined />, label: 'Add Shortcut', iconStyle: {bottom: '10%', position: 'absolute', }}, 
 
 ];
-
 
 
 
@@ -56,37 +60,23 @@ const Homepage = () => {
         return <KnowledgeBase />;
       case 'dashboard':
         return <Dashboard />
+      case 'commission':
+        return <Commission />
+      case 'inspiration-space':
+        return <InspirationSpace />
+      case 'human-resource':
+        return <HumanResource />
+      case 'my-account':
+        return <MyAccount />
       default:
-        return <Content
-        className="site-layout-background"
-        style={{
-          margin: '24px 16px',
-          padding: 24,
-          minHeight: 280,
-          maxHeight: 500,
-          width: 'auto', 
-          height: 'auto',
-          // maxWidth: '100%',
-          fontFamily: 'Roboto, sans-serif', 
-          fontSize: '18px', 
-          fontWeight: "300",
-          lineHeight: "30px",
-          letterSpacing: "0.02em",
-          textAlign: "left",
-          alignItems: 'center', // horizontally center children
-          justifyContent: 'center', // vertically center children
-          height: '100vh', // or whatever height you want for the parent
-          backgroundColor: 'white',
-        }}
-      ></Content>
+        return 
     }
   }
 
 
   const handleItemClick = key => {
     setSelectedKey(key);
-  
-    // Define the paths for each key
+    
     const paths = {
       '1': '/',
       '2': 'https://designstudio.ronbow.com/',
@@ -94,9 +84,12 @@ const Homepage = () => {
       '4': '/zoom',
       '5': '/add-shortcut',
     };
-  
-    // Open a new tab with the path corresponding to the clicked item
-    if (key === '2') {
+    
+    if (key === 'logo') {
+      setShowContent(''); // Clear the current content
+      setSelectedKey(null); // Clear all selections
+      navigate('/'); // Navigate to the homepage
+    } else if (key === '2') {
       window.open(paths[key], '_blank');
     } else if (key === '1') {
       navigate(paths[key]);
@@ -105,13 +98,15 @@ const Homepage = () => {
     }
   };
   
+  
 
 
   const {
     token: { colorBgContainer },
   } = theme.useToken();
   return (
-    <Layout style={{ minHeight: '100vh', }}>
+    <Layout style={{ minHeight: '100vh', backgroundColor: 'white', }}>
+        
 
       <Sider collapsible collapsed={collapsed} 
             theme='light'
@@ -128,16 +123,15 @@ const Homepage = () => {
             {featureList.slice(0, -1).map((item, index) => {
               if (index === 0) {
                 return (
-                  <Menu.Item key="1">
+                  <Menu.Item key="logo">
                     <Image
                       preview={false}
-                      sizes={'500%'}
+                      width={'auto'} // Adjust width as needed
                       src="https://assets.wfcdn.com/im/29929773/resize-h110-w290%5Ecompr-r85/2228/222857539/default_name.jpg"
                       alt="Home"
-                      onClick={() => navigate("/")} // using useNavigate hook for navigation
+                      onClick={() => handleItemClick('logo')}
                     />
                   </Menu.Item>
-
                 )
               } else {
                 return (
@@ -172,29 +166,66 @@ const Homepage = () => {
           {/* Navigation on Header starts here */}
           <div className="logo" />
           <Menu mode='horizontal' >
-            <Menu.Item key='1' icon={<CheckCircleOutlined />} onClick={() => setShowContent('dashboard')} style={{ fontWeight: '200',  color: 'black', }}>
+              
+              <Menu.Item 
+                key="1" 
+                icon={<ScheduleOutlined />} 
+                onClick={() => setShowContent('calendar')}
+                style={{ fontWeight: '200', color: 'black', }}
+              >
+                <Link to="/">Calendar</Link>
+              </Menu.Item>
+
+            <Menu.Item key='2' icon={<ProjectOutlined />} onClick={() => setShowContent('dashboard')} style={{ fontWeight: '200',  color: 'black', }}>
               <Link to="/">Dashboard</Link>
             </Menu.Item>
             
             <Menu.Item 
-              key="2" 
-              icon={<UserOutlined />} 
+              key="3" 
+              icon={<FundProjectionScreenOutlined />} 
               onClick={() => setShowContent('project-profile')} 
               style={{ fontWeight: '200',  color: 'black', }}>
-              <Link to="/">Project Profile</Link>
+              <Link to="/">Projects</Link>
             </Menu.Item>
 
-            <Menu.Item key='3' icon={<ReadOutlined />} onClick={() => setShowContent('knowledge-base')} style={{ fontWeight: '200',  color: 'black', }}>
+            <Menu.Item key='4' icon={<ReadOutlined />} onClick={() => setShowContent('knowledge-base')} style={{ fontWeight: '200',  color: 'black', }}>
               <Link to="/">Knowledge Base</Link>
             </Menu.Item>
-              
+
             <Menu.Item 
-              key="4" 
-              icon={<ScheduleOutlined />} 
-              onClick={() => setShowContent('calendar')}
+              key="5" 
+              icon={<DollarOutlined />} 
+              onClick={() => setShowContent('commission')}
               style={{ fontWeight: '200', color: 'black', }}
             >
-              <Link to="/">Calendar</Link>
+              <Link to="/">Commission</Link>
+            </Menu.Item>
+
+            <Menu.Item 
+              key="6" 
+              icon={<BulbOutlined />} 
+              onClick={() => setShowContent('inspiration-space')}
+              style={{ fontWeight: '200', color: 'black', }}
+            >
+              <Link to="/">Inspiration Space</Link>
+            </Menu.Item>
+
+            <Menu.Item 
+              key="7" 
+              icon={<SolutionOutlined />} 
+              onClick={() => setShowContent('human-resource')}
+              style={{ fontWeight: '200', color: 'black', }}
+            >
+              <Link to="/">HR</Link>
+            </Menu.Item>
+
+            <Menu.Item 
+              key="8" 
+              icon={<UserOutlined />} 
+              onClick={() => setShowContent('my-account')}
+              style={{ fontWeight: '200', color: 'black', }}
+            >
+              <Link to="/">My Account</Link>
             </Menu.Item>
 
           </Menu>
