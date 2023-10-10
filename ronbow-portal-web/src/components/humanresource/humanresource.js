@@ -1,7 +1,9 @@
 import React from 'react';
-import { Button, Upload, message } from 'antd';
+import { Button, Divider, Upload, message } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
+import Commission from './commission/commission';
 import './humanresource.css';
+
 
 
 
@@ -19,19 +21,21 @@ const HumanResource = () => {
 
   return (
     <div className="hr-container">
-      <h1>Human Resources</h1>
-      <Button 
-        type="primary" 
-        onClick={() => window.open('https://www.paychex.com/login', '_blank')}
-      >
-        Go to Paychex
-      </Button>
-      <Upload 
-        customRequest={dummyRequest}
-        onChange={handleUpload}
-      >
-        <Button icon={<UploadOutlined />}>Upload File</Button>
-      </Upload>
+      <div className="commission-container">
+        <Commission />
+      </div>
+
+      <Divider />
+
+      <div>
+        <h1>Human Resources</h1>
+        <Button 
+          type="primary" 
+          onClick={() => window.open('https://www.paychex.com/login', '_blank')}
+        >
+          Go to Paychex
+        </Button>
+      </div>
     </div>
   );
 };

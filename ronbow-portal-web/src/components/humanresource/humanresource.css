@@ -1,8 +1,6 @@
 .hr-container {
-    max-width: 400px;
     margin: auto;
     padding: 20px;
-    background-color: #F0ECEC;
     border-radius: 8px;
     text-align: center;
   }
@@ -13,8 +11,8 @@
   }
   
   .hr-container button {
-    background-color: #5D6465;
-    color: #F0ECEC;
+    background-color: #F0ECEC;
+    color: #5D6465;
     margin: 10px;
     font-family: 'Roboto', sans-serif;
   }

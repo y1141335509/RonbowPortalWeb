@@ -12,13 +12,13 @@ import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react
 import './homepage.css';
 import '../../index.css';
 import CustomerProfile from '../customerprofile/customerprofile';
-import CalendarComponent from '../calendar/calendar';
+// import CalendarComponent from '../calendar/calendar';
 import Chat from '../chat/chat';
 import Zoom from '../zoom/zoom';
 import AddShortcut from '../addshortcut/addshortcut';
 import KnowledgeBase from '../knowledgebase/knowledgebase';
 import Dashboard from '../dashboard/dashboard';
-import Commission from '../commission/commission';
+// import Commission from '../humanresource/commission/commission';
 import InspirationSpace from '../inspiration/inspiration';
 import HumanResource from '../humanresource/humanresource';
 import MyAccount from '../myaccount/myaccount';
@@ -38,7 +38,8 @@ const featureList = [
   {key: '2', icon: <ToolOutlined/>, label: 'Design Studio'},
   {key: '3', icon: <CommentOutlined/>, label: 'Chat'},
   {key: '4', icon: <VideoCameraOutlined />, label: 'Zoom'},
-  {key: '5', icon: <PlusSquareOutlined />, label: 'Add Shortcut', iconStyle: {bottom: '10%', position: 'absolute', }}, 
+  {key: '5', icon: <ScheduleOutlined />, label: 'Calendar'}, 
+  {key: '6', icon: <PlusSquareOutlined />, label: 'Add Shortcut', iconStyle: {bottom: '10%', position: 'absolute', }}, 
 
 ];
 
@@ -60,16 +61,16 @@ const Homepage = () => {
   
   const handleClickNavigation = () => {
     switch(showContent) {
-      case 'calendar':
-        return <CalendarComponent />;
+      // case 'calendar':
+      //   return <CalendarComponent />;
       case 'project-profile':
         return <ProjectList />;
       case 'knowledge-base':
         return <KnowledgeBase />;
       case 'dashboard':
         return <Dashboard />
-      case 'commission':
-        return <Commission />
+      // case 'commission':
+      //   return <Commission />
       case 'inspiration-space':
         return <InspirationSpace />
       case 'human-resource':
@@ -90,14 +91,15 @@ const Homepage = () => {
       '2': 'https://designstudio.ronbow.com/',
       '3': '/chat',
       '4': '/zoom',
-      '5': '/add-shortcut',
+      '5': 'https://calendar.google.com/calendar/',
+      '6': '/add-shortcut',
     };
     
     if (key === 'logo') {
       setShowContent(''); // Clear the current content
       setSelectedKey(null); // Clear all selections
       navigate('/'); // Navigate to the homepage
-    } else if (key === '2') {
+    } else if (key === '2' || key === '5') {
       window.open(paths[key], '_blank');
     } else if (key === '1') {
       navigate(paths[key]);
@@ -180,38 +182,38 @@ const Homepage = () => {
               <Link to="/">Dashboard</Link>
             </Menu.Item>
                           
-              <Menu.Item 
+              {/* <Menu.Item 
                 key="2" 
                 icon={<ScheduleOutlined />} 
                 onClick={() => setShowContent('calendar')}
                 style={{ fontWeight: '200', color: 'black', }}
               >
                 <Link to="/">Calendar</Link>
-              </Menu.Item>
+              </Menu.Item> */}
 
             <Menu.Item 
-              key="3" 
+              key="2" 
               icon={<FundProjectionScreenOutlined />} 
               onClick={() => setShowContent('project-profile')} 
               style={{ fontWeight: '200',  color: 'black', }}>
               <Link to="/">Projects</Link>
             </Menu.Item>
 
-            <Menu.Item key='4' icon={<ReadOutlined />} onClick={() => setShowContent('knowledge-base')} style={{ fontWeight: '200',  color: 'black', }}>
+            <Menu.Item key='3' icon={<ReadOutlined />} onClick={() => setShowContent('knowledge-base')} style={{ fontWeight: '200',  color: 'black', }}>
               <Link to="/">Knowledge Base</Link>
             </Menu.Item>
 
-            <Menu.Item 
-              key="5" 
+            {/* <Menu.Item 
+              key="4" 
               icon={<DollarOutlined />} 
               onClick={() => setShowContent('commission')}
               style={{ fontWeight: '200', color: 'black', }}
             >
               <Link to="/">Commission</Link>
-            </Menu.Item>
+            </Menu.Item> */}
 
             <Menu.Item 
-              key="6" 
+              key="4" 
               icon={<BulbOutlined />} 
               onClick={() => setShowContent('inspiration-space')}
               style={{ fontWeight: '200', color: 'black', }}
@@ -220,7 +222,7 @@ const Homepage = () => {
             </Menu.Item>
 
             <Menu.Item 
-              key="7" 
+              key="5" 
               icon={<SolutionOutlined />} 
               onClick={() => setShowContent('human-resource')}
               style={{ fontWeight: '200', color: 'black', }}
@@ -229,7 +231,7 @@ const Homepage = () => {
             </Menu.Item>
 
             <Menu.Item 
-              key="8" 
+              key="6" 
               icon={<UserOutlined />} 
               onClick={() => setShowContent('my-account')}
               style={{ fontWeight: '200', color: 'black', }}
@@ -282,6 +284,7 @@ const Homepage = () => {
             <Route path="https://www.coohom.com/"></Route>
             <Route path="/chat" element={ <Chat /> }></Route>
             <Route path="/zoom" element={ <Zoom /> }></Route>
+            <Route path="https://calendar.google.com/calendar/"></Route>
             <Route path="/add-shortcut" element={ <AddShortcut /> }></Route>
 
           </Routes>
