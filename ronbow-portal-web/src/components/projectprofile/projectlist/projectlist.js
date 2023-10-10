@@ -67,10 +67,11 @@ const defaultData = [
   {
     id: 624748504,
     title: <div>
-              <span>Project 1  </span> 
-              <a href="https://www.ronbow.com/products" rel="noopener noreferrer" target="_blank">
-                <ExportOutlined style={{cursor: 'pointer'}} /> 
-              </a>  
+              <span style={{textDecoration: 'underline', }}>
+                <a href="https://www.ronbow.com/products" rel="noopener noreferrer" target="_blank">
+                  Project 1
+                </a>    
+              </span> 
             </div>,
     labels: [{ key: 'woman', label: 'Modern' }],
     state: 'open',
