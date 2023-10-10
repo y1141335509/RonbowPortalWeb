@@ -13,7 +13,7 @@ const contentStyle = {
 };
 const App = () => (
   <div>
-    <h1 style={{ fontFamily: 'Roboto', }}>Industry News</h1>
+    <h1 style={{ fontFamily: 'Roboto, sans-serif', }}>Industry News</h1>
     <Carousel autoplay>
       <div>
         <h3 style={contentStyle}>1</h3>

@@ -43,7 +43,7 @@ const App = () => {
         <div style={{ float: 'left', width: '620px', marginRight: '30px', float: 'left', }}>
           <IndustryNews />
         </div>
-        <div style={{ fontFamily: 'Roboto', width: '320px', marginLeft: '30px', float: 'right', }}>
+        <div style={{ fontFamily: 'Roboto, sans-serif', width: '320px', marginLeft: '30px', float: 'right', }}>
           <h2>Notification</h2>
           <ul>
             <li>notice 1: We are on pre-IPO stage.</li>
@@ -60,7 +60,7 @@ const App = () => {
       <Divider />
 
       <div style={{   justifyContent: 'center', flexDirection: 'row', maxWidth: '1000px', }}>
-        <h1 style={{ fontFamily: 'Roboto' }}>Your Todo</h1>
+        <h1 style={{ fontFamily: 'Roboto, sans-serif' }}>Your Todo</h1>
         <div style={{ display: 'flex', }}>
           <Input
             value={input}
