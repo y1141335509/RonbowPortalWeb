@@ -61,16 +61,12 @@ const Homepage = () => {
   
   const handleClickNavigation = () => {
     switch(showContent) {
-      // case 'calendar':
-      //   return <CalendarComponent />;
       case 'project-profile':
         return <ProjectList />;
       case 'knowledge-base':
         return <KnowledgeBase />;
       case 'dashboard':
         return <Dashboard />
-      // case 'commission':
-      //   return <Commission />
       case 'inspiration-space':
         return <InspirationSpace />
       case 'human-resource':
@@ -89,8 +85,8 @@ const Homepage = () => {
     const paths = {
       '1': '/',
       '2': 'https://designstudio.ronbow.com/',
-      '3': '/chat',
-      '4': '/zoom',
+      '3': 'https://www.zoom.com/en/products/team-chat/',
+      '4': 'https://zoom.us/meeting',
       '5': 'https://calendar.google.com/calendar/',
       '6': '/add-shortcut',
     };
@@ -99,7 +95,7 @@ const Homepage = () => {
       setShowContent(''); // Clear the current content
       setSelectedKey(null); // Clear all selections
       navigate('/'); // Navigate to the homepage
-    } else if (key === '2' || key === '5') {
+    } else if (key === '2' || key === '5' || key === '3' || key === '4') {
       window.open(paths[key], '_blank');
     } else if (key === '1') {
       navigate(paths[key]);

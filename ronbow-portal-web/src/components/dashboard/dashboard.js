@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { Input, List, Button, Checkbox, Divider, DatePicker } from 'antd';
 import moment from 'moment';
 import './dashboard.css';
+import { ExportOutlined, FilterOutlined, SearchOutlined, DownloadOutlined, 
+  ToolOutlined, PrinterOutlined, MailOutlined 
+} from '@ant-design/icons';
 import IndustryNews from './industrynews/industrynews';
-
 
 
 const App = () => {
@@ -44,10 +46,12 @@ const App = () => {
           <IndustryNews />
         </div>
         <div style={{ fontFamily: 'Roboto, sans-serif', width: '320px', marginLeft: '30px', float: 'right', }}>
-          <h2>Notification</h2>
+          <h2>Announcement</h2>
           <ul>
-            <li>notice 1: We are on pre-IPO stage.</li>
-            <li>notification 1</li>
+            <li>Product: Vertical Gola is now available. 
+              <a href="https://www.ronbow.com/products" target="_blank"> <ExportOutlined /></a>
+            </li>
+            <li>Company: We're actively hiring！</li>
             <li>notification 1</li>
             <li>notification 1</li>
             <li>notification 1</li>
