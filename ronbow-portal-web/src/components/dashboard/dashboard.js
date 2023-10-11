@@ -54,6 +54,8 @@ const App = () => {
         />
       </div>
 
+      <Divider />
+      
       <div  style={{ display: 'flex',  justifyContent: 'center', flexDirection: 'row', width: '100%', }}>
 
         <div style={{ float: 'left', marginRight: '20px', float: 'left', width: '65%', }}>
