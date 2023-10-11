@@ -28,7 +28,7 @@ const MyAccount = () => {
   return (
     <div className="account-container">
       <Avatar size={64} style={{ color: '#464F50', backgroundColor: '#F0ECEC' }}>
-        KX
+        KR
       </Avatar>
       <Form layout="vertical" onFinish={handleSubmit}>
         <Form.Item label="Current Password" >

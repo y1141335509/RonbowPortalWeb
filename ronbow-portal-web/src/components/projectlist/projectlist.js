@@ -165,7 +165,7 @@ const columns = [
       rules: [
         {
           required: true,
-          message: '此项为必填项',
+          message: '*',
         },
       ],
     },

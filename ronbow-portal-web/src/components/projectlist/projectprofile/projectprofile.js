@@ -4,7 +4,7 @@ import './projectprofile.css';
 import { ExportOutlined, FilterOutlined, SearchOutlined, DownloadOutlined, 
   ToolOutlined, PrinterOutlined, MailOutlined 
 } from '@ant-design/icons';
-import Progress from './progress';
+import Progress from './progress/progress';
 import Zoom from '../../zoom/zoom';
 import CustomerInfo from '../projectprofile/customerinfo/customerinfo';
 
@@ -63,44 +63,31 @@ const items = [
   },
   {
     key: '5',
-    label: 'CUSTOMER LIST',
-    children: <div>
-      </div>,
+    label: 'LIFESTYLE',
+    children: <div><img src="https://cdn.ronbow.com/images/video-poster.jpg" alt="Description" className='responsive-image'/></div>,
     headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
   },
-  // {
-  //   key: '6',
-  //   label: 'BASIC INFO',
-  //   children: <div><CustomerInfo /></div>,
-  //   headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
-  // },
-  // {
-  //   key: '7',
-  //   label: 'LIFESTYLE',
-  //   children: <div><img src="https://cdn.ronbow.com/images/video-poster.jpg" alt="Description" className='responsive-image'/></div>,
-  //   headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
-  // },
-  // {
-  //   key: '8',
-  //   label: 'MEETING NOTES',
-  //   children: <div><img src="https://cdn.ronbow.com/images/video-poster.jpg" alt="Description" className='responsive-image'/></div>,
-  //   headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
-  // },
-  // {
-  //   key: '9',
-  //   label: 'ALL PROJECTS',
-  //   children: <div>
-  //     <Zoom />
-  //   </div>,
-  //   headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
-  // },
-  // {
-  //   key: '10',
-  //   label: 'PROJECT LIST',
-  //   children: <div>
-  //   </div>,
-  //   headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
-  // },
+  {
+    key: '6',
+    label: 'BASIC INFO',
+    children: <div>
+    </div>,
+    headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
+  },
+  {
+    key: '7',
+    label: 'MEETING NOTES',
+    children: <div><img src="https://cdn.ronbow.com/images/video-poster.jpg" alt="Description" className='responsive-image'/></div>,
+    headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
+  },
+  {
+    key: '8',
+    label: 'ALL PROJECTS',
+    children: <div>
+      <Zoom />
+    </div>,
+    headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
+  },
 ];
 
 
@@ -122,15 +109,16 @@ const handleDownload = () => {
 
 const menu = (
   <Menu>
-    <Menu.Item key="1" icon={<MailOutlined />} onClick={handleEmailUs}>
-      Email Us
+     <Menu.Item key="1" icon={<DownloadOutlined />} onClick={handleDownload}>
+      Preview & Download
     </Menu.Item>
     <Menu.Item key="2" icon={<PrinterOutlined />} onClick={handlePrint}>
       Print
     </Menu.Item>
-    <Menu.Item key="3" icon={<DownloadOutlined />} onClick={handleDownload}>
-      Download
+    <Menu.Item key="3" icon={<MailOutlined />} onClick={handleEmailUs}>
+      Email Customer
     </Menu.Item>
+   
   </Menu>
 );
 
@@ -151,7 +139,7 @@ const ProjectProfile = () => (
                       letterSpacing: "0.02em",
                       textAlign: "left" }}
       >
-        Kevin's Kitchen - San Mateo
+        Kevin's Kitchen - Palo Alto
       </span>
   
       <Divider style={{ opacity: '0', }}/>
@@ -159,7 +147,7 @@ const ProjectProfile = () => (
         <div  style={{fontFamily: 'Roboto, sans-serif', fontSize: '18px', fontWeight: '300',
                       lineHeight: '30px', letterSpacing: '0.02em', textAlign: 'left', 
                       backgroundColor: 'white', paddingTop: '20px', paddingBottom: '10px', }}>
-          <span>Project</span>
+          <span>Project Detail</span>
         </div>
 
         {items.slice(0, 5).map((item, index) => (
@@ -176,6 +164,32 @@ const ProjectProfile = () => (
         ))}
 
       </Collapse>
+
+      <Divider style={{ opacity: '0', }}/>
+      <Collapse accordion style={{ width: 'auto' }} expandIconPosition='end' >
+        <div  style={{fontFamily: 'Roboto, sans-serif', fontSize: '18px', fontWeight: '300',
+                      lineHeight: '30px', letterSpacing: '0.02em', textAlign: 'left', 
+                      backgroundColor: 'white', paddingTop: '20px', paddingBottom: '10px', }}>
+          <span>Customer Info</span>
+          
+        </div>
+
+        {items.slice(5, 9).map((item, index) => (
+          <Panel header={<span style={item.headerStyle}>{item.label}</span>} 
+                 key={item.key} 
+                 style={{ borderTop: '1px solid #f0f0f0', }}
+          >
+            <div style={{ fontFamily: 'Roboto, sans-serif', fontSize: '18px', fontWeight: '300',
+                          lineHeight: '30px', letterSpacing: '0.02em', textAlign: 'left', 
+                          paddingLeft: '30px'}}>
+                {item.children}
+            </div>
+          </Panel>
+        ))}
+
+      </Collapse>
+
+
       <div style={{ textAlign: 'center',  }}>
         <Button 
           size='large' 
@@ -190,9 +204,9 @@ const ProjectProfile = () => (
           <Button 
             size='large' 
             icon={<DownloadOutlined />}
-            style={{ backgroundColor: '#5D6465', color: '#F0ECEC', marginLeft: '10px', }}
+            style={{ backgroundColor: '#fff', color: '#5D6465', marginLeft: '10px', }}
           >
-            Download Files
+            Files
           </Button>
         </Dropdown>
       </div>  

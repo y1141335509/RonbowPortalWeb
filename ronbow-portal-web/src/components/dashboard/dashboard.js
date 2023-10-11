@@ -51,12 +51,14 @@ const App = () => {
             <li>Product: Vertical Gola is now available. 
               <a href="https://www.ronbow.com/products" target="_blank"> <ExportOutlined /></a>
             </li>
-            <li>Company: We're actively hiring！</li>
-            <li>notification 1</li>
-            <li>notification 1</li>
-            <li>notification 1</li>
-            <li>notification 1</li>
-            <li>notification 1</li>
+            <li>HR: We're actively hiring designers！
+              <a href="https://www.indeed.com/cmp/Ronbow-Corporation-1/jobs?jk=72d3f937c6debc6d&start=0&clearPrefilter=1" target="_blank"> <ExportOutlined /></a>
+            </li>
+            <li>...</li>
+            <li>... </li>
+            <li>...</li>
+            <li>... </li>
+            <li>...</li>
           </ul>
         </div>
       </div>
