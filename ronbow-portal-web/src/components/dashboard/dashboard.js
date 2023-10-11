@@ -6,6 +6,8 @@ import { ExportOutlined, FilterOutlined, SearchOutlined, DownloadOutlined,
   ToolOutlined, PrinterOutlined, MailOutlined 
 } from '@ant-design/icons';
 import IndustryNews from './industrynews/industrynews';
+import SalesTargetBar from './SalesTargetBar/SalesTargetBar';
+
 
 
 const App = () => {
@@ -40,6 +42,18 @@ const App = () => {
 
   return (
     <div style={{ maxWidth: '1000px', margin: '50px auto',}}>
+
+      {/* the progress bar starts here */}
+      <div style={{ padding: "50px" }}>
+        <h2>Hi Katharine! :</h2>
+        <SalesTargetBar
+          sales={7000}
+          target={10000}
+          elapsedDays={15}
+          totalDays={30}
+        />
+      </div>
+
       <div  style={{ display: 'flex',  justifyContent: 'center', flexDirection: 'row', }}>
 
         <div style={{ float: 'left', width: '620px', marginRight: '30px', float: 'left', }}>
