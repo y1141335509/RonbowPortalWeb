@@ -45,7 +45,7 @@ const App = () => {
 
       {/* the progress bar starts here */}
       <div style={{ padding: "50px" }}>
-        <h2>Hi Katharine! :</h2>
+        <h2>Hi XXX, together we shape the future, one design at a time.</h2>
         <SalesTargetBar
           sales={7000}
           target={10000}
