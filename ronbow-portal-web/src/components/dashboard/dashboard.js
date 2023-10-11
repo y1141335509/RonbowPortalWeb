@@ -54,32 +54,10 @@ const App = () => {
         />
       </div>
 
-      <div  style={{ display: 'flex',  justifyContent: 'center', flexDirection: 'row', }}>
+      <div  style={{ display: 'flex',  justifyContent: 'center', flexDirection: 'row', width: '100%', }}>
 
-        <div style={{ float: 'left', width: '620px', marginRight: '30px', float: 'left', }}>
-          <IndustryNews />
-        </div>
-        <div style={{ fontFamily: 'Roboto, sans-serif', width: '320px', marginLeft: '30px', float: 'right', }}>
-          <h2>Announcement</h2>
-          <ul>
-            <li>Product: Vertical Gola is now available. 
-              <a href="https://www.ronbow.com/products" target="_blank"> <ExportOutlined /></a>
-            </li>
-            <li>HR: We're actively hiring designers！
-              <a href="https://www.indeed.com/cmp/Ronbow-Corporation-1/jobs?jk=72d3f937c6debc6d&start=0&clearPrefilter=1" target="_blank"> <ExportOutlined /></a>
-            </li>
-            <li>...</li>
-            <li>... </li>
-            <li>...</li>
-            <li>... </li>
-            <li>...</li>
-          </ul>
-        </div>
-      </div>
-
-      <Divider />
-
-      <div style={{   justifyContent: 'center', flexDirection: 'row', maxWidth: '1000px', }}>
+        <div style={{ float: 'left', marginRight: '20px', float: 'left', width: '65%', }}>
+        <div style={{   justifyContent: 'center', flexDirection: 'row', maxWidth: '1000px', }}>
         <h1 style={{ fontFamily: 'Roboto, sans-serif' }}>Your Todo</h1>
         <div style={{ display: 'flex', }}>
           <Input
@@ -97,38 +75,67 @@ const App = () => {
                           color: '#5D6465', borderColor: '#5D6465'}}>
             {showCompleted ? 'Hide Completed' : ' Show All Tasks '}
           </Button>
+
         </div>
+
+        <List
+          style={{ marginTop: '20px', borderRadius: '0px', }}
+          bordered={false}
+          dataSource={displayedTodos}
+          locale={{ emptyText: 'Add your first task!' }}
+          renderItem={(todo, index) => (
+              <List.Item>
+                  <Checkbox
+                  checked={todo.completed}
+                  onChange={() => toggleComplete(index)}
+                  >
+                  {todo.text}
+                  </Checkbox>
+                  <DatePicker
+                  value={todo.deadline}
+                  onChange={(date) => setDeadline(index, date)}
+                  className={
+                      todo.deadline && moment(todo.deadline).isBefore(moment("2023/10/10")) 
+                      ? 'redDate' 
+                      : ''
+                  }
+                  style={{ marginLeft: '15px' }}
+                  />
+              </List.Item>
+            )}
+        />
+      </div>
+
+    </div>
         
+      
+        
+        <div style={{ fontFamily: 'Roboto, sans-serif', width: '30%', marginLeft: '20px', float: 'right', }}>
+          <h2>Announcement</h2>
+          <ul>
+            <li>Product: Vertical Gola is now available. 
+              <a href="https://www.ronbow.com/products" target="_blank"> <ExportOutlined /></a>
+            </li>
+            <li>HR: We're actively hiring designers！
+              <a href="https://www.indeed.com/cmp/Ronbow-Corporation-1/jobs?jk=72d3f937c6debc6d&start=0&clearPrefilter=1" target="_blank"> <ExportOutlined /></a>
+            </li>
+            <li>...</li>
+            <li>... </li>
+            <li>...</li>
+            <li>... </li>
+            <li>...</li>
+          </ul>
+        </div>
+
       </div>
       
       <Divider />
+
+      <div>
+          <IndustryNews />
+      </div>
       
-      <List
-        style={{ marginTop: '20px', borderRadius: '0px', }}
-        bordered={false}
-        dataSource={displayedTodos}
-        locale={{ emptyText: 'Add your first task!' }}
-        renderItem={(todo, index) => (
-            <List.Item>
-                <Checkbox
-                checked={todo.completed}
-                onChange={() => toggleComplete(index)}
-                >
-                {todo.text}
-                </Checkbox>
-                <DatePicker
-                value={todo.deadline}
-                onChange={(date) => setDeadline(index, date)}
-                className={
-                    todo.deadline && moment(todo.deadline).isBefore(moment("2023/10/10")) 
-                    ? 'redDate' 
-                    : ''
-                }
-                style={{ marginLeft: '15px' }}
-                />
-            </List.Item>
-          )}
-      />
+      
     </div>
   );
 };
