@@ -1,5 +1,5 @@
 import React from 'react';
-import { Collapse, Divider, Button, ConfigProvider, Menu, Dropdown  } from 'antd';
+import { Collapse, Divider, Button, ConfigProvider, Menu, Dropdown, Steps  } from 'antd';
 import './projectprofile.css';
 import { ExportOutlined, FilterOutlined, SearchOutlined, DownloadOutlined, 
   ToolOutlined, PrinterOutlined, MailOutlined 
@@ -7,6 +7,7 @@ import { ExportOutlined, FilterOutlined, SearchOutlined, DownloadOutlined,
 import Progress from './progress';
 import Zoom from '../../zoom/zoom';
 import CustomerInfo from '../projectprofile/customerinfo/customerinfo';
+
 
 
 const text = `
@@ -136,7 +137,13 @@ const menu = (
 
 const ProjectProfile = () => (
 
-  <div >
+  <div style={{ width: '100%', overflow: 'hidden', }}>
+    <div style={{ float: 'left', width: '20%', marginLeft: '20px', }}> 
+      <Progress />
+    </div>
+      
+
+    <div style={{ float: 'right', width: '70%', marginRight: '20px', marginLeft: '20px', }}>
       <span style={{ fontFamily: 'Roboto, sans-serif', 
                       fontSize: '18px', 
                       fontWeight: "400",
@@ -153,12 +160,6 @@ const ProjectProfile = () => (
                       lineHeight: '30px', letterSpacing: '0.02em', textAlign: 'left', 
                       backgroundColor: 'white', paddingTop: '20px', paddingBottom: '10px', }}>
           <span>Project</span>
-          <div style={{display: 'flex', float: 'right', marginRight: '30px', }}>
-              <FilterOutlined className="icon" />
-              <SearchOutlined className="icon" />
-          </div>
-          {/* <Progress /> */}
-          
         </div>
 
         {items.slice(0, 5).map((item, index) => (
@@ -174,25 +175,6 @@ const ProjectProfile = () => (
           </Panel>
         ))}
 
-        {/* <div style={{fontFamily: 'Roboto, sans-serif', fontSize: '18px', fontWeight: '300',
-                      lineHeight: '30px', letterSpacing: '0.02em', textAlign: 'left', 
-                      backgroundColor: 'white', paddingTop: '20px', paddingBottom: '10px',  }}>
-          <span>Customer Info</span>
-        </div>
-
-        {items.slice(5, 10).map((item, index) => (
-          <Panel header={<span style={item.headerStyle}>{item.label}</span>} 
-                 key={item.key} 
-                 style={{ borderTop: '1px solid #f0f0f0', }}
-          >
-            <div style={{ fontFamily: 'Roboto, sans-serif', fontSize: '18px', fontWeight: '300',
-                          lineHeight: '30px', letterSpacing: '0.02em', textAlign: 'left', 
-                          paddingLeft: '30px'}}>
-                {item.children}
-            </div>
-            
-          </Panel>
-        ))} */}
       </Collapse>
       <div style={{ textAlign: 'center',  }}>
         <Button 
@@ -213,10 +195,10 @@ const ProjectProfile = () => (
             Download Files
           </Button>
         </Dropdown>
-      </div>
-      
-    </div>
-  );
+      </div>  
+    </div>  
+  </div>
+);
 
 
 export default ProjectProfile;
