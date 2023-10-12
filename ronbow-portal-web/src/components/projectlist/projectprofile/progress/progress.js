@@ -1,5 +1,5 @@
 import React from 'react';
-import { Divider, Steps } from 'antd';
+import { Divider, Steps, Checkbox } from 'antd';
 import ProgressCheckbox from './progresscheckbox/progresscheckbox';
 import './progress.css';
 
@@ -15,9 +15,9 @@ const App = () => (
         {
           title: 'Receive Lead',
           description: <div> 
-            <p><ProgressCheckbox/> Review Documents</p>
-            <p><ProgressCheckbox/> Learn About Clients</p>
-            <p><ProgressCheckbox/> Get Inspired</p>
+            <p><Checkbox checked={true} /> Review Documents</p>
+            <p><Checkbox checked={true} /> Learn About Clients</p>
+            <p><Checkbox checked={true} /> Get Inspired</p>
             by 01/01/2023
           </div>,
         },
@@ -53,6 +53,7 @@ const App = () => (
           <p><ProgressCheckbox/> Check Documents</p>
           <p><ProgressCheckbox/> Receive Payment</p>
           <p><ProgressCheckbox/> Verify Design</p>
+          <p><ProgressCheckbox/> Customer Confirmed and Paid</p>
           by 01/9/2023
         </div>, 
         },

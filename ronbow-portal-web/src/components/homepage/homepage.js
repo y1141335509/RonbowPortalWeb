@@ -306,7 +306,7 @@ const Homepage = () => {
             <Route path="/chat" element={ <Chat /> }></Route>
             <Route path="/zoom" element={ <Zoom /> }></Route>
             <Route path="https://calendar.google.com/calendar/"></Route>
-            <Route path=""></Route>
+            <Route path="https://app.clickup.com/10643463/v/fm/a4u07-7291"></Route>
             <Route path="/add-shortcut" element={ <AddShortcut /> }></Route>
 
           </Routes>
