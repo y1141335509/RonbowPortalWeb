@@ -63,7 +63,7 @@ const allShortcuts = [
 
 const Homepage = () => {
   const [collapsed, setCollapsed] = useState(true);
-  const [showContent, setShowContent] = useState("");
+  const [showContent, setShowContent] = useState("dashboard");
   const [selectedKey, setSelectedKey] = useState('1');
   const navigate = useNavigate();
   const [isAddShortcutVisible, setIsAddShortcutVisible] = useState(false);
@@ -216,9 +216,12 @@ const Homepage = () => {
 
           {/* Navigation on Header starts here */}
           <div className="logo" />
-          <Menu mode='horizontal' >
+          <Menu mode='horizontal' defaultSelectedKeys={'1'}>
 
-            <Menu.Item key='1' icon={<ProjectOutlined />} onClick={() => setShowContent('dashboard')} style={{ fontWeight: '200',  color: 'black', }}>
+            <Menu.Item 
+              key='1' icon={<ProjectOutlined />} 
+              onClick={() => setShowContent('dashboard')} 
+              style={{ fontWeight: '200',  color: 'black', }}>
               <Link to="/">Dashboard</Link>
             </Menu.Item>
                           
@@ -256,7 +259,7 @@ const Homepage = () => {
               key="6" 
               icon={<UserOutlined />} 
               onClick={() => setShowContent('my-account')}
-              style={{ fontWeight: '200', color: 'black', marginRight: '30px', }}
+              style={{ fontWeight: '200', color: 'black', marginRight: '30px' }}
             >
               <Link to="/">My Account</Link>
             </Menu.Item>

@@ -65,8 +65,6 @@ const PriceCalculator = () => {
       const tax = parseFloat(document.getElementById('city-tax').value);
       const delivery = parseFloat(document.getElementById('delivery-fee').value);
       const result = quote * (1 - customerDiscount/100 - tradeProDiscount/100) * (1 + tax/100) + delivery;
-      console.log(quote, customerDiscount, tradeProDiscount, tax, delivery, );
-      console.log('result: ', result, typeof(result));
       setFinalPrice(result.toFixed(2));
     });
   };

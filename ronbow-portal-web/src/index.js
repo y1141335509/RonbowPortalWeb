@@ -6,7 +6,6 @@ import ProjectProfile from './components/projectlist/projectprofile/projectprofi
 import CustomerProfile from './components/projectlist/customerprofile/customerprofile.js';
 
 
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 
