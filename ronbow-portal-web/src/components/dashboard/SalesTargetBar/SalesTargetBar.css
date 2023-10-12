@@ -1,7 +1,6 @@
 .progress-container {
     position: relative;
-    max-width: 400px;
-    margin: auto;
+    max-width: 500px;
   }
   
   .elapsed-time-marker {

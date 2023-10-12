@@ -8,7 +8,7 @@ const CustomProgressBar = ({ sales, target, elapsedDays, totalDays }) => {
 
   return (
     <div className="progress-container">
-      <Row align="middle">
+      <Row align="left">
         <Col span={24}>
           <Progress
             percent={salesPercentage}
@@ -24,10 +24,10 @@ const CustomProgressBar = ({ sales, target, elapsedDays, totalDays }) => {
       </Row>
       <Row justify="space-between" align="bottom">
         <Col>
-          <span className="label">${sales} Received</span>
+          <span className="label">${Intl.NumberFormat('en-IN', { maximumSignificantDigits: 1 }).format(sales)} Cashed In</span>
         </Col>
         <Col>
-          <span className="label">${target} Target</span>
+          <span className="label">${Intl.NumberFormat('en-IN', { maximumSignificantDigits: 1 }).format(target)} Target</span>
         </Col>
       </Row>
     </div>

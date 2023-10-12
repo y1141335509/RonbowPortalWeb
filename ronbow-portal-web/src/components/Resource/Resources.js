@@ -68,25 +68,25 @@ const items = [
   },
   {
     key: '6',
-    label: 'CUSTOMER INFO',
+    label: 'PAINT',
     children: <div><img src="https://cdn.ronbow.com/images/video-poster.jpg" alt="Description" className='responsive-image'/></div>,
     headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
   },
   {
     key: '7',
-    label: 'CONTACT METHOD',
+    label: 'EDGE BANDING',
     children: <div><img src="https://cdn.ronbow.com/images/video-poster.jpg" alt="Description" className='responsive-image'/></div>,
     headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
   },
   {
     key: '8',
-    label: 'LIFESTYLE',
+    label: 'HARDWARE',
     children: <div><img src="https://cdn.ronbow.com/images/video-poster.jpg" alt="Description" className='responsive-image'/></div>,
     headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
   },
   {
     key: '9',
-    label: 'MEETING NOTES',
+    label: '...',
     children: <div><img src="https://cdn.ronbow.com/images/video-poster.jpg" alt="Description" className='responsive-image'/></div>,
     headerStyle: {fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
   }
@@ -96,7 +96,7 @@ const KnowledgeBase = () => (
 
   <div >
     <div className="header">
-      <span style={{ 
+      <p style={{ 
           fontFamily: 'Roboto, sans-serif', 
           fontSize: '18px', 
           fontWeight: "400",
@@ -104,17 +104,15 @@ const KnowledgeBase = () => (
           letterSpacing: "0.02em",
           textAlign: "left" 
       }}>
-        Academy - Designer
-      </span>
+        Internal Use Only
+      </p>
       <div>
         <FilterOutlined className="icon" />
         <SearchOutlined className="icon" />
       </div>
     </div>
-
-
   
-      <Divider style={{ opacity: '0', }}/>
+
       <Collapse accordion style={{ width: 'auto' }} expandIconPosition='right'>
         <div  style={{fontFamily: 'Roboto, sans-serif', fontSize: '18px', fontWeight: '300',
                       lineHeight: '30px', letterSpacing: '0.02em', textAlign: 'left', 
@@ -141,7 +139,45 @@ const KnowledgeBase = () => (
           <span>Cabinet Product Knowledge</span>
         </div>
 
-        {items.slice(2, 10).map((item, index) => (
+        {items.slice(2, 5).map((item, index) => (
+          <Panel header={<span style={item.headerStyle}>{item.label}</span>} 
+                 key={item.key} 
+                 style={{ borderTop: '1px solid #f0f0f0', }}
+          >
+            <div style={{ fontFamily: 'Roboto, sans-serif', fontSize: '18px', fontWeight: '300',
+                          lineHeight: '30px', letterSpacing: '0.02em', textAlign: 'left', 
+                          paddingLeft: '30px'}}>
+                {item.children}
+            </div>
+            
+          </Panel>
+        ))}
+      </Collapse>
+
+      <Divider style={{ opacity: '0', }}/>
+
+      <div className="header">
+        <p style={{ 
+            fontFamily: 'Roboto, sans-serif', 
+            fontSize: '18px', 
+            fontWeight: "400",
+            lineHeight: "14px",
+            letterSpacing: "0.02em",
+            textAlign: "left" 
+        }}>
+          Public Resource
+        </p>
+      </div>
+      
+      <Collapse accordion style={{ width: 'auto' }} expandIconPosition='right'>
+
+        <div  style={{fontFamily: 'Roboto, sans-serif', fontSize: '18px', fontWeight: '300',
+                      lineHeight: '30px', letterSpacing: '0.02em', textAlign: 'left', 
+                      backgroundColor: 'white', paddingTop: '20px', paddingBottom: '10px',  }}>
+          <span>Product Comparison</span>
+        </div>
+
+        {items.slice(5, 10).map((item, index) => (
           <Panel header={<span style={item.headerStyle}>{item.label}</span>} 
                  key={item.key} 
                  style={{ borderTop: '1px solid #f0f0f0', }}

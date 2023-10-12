@@ -28,12 +28,12 @@ const HumanResource = () => {
       <Divider />
 
       <div>
-        <h1>Human Resources</h1>
+
         <Button 
           type="primary" 
           onClick={() => window.open('https://www.paychex.com/login', '_blank')}
         >
-          Go to Paychex
+          Time Off
         </Button>
       </div>
     </div>

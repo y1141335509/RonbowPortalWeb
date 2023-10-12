@@ -4,7 +4,7 @@ import {
   DollarOutlined, FireOutlined, AntDesignOutlined, CommentOutlined, SettingOutlined, 
   UserOutlined, ToolOutlined, BookOutlined, CustomerServiceOutlined, ExportOutlined, 
   VideoCameraOutlined, PlusSquareOutlined, ReadOutlined, CheckCircleOutlined, 
-  FundProjectionScreenOutlined, BulbOutlined, SolutionOutlined, FormOutlined, 
+  FundProjectionScreenOutlined, BulbOutlined, SolutionOutlined, FormOutlined, TableOutlined
 } from '@ant-design/icons';
 import { Dropdown, Layout, Menu, theme, Avatar, Image, Input } from 'antd';
 import ProjectProfile from '../projectlist/projectprofile/projectprofile';
@@ -40,7 +40,8 @@ const defaultShortcuts = [
   {key: '3', icon: <CommentOutlined/>, label: 'Chat'},
   {key: '4', icon: <VideoCameraOutlined />, label: 'Zoom'},
   {key: '5', icon: <ScheduleOutlined />, label: 'Calendar'}, 
-  {key: '6', icon: <PlusSquareOutlined />, label: 'Add Shortcut', iconStyle: {bottom: '10%', position: 'absolute', }}, 
+  {key: '5', icon: <TableOutlined />, label: 'Clickup Form'}, 
+  {key: '7', icon: <PlusSquareOutlined />, label: 'Add Shortcut', iconStyle: {bottom: '10%', position: 'absolute', }}, 
 
 ];
 
@@ -127,7 +128,8 @@ const Homepage = () => {
       '3': 'https://www.zoom.com/en/products/team-chat/',
       '4': 'https://zoom.us/meeting',
       '5': 'https://calendar.google.com/calendar/',
-      '6': '/add-shortcut',
+      '6': 'https://app.clickup.com/10643463/v/fm/a4u07-7291',
+      '7': '/add-shortcut',
     };
     
     if (key === 'logo') {
@@ -304,6 +306,7 @@ const Homepage = () => {
             <Route path="/chat" element={ <Chat /> }></Route>
             <Route path="/zoom" element={ <Zoom /> }></Route>
             <Route path="https://calendar.google.com/calendar/"></Route>
+            <Route path=""></Route>
             <Route path="/add-shortcut" element={ <AddShortcut /> }></Route>
 
           </Routes>
