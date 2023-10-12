@@ -204,9 +204,15 @@ const ProjectProfile = () => (
         
       </div>  
 
-      <div style={{ textAlign: 'center',  }}>
-        <Calculator />
+      <Divider style={{ opacity: '0', }} />
+
+      <span style={{fontFamily: 'Roboto, sans-serif', fontSize: '18px', fontWeight: '300',
+                      lineHeight: '30px', letterSpacing: '0.02em', textAlign: 'left', 
+                      backgroundColor: 'white', paddingTop: '20px', paddingBottom: '10px', }}>
+                        Price Calculator</span>
+      <div style={{ textAlign: 'center', marginTop: '10px', }}>
         
+        <Calculator />
         <Divider />
 
         <Dropdown overlay={menu} trigger={['click']}>
@@ -219,6 +225,8 @@ const ProjectProfile = () => (
           </Button>
         </Dropdown>
       </div>
+
+        
     </div>  
   </div>
 );

@@ -14,7 +14,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <Homepage />
+      {/* <Homepage /> */}
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/project-profile/:id" element={<ProjectProfile />} />
