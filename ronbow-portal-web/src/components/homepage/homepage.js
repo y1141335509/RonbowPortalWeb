@@ -16,7 +16,7 @@ import CustomerProfile from '../customerprofile/customerprofile';
 import Chat from '../chat/chat';
 import Zoom from '../zoom/zoom';
 import AddShortcut from '../addshortcut/addshortcut';
-import KnowledgeBase from '../knowledgebase/knowledgebase';
+import KnowledgeBase from '../Resource/Resources';
 import Dashboard from '../dashboard/dashboard';
 // import Commission from '../humanresource/commission/commission';
 import InspirationSpace from '../inspiration/inspiration';
@@ -228,7 +228,7 @@ const Homepage = () => {
             </Menu.Item>
 
             <Menu.Item key='3' icon={<ReadOutlined />} onClick={() => setShowContent('knowledge-base')} style={{ fontWeight: '200',  color: 'black', }}>
-              <Link to="/">Knowledge Base</Link>
+              <Link to="/">Resources</Link>
             </Menu.Item>
 
             <Menu.Item 
@@ -237,7 +237,7 @@ const Homepage = () => {
               onClick={() => setShowContent('inspiration-space')}
               style={{ fontWeight: '200', color: 'black', }}
             >
-              <Link to="/">Inspiration Space</Link>
+              <Link to="/">Inspiration</Link>
             </Menu.Item>
 
             <Menu.Item 

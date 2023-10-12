@@ -7,6 +7,7 @@ import { ExportOutlined, FilterOutlined, SearchOutlined, DownloadOutlined,
 import Progress from './progress/progress';
 import Zoom from '../../zoom/zoom';
 import CustomerInfo from '../projectprofile/customerinfo/customerinfo';
+import Calculator from './Calculator/Calculator';
 
 
 
@@ -200,6 +201,14 @@ const ProjectProfile = () => (
           Design Now!
         </Button>
 
+        
+      </div>  
+
+      <div style={{ textAlign: 'center',  }}>
+        <Calculator />
+        
+        <Divider />
+
         <Dropdown overlay={menu} trigger={['click']}>
           <Button 
             size='large' 
@@ -209,7 +218,7 @@ const ProjectProfile = () => (
             Files
           </Button>
         </Dropdown>
-      </div>  
+      </div>
     </div>  
   </div>
 );

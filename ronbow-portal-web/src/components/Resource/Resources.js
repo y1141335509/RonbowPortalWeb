@@ -1,6 +1,6 @@
 import React from 'react';
 import { Collapse, Divider } from 'antd';
-import './knowledgebase.css';
+import './Resources.css';
 import { ExportOutlined, FilterOutlined, SearchOutlined } from '@ant-design/icons';
 
 
