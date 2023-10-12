@@ -26,8 +26,8 @@ const columns = [
     width: '20%',
   },
   {
-    title: 'Revenue',
-    dataIndex: 'revenue',
+    title: 'Cash In',
+    dataIndex: 'cashIn',
     width: '15%',
   },
   {
@@ -43,7 +43,7 @@ const data = [
     status: <Tag>Paid</Tag>, 
     customer: 'customer 1',
     orderNumber: 'order 1',
-    revenue: '$10,000',
+    cashIn: '$10,000',
     commissionAmount: '$10,000',
   },
   {
@@ -52,7 +52,7 @@ const data = [
     status: <Tag>Paid</Tag>, 
     customer: 'customer 2',
     orderNumber: 'order 2',
-    revenue: '$13,000',
+    cashIn: '$13,000',
     commissionAmount: '$11,000',
   },
   {
@@ -61,7 +61,7 @@ const data = [
     status: <Tag>Pending</Tag>, 
     customer: 'customer 3',
     orderNumber: 'order 3',
-    revenue: '$20,000',
+    cashIn: '$20,000',
     commissionAmount: '$19,000',
   },
 ];
