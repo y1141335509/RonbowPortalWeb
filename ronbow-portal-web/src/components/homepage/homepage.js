@@ -134,7 +134,7 @@ const Homepage = () => {
     };
     
     if (key === 'logo') {
-      setShowContent(''); // Clear the current content
+      setShowContent('dashboard'); // Clear the current content
       setSelectedKey(null); // Clear all selections
       navigate('/'); // Navigate to the homepage
     } else if (key === '2' || key === '5' || key === '3' || key === '4' || key === '6') {
