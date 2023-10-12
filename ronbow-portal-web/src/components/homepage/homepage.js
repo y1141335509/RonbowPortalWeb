@@ -256,7 +256,7 @@ const Homepage = () => {
               key="6" 
               icon={<UserOutlined />} 
               onClick={() => setShowContent('my-account')}
-              style={{ fontWeight: '200', color: 'black', }}
+              style={{ fontWeight: '200', color: 'black', marginRight: '30px', }}
             >
               <Link to="/">My Account</Link>
             </Menu.Item>
