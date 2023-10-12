@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Collapse, Divider } from 'antd';
 import './Resources.css';
 import { ExportOutlined, FilterOutlined, SearchOutlined } from '@ant-design/icons';
@@ -92,7 +92,14 @@ const items = [
   }
 ];
 
-const KnowledgeBase = () => (
+const KnowledgeBase = () => {
+  const [newItems, setNewItems] = useState(['6', '7']); // Example: items 1 and 3 are new
+
+  const handlePanelClick = (key) => {
+    setNewItems((prevNewItems) => prevNewItems.filter((itemKey) => itemKey !== key));
+  };
+
+  return (
 
   <div >
     <div className="header">
@@ -113,7 +120,12 @@ const KnowledgeBase = () => (
     </div>
   
 
-      <Collapse accordion style={{ width: 'auto' }} expandIconPosition='right'>
+    <Collapse
+        accordion
+        style={{ width: 'auto' }}
+        expandIconPosition='right'
+        onChange={handlePanelClick} // This function is called when a panel is clicked
+      >
         <div  style={{fontFamily: 'Roboto, sans-serif', fontSize: '18px', fontWeight: '300',
                       lineHeight: '30px', letterSpacing: '0.02em', textAlign: 'left', 
                       backgroundColor: 'white', paddingTop: '20px', paddingBottom: '10px', }}>
@@ -178,7 +190,17 @@ const KnowledgeBase = () => (
         </div>
 
         {items.slice(5, 10).map((item, index) => (
-          <Panel header={<span style={item.headerStyle}>{item.label}</span>} 
+          <Panel 
+            header={
+              <span style={item.headerStyle}>
+                {item.label}
+                {newItems.includes(item.key) && (
+                  <span style={{ color: 'red', marginLeft: '10px', }}>
+                    New
+                  </span>
+                )}
+              </span>
+            } 
                  key={item.key} 
                  style={{ borderTop: '1px solid #f0f0f0', }}
           >
@@ -193,6 +215,7 @@ const KnowledgeBase = () => (
       </Collapse>
     </div>
   );
+}
 
 
 export default KnowledgeBase;

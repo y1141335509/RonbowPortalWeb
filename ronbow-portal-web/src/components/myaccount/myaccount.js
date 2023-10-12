@@ -4,11 +4,14 @@ import './myaccount.css';
 
 
 
+const { TextArea } = Input;
+
+
 const MyAccount = () => {
   const [formData, setFormData] = useState({
     currPassword: 'password456',
     newPassword: 'password123',
-    bio: 'I am a good guy!',
+    bio: '[Designer Name] is a seasoned cabinet designer with over [X years] of experience in crafting bespoke cabinetry solutions. A graduate of [Relevant University or Design School], [Designer Name]‘s passion lies in translating homeowners’ visions into functional and aesthetic designs.',
   });
 
   const handleChange = (e) => {
@@ -47,11 +50,11 @@ const MyAccount = () => {
           />
         </Form.Item>
         <Form.Item label="bio">
-          <Input
-            name="bio"
+          <TextArea name="bio"
             value={formData.bio}
             onChange={handleChange}
-          />
+            rows={6}
+            maxLength={6} />
         </Form.Item>
         <Form.Item>
           <Button type="primary" htmlType="submit">
