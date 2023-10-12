@@ -40,7 +40,7 @@ const defaultShortcuts = [
   {key: '3', icon: <CommentOutlined/>, label: 'Chat'},
   {key: '4', icon: <VideoCameraOutlined />, label: 'Zoom'},
   {key: '5', icon: <ScheduleOutlined />, label: 'Calendar'}, 
-  {key: '5', icon: <TableOutlined />, label: 'Clickup Form'}, 
+  {key: '6', icon: <TableOutlined />, label: 'Clickup Form'}, 
   {key: '7', icon: <PlusSquareOutlined />, label: 'Add Shortcut', iconStyle: {bottom: '10%', position: 'absolute', }}, 
 
 ];
@@ -51,10 +51,11 @@ const allShortcuts = [
   {key: '3', icon: <CommentOutlined/>, label: 'Chat'},
   {key: '4', icon: <VideoCameraOutlined />, label: 'Zoom'},
   {key: '5', icon: <ScheduleOutlined />, label: 'Calendar'}, 
-  {key: '6', icon: <PlusSquareOutlined />, label: 'Add Shortcut', iconStyle: {bottom: '10%', position: 'absolute', }}, 
-  {key: '7', icon: <ExportOutlined />, label: 'Export'}, 
-  {key: '8', icon: <ToolOutlined />, label: 'Tool'}, 
-  {key: '9', icon: <SettingOutlined />, label: 'Settings'}, 
+  {key: '6', icon: <TableOutlined />, label: 'Clickup Form'}, 
+  {key: '7', icon: <PlusSquareOutlined />, label: 'Add Shortcut', iconStyle: {bottom: '10%', position: 'absolute', }}, 
+  {key: '8', icon: <ExportOutlined />, label: 'Export'}, 
+  {key: '9', icon: <ToolOutlined />, label: 'Tool'}, 
+  {key: '10', icon: <SettingOutlined />, label: 'Settings'}, 
 ];
 
 
@@ -136,7 +137,7 @@ const Homepage = () => {
       setShowContent(''); // Clear the current content
       setSelectedKey(null); // Clear all selections
       navigate('/'); // Navigate to the homepage
-    } else if (key === '2' || key === '5' || key === '3' || key === '4') {
+    } else if (key === '2' || key === '5' || key === '3' || key === '4' || key === '6') {
       window.open(paths[key], '_blank');
     } else if (key === '1') {
       navigate(paths[key]);
