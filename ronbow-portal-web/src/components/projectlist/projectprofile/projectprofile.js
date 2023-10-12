@@ -8,6 +8,7 @@ import Progress from './progress/progress';
 import Zoom from '../../zoom/zoom';
 import CustomerInfo from '../projectprofile/customerinfo/customerinfo';
 import Calculator from './Calculator/Calculator';
+import LayoutComponent from '../../homepage/LayoutComponent/LayoutComponent';
 
 
 
@@ -126,7 +127,9 @@ const menu = (
 
 const ProjectProfile = () => (
 
-  <div style={{ width: '100%', overflow: 'hidden', }}>
+  <LayoutComponent>
+
+<div style={{ width: '100%', overflow: 'hidden', }}>
     <div style={{ float: 'left', width: '20%', marginLeft: '20px', }}> 
       <Progress />
     </div>
@@ -229,6 +232,8 @@ const ProjectProfile = () => (
         
     </div>  
   </div>
+  
+  </LayoutComponent>
 );
 
 

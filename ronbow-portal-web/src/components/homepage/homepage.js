@@ -24,7 +24,7 @@ import HumanResource from '../humanresource/humanresource';
 import MyAccount from '../myaccount/myaccount';
 import ProjectList from '../projectlist/projectlist';
 import AddShortcutModal from './addshortcuts/addshortcuts'; // Ensure path is correct
-
+import LayoutComponent from './LayoutComponent/LayoutComponent';
 
 
 // ref: https://stackblitz.com/edit/react-jy9ujl?file=index.js,demo.js,index.html
@@ -68,25 +68,7 @@ const Homepage = () => {
   const navigate = useNavigate();
   const [isAddShortcutVisible, setIsAddShortcutVisible] = useState(false);
   const [shortcuts, setShortcuts] = useState(defaultShortcuts);
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const [selectedShortcuts, setSelectedShortcuts] = useState([]);
 
-  const openModal = () => {
-    setIsModalVisible(true);
-  };
-
-  const handleOk = () => {
-    setShortcuts(allShortcuts.filter(s => selectedShortcuts.includes(s.key)));
-    setIsModalVisible(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalVisible(false);
-  };
-
-  const handleCheckboxChange = checkedValues => {
-    setSelectedShortcuts(checkedValues);
-  };
 
 
   const handleSearch = (value) => {
@@ -153,7 +135,8 @@ const Homepage = () => {
     token: { colorBgContainer },
   } = theme.useToken();
   return (
-    <Layout style={{ minHeight: '100vh', backgroundColor: 'white', }}>
+    
+      <Layout style={{ minHeight: '100vh', backgroundColor: 'white', }}>
 
       <Sider collapsible collapsed={collapsed} 
             theme='light'
@@ -206,7 +189,7 @@ const Homepage = () => {
 
       </Sider>
 
-      
+
 
       {/* inner Layout starts here */}
       <Layout style={{ padding: '0 5px 24px', backgroundColor: 'white', }} >
@@ -328,7 +311,15 @@ const Homepage = () => {
         onSave={handleSaveShortcut}
       />
 
-    </Layout>
+      </Layout> 
+
   );
 };
 export default Homepage;
+
+
+
+
+
+
+

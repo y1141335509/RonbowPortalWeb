@@ -6,7 +6,7 @@ import { ExportOutlined, FilterOutlined, SearchOutlined, DownloadOutlined,
 import Zoom from '../../zoom/zoom';
 import './customerprofile.css';
 import CustomerInfo from '../projectprofile/customerinfo/customerinfo';
-
+import LayoutComponent from '../../homepage/LayoutComponent/LayoutComponent';
 
 
 
@@ -97,69 +97,72 @@ const menu = (
 
 
 const CustomerList = () => (
-
-  <div >
-      <span style={{ fontFamily: 'Roboto, sans-serif', 
-                      fontSize: '18px', 
-                      fontWeight: "400",
-                      lineHeight: "14px",
-                      letterSpacing: "0.02em",
-                      textAlign: "left" }}
-      >
-        Kevin's Kitchen - San Mateo
-      </span>
-  
-      <Divider style={{ opacity: '0', }}/>
-      <Collapse accordion style={{ width: 'auto' }} expandIconPosition='end' >
-        <div  style={{fontFamily: 'Roboto, sans-serif', fontSize: '18px', fontWeight: '300',
-                      lineHeight: '30px', letterSpacing: '0.02em', textAlign: 'left', 
-                      backgroundColor: 'white', paddingTop: '20px', paddingBottom: '10px', }}>
-          <span>Customer Info</span>
-          <div style={{display: 'flex', float: 'right', marginRight: '30px', }}>
-              <FilterOutlined className="icon" />
-              <SearchOutlined className="icon" />
-          </div>
-          
-        </div>
-
-        {items.slice(0, 5).map((item, index) => (
-          <Panel header={<span style={item.headerStyle}>{item.label}</span>} 
-                 key={item.key} 
-                 style={{ borderTop: '1px solid #f0f0f0', }}
-          >
-            <div style={{ fontFamily: 'Roboto, sans-serif', fontSize: '18px', fontWeight: '300',
-                          lineHeight: '30px', letterSpacing: '0.02em', textAlign: 'left', 
-                          paddingLeft: '30px'}}>
-                {item.children}
-            </div>
-          </Panel>
-        ))}
-
-      </Collapse>
-
-      
-      <div style={{ textAlign: 'center',  }}>
-        <Button 
-          size='large' 
-          icon={<ToolOutlined />}
-          onClick={() => handleDesignButton()}
-          style={{ backgroundColor: '#5D6465', color: '#F0ECEC', marginRight: '10px', }}
+    <LayoutComponent>
+      <div >
+        <span style={{ fontFamily: 'Roboto, sans-serif', 
+                        fontSize: '18px', 
+                        fontWeight: "400",
+                        lineHeight: "14px",
+                        letterSpacing: "0.02em",
+                        textAlign: "left" }}
         >
-          Design Now!
-        </Button>
+          Kevin's Kitchen - San Mateo
+        </span>
+    
+        <Divider style={{ opacity: '0', }}/>
+        <Collapse accordion style={{ width: 'auto' }} expandIconPosition='end' >
+          <div  style={{fontFamily: 'Roboto, sans-serif', fontSize: '18px', fontWeight: '300',
+                        lineHeight: '30px', letterSpacing: '0.02em', textAlign: 'left', 
+                        backgroundColor: 'white', paddingTop: '20px', paddingBottom: '10px', }}>
+            <span>Customer Info</span>
+            <div style={{display: 'flex', float: 'right', marginRight: '30px', }}>
+                <FilterOutlined className="icon" />
+                <SearchOutlined className="icon" />
+            </div>
+            
+          </div>
 
-        <Dropdown overlay={menu} trigger={['click']}>
+          {items.slice(0, 5).map((item, index) => (
+            <Panel header={<span style={item.headerStyle}>{item.label}</span>} 
+                  key={item.key} 
+                  style={{ borderTop: '1px solid #f0f0f0', }}
+            >
+              <div style={{ fontFamily: 'Roboto, sans-serif', fontSize: '18px', fontWeight: '300',
+                            lineHeight: '30px', letterSpacing: '0.02em', textAlign: 'left', 
+                            paddingLeft: '30px'}}>
+                  {item.children}
+              </div>
+            </Panel>
+          ))}
+
+        </Collapse>
+
+        
+        <div style={{ textAlign: 'center',  }}>
           <Button 
             size='large' 
-            icon={<DownloadOutlined />}
-            style={{ backgroundColor: '#5D6465', color: '#F0ECEC', marginLeft: '10px', }}
+            icon={<ToolOutlined />}
+            onClick={() => handleDesignButton()}
+            style={{ backgroundColor: '#5D6465', color: '#F0ECEC', marginRight: '10px', }}
           >
-            Download Files
+            Design Now!
           </Button>
-        </Dropdown>
+
+          <Dropdown overlay={menu} trigger={['click']}>
+            <Button 
+              size='large' 
+              icon={<DownloadOutlined />}
+              style={{ backgroundColor: '#5D6465', color: '#F0ECEC', marginLeft: '10px', }}
+            >
+              Download Files
+            </Button>
+          </Dropdown>
+        </div>
+        
       </div>
-      
-    </div>
+
+    </LayoutComponent>
+  
   );
 
 
