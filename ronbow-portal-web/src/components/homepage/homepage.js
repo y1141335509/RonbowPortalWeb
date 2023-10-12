@@ -102,9 +102,9 @@ const Homepage = () => {
   
   const handleClickNavigation = () => {
     switch(showContent) {
-      case 'project-profile':
+      case 'project-list':
         return <ProjectList />;
-      case 'knowledge-base':
+      case 'resources':
         return <KnowledgeBase />;
       case 'dashboard':
         return <Dashboard />
@@ -225,12 +225,12 @@ const Homepage = () => {
             <Menu.Item 
               key="2" 
               icon={<FundProjectionScreenOutlined />} 
-              onClick={() => setShowContent('project-profile')} 
+              onClick={() => setShowContent('project-list')} 
               style={{ fontWeight: '200',  color: 'black', }}>
               <Link to="/">Projects</Link>
             </Menu.Item>
 
-            <Menu.Item key='3' icon={<ReadOutlined />} onClick={() => setShowContent('knowledge-base')} style={{ fontWeight: '200',  color: 'black', }}>
+            <Menu.Item key='3' icon={<ReadOutlined />} onClick={() => setShowContent('resources')} style={{ fontWeight: '200',  color: 'black', }}>
               <Link to="/">Resources</Link>
             </Menu.Item>
 

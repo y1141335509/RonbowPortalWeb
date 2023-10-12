@@ -93,6 +93,7 @@ const defaultData = [
               </span> 
             </div>,
     tradePro: 'trade pro 1', 
+    designer: 'Hello Kitty', 
     address: '7150 Patterson Pass Rd # F, Livermore, CA 94550',
     created_at: 1590486176000,
   },
@@ -120,6 +121,7 @@ const defaultData = [
               </span> 
             </div>,
     tradePro: 'trade pro 2', 
+    designer: 'Mr. Dog.', 
     address: '680 8th St Suite 166, San Francisco, CA 94103',
     created_at: 1590481162000,
   },
@@ -186,10 +188,24 @@ const columns = [
     width: '10%',
   },
   {
+    title: 'Designer',
+    dataIndex: 'designer',
+    width: '15%',
+    formItemProps: {
+      rules: [
+        {
+          required: true,
+          message: 'Designer is required',
+        },
+      ],
+    },
+  },
+  {
     title: 'Address',
     dataIndex: 'address',
     width: '23%',
   },
+  
 ];
 
 const EditableTable = () => {
