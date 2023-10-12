@@ -8,26 +8,29 @@ import { ExportOutlined, FilterOutlined, SearchOutlined, DownloadOutlined,
 
 
 const handleEmailUs = () => {
-  window.location.href = "mailto:example@gmail.com";
+  document.getElementById('delivery-fee').value = '0';
+  // window.location.href = "mailto:example@gmail.com";
 };
 
 const handlePrint = () => {
-  window.open("URL_TO_PDF", '_blank').print();
+  // window.open("URL_TO_PDF", '_blank').print();
+  document.getElementById('delivery-fee').value = '299';
 };
 
 const handleDownload = () => {
-  window.open("https://cdn.ronbow.com/resources/Ronbow-Company-Profile-V6.pdf", '_blank');
+  document.getElementById('delivery-fee').value = '599';
+  // window.open("https://cdn.ronbow.com/resources/Ronbow-Company-Profile-V6.pdf", '_blank');
 };
 
 const menu = (
   <Menu>
-     <Menu.Item key="1" onClick={handleDownload}>
+     <Menu.Item key="1" onClick={handleEmailUs}>
       None: $0
     </Menu.Item>
     <Menu.Item key="2" onClick={handlePrint}>
       Basic: $299
     </Menu.Item>
-    <Menu.Item key="3" onClick={handleEmailUs}>
+    <Menu.Item key="3" onClick={handleDownload}>
       Premium: $599
     </Menu.Item>
    
@@ -39,14 +42,36 @@ const menu = (
 const PriceCalculator = () => {
   const [form] = Form.useForm();
   const [finalPrice, setFinalPrice] = useState(null);
+  
+
+  const handleCityChange = (e) => {
+    const cityTaxRates = {
+      "Palo Alto": 9.875,
+      "Cupertino": 9.125,
+      "San Francisco": 8.625,
+      "Redwood City": 9.875,
+      "Livermore": 10.250,
+      "San Jose": 10.5,
+      "Walnut Creek": 9.125,
+      "Monterey Bay": 9.5,
+    };
+    const selectedCity = e.target.value;
+    document.getElementById('city-tax').value = cityTaxRates[selectedCity];
+  }
 
   const onCalculate = () => {
     form.validateFields().then(values => {
-      const { quote, customerDiscount, tradeProDiscount, tax, delivery } = values;
+      const { quote, customerDiscount, tradeProDiscount, } = values;
+      const tax = parseFloat(document.getElementById('city-tax').value);
+      const delivery = parseFloat(document.getElementById('delivery-fee').value);
       const result = quote * (1 - customerDiscount/100 - tradeProDiscount/100) * (1 + tax/100) + delivery;
+      console.log(quote, customerDiscount, tradeProDiscount, tax, delivery, );
+      console.log('result: ', result, typeof(result));
       setFinalPrice(result.toFixed(2));
     });
   };
+  
+
 
   return (
     <Form form={form} layout="vertical" initialValues={{ quote: 60000 }}>
@@ -60,20 +85,23 @@ const PriceCalculator = () => {
         <InputNumber min={0} max={100} style={{ width: '100%' }} />
       </Form.Item>
       <Form.Item label="Tax (%)" name="tax" initialValue={0}>
-        <InputNumber min={0} max={100} style={{ width: '30%', marginRight: '4%', }} />
-        <Radio.Group>
-          <Radio.Button value>San Francisco</Radio.Button>
-          <Radio.Button value="optional">Cupertino</Radio.Button>
-          <Radio.Button value={false}>Palo Alto</Radio.Button>
-          <Radio.Button value="2">Livermore</Radio.Button>
-          <Radio.Button value="3">Redwood City</Radio.Button>
-          <Radio.Button value="4">Walnut Creek</Radio.Button>
-          <Radio.Button value="5">Monterey Bay</Radio.Button>
-          <Radio.Button value="6">San Jose</Radio.Button>
+        <InputNumber min={0} max={100}  id={'city-tax'}
+          style={{ width: '20%', marginRight: '1%', float: 'left', }} 
+          disabled />
+        <Radio.Group onChange={handleCityChange}>
+          <Radio.Button value="San Francisco">San Francisco</Radio.Button>
+          <Radio.Button value="Cupertino">Cupertino</Radio.Button>
+          <Radio.Button value="Palo Alto">Palo Alto</Radio.Button>
+          <Radio.Button value="Livermore">Livermore</Radio.Button>
+          <Radio.Button value="Redwood City">Redwood City</Radio.Button>
+          <Radio.Button value="Walnut Creek">Walnut Creek</Radio.Button>
+          <Radio.Button value="Monterey Bay">Monterey Bay</Radio.Button>
+          <Radio.Button value="San Jose">San Jose</Radio.Button>
         </Radio.Group>
       </Form.Item>
       <Form.Item label="Delivery ($)" name="delivery" initialValue={0} style={{ float: 'left', }}>
-        <InputNumber min={0} style={{ width: '50%', marginRight: '5%'}} />
+        <span >$</span>
+        <InputNumber min={0} style={{ width: '50%', marginRight: '2%', }} disabled id={'delivery-fee'} />
         <Dropdown overlay={menu} trigger={['click']}>
         <Button 
           size='large' 

@@ -205,7 +205,7 @@ const ProjectProfile = () => (
       </div>  
 
       <Divider style={{ opacity: '0', }} />
-
+          
       <span style={{fontFamily: 'Roboto, sans-serif', fontSize: '18px', fontWeight: '300',
                       lineHeight: '30px', letterSpacing: '0.02em', textAlign: 'left', 
                       backgroundColor: 'white', paddingTop: '20px', paddingBottom: '10px', }}>
