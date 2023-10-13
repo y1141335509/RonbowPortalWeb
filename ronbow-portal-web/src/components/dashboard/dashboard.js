@@ -144,7 +144,7 @@ const App = () => {
       <Divider />
 
       <div>
-          <IndustryNews />
+        <IndustryNews />
       </div>
       
       

@@ -90,9 +90,9 @@ const PriceCalculator = () => {
         <Form.Item label="Trade Pro Discount (%)" name="tradeProDiscount" initialValue={0}>
           <InputNumber min={0} max={100} style={{ width: '100%' }} />
         </Form.Item>
-        <Form.Item label="Tax (%)" name="tax" initialValue={0}>
+        <Form.Item label="Tax (%)" name="tax" initialValue={0} style={{ width: '100%', }}>
           <InputNumber min={0} max={100}  id={'city-tax'}
-            style={{ width: '20%', marginRight: '1%', float: 'left', }} 
+            style={{ width: '10%', marginRight: '1%', float: 'left', }} 
             disabled />
           <Radio.Group onChange={handleCityChange} defaultValue='Cupertino' >
             <Radio.Button value="San Francisco">San Francisco</Radio.Button>
@@ -105,9 +105,9 @@ const PriceCalculator = () => {
             <Radio.Button value="San Jose">San Jose</Radio.Button>
           </Radio.Group>
         </Form.Item>
-        <Form.Item label="Delivery ($)" name="delivery" initialValue={0} style={{ float: 'left', }}>
+        <Form.Item label="Delivery ($)" name="delivery" initialValue={0} style={{ textAlign: 'left' }}>
           <span >$</span>
-          <InputNumber min={0} style={{ width: '50%', marginRight: '2%', }} disabled id={'delivery-fee'} />
+          <InputNumber min={0} style={{ width: '15%', marginRight: '2%', }} disabled id={'delivery-fee'} />
           <Dropdown overlay={menu} trigger={['click']}>
           <Button 
             size='large' 
