@@ -47,9 +47,9 @@ const App = () => {
       <div style={{ padding: "50px" }}>
         <h2>Hi XXX, together we shape the future, one design at a time.</h2>
         <SalesTargetBar
-          sales={7000}
+          sales={4000}
           target={10000}
-          elapsedDays={15}
+          elapsedDays={9}
           totalDays={30}
         />
       </div>

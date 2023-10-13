@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Input, Button, Avatar } from 'antd';
+import { Form, Input, Button, Avatar, ConfigProvider, } from 'antd';
 import './myaccount.css';
 
 
@@ -29,40 +29,51 @@ const MyAccount = () => {
   };
 
   return (
-    <div className="account-container">
-      <Avatar size={64} style={{ color: '#464F50', backgroundColor: '#F0ECEC' }}>
-        KR
-      </Avatar>
-      <Form layout="vertical" onFinish={handleSubmit}>
-        <Form.Item label="Current Password" >
-          <Input.Password
-            
-            name="currPassword"
-            value={formData.currPassword}
-            onChange={handleChange}
-          />
-        </Form.Item>
-        <Form.Item label="New Password">
-          <Input.Password
-            name="newPassword"
-            value={formData.newPassword}
-            onChange={handleChange}
-          />
-        </Form.Item>
-        <Form.Item label="bio">
-          <TextArea name="bio"
-            value={formData.bio}
-            onChange={handleChange}
-            rows={6}
-            maxLength={6} />
-        </Form.Item>
-        <Form.Item>
-          <Button type="primary" htmlType="submit">
-            Save
-          </Button>
-        </Form.Item>
-      </Form>
-    </div>
+    <ConfigProvider
+      theme={{
+        token: {
+          colorPrimary: '#5D6465',
+          colorSuccess: '#F0ECEC', 
+        }
+      }}
+    >
+      <div className="account-container">
+        <Avatar size={64} style={{ color: '#464F50', backgroundColor: '#F0ECEC' }}>
+          KR
+        </Avatar>
+        <Form layout="vertical" onFinish={handleSubmit}>
+          <Form.Item label="Current Password" >
+            <Input.Password
+              
+              name="currPassword"
+              value={formData.currPassword}
+              onChange={handleChange}
+            />
+          </Form.Item>
+          <Form.Item label="New Password">
+            <Input.Password
+              name="newPassword"
+              value={formData.newPassword}
+              onChange={handleChange}
+            />
+          </Form.Item>
+          <Form.Item label="bio">
+            <TextArea name="bio"
+              value={formData.bio}
+              onChange={handleChange}
+              rows={6}
+              maxLength={6} />
+          </Form.Item>
+          <Form.Item>
+            <Button type="primary" htmlType="submit">
+              Save
+            </Button>
+          </Form.Item>
+        </Form>
+      </div>
+
+    </ConfigProvider>
+    
   );
 };
 

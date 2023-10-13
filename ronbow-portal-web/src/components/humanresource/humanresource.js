@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Divider, Upload, message, Dropdown, Menu, } from 'antd';
+import { Button, Divider, Upload, message, Dropdown, Menu, ConfigProvider, } from 'antd';
 import { ExportOutlined, FilterOutlined, SearchOutlined, DownloadOutlined, 
   ToolOutlined, PrinterOutlined, MailOutlined 
 } from '@ant-design/icons';
@@ -43,34 +43,44 @@ const HumanResource = () => {
   };
 
   return (
-    <div className="hr-container">
-      <div className="commission-container">
-        <Commission />
-      </div>
+    <ConfigProvider
+      theme={{
+        token: {
+          colorPrimary: '#5D6465',
+          colorSuccess: '#F0ECEC',
+        }
+      }}
+    >
+      <div className="hr-container">
+        <div className="commission-container">
+          <Commission />
+        </div>
 
-      <Divider />
+        <Divider />
 
-      <div>
+        <div>
 
-        <Button 
-          size='large'
-          type="primary" 
-          onClick={() => window.open('https://www.paychex.com/login', '_blank')}
-        >
-          Time Off
-        </Button>
-
-        <Dropdown overlay={menu} trigger={['click']}>
           <Button 
-            size='large' 
-            icon={<DownloadOutlined />}
-            style={{ backgroundColor: '#fff', color: '#5D6465', marginLeft: '10px', }}
+            size='large'
+            type="primary" 
+            onClick={() => window.open('https://www.paychex.com/login', '_blank')}
           >
-            Documents
+            Time Off
           </Button>
-        </Dropdown>
+
+          <Dropdown overlay={menu} trigger={['click']}>
+            <Button 
+              size='large' 
+              icon={<DownloadOutlined />}
+              style={{ backgroundColor: '#fff', color: '#5D6465', marginLeft: '10px', }}
+            >
+              Documents
+            </Button>
+          </Dropdown>
+        </div>
       </div>
-    </div>
+
+    </ConfigProvider>
   );
 };
 

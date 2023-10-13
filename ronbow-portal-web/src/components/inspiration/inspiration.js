@@ -1,6 +1,6 @@
 import './inspiration.css';
 import React from 'react';
-import { Card, Tag, Button } from 'antd';
+import { Card, Tag, Button, ConfigProvider, } from 'antd';
 import { FilterOutlined, SearchOutlined } from '@ant-design/icons';
 
 const { Meta } = Card;
@@ -18,19 +18,28 @@ const Inspiration = () => (
   <>
     <div className="card-container">
       {cardData.map((card, index) => (
-        <Card
-          key={index}
-          hoverable
-          style={{ width: 240, margin: '0 10px 20px 0' }}
-          cover={<img alt={card.title} src={card.imgSrc} />}
+        <ConfigProvider
+          theme={{
+            token: {
+              colorPrimary: '#5D6465',
+              borderRadius: 2,
+            }
+          }}
         >
-          <Meta title={card.title} description={card.description} /><br />
-          {card.tags.map((tag, tagIndex) => (
-            <Tag key={tagIndex}>{tag}</Tag>
-          ))}
-          <br /><br />
-          <Button>View Design</Button>
-        </Card>
+          <Card
+            key={index}
+            hoverable
+            style={{ width: 240, margin: '0 10px 20px 0' }}
+            cover={<img alt={card.title} src={card.imgSrc} />}
+          >
+            <Meta title={card.title} description={card.description} /><br />
+            {card.tags.map((tag, tagIndex) => (
+              <Tag key={tagIndex}>{tag}</Tag>
+            ))}
+            <br /><br />
+            <Button>View Design</Button>
+          </Card>
+        </ConfigProvider>
       ))}
     </div>
   </>
