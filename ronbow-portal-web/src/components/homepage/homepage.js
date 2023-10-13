@@ -6,7 +6,7 @@ import {
   VideoCameraOutlined, PlusSquareOutlined, ReadOutlined, CheckCircleOutlined, 
   FundProjectionScreenOutlined, BulbOutlined, SolutionOutlined, FormOutlined, TableOutlined
 } from '@ant-design/icons';
-import { Dropdown, Layout, Menu, theme, Avatar, Image, Input } from 'antd';
+import { Dropdown, Layout, Menu, theme, Avatar, Image, Input, ConfigProvider, } from 'antd';
 import ProjectProfile from '../projectlist/projectprofile/projectprofile';
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
 import './homepage.css';
@@ -24,7 +24,8 @@ import HumanResource from '../humanresource/humanresource';
 import MyAccount from '../myaccount/myaccount';
 import ProjectList from '../projectlist/projectlist';
 import AddShortcutModal from './addshortcuts/addshortcuts'; // Ensure path is correct
-import LayoutComponent from './LayoutComponent/LayoutComponent';
+// import LayoutComponent from './LayoutComponent/LayoutComponent';
+
 
 
 // ref: https://stackblitz.com/edit/react-jy9ujl?file=index.js,demo.js,index.html
@@ -136,182 +137,188 @@ const Homepage = () => {
   } = theme.useToken();
   return (
     
-    <Layout style={{ minHeight: '100vh', backgroundColor: 'white', }}>
+    <ConfigProvider
+      theme={{token: {
+        colorPrimary: '#5D6465', colorSuccess: '#F0ECEC',
+      }}}
+    >
+      <Layout style={{ minHeight: '100vh', backgroundColor: 'white', }}>
 
-      <Sider collapsible collapsed={collapsed} 
-            theme='light'
-            onCollapse={value => setCollapsed(value)}
-            style={{ marginTop: '50px', backgroundColor: 'white', }}      
-      >
-        <div style={{ display: 'flex', flexDirection: 'column', height: '85vh', }}>
-          
-          <Menu
-            mode="inline"
-            onClick={({ key }) => handleItemClick(key)}
-            style={{ flex: 1, }}
-          >
-            {defaultShortcuts.slice(0, -1).map((item, index) => {
-              if (index === 0) {
-                return (
-                  <Menu.Item key="logo">
-                    <Image
-                      preview={false}
-                      width={'auto'} // Adjust width as needed
-                      src="https://assets.wfcdn.com/im/29929773/resize-h110-w290%5Ecompr-r85/2228/222857539/default_name.jpg"
-                      alt="Home"
-                      onClick={() => handleItemClick('logo')}
-                    />
-                  </Menu.Item>
-                )
-              } else {
-                return (
-                  <Menu.Item key={item.key} icon={item.icon}>
-                    {item.label}
-                  </Menu.Item>
-                )
-              }
-            })}
-          </Menu>
-
-          <Menu
-            mode="inline"
-            onClick={({ key }) => handleItemClick(key)}
-            style={{  borderTop: '2px solid #333' }}
-          >
-            {defaultShortcuts.slice(-1).map(item => (
-              <Menu.Item key={item.key} icon={item.icon}>
-                {item.label}
-              </Menu.Item>
-            ))}
-          </Menu>
-          
-        </div>
-
-      </Sider>
-
-
-
-      {/* inner Layout starts here */}
-      <Layout style={{ padding: '0 5px 24px', backgroundColor: 'white', }} >
-        <Header className="site-layout-background custom-header" 
-                style={{ padding: 0, backgroundColor: 'white', }}>
-          
-
-          {/* Navigation on Header starts here */}
-          <div className="logo" />
-          <Menu mode='horizontal' defaultSelectedKeys={'1'}>
-
-            <Menu.Item 
-              key='1' icon={<ProjectOutlined />} 
-              onClick={() => setShowContent('dashboard')} 
-              style={{ fontWeight: '200',  color: 'black', }}>
-              <Link to="/">Dashboard</Link>
-            </Menu.Item>
-                          
-            <Menu.Item 
-              key="2" 
-              icon={<FundProjectionScreenOutlined />} 
-              onClick={() => setShowContent('project-list')} 
-              style={{ fontWeight: '200',  color: 'black', }}>
-              <Link to="/">Projects</Link>
-            </Menu.Item>
-
-            <Menu.Item key='3' icon={<ReadOutlined />} onClick={() => setShowContent('resources')} style={{ fontWeight: '200',  color: 'black', }}>
-              <Link to="/">Resources</Link>
-            </Menu.Item>
-
-            <Menu.Item 
-              key="4" 
-              icon={<BulbOutlined />} 
-              onClick={() => setShowContent('inspiration-space')}
-              style={{ fontWeight: '200', color: 'black', }}
-            >
-              <Link to="/">Inspiration</Link>
-            </Menu.Item>
-
-            <Menu.Item 
-              key="5" 
-              icon={<SolutionOutlined />} 
-              onClick={() => setShowContent('human-resource')}
-              style={{ fontWeight: '200', color: 'black', }}
-            >
-              <Link to="/">HR</Link>
-            </Menu.Item>
-
-            <Menu.Item 
-              key="6" 
-              icon={<UserOutlined />} 
-              onClick={() => setShowContent('my-account')}
-              style={{ fontWeight: '200', color: 'black', marginRight: '30px' }}
-            >
-              <Link to="/">My Account</Link>
-            </Menu.Item>
-
-          </Menu>
-
-          {/* Search Bar starts here */}
-          <Search
-            placeholder="Search..."
-            onSearch={handleSearch()}
-            style={{
-              width: 200,
-            }}
-          />
-          {/* Search Bar ends here */}
-
-        </Header>
-
-        {/* Main Content starts here */}
-        <Content
-          className="site-layout-background"
-          style={{
-            margin: '24px 16px',
-            padding: 24,
-            minHeight: 280,
-            maxHeight: 500,
-            width: 'auto', 
-            height: 'auto',
-            // maxWidth: '100%',
-            fontFamily: 'Roboto, sans-serif', 
-            fontSize: '18px', 
-            fontWeight: "300",
-            lineHeight: "30px",
-            letterSpacing: "0.02em",
-            textAlign: "left",
-            alignItems: 'center', // horizontally center children
-            justifyContent: 'center', // vertically center children
-            height: '100vh', // or whatever height you want for the parent
-            backgroundColor: 'white',
-          }}
+        <Sider collapsible collapsed={collapsed} 
+              theme='light'
+              onCollapse={value => setCollapsed(value)}
+              style={{ marginTop: '50px', backgroundColor: 'white', }}      
         >
-          { handleClickNavigation() }
+          <div style={{ display: 'flex', flexDirection: 'column', height: '85vh', }}>
+            
+            <Menu
+              mode="inline"
+              onClick={({ key }) => handleItemClick(key)}
+              style={{ flex: 1, }}
+            >
+              {defaultShortcuts.slice(0, -1).map((item, index) => {
+                if (index === 0) {
+                  return (
+                    <Menu.Item key="logo">
+                      <Image
+                        preview={false}
+                        width={'auto'} // Adjust width as needed
+                        src="https://assets.wfcdn.com/im/29929773/resize-h110-w290%5Ecompr-r85/2228/222857539/default_name.jpg"
+                        alt="Home"
+                        onClick={() => handleItemClick('logo')}
+                      />
+                    </Menu.Item>
+                  )
+                } else {
+                  return (
+                    <Menu.Item key={item.key} icon={item.icon}>
+                      {item.label}
+                    </Menu.Item>
+                  )
+                }
+              })}
+            </Menu>
 
-        
-          <Routes>
-            <Route path="/" component={Homepage}></Route>
-            <Route path="https://www.coohom.com/"></Route>
-            <Route path="/chat" element={ <Chat /> }></Route>
-            <Route path="/zoom" element={ <Zoom /> }></Route>
-            <Route path="https://calendar.google.com/calendar/"></Route>
-            <Route path="https://app.clickup.com/10643463/v/fm/a4u07-7291"></Route>
-            <Route path="/add-shortcut" element={ <AddShortcut /> }></Route>
+            <Menu
+              mode="inline"
+              onClick={({ key }) => handleItemClick(key)}
+              style={{  borderTop: '2px solid #333' }}
+            >
+              {defaultShortcuts.slice(-1).map(item => (
+                <Menu.Item key={item.key} icon={item.icon}>
+                  {item.label}
+                </Menu.Item>
+              ))}
+            </Menu>
+            
+          </div>
 
-          </Routes>
-        
+        </Sider>
+
+
+
+        {/* inner Layout starts here */}
+        <Layout style={{ padding: '0 5px 24px', backgroundColor: 'white', }} >
+          <Header className="site-layout-background custom-header" 
+                  style={{ padding: 0, backgroundColor: 'white', }}>
+            
+
+            {/* Navigation on Header starts here */}
+            <div className="logo" />
+            <Menu mode='horizontal' defaultSelectedKeys={'1'}>
+
+              <Menu.Item 
+                key='1' icon={<ProjectOutlined />} 
+                onClick={() => setShowContent('dashboard')} 
+                style={{ fontWeight: '200',  color: 'black', }}>
+                <Link to="/">Dashboard</Link>
+              </Menu.Item>
+                            
+              <Menu.Item 
+                key="2" 
+                icon={<FundProjectionScreenOutlined />} 
+                onClick={() => setShowContent('project-list')} 
+                style={{ fontWeight: '200',  color: 'black', }}>
+                <Link to="/">Projects</Link>
+              </Menu.Item>
+
+              <Menu.Item key='3' icon={<ReadOutlined />} onClick={() => setShowContent('resources')} style={{ fontWeight: '200',  color: 'black', }}>
+                <Link to="/">Resources</Link>
+              </Menu.Item>
+
+              <Menu.Item 
+                key="4" 
+                icon={<BulbOutlined />} 
+                onClick={() => setShowContent('inspiration-space')}
+                style={{ fontWeight: '200', color: 'black', }}
+              >
+                <Link to="/">Inspiration</Link>
+              </Menu.Item>
+
+              <Menu.Item 
+                key="5" 
+                icon={<SolutionOutlined />} 
+                onClick={() => setShowContent('human-resource')}
+                style={{ fontWeight: '200', color: 'black', }}
+              >
+                <Link to="/">HR</Link>
+              </Menu.Item>
+
+              <Menu.Item 
+                key="6" 
+                icon={<UserOutlined />} 
+                onClick={() => setShowContent('my-account')}
+                style={{ fontWeight: '200', color: 'black', marginRight: '30px' }}
+              >
+                <Link to="/">My Account</Link>
+              </Menu.Item>
+
+            </Menu>
+
+            {/* Search Bar starts here */}
+            <Search
+              placeholder="Search..."
+              onSearch={handleSearch()}
+              style={{
+                width: 200,
+              }}
+            />
+            {/* Search Bar ends here */}
+
+          </Header>
+
+          {/* Main Content starts here */}
+          <Content
+            className="site-layout-background"
+            style={{
+              margin: '24px 16px',
+              padding: 24,
+              minHeight: 280,
+              maxHeight: 500,
+              width: 'auto', 
+              height: 'auto',
+              // maxWidth: '100%',
+              fontFamily: 'Roboto, sans-serif', 
+              fontSize: '18px', 
+              fontWeight: "300",
+              lineHeight: "30px",
+              letterSpacing: "0.02em",
+              textAlign: "left",
+              alignItems: 'center', // horizontally center children
+              justifyContent: 'center', // vertically center children
+              height: '100vh', // or whatever height you want for the parent
+              backgroundColor: 'white',
+            }}
+          >
+            { handleClickNavigation() }
+
           
-        </Content>
-        {/* Main Content ends here */}
+            <Routes>
+              <Route path="/" component={Homepage}></Route>
+              <Route path="https://www.coohom.com/"></Route>
+              <Route path="/chat" element={ <Chat /> }></Route>
+              <Route path="/zoom" element={ <Zoom /> }></Route>
+              <Route path="https://calendar.google.com/calendar/"></Route>
+              <Route path="https://app.clickup.com/10643463/v/fm/a4u07-7291"></Route>
+              <Route path="/add-shortcut" element={ <AddShortcut /> }></Route>
 
-      </Layout>
-      {/* inner Layout ends here */}
+            </Routes>
+          
+            
+          </Content>
+          {/* Main Content ends here */}
 
-      <AddShortcutModal
-        isVisible={isAddShortcutVisible}
-        onClose={() => setIsAddShortcutVisible(false)}
-        onSave={handleSaveShortcut}
-      />
+        </Layout>
+        {/* inner Layout ends here */}
 
-    </Layout> 
+        <AddShortcutModal
+          isVisible={isAddShortcutVisible}
+          onClose={() => setIsAddShortcutVisible(false)}
+          onSave={handleSaveShortcut}
+        />
+
+      </Layout> 
+    </ConfigProvider>
 
   );
 };

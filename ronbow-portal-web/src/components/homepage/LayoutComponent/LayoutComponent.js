@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Layout, Menu, Input } from 'antd';
+import { Layout, Menu, Input, ConfigProvider } from 'antd';
 import {
     HomeOutlined, ScheduleOutlined, ContactsOutlined, ProjectOutlined, 
     DollarOutlined, FireOutlined, AntDesignOutlined, CommentOutlined, SettingOutlined, 
@@ -62,96 +62,103 @@ const LayoutComponent = ({ children }) => {
   };
 
   return (
-    <Layout style={{ minHeight: '100vh', backgroundColor: 'white' }}>
-      {/* Sider Menu */}
-        <Sider collapsible collapsed={collapsed} 
-              theme='light'
-              onCollapse={value => setCollapsed(value)}
-              style={{ marginTop: '50px', backgroundColor: 'white', }}      
-        >        
-            <Menu mode="inline" style={{ height: '100%', borderRight: 0 }}>
-            {defaultShortcuts.map((item) => (
-            <Menu.Item key={item.key} icon={item.icon} onClick={() => handleItemClick(item.key, item.path)}>
-              {item.label}
-            </Menu.Item>
-          ))}
-        </Menu>
-      </Sider>
-
-      {/* Main Content */}
-      <Layout style={{ padding: '0 5px 24px', backgroundColor: 'white' }}>
-        {/* Top Navigation Header */}
-        <Header className="site-layout-background custom-header" style={{ padding: 0, backgroundColor: 'white' }}>
-          <Menu mode='horizontal' defaultSelectedKeys={['1']}>
-            <Menu.Item 
-                key='1' icon={<ProjectOutlined />} 
-                onClick={() => setShowContent('dashboard')} 
-                style={{ fontWeight: '200',  color: 'black', }}>
-                <Link to="/">Dashboard</Link>
+    <ConfigProvider
+      theme={{token: {
+        colorPrimary: '#5D6465', colorSuccess: '#F0ECEC',
+      }}}
+    >
+        <Layout style={{ minHeight: '100vh', backgroundColor: 'white' }}>
+        {/* Sider Menu */}
+            <Sider collapsible collapsed={collapsed} 
+                theme='light'
+                onCollapse={value => setCollapsed(value)}
+                style={{ marginTop: '50px', backgroundColor: 'white', }}      
+            >        
+                <Menu mode="inline" style={{ height: '100%', borderRight: 0 }}>
+                {defaultShortcuts.map((item) => (
+                <Menu.Item key={item.key} icon={item.icon} onClick={() => handleItemClick(item.key, item.path)}>
+                {item.label}
                 </Menu.Item>
-                            
+            ))}
+            </Menu>
+        </Sider>
+
+        {/* Main Content */}
+        <Layout style={{ padding: '0 5px 24px', backgroundColor: 'white' }}>
+            {/* Top Navigation Header */}
+            <Header className="site-layout-background custom-header" style={{ padding: 0, backgroundColor: 'white' }}>
+            <Menu mode='horizontal' defaultSelectedKeys={['1']}>
                 <Menu.Item 
-                key="2" 
-                icon={<FundProjectionScreenOutlined />} 
-                onClick={() => setShowContent('project-list')} 
-                style={{ fontWeight: '200',  color: 'black', }}>
-                <Link to="/">Projects</Link>
-                </Menu.Item>
+                    key='1' icon={<ProjectOutlined />} 
+                    onClick={() => setShowContent('dashboard')} 
+                    style={{ fontWeight: '200',  color: 'black', }}>
+                    <Link to="/">Dashboard</Link>
+                    </Menu.Item>
+                                
+                    <Menu.Item 
+                    key="2" 
+                    icon={<FundProjectionScreenOutlined />} 
+                    onClick={() => setShowContent('project-list')} 
+                    style={{ fontWeight: '200',  color: 'black', }}>
+                    <Link to="/">Projects</Link>
+                    </Menu.Item>
 
-                <Menu.Item key='3' icon={<ReadOutlined />} onClick={() => setShowContent('resources')} style={{ fontWeight: '200',  color: 'black', }}>
-                <Link to="/">Resources</Link>
-                </Menu.Item>
+                    <Menu.Item key='3' icon={<ReadOutlined />} onClick={() => setShowContent('resources')} style={{ fontWeight: '200',  color: 'black', }}>
+                    <Link to="/">Resources</Link>
+                    </Menu.Item>
 
-                <Menu.Item 
-                key="4" 
-                icon={<BulbOutlined />} 
-                onClick={() => setShowContent('inspiration-space')}
-                style={{ fontWeight: '200', color: 'black', }}
-                >
-                <Link to="/">Inspiration</Link>
-                </Menu.Item>
+                    <Menu.Item 
+                    key="4" 
+                    icon={<BulbOutlined />} 
+                    onClick={() => setShowContent('inspiration-space')}
+                    style={{ fontWeight: '200', color: 'black', }}
+                    >
+                    <Link to="/">Inspiration</Link>
+                    </Menu.Item>
 
-                <Menu.Item 
-                key="5" 
-                icon={<SolutionOutlined />} 
-                onClick={() => setShowContent('human-resource')}
-                style={{ fontWeight: '200', color: 'black', }}
-                >
-                <Link to="/">HR</Link>
-                </Menu.Item>
+                    <Menu.Item 
+                    key="5" 
+                    icon={<SolutionOutlined />} 
+                    onClick={() => setShowContent('human-resource')}
+                    style={{ fontWeight: '200', color: 'black', }}
+                    >
+                    <Link to="/">HR</Link>
+                    </Menu.Item>
 
-                <Menu.Item 
-                key="6" 
-                icon={<UserOutlined />} 
-                onClick={() => setShowContent('my-account')}
-                style={{ fontWeight: '200', color: 'black', marginRight: '30px' }}
-                >
-                <Link to="/">My Account</Link>
-                </Menu.Item>
-          </Menu>
+                    <Menu.Item 
+                    key="6" 
+                    icon={<UserOutlined />} 
+                    onClick={() => setShowContent('my-account')}
+                    style={{ fontWeight: '200', color: 'black', marginRight: '30px' }}
+                    >
+                    <Link to="/">My Account</Link>
+                    </Menu.Item>
+            </Menu>
 
-          {/* Search Bar */}
-          <Search
-            placeholder="Search..."
-            onSearch={handleSearch}
-            style={{ width: 200 }}
-          />
-        </Header>
+            {/* Search Bar */}
+            <Search
+                placeholder="Search..."
+                onSearch={handleSearch}
+                style={{ width: 200 }}
+            />
+            </Header>
 
-        {/* Page Content */}
-        <Content
-          className="site-layout-background"
-          style={{
-            margin: '24px 16px',
-            padding: 24,
-            minHeight: 280,
-            backgroundColor: 'white',
-          }}
-        >
-          {children}
-        </Content>
-      </Layout>
-    </Layout>
+            {/* Page Content */}
+            <Content
+            className="site-layout-background"
+            style={{
+                margin: '24px 16px',
+                padding: 24,
+                minHeight: 280,
+                backgroundColor: 'white',
+            }}
+            >
+            {children}
+            </Content>
+        </Layout>
+        </Layout>
+    
+    </ConfigProvider>
   );
 };
 
