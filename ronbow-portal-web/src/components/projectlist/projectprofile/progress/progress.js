@@ -14,7 +14,6 @@ const App = () => (
       }
     }}
   >
-
     <>
       <Steps
         progressDot

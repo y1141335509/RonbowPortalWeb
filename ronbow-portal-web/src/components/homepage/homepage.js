@@ -136,7 +136,7 @@ const Homepage = () => {
   } = theme.useToken();
   return (
     
-      <Layout style={{ minHeight: '100vh', backgroundColor: 'white', }}>
+    <Layout style={{ minHeight: '100vh', backgroundColor: 'white', }}>
 
       <Sider collapsible collapsed={collapsed} 
             theme='light'
@@ -311,7 +311,7 @@ const Homepage = () => {
         onSave={handleSaveShortcut}
       />
 
-      </Layout> 
+    </Layout> 
 
   );
 };
