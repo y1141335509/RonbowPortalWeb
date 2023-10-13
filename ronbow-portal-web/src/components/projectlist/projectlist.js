@@ -77,7 +77,7 @@ const defaultData = [
                 style={{textDecoration: 'underline', }} 
               >
                 <Link to={`/project-profile/${624748504}`} target="_blank">
-                  <span style={{ textDecoration: 'underline' }}>Project 1</span>
+                  <span style={{ textDecoration: 'underline', color: '#5D6465' }}>Project 1</span>
                 </Link>
               </span> 
             </div>,
@@ -88,7 +88,7 @@ const defaultData = [
                 style={{textDecoration: 'underline', }} 
               >
                 <Link to={`/customer-profile/${624691229}`} target="_blank">
-                  <span style={{ textDecoration: 'underline' }}>Kevin</span>
+                  <span style={{ textDecoration: 'underline', color: '#5D6465' }}>Kevin</span>
                 </Link>
               </span> 
             </div>,
@@ -104,7 +104,7 @@ const defaultData = [
               style={{textDecoration: 'underline', }} 
             >
               <Link to={`/project-profile/${624691229}`} target="_blank">
-                <span style={{ textDecoration: 'underline' }}>Project 2</span>
+                <span style={{ textDecoration: 'underline', color: '#5D6465' }}>Project 2</span>
               </Link>
             </span> 
           </div>,
@@ -116,7 +116,7 @@ const defaultData = [
                 style={{textDecoration: 'underline', }} 
               >
                 <Link to={`/customer-profile/${624691229}`} target="_blank">
-                  <span style={{ textDecoration: 'underline' }}>John</span>
+                  <span style={{ textDecoration: 'underline', color: '#5D6465' }}>John</span>
                 </Link>
               </span> 
             </div>,
