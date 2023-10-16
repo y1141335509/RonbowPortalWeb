@@ -109,7 +109,7 @@ const Homepage = () => {
     const paths = {
       '1': '/',
       '2': 'https://designstudio.ronbow.com/',
-      '3': 'https://www.zoom.com/en/products/team-chat/',
+      '3': 'https://slack.com',
       '4': 'https://zoom.us/meeting',
       '5': 'https://calendar.google.com/calendar/',
       '6': 'https://app.clickup.com/10643463/v/fm/a4u07-7291',
