@@ -76,7 +76,7 @@ const defaultData = [
               <span 
                 style={{textDecoration: 'underline', }} 
               >
-                <Link to={`/project-profile/${624748504}`} target="_blank">
+                <Link to={`/project-list/${624748504}`} target="_blank">
                   <span style={{ textDecoration: 'underline', color: '#5D6465' }}>Project 1</span>
                 </Link>
               </span> 
@@ -87,7 +87,7 @@ const defaultData = [
               <span 
                 style={{textDecoration: 'underline', }} 
               >
-                <Link to={`/customer-profile/${624691229}`} target="_blank">
+                <Link to={`/customer-list/${624691229}`} target="_blank">
                   <span style={{ textDecoration: 'underline', color: '#5D6465' }}>Kevin</span>
                 </Link>
               </span> 
