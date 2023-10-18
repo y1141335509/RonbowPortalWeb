@@ -10,11 +10,9 @@ import {
 import { Link, useNavigate } from 'react-router-dom';
 import MyAccount from '../MyAccount/MyAccount';
 import InspirationSpace from '../Inspiration/Inspiration';
-import HumanResource from '../HumanResource/HumanResource';
-// import Dashboard from '../../components/dashboard/dashboard';
 import KnowledgeBase from '../Resource/Resources';
 import ProjectList from '../ProjectList/ProjectList';
-// import AddShortcutModal from '../homepage/addshortcuts/addshortcuts';
+
 
 
 
@@ -209,15 +207,6 @@ const LayoutComponent = ({ children }) => {
 
               <Menu.Item
                 key="5"
-                icon={<SolutionOutlined />}
-                onClick={() => setShowContent('human-resource')}
-                style={{ fontWeight: '200', color: 'black', }}
-              >
-                <Link to="/human-resource">HR</Link>
-              </Menu.Item>
-
-              <Menu.Item
-                key="6"
                 icon={<UserOutlined />}
                 onClick={() => setShowContent('my-account')}
                 style={{ fontWeight: '200', color: 'black', marginRight: '30px' }}

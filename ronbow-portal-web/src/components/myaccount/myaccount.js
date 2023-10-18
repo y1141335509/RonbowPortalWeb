@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Form, Input, Button, Avatar, ConfigProvider, } from 'antd';
+import { Form, Input, Button, Avatar, ConfigProvider, Divider, } from 'antd';
 import './MyAccount.css';
-
+import HumanResource from './HumanResource/HumanResource';
 
 
 const { TextArea } = Input;
@@ -37,9 +37,10 @@ const MyAccount = () => {
         }
       }}
     >
-      <div className="account-container">
-        <Avatar size={64} style={{ color: '#464F50', backgroundColor: '#F0ECEC' }}>
-          KR
+      <div className="account-container" >
+        <Avatar size={64} 
+              style={{ color: '#464F50', backgroundColor: '#F0ECEC', }}
+        >KR
         </Avatar>
         <Form layout="vertical" onFinish={handleSubmit}>
           <Form.Item label="Current Password" >
@@ -70,6 +71,10 @@ const MyAccount = () => {
             </Button>
           </Form.Item>
         </Form>
+
+        <Divider />
+
+        <HumanResource />
       </div>
 
     </ConfigProvider>
