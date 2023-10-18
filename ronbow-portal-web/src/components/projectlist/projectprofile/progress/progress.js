@@ -1,7 +1,7 @@
 import React from 'react';
 import { Divider, Steps, Checkbox, ConfigProvider, } from 'antd';
-import ProgressCheckbox from './progresscheckbox/progresscheckbox';
-import './progress.css';
+import ProgressCheckbox from './ProgressCheckbox/ProgressCheckbox';
+import './Progress.css';
 
 
 

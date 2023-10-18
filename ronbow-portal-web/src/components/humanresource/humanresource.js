@@ -3,8 +3,8 @@ import { Button, Divider, Upload, message, Dropdown, Menu, ConfigProvider, } fro
 import { ExportOutlined, FilterOutlined, SearchOutlined, DownloadOutlined, 
   ToolOutlined, PrinterOutlined, MailOutlined 
 } from '@ant-design/icons';
-import Commission from './commission/commission';
-import './humanresource.css';
+import Commission from './Commission/Commission';
+import './HumanResource.css';
 
 
 

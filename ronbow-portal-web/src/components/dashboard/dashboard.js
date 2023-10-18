@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Input, List, Button, Checkbox, Divider, DatePicker } from 'antd';
 import moment from 'moment';
-import './dashboard.css';
+import './Dashboard.css';
 import { ExportOutlined, FilterOutlined, SearchOutlined, DownloadOutlined, 
   ToolOutlined, PrinterOutlined, MailOutlined 
 } from '@ant-design/icons';
-import IndustryNews from './industrynews/industrynews';
+import IndustryNews from './IndustryNews/IndustryNews';
 import SalesTargetBar from './SalesTargetBar/SalesTargetBar';
 
 

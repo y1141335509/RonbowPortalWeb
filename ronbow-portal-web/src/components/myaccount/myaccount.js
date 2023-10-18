@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Form, Input, Button, Avatar, ConfigProvider, } from 'antd';
-import './myaccount.css';
+import './MyAccount.css';
 
 
 

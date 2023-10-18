@@ -1,6 +1,6 @@
 import React from 'react';
 import { Table, Divider, Tag } from 'antd';
-import './commission.css';
+import './Commission.css';
 
 
 

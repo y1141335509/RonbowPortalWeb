@@ -1,4 +1,4 @@
-import './inspiration.css';
+import './Inspiration.css';
 import React from 'react';
 import { Card, Tag, Button, ConfigProvider, } from 'antd';
 import { FilterOutlined, SearchOutlined } from '@ant-design/icons';

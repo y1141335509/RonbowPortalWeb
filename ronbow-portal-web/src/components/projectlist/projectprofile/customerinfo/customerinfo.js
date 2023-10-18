@@ -1,5 +1,8 @@
 import React from 'react';
 import { Avatar, List } from 'antd';
+import './CustomerInfo.css';
+
+
 const data = [
   {
     name: 'Kevin Lee',
