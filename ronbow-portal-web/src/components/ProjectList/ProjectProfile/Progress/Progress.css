@@ -1,0 +1,22 @@
+:where(.css-dev-only-do-not-override-pr0fja).ant-steps.ant-steps-navigation .ant-steps-item::before {
+    background-color: black;
+}
+
+:where(.css-dev-only-do-not-override-pr0fja).ant-steps.ant-steps-small .ant-steps-item-icon {
+    background-color: #F0ECEC;
+}
+
+:where(.css-dev-only-do-not-override-pr0fja)[class^="ant-steps"] [class^="ant-steps"], :where(.css-dev-only-do-not-override-pr0fja)[class*=" ant-steps"] [class^="ant-steps"], :where(.css-dev-only-do-not-override-pr0fja)[class^="ant-steps"] [class*=" ant-steps"], :where(.css-dev-only-do-not-override-pr0fja)[class*=" ant-steps"] [class*=" ant-steps"] {
+    color: #5D6465;
+}
+
+
+:where(.css-dev-only-do-not-override-pr0fja).ant-steps .ant-steps-item:not(.ant-steps-item-active)>.ant-steps-item-container[role='button'] .ant-steps-item-title, :where(.css-dev-only-do-not-override-pr0fja).ant-steps .ant-steps-item:not(.ant-steps-item-active)>.ant-steps-item-container[role='button'] .ant-steps-item-subtitle, :where(.css-dev-only-do-not-override-pr0fja).ant-steps .ant-steps-item:not(.ant-steps-item-active)>.ant-steps-item-container[role='button'] .ant-steps-item-description, :where(.css-dev-only-do-not-override-pr0fja).ant-steps .ant-steps-item:not(.ant-steps-item-active)>.ant-steps-item-container[role='button'] .ant-steps-item-icon .ant-steps-icon {
+    transition: color 0.3s;
+    color: #5D6465;
+}
+
+
+
+
+
