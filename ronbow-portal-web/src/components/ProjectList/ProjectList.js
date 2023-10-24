@@ -6,7 +6,7 @@ import {
   ProCard,
   ProFormField,
 } from '@ant-design/pro-components';
-import { Button, Form, Input, Space, Tag } from 'antd';
+import { Button, Form, Input, Space, Tag, Divider, ConfigProvider } from 'antd';
 import { Link, Routes, Route } from 'react-router-dom';
 import ProjectProfile from './ProjectProfile/ProjectProfile';
 
@@ -75,7 +75,7 @@ const defaultData = [
         style={{ textDecoration: 'underline', }}
       >
         <Link to={`/project-list/proj/${624748504}`} target="_blank">
-          <span style={{ textDecoration: 'underline', color: '#5D6465' }}>Project 1</span>
+          <span style={{ textDecoration: 'underline', color: '#5D6465' }}>Kevin's Kitchen - Palo Alto</span>
         </Link>
       </span>
     </div>,
@@ -94,22 +94,22 @@ const defaultData = [
     designer: 'Wendy',
     ETA: 'TBD',
     address: '7150 Patterson Pass Rd # F, Livermore, CA 94550',
-    created_at: 1590486176000,
+    created_at: '2023/10/10',
   },
   {
     id: 624691229,
-    title: <div key='1'>
+    title: <div key='2'>
       <span
         style={{ textDecoration: 'underline', }}
       >
         <Link to={`/project-list/proj${624691229}`} target="_blank">
-          <span style={{ textDecoration: 'underline', color: '#5D6465' }}>Project 2</span>
+          <span style={{ textDecoration: 'underline', color: '#5D6465' }}>John's Wet Bar - San Mateo</span>
         </Link>
       </span>
     </div>,
     labels: [{ key: 'man', label: 'L-shape' }],
-    state: 'closed',
-    client: <div key='1'>
+    state: 'default',
+    client: <div key='2'>
       <span
         style={{ textDecoration: 'underline', }}
       >
@@ -122,7 +122,35 @@ const defaultData = [
     designer: 'Wendy',
     ETA: '9/16',
     address: '680 8th St Suite 166, San Francisco, CA 94103',
-    created_at: 1590481162000,
+    created_at: '2023/9/5',
+  },
+  {
+    id: 624691230,
+    title: <div key='3'>
+      <span
+        style={{ textDecoration: 'underline', }}
+      >
+        <Link to={`/project-list/proj${624691230}`} target="_blank">
+          <span style={{ textDecoration: 'underline', color: '#5D6465' }}>Kitty's Closet - Cupertino</span>
+        </Link>
+      </span>
+    </div>,
+    labels: [{ key: 'man', label: 'L-shape' }],
+    state: 'closed',
+    client: <div key='3'>
+      <span
+        style={{ textDecoration: 'underline', }}
+      >
+        <Link to={`/project-list/cust/${624691230}`} target="_blank">
+          <span style={{ textDecoration: 'underline', color: '#5D6465' }}>Kitty</span>
+        </Link>
+      </span>
+    </div>,
+    tradePro: 'trade pro 3',
+    designer: 'Wendy',
+    ETA: '8/16',
+    address: '19479 Stevens Creek Blvd #110, Cupertino, CA 95014',
+    created_at: '2023/8/5',
   },
 ];
 
@@ -147,8 +175,12 @@ const columns = [
     valueType: 'select',
     valueEnum: {
       all: { text: '全部', status: 'Default' },
-      open: {
+      default: {
         text: 'Designing',
+        status: 'Processing',
+      },
+      open: {
+        text: 'New Lead',
         status: 'Error',
       },
       closed: {
@@ -170,7 +202,6 @@ const columns = [
         },
       ],
     },
-
     renderFormItem: (_, { isEditable }) => {
       return isEditable ? <TagList /> : <Input />;
     },
@@ -210,7 +241,11 @@ const columns = [
     dataIndex: 'address',
     width: '23%',
   },
-
+  {
+    title: 'Created Time',
+    dataIndex: 'created_at',
+    width: '15%',
+  }
 ];
 
 const EditableTable = () => {
@@ -219,37 +254,44 @@ const EditableTable = () => {
   const [dataSource, setDataSource] = useState([]);
   const [form] = Form.useForm();
   return (
-    <>
+    <ConfigProvider
+      theme={{
+        token: {
+          colorPrimary: '#5D6465', colorSuccess: '#F0ECEC', colorDefault: '#bae637', 
+        }
+      }}
+    >
+      <>
+        <EditableProTable
+          rowKey="id"
+          scroll={{
+            x: 960,
+          }}
+          actionRef={actionRef}
+          headerTitle="Project List"
+          maxLength={5}
+          recordCreatorProps={false}
+          columns={columns}
+          request={async () => ({
+            data: defaultData,
+            total: 3,
+            success: true,
+          })}
+          value={dataSource}
+          onChange={setDataSource}
+          editable={{
+            form,
+            editableKeys,
+            onSave: async () => {
+              await waitTime(2000);
+            },
+            onChange: setEditableRowKeys,
+            actionRender: (row, config, dom) => [dom.save, dom.cancel],
+          }}
+        />
+      </>
+    </ConfigProvider>
 
-      <EditableProTable
-        rowKey="id"
-        scroll={{
-          x: 960,
-        }}
-        actionRef={actionRef}
-        headerTitle="Project List"
-        maxLength={5}
-        recordCreatorProps={false}
-        columns={columns}
-        request={async () => ({
-          data: defaultData,
-          total: 3,
-          success: true,
-        })}
-        value={dataSource}
-        onChange={setDataSource}
-        editable={{
-          form,
-          editableKeys,
-          onSave: async () => {
-            await waitTime(2000);
-          },
-          onChange: setEditableRowKeys,
-          actionRender: (row, config, dom) => [dom.save, dom.cancel],
-        }}
-      />
-
-    </>
   );
 };
 

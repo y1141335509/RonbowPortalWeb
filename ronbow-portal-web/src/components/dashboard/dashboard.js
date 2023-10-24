@@ -1,17 +1,23 @@
 import React, { useState } from 'react';
-import { Input, List, Button, Checkbox, Divider, DatePicker } from 'antd';
+import { Input, List, Button, Checkbox, Divider, DatePicker, Tag, Select, } from 'antd';
 import moment from 'moment';
 import './Dashboard.css';
 import { ExportOutlined, FilterOutlined, SearchOutlined, DownloadOutlined, 
   ToolOutlined, PrinterOutlined, MailOutlined 
 } from '@ant-design/icons';
+import dayjs from 'dayjs';
 import IndustryNews from './IndustryNews/IndustryNews';
 import SalesTargetBar from './SalesTargetBar/SalesTargetBar';
 
 
+const dateFormat = 'YYYY/MM/DD';
 
 const App = () => {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState([
+    {text: <a href="./project-list/proj/624748504" target="_blank">Kevin's Kitchen - Palo Alto</a>, tag: 'Project', completed: 'false', deadline: dayjs('2023/10/01', dateFormat) },
+    {text: <a href="https://calendar.google.com/calendar/u/0/r" target="_blank">John's Wet Bar - San Mateo</a>, tag:'New Leads', completed: 'false', deadline: dayjs('2023/10/03', dateFormat) },
+    {text: <a href="https://designstudio.ronbow.com/" target="_blank">Kitty's Closet - Cupertino</a>, tag: 'Meeting', completed: 'false', deadline: dayjs('2023/10/05', dateFormat) },
+  ]);
   const [input, setInput] = useState('');
   const [showCompleted, setShowCompleted] = useState(true);
 
@@ -93,16 +99,40 @@ const App = () => {
                   >
                   {todo.text}
                   </Checkbox>
-                  <DatePicker
-                  value={todo.deadline}
-                  onChange={(date) => setDeadline(index, date)}
-                  className={
-                      todo.deadline && moment(todo.deadline).isBefore(moment("2023/10/10")) 
-                      ? 'redDate' 
-                      : ''
-                  }
-                  style={{ marginLeft: '15px' }}
-                  />
+                  <div>
+                    <Select
+                      defaultValue={""}
+                      value={todo.tag}
+                      style={{
+                        width: 150,
+                      }}
+                      allowClear
+                      options={[
+                        {
+                          value: 'new_leads',
+                          label: 'New Leads',
+                        },
+                        {
+                          value: 'finalize_design',
+                          label: 'Finalize Design',
+                        },
+                        {
+                          value: 'project',
+                          label: 'Project',
+                        },
+                      ]}
+                    />
+                    <DatePicker
+                    value={todo.deadline}
+                    onChange={(date) => setDeadline(index, date)}
+                    className={
+                        todo.deadline && moment(todo.deadline).isBefore(moment("2023/10/10")) 
+                        ? 'redDate' 
+                        : ''
+                    }
+                    style={{ marginLeft: '15px' }}
+                    />
+                  </div>
               </List.Item>
             )}
         />

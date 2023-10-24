@@ -8,6 +8,7 @@ import LayoutComponent from './components/LayoutComponent/LayoutComponent.js';
 import Dashboard from './components/Dashboard/Dashboard.js';
 import Resource from './components/Resource/Resources.js';
 import Inspiration from './components/Inspiration/Inspiration.js';
+import Showroom from './components/Showroom/Showroom.js';
 import MyAccount from './components/MyAccount/MyAccount.js';
 
 
@@ -33,6 +34,7 @@ const App = () => {
 
           <Route path="/resources" element={<Resource />} />
           <Route path="/inspiration-space" element={<Inspiration />} />
+          <Route path="/showroom" element={<Showroom />} />
           <Route path="/my-account" element={<MyAccount />} />
 
         </Routes>

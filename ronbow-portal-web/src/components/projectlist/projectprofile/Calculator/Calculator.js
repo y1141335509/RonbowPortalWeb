@@ -39,6 +39,38 @@ const menu = (
 
 
 
+const handleInstallation1 = () => {
+  document.getElementById('installation-fee').value = '0';
+  // window.location.href = "mailto:example@gmail.com";
+};
+
+const handleInstallation2 = () => {
+  // window.open("URL_TO_PDF", '_blank').print();
+  document.getElementById('installation-fee').value = '299';
+};
+
+const handleInstallation3 = () => {
+  document.getElementById('installation-fee').value = '599';
+  // window.open("https://cdn.ronbow.com/resources/Ronbow-Company-Profile-V6.pdf", '_blank');
+};
+
+const installation_menu = (
+  <Menu>
+     <Menu.Item key="1" onClick={handleInstallation1}>
+      None: $0
+    </Menu.Item>
+    <Menu.Item key="2" onClick={handleInstallation2}>
+      Basic: $299
+    </Menu.Item>
+    <Menu.Item key="3" onClick={handleInstallation3}>
+      Premium: $599
+    </Menu.Item>
+   
+  </Menu>
+);
+
+
+
 const PriceCalculator = () => {
   const [form] = Form.useForm();
   const [finalPrice, setFinalPrice] = useState(null);
@@ -64,7 +96,8 @@ const PriceCalculator = () => {
       const { quote, customerDiscount, tradeProDiscount, } = values;
       const tax = parseFloat(document.getElementById('city-tax').value);
       const delivery = parseFloat(document.getElementById('delivery-fee').value);
-      const result = quote * (1 - customerDiscount/100 - tradeProDiscount/100) * (1 + tax/100) + delivery;
+      const installation = parseFloat(document.getElementById('installation-fee').value);
+      const result = quote * (1 - customerDiscount/100 - tradeProDiscount/100) * (1 + tax/100) + delivery + installation;
       setFinalPrice(result.toFixed(2));
     });
   };
@@ -81,15 +114,19 @@ const PriceCalculator = () => {
       }}
     >
       <Form form={form} layout="vertical" initialValues={{ quote: 60000 }}>
+        
         <Form.Item label="Quote ($)" name="quote">
           <InputNumber disabled style={{ width: '100%' }} />
         </Form.Item>
+
         <Form.Item label="Customer Discount (%)" name="customerDiscount" initialValue={0}>
           <InputNumber min={0} max={100} style={{ width: '100%' }} />
         </Form.Item>
+
         <Form.Item label="Trade Pro Discount (%)" name="tradeProDiscount" initialValue={0}>
           <InputNumber min={0} max={100} style={{ width: '100%' }} />
         </Form.Item>
+
         <Form.Item label="Tax (%)" name="tax" initialValue={0} style={{ width: '100%', }}>
           <InputNumber min={0} max={100}  id={'city-tax'}
             style={{ width: '10%', marginRight: '1%', float: 'left', }} 
@@ -105,6 +142,7 @@ const PriceCalculator = () => {
             <Radio.Button value="San Jose">San Jose</Radio.Button>
           </Radio.Group>
         </Form.Item>
+
         <Form.Item label="Delivery ($)" name="delivery" initialValue={0} style={{ textAlign: 'left' }}>
           <span >$</span>
           <InputNumber min={0} style={{ width: '15%', marginRight: '2%', }} disabled id={'delivery-fee'} />
@@ -118,7 +156,20 @@ const PriceCalculator = () => {
           </Button>
         </Dropdown>
         </Form.Item>
-        
+
+        <Form.Item label="Installation ($)" name="installation" initialValue={0} style={{ textAlign: 'left' }}>
+          <span >$</span>
+          <InputNumber min={0} style={{ width: '15%', marginRight: '2%', }} disabled id={'installation-fee'} />
+          <Dropdown overlay={installation_menu} trigger={['click']}>
+          <Button 
+            size='large' 
+            icon={<DownOutlined />}
+            style={{ backgroundColor: '#fff', color: '#5D6465', marginLeft: '10px', }}
+          >
+            Select Plan
+          </Button>
+        </Dropdown>
+        </Form.Item>
 
         <br />
         

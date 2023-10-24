@@ -4,14 +4,10 @@ import {
   HomeOutlined, ScheduleOutlined, ContactsOutlined, ProjectOutlined,
   DollarOutlined, FireOutlined, AntDesignOutlined, CommentOutlined, SettingOutlined,
   UserOutlined, ToolOutlined, BookOutlined, CustomerServiceOutlined, ExportOutlined,
-  VideoCameraOutlined, PlusSquareOutlined, ReadOutlined, CheckCircleOutlined,
+  VideoCameraOutlined, PlusSquareOutlined, ReadOutlined, CheckCircleOutlined, 
   FundProjectionScreenOutlined, BulbOutlined, SolutionOutlined, FormOutlined, TableOutlined
 } from '@ant-design/icons';
 import { Link, useNavigate } from 'react-router-dom';
-import MyAccount from '../MyAccount/MyAccount';
-import InspirationSpace from '../Inspiration/Inspiration';
-import KnowledgeBase from '../Resource/Resources';
-import ProjectList from '../ProjectList/ProjectList';
 
 
 
@@ -56,6 +52,7 @@ const LayoutComponent = ({ children }) => {
   const handleItemClick = key => {
     setSelectedKey(key);
 
+    // paths defines the sider menu navigations
     const paths = {
       '1': '/',
       '2': 'https://designstudio.ronbow.com/',
@@ -207,6 +204,15 @@ const LayoutComponent = ({ children }) => {
 
               <Menu.Item
                 key="5"
+                icon={<HomeOutlined />}
+                onClick={() => setShowContent('showroom')}
+                style={{ fontWeight: '200', color: 'black', }}
+              >
+                <Link to="/showroom">Showroom</Link>
+              </Menu.Item>
+
+              <Menu.Item
+                key="6"
                 icon={<UserOutlined />}
                 onClick={() => setShowContent('my-account')}
                 style={{ fontWeight: '200', color: 'black', marginRight: '30px' }}

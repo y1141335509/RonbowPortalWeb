@@ -1,9 +1,9 @@
 import React from 'react';
-import { Collapse, Divider, Button, ConfigProvider, Menu, Dropdown, Steps } from 'antd';
+import { Collapse, Divider, Button, ConfigProvider, Menu, Dropdown, Image, QRCode, } from 'antd';
 import './ProjectProfile.css';
 import {
   ExportOutlined, FilterOutlined, SearchOutlined, DownloadOutlined,
-  ToolOutlined, PrinterOutlined, MailOutlined
+  ToolOutlined, PrinterOutlined, MailOutlined, UserOutlined,
 } from '@ant-design/icons';
 import Progress from './Progress/Progress';
 import Zoom from '../../Zoom/Zoom';
@@ -108,6 +108,10 @@ const handleDownload = () => {
   window.open("https://cdn.ronbow.com/resources/Ronbow-Company-Profile-V6.pdf", '_blank');
 };
 
+const handleUserSignon = () => {
+  window.open("https://auth.services.adobe.com/en_US/index.html?callback=https%3A%2F%2Fims-na1.adobelogin.com%2Fims%2Fadobeid%2Fdc-prod-virgoweb%2FAdobeID%2Ftoken%3Fredirect_uri%3Dhttps%253A%252F%252Facrobat.adobe.com%252Flink%252Fhome%252F%2523old_hash%253Daccess_token%253DeyJhbGciOiJSUzI1NiIsIng1dSI6Imltc19uYTEta2V5LWF0LTEuY2VyIiwia2lkIjoiaW1zX25hMS1rZXktYXQtMSIsIml0dCI6ImF0In0.eyJpZCI6IjE2OTgxMzEzNDI0MjZfNWFhNGU4M2ItOTVkYy00NzVlLWI5NGYtMmIzNzlmMmRkMjU5X3V3MiIsInR5cGUiOiJhY2Nlc3NfdG9rZW4iLCJjbGllbnRfaWQiOiJvY193ZWxjb21lIiwidXNlcl9pZCI6IjcyMkIxREFBNjUwMzk0QjAwQTQ5NUZFREBiMTRlNDBkMTYxYWE4YzdhNDk1ZmRiLmUiLCJzdGF0ZSI6IiIsImFzIjoiaW1zLW5hMSIsImFhX2lkIjoiNzIyQTFEQUE2NTAzOTRCMDBBNDk1RkVEQEFkb2JlSUQiLCJjdHAiOjAsImZnIjoiWDRORTI3QUZGUFA1TUhVS0hNUVZZSEFBVlk9PT09PT0iLCJzaWQiOiIxNjk0NzMzODI0OTc2XzY2MzNkZjZkLTJjNmYtNGFkNy05ZGQ0LTMxNDMyZTMxODcyMV91dzIiLCJtb2kiOiI4Y2QwY2YxNyIsInBiYSI6Ik1lZFNlY05vRVYsTG93U2VjIiwiZXhwaXJlc19pbiI6Ijg2NDAwMDAwIiwic2NvcGUiOiJBZG9iZUlELG9wZW5pZCIsImNyZWF0ZWRfYXQiOiIxNjk4MTMxMzQyNDI2In0.OuGHeeHNGVzZApZK_QcbBaGMj6Gh45BemBAMfbpMoZPxsujIMC6wwZ6f9lET6khDBYw6o4lRpHIitpy7yol2TlZ3B-Z10x_5C2CS4XwJLR-uXqMky10nGIkV0DOIYYdutwCwnf1NVuu5bjdfW1M7TeEVddVwlEIErbmVilmDr0M4hNW87xuxJsLC-f2OFiFZzY9g8seaWNF5wX_ogghrxl8atkjqfOKbqOQHn9ikcDdDiie8RT0066sCjydhbfU7ERKQRWROw4RerAVUia_faKcZGJGht-0M11MxIIqZLxyqOWyriMPvczYwDY53vfwvBWt7gNENvnoixOD08PFmHg%2526token_type%253Dbearer%2526expires_in%253D86399996%2526from_ims%253Dtrue%253Fclient_id%253Ddc-prod-virgoweb%2526api%253Dauthorize%2526scope%253DAdobeID%252Copenid%252CDCAPI%252Cadditional_info.account_type%252Cadditional_info.optionalAgreements%252Cagreement_sign%252Cagreement_send%252Csign_library_write%252Csign_user_read%252Csign_user_write%252Cagreement_read%252Cagreement_write%252Cwidget_read%252Cwidget_write%252Cworkflow_read%252Cworkflow_write%252Csign_library_read%252Csign_user_login%252Csao.ACOM_ESIGN_TRIAL%252Cee.dcweb%252Ctk_platform%252Ctk_platform_sync%252Cab.manage%252Cadditional_info.incomplete%252Cadditional_info.creation_source%252Cadditional_info.roles%252Cupdate_profile.first_name%252Cupdate_profile.last_name%26state%3D%257B%2522ac%2522%253A%2522adobe.com_acrobatweb_login%2522%252C%2522jslibver%2522%253A%2522v2-v0.38.0-17-g633319d%2522%252C%2522nonce%2522%253A%25221474989075291272%2522%257D%26code_challenge_method%3Dplain%26use_ms_for_expiry%3Dtrue&client_id=dc-prod-virgoweb&scope=AdobeID%2Copenid%2CDCAPI%2Cadditional_info.account_type%2Cadditional_info.optionalAgreements%2Cagreement_sign%2Cagreement_send%2Csign_library_write%2Csign_user_read%2Csign_user_write%2Cagreement_read%2Cagreement_write%2Cwidget_read%2Cwidget_write%2Cworkflow_read%2Cworkflow_write%2Csign_library_read%2Csign_user_login%2Csao.ACOM_ESIGN_TRIAL%2Cee.dcweb%2Ctk_platform%2Ctk_platform_sync%2Cab.manage%2Cadditional_info.incomplete%2Cadditional_info.creation_source%2Cadditional_info.roles%2Cupdate_profile.first_name%2Cupdate_profile.last_name&state=%7B%22ac%22%3A%22adobe.com_acrobatweb_login%22%2C%22jslibver%22%3A%22v2-v0.38.0-17-g633319d%22%2C%22nonce%22%3A%221474989075291272%22%7D&relay=a86a94fa-1a7e-4e55-b573-18c04043a7f5&locale=en_US&flow_type=token&dctx_id=v%3A2%2Cs%2C6eca5110-6cfa-11ed-b11c-3982bff8dfd0&idp_flow_type=login&s_p=google%2Cfacebook%2Capple&check_pba=true&response_type=token&code_challenge_method=plain&redirect_uri=https%3A%2F%2Facrobat.adobe.com%2Flink%2Fhome%2F%23old_hash%3Daccess_token%3DeyJhbGciOiJSUzI1NiIsIng1dSI6Imltc19uYTEta2V5LWF0LTEuY2VyIiwia2lkIjoiaW1zX25hMS1rZXktYXQtMSIsIml0dCI6ImF0In0.eyJpZCI6IjE2OTgxMzEzNDI0MjZfNWFhNGU4M2ItOTVkYy00NzVlLWI5NGYtMmIzNzlmMmRkMjU5X3V3MiIsInR5cGUiOiJhY2Nlc3NfdG9rZW4iLCJjbGllbnRfaWQiOiJvY193ZWxjb21lIiwidXNlcl9pZCI6IjcyMkIxREFBNjUwMzk0QjAwQTQ5NUZFREBiMTRlNDBkMTYxYWE4YzdhNDk1ZmRiLmUiLCJzdGF0ZSI6IiIsImFzIjoiaW1zLW5hMSIsImFhX2lkIjoiNzIyQTFEQUE2NTAzOTRCMDBBNDk1RkVEQEFkb2JlSUQiLCJjdHAiOjAsImZnIjoiWDRORTI3QUZGUFA1TUhVS0hNUVZZSEFBVlk9PT09PT0iLCJzaWQiOiIxNjk0NzMzODI0OTc2XzY2MzNkZjZkLTJjNmYtNGFkNy05ZGQ0LTMxNDMyZTMxODcyMV91dzIiLCJtb2kiOiI4Y2QwY2YxNyIsInBiYSI6Ik1lZFNlY05vRVYsTG93U2VjIiwiZXhwaXJlc19pbiI6Ijg2NDAwMDAwIiwic2NvcGUiOiJBZG9iZUlELG9wZW5pZCIsImNyZWF0ZWRfYXQiOiIxNjk4MTMxMzQyNDI2In0.OuGHeeHNGVzZApZK_QcbBaGMj6Gh45BemBAMfbpMoZPxsujIMC6wwZ6f9lET6khDBYw6o4lRpHIitpy7yol2TlZ3B-Z10x_5C2CS4XwJLR-uXqMky10nGIkV0DOIYYdutwCwnf1NVuu5bjdfW1M7TeEVddVwlEIErbmVilmDr0M4hNW87xuxJsLC-f2OFiFZzY9g8seaWNF5wX_ogghrxl8atkjqfOKbqOQHn9ikcDdDiie8RT0066sCjydhbfU7ERKQRWROw4RerAVUia_faKcZGJGht-0M11MxIIqZLxyqOWyriMPvczYwDY53vfwvBWt7gNENvnoixOD08PFmHg%26token_type%3Dbearer%26expires_in%3D86399996%26from_ims%3Dtrue%3Fclient_id%3Ddc-prod-virgoweb%26api%3Dauthorize%26scope%3DAdobeID%2Copenid%2CDCAPI%2Cadditional_info.account_type%2Cadditional_info.optionalAgreements%2Cagreement_sign%2Cagreement_send%2Csign_library_write%2Csign_user_read%2Csign_user_write%2Cagreement_read%2Cagreement_write%2Cwidget_read%2Cwidget_write%2Cworkflow_read%2Cworkflow_write%2Csign_library_read%2Csign_user_login%2Csao.ACOM_ESIGN_TRIAL%2Cee.dcweb%2Ctk_platform%2Ctk_platform_sync%2Cab.manage%2Cadditional_info.incomplete%2Cadditional_info.creation_source%2Cadditional_info.roles%2Cupdate_profile.first_name%2Cupdate_profile.last_name&use_ms_for_expiry=true#/", '_blank');
+};
+
 const menu = (
   <Menu>
     <Menu.Item key="1" icon={<DownloadOutlined />} onClick={handleDownload}>
@@ -118,6 +122,9 @@ const menu = (
     </Menu.Item>
     <Menu.Item key="3" icon={<MailOutlined />} onClick={handleEmailUs}>
       Email Customer
+    </Menu.Item>
+    <Menu.Item key="4" icon={<UserOutlined />} onClick={handleUserSignon}>
+      Sign On
     </Menu.Item>
 
   </Menu>
@@ -226,19 +233,56 @@ const ProjectProfile = () => (
 
         <Calculator />
         <Divider />
+      </div>
 
-        <Dropdown overlay={menu} trigger={['click']}>
-          <Button
-            size='large'
-            icon={<DownloadOutlined />}
-            style={{ backgroundColor: '#fff', color: '#5D6465', marginLeft: '10px', }}
-          >
-            Files
-          </Button>
-        </Dropdown>
+      <div>
+        <span style={{
+          fontFamily: 'Roboto, sans-serif', fontSize: '18px', fontWeight: '300',
+          lineHeight: '30px', letterSpacing: '0.02em', textAlign: 'left',
+          backgroundColor: 'white', paddingTop: '20px', paddingBottom: '10px',
+        }}>
+        Signature</span>    <br />
+
+        <div style={{ textAlign: 'center', }}>
+          <Dropdown overlay={menu} trigger={['click']}>
+            <Button
+              size='large'
+              icon={<DownloadOutlined />}
+              style={{ backgroundColor: '#fff', color: '#5D6465', marginLeft: '10px', }}
+            >
+              Files
+            </Button>
+          </Dropdown>
+        </div>
       </div>
 
 
+      <Divider />
+      
+      <div>
+        <span style={{
+          fontFamily: 'Roboto, sans-serif', fontSize: '18px', fontWeight: '300',
+          lineHeight: '30px', letterSpacing: '0.02em', textAlign: 'left',
+          backgroundColor: 'white', paddingTop: '20px', paddingBottom: '10px',
+        }}>
+        Payment</span>        
+        <div style={{ textAlign: 'center', }}>
+          <QRCode
+            errorLevel="H"
+            value="https://ant.design/"
+            icon="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg"
+          />
+          <Button style={{ marginRight: '20px', }}>
+            Pay Now
+          </Button>
+          <Button style={{ marginRight: '20px', }}>
+            Pay with Link
+          </Button>
+          <Button style={{ margin: 'auto', }}>
+            Finance
+          </Button>
+        </div>
+      </div>
     </div>
   </div>
 
