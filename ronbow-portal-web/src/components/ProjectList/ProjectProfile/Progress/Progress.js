@@ -19,6 +19,7 @@ const App = () => (
         progressDot
         current={1}
         direction="vertical"
+        accordion={true}
         items={[
           {
             title: 'Receive Lead',
@@ -56,7 +57,7 @@ const App = () => (
           </div>, 
           },
           {
-            title: 'Design Review',
+            title: 'Finalize the Design',
             description: <div> 
             <p><ProgressCheckbox/> Check Documents</p>
             <p><ProgressCheckbox/> Receive Payment</p>
@@ -95,3 +96,19 @@ const App = () => (
   </ConfigProvider>
 );
 export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

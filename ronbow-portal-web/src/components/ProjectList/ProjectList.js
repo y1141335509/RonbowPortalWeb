@@ -1,13 +1,11 @@
 
 import React, { useRef, useState } from 'react';
 import { PlusOutlined, ExportOutlined } from '@ant-design/icons';
-// import type { ActionType, ProColumns } from '@ant-design/pro-components';
 import {
   EditableProTable,
   ProCard,
   ProFormField,
 } from '@ant-design/pro-components';
-// import type { InputRef } from 'antd';
 import { Button, Form, Input, Space, Tag } from 'antd';
 import { Link, Routes, Route } from 'react-router-dom';
 import ProjectProfile from './ProjectProfile/ProjectProfile';
@@ -94,6 +92,7 @@ const defaultData = [
     </div>,
     tradePro: 'trade pro 1',
     designer: 'Wendy',
+    ETA: 'TBD',
     address: '7150 Patterson Pass Rd # F, Livermore, CA 94550',
     created_at: 1590486176000,
   },
@@ -108,7 +107,6 @@ const defaultData = [
         </Link>
       </span>
     </div>,
-
     labels: [{ key: 'man', label: 'L-shape' }],
     state: 'closed',
     client: <div key='1'>
@@ -122,6 +120,7 @@ const defaultData = [
     </div>,
     tradePro: 'trade pro 2',
     designer: 'Wendy',
+    ETA: '9/16',
     address: '680 8th St Suite 166, San Francisco, CA 94103',
     created_at: 1590481162000,
   },
@@ -171,6 +170,7 @@ const columns = [
         },
       ],
     },
+
     renderFormItem: (_, { isEditable }) => {
       return isEditable ? <TagList /> : <Input />;
     },
@@ -199,6 +199,11 @@ const columns = [
         },
       ],
     },
+  },
+  {
+    title: 'ETA',
+    dataIndex: 'ETA',
+    width: '15%',
   },
   {
     title: 'Address',
