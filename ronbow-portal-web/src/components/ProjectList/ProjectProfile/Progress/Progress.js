@@ -100,7 +100,8 @@ const App = () => (
             description: <div>
             by 1/11/2023  
             <p>Project Check</p>
-          </div>,         },
+          </div>,         
+          },
           {
             title: 'Manufacture',
             description: <div>

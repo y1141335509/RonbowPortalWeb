@@ -8,6 +8,7 @@ import {
 import Progress from './Progress/Progress';
 import Zoom from '../../Zoom/Zoom';
 import Calculator from './Calculator/Calculator';
+import ProgressTest from './Progress/Progress-Test';
 
 
 
@@ -134,8 +135,11 @@ const menu = (
 const ProjectProfile = () => (
 
   <div style={{ width: '100%', overflow: 'hidden', }}>
-    <div style={{ float: 'left', width: '20%', marginLeft: '20px', }}>
+    {/* <div style={{ float: 'left', width: '20%', marginLeft: '20px', }}>
       <Progress />
+    </div> */}
+    <div style={{ float: 'left', width: '20%', marginLeft: '20px', }}>
+      <ProgressTest />
     </div>
 
 
