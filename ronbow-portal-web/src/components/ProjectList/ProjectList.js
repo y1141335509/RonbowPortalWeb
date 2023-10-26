@@ -8,7 +8,7 @@ import {
 } from '@ant-design/pro-components';
 import { Button, Form, Input, Space, Tag, Divider, ConfigProvider } from 'antd';
 import { Link, Routes, Route } from 'react-router-dom';
-import ProjectProfile from './ProjectProfile/ProjectProfile';
+import AddProject from './AddProject/AddProject';
 
 
 
@@ -261,7 +261,7 @@ const EditableTable = () => {
         }
       }}
     >
-      <>
+      <div style={{ textAlign: 'center', }}>
         <EditableProTable
           rowKey="id"
           scroll={{
@@ -289,7 +289,11 @@ const EditableTable = () => {
             actionRender: (row, config, dom) => [dom.save, dom.cancel],
           }}
         />
-      </>
+
+        <Divider />
+        
+        <AddProject />
+      </div>
     </ConfigProvider>
 
   );
