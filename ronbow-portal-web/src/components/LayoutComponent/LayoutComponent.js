@@ -86,26 +86,6 @@ const LayoutComponent = ({ children }) => {
   };
 
 
-  // This function defines how to render the inner content component
-  // const renderContent = (sub_url) => {
-  //   switch(showContent) {
-  //     case 'project-list':
-  //       return <ProjectList />;
-  //     case 'resources':
-  //       return <KnowledgeBase />;
-  //     case 'dashboard':
-  //       return <Dashboard />
-  //     case 'inspiration-space':
-  //       return <InspirationSpace />
-  //     case 'human-resource':
-  //       return <HumanResource />
-  //     case 'my-account':
-  //       return <MyAccount />
-  //     default:
-  //       return null;
-  //   }
-  // }
-
 
   return (
     <ConfigProvider
@@ -247,11 +227,7 @@ const LayoutComponent = ({ children }) => {
           </Content>
         </Layout>
 
-        {/* <AddShortcutModal
-          isVisible={isAddShortcutVisible}
-          onClose={() => setIsAddShortcutVisible(false)}
-          onSave={handleSaveShortcut}
-        /> */}
+
       </Layout>
 
     </ConfigProvider>

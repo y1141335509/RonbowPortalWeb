@@ -74,7 +74,7 @@ const defaultData = [
       <span
         style={{ textDecoration: 'underline', }}
       >
-        <Link to={`/project-list/proj/${624748504}`} target="_blank">
+        <Link to={`/project-list/proj/624748504`} target="_blank">
           <span style={{ textDecoration: 'underline', color: '#5D6465' }}>Kevin's Kitchen - Palo Alto</span>
         </Link>
       </span>
@@ -85,7 +85,7 @@ const defaultData = [
       <span
         style={{ textDecoration: 'underline', }}
       >
-        <Link to={`/project-list/cust/${624691229}`} target="_blank">
+        <Link to={`/project-list/cust/624748504`} target="_blank">
           <span style={{ textDecoration: 'underline', color: '#5D6465' }}>Kevin</span>
         </Link>
       </span>
@@ -102,7 +102,7 @@ const defaultData = [
       <span
         style={{ textDecoration: 'underline', }}
       >
-        <Link to={`/project-list/proj${624691229}`} target="_blank">
+        <Link to={`/project-list/proj/624691229`} target="_blank">
           <span style={{ textDecoration: 'underline', color: '#5D6465' }}>John's Wet Bar - San Mateo</span>
         </Link>
       </span>
@@ -113,7 +113,7 @@ const defaultData = [
       <span
         style={{ textDecoration: 'underline', }}
       >
-        <Link to={`/project-list/cust/${624691229}`} target="_blank">
+        <Link to={`/project-list/cust/624691229`} target="_blank">
           <span style={{ textDecoration: 'underline', color: '#5D6465' }}>John</span>
         </Link>
       </span>
@@ -130,7 +130,7 @@ const defaultData = [
       <span
         style={{ textDecoration: 'underline', }}
       >
-        <Link to={`/project-list/proj${624691230}`} target="_blank">
+        <Link to={`/project-list/proj/${624691230}`} target="_blank">
           <span style={{ textDecoration: 'underline', color: '#5D6465' }}>Kitty's Closet - Cupertino</span>
         </Link>
       </span>

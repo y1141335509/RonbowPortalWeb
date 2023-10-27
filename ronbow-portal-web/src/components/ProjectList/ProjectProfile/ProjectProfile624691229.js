@@ -1,6 +1,5 @@
 import React from 'react';
 import { Collapse, Divider, Button, ConfigProvider, Menu, Dropdown, Image, QRCode, } from 'antd';
-import './ProjectProfile.css';
 import {
   ExportOutlined, FilterOutlined, SearchOutlined, DownloadOutlined,
   ToolOutlined, PrinterOutlined, MailOutlined, UserOutlined,
@@ -9,6 +8,7 @@ import Progress from './Progress/Progress';
 import Zoom from '../../Zoom/Zoom';
 import Calculator from './Calculator/Calculator';
 import ProgressTest from './Progress/Progress-Test';
+import ProgressCollapsed from './Progress/ProgressCollapsed';
 
 
 
@@ -135,11 +135,19 @@ const menu = (
 const ProjectProfile = () => (
 
   <div style={{ width: '100%', overflow: 'hidden', }}>
+    {/* Old */}
     {/* <div style={{ float: 'left', width: '20%', marginLeft: '20px', }}>
       <Progress />
     </div> */}
-    <div style={{ float: 'left', width: '20%', marginLeft: '20px', fontFamily: 'Roboto, sans-serif', }}>
+
+    {/* Current progress bar */}
+    {/* <div style={{ float: 'left', width: '20%', marginLeft: '20px', fontFamily: 'Roboto, sans-serif', }}>
       <ProgressTest />
+    </div> */}
+
+    {/* Progress bar collapsed: */}
+    <div style={{ float: 'left', width: '20%', marginLeft: '20px', fontFamily: 'Roboto, sans-serif', }}>
+      <ProgressCollapsed />
     </div>
 
 
