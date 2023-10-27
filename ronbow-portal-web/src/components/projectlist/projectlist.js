@@ -9,6 +9,8 @@ import {
 import { Button, Form, Input, Space, Tag, Divider, ConfigProvider } from 'antd';
 import { Link, Routes, Route } from 'react-router-dom';
 import AddProject from './AddProject/AddProject';
+import CurrentOrders from './CurrentOrders/CurrentOrders.js';
+import ArchivedOrders from './ArchivedOrders/ArchivedOrders';
 
 
 
@@ -293,6 +295,15 @@ const EditableTable = () => {
         <Divider />
         
         <AddProject />
+
+        <Divider />
+
+        <CurrentOrders />
+
+        <Divider />
+
+        <ArchivedOrders />
+        
       </div>
     </ConfigProvider>
 
