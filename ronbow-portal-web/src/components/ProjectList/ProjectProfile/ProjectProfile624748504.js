@@ -10,6 +10,7 @@ import Zoom from '../../Zoom/Zoom';
 import Calculator from './Calculator/Calculator';
 import ProgressTest from './Progress/Progress-Test';
 import ProgressCollapsed from './Progress/ProgressCollapsed';
+import ModeIcon from '@mui/icons-material/Mode';
 
 
 
@@ -125,8 +126,8 @@ const menu = (
     <Menu.Item key="3" icon={<MailOutlined />} onClick={handleEmailUs}>
       Email Customer
     </Menu.Item>
-    <Menu.Item key="4" icon={<UserOutlined />} onClick={handleUserSignon}>
-      Sign On
+    <Menu.Item key="4" icon={<ModeIcon />} onClick={handleUserSignon}>
+      Sign
     </Menu.Item>
 
   </Menu>
@@ -289,7 +290,7 @@ const ProjectProfile = () => (
             Pay Now
           </Button>
           <Button style={{ marginRight: '20px', }}>
-            Pay with Link
+            Pay At Home
           </Button>
           <Button style={{ margin: 'auto', }}>
             Finance
