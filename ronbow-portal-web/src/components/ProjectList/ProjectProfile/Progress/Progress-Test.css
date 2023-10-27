@@ -1,0 +1,25 @@
+
+
+.MuiTypography-root.MuiTypography-body1.css-11lg7ig-MuiTypography-root {
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  float: 'left';
+  width: '20%';
+  margin-left: '20px';
+  font-weight: 200;
+  font-size: '8px' !important;
+}
+
+
+:where(.css-dev-only-do-not-override-sefxp4).ant-layout, :where(.css-dev-only-do-not-override-sefxp4).ant-layout circle {
+  color: rgb(93, 100, 101);
+}
+
+
+.MuiButtonBase-root.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.MuiButton-sizeMedium.MuiButton-containedSizeMedium.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary.MuiButton-sizeMedium.MuiButton-containedSizeMedium.css-opeel-MuiButtonBase-root-MuiButton-root {
+  background-color: rgb(93, 100, 101);
+}
+
+
+.MuiButtonBase-root.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.css-nm8x1y-MuiButtonBase-root-MuiButton-root {
+  color: rgb(93, 100, 101);
+}

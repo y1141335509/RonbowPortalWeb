@@ -138,7 +138,7 @@ const ProjectProfile = () => (
     {/* <div style={{ float: 'left', width: '20%', marginLeft: '20px', }}>
       <Progress />
     </div> */}
-    <div style={{ float: 'left', width: '20%', marginLeft: '20px', }}>
+    <div style={{ float: 'left', width: '20%', marginLeft: '20px', fontFamily: 'Roboto, sans-serif', }}>
       <ProgressTest />
     </div>
 
@@ -245,7 +245,7 @@ const ProjectProfile = () => (
           lineHeight: '30px', letterSpacing: '0.02em', textAlign: 'left',
           backgroundColor: 'white', paddingTop: '20px', paddingBottom: '10px',
         }}>
-        Signature</span>    <br />
+          Signature</span>    <br />
 
         <div style={{ textAlign: 'center', }}>
           <Dropdown overlay={menu} trigger={['click']}>
@@ -262,14 +262,14 @@ const ProjectProfile = () => (
 
 
       <Divider />
-      
+
       <div>
         <span style={{
           fontFamily: 'Roboto, sans-serif', fontSize: '18px', fontWeight: '300',
           lineHeight: '30px', letterSpacing: '0.02em', textAlign: 'left',
           backgroundColor: 'white', paddingTop: '20px', paddingBottom: '10px',
         }}>
-        Payment</span>        
+          Payment</span>
         <div style={{ textAlign: 'center', }}>
           <QRCode
             errorLevel="H"
