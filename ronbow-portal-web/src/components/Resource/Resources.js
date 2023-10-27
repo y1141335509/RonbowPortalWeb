@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Collapse, Divider } from 'antd';
+import { Collapse, Divider, Button,  } from 'antd';
 import './Resources.css';
 import { ExportOutlined, FilterOutlined, SearchOutlined } from '@ant-design/icons';
 
@@ -129,7 +129,13 @@ const KnowledgeBase = () => {
         <div  style={{fontFamily: 'Roboto, sans-serif', fontSize: '18px', fontWeight: '300',
                       lineHeight: '30px', letterSpacing: '0.02em', textAlign: 'left', 
                       backgroundColor: 'white', paddingTop: '20px', paddingBottom: '10px', }}>
-          <span>Introduction</span>
+          <span>Introduction
+            <div style={{ float: 'right', }}>
+              <Button>
+                Request Training
+              </Button>
+            </div>
+          </span>
         </div>
 
         {items.slice(0, 2).map((item, index) => (
@@ -148,7 +154,13 @@ const KnowledgeBase = () => {
         <div  style={{fontFamily: 'Roboto, sans-serif', fontSize: '18px', fontWeight: '300',
                       lineHeight: '30px', letterSpacing: '0.02em', textAlign: 'left', 
                       backgroundColor: 'white', paddingTop: '20px', paddingBottom: '10px',  }}>
-          <span>Cabinet Product Knowledge</span>
+          <span>Cabinet Product Knowledge
+            <div style={{ float: 'right', }}>
+                <Button>
+                  Request Training
+                </Button>
+              </div>
+          </span>
         </div>
 
         {items.slice(2, 5).map((item, index) => (
