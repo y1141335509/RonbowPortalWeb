@@ -5,7 +5,8 @@ import {
   DollarOutlined, FireOutlined, AntDesignOutlined, CommentOutlined, SettingOutlined,
   UserOutlined, ToolOutlined, BookOutlined, CustomerServiceOutlined, ExportOutlined,
   VideoCameraOutlined, PlusSquareOutlined, ReadOutlined, CheckCircleOutlined, 
-  FundProjectionScreenOutlined, BulbOutlined, SolutionOutlined, FormOutlined, TableOutlined
+  FundProjectionScreenOutlined, BulbOutlined, SolutionOutlined, FormOutlined, 
+  TableOutlined, PhoneOutlined, 
 } from '@ant-design/icons';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -195,9 +196,18 @@ const LayoutComponent = ({ children }) => {
                 key="6"
                 icon={<UserOutlined />}
                 onClick={() => setShowContent('my-account')}
-                style={{ fontWeight: '200', color: 'black', marginRight: '30px' }}
+                style={{ fontWeight: '200', color: 'black', }}
               >
                 <Link to="/my-account">My Account</Link>
+              </Menu.Item>
+
+              <Menu.Item
+                key="7"
+                icon={<PhoneOutlined />}
+                onClick={() => setShowContent('contact')}
+                style={{ fontWeight: '200', color: 'black', marginRight: '30px' }}
+              >
+                <Link to="/contact">Contact</Link>
               </Menu.Item>
 
               <Menu.Item>
