@@ -278,7 +278,7 @@ const EditableTable = () => {
             x: 960,
           }}
           actionRef={actionRef}
-          headerTitle="Project List"
+          headerTitle="Current Orders"
           maxLength={5}
           recordCreatorProps={false}
           columns={columns}
@@ -300,15 +300,13 @@ const EditableTable = () => {
           }}
         />
 
-        <Divider />
         
         <AddProject />
 
-        <Divider />
 
-        <CurrentOrders />
+        {/* <CurrentOrders />
 
-        <Divider />
+        <Divider /> */}
 
         <ArchivedOrders />
         

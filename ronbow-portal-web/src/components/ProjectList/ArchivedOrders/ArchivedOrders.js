@@ -91,7 +91,7 @@ const defaultData = [
     </div>,
     tradePro: 'trade pro 1',
     designer: 'Wendy',
-    ETA: 'TBD',
+    view_desing: <a href="https://designstudio.ronbow.com/" target="_blank" rel="noopener noreferrer" style={{ color: '#5d6465', textDecoration: 'underline', }}>View Design</a>,
     address: '7150 Patterson Pass Rd # F, Livermore, CA 94550',
     created_at: '2023/10/10',
   },
@@ -119,7 +119,7 @@ const defaultData = [
     </div>,
     tradePro: 'trade pro 3',
     designer: 'Wendy',
-    ETA: '8/16',
+    view_desing: <a href="https://designstudio.ronbow.com/" target="_blank" rel="noopener noreferrer" style={{ color: '#5d6465', textDecoration: 'underline', }}>View Design</a>,
     address: '19479 Stevens Creek Blvd #110, Cupertino, CA 95014',
     created_at: '2023/8/5',
   },
@@ -203,8 +203,8 @@ const columns = [
     },
   },
   {
-    title: 'ETA',
-    dataIndex: 'ETA',
+    title: 'View Design',
+    dataIndex: 'view_desing',
     width: '15%',
   },
   {
