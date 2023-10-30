@@ -4,9 +4,9 @@ import {
   HomeOutlined, ScheduleOutlined, ContactsOutlined, ProjectOutlined,
   DollarOutlined, FireOutlined, AntDesignOutlined, CommentOutlined, SettingOutlined,
   UserOutlined, ToolOutlined, BookOutlined, CustomerServiceOutlined, ExportOutlined,
-  VideoCameraOutlined, PlusSquareOutlined, ReadOutlined, CheckCircleOutlined, 
-  FundProjectionScreenOutlined, BulbOutlined, SolutionOutlined, FormOutlined, 
-  TableOutlined, PhoneOutlined, 
+  VideoCameraOutlined, PlusSquareOutlined, ReadOutlined, CheckCircleOutlined,
+  FundProjectionScreenOutlined, BulbOutlined, SolutionOutlined, FormOutlined,
+  TableOutlined, PhoneOutlined,
 } from '@ant-design/icons';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -152,7 +152,7 @@ const LayoutComponent = ({ children }) => {
         {/* Main Content */}
         <Layout style={{ padding: '0 5px 24px', backgroundColor: 'white' }}>
           {/* Top Navigation Header */}
-          <Header className="site-layout-background custom-header" 
+          <Header className="site-layout-background custom-header"
             style={{ padding: 0, backgroundColor: 'white', }}>
             <Menu mode='horizontal' defaultSelectedKeys={['1']} style={{ float: 'right', }}>
               <Menu.Item
@@ -170,12 +170,21 @@ const LayoutComponent = ({ children }) => {
                 <Link to="/project-list">Projects</Link>
               </Menu.Item>
 
-              <Menu.Item key='3' icon={<ReadOutlined />} onClick={() => setShowContent('resources')} style={{ fontWeight: '200', color: 'black', }}>
+              <Menu.Item
+                key="3"
+                icon={<PhoneOutlined />}
+                onClick={() => setShowContent('contact')}
+                style={{ fontWeight: '200', color: 'black' }}
+              >
+                <Link to="/contact">Contact</Link>
+              </Menu.Item>
+
+              <Menu.Item key='4' icon={<ReadOutlined />} onClick={() => setShowContent('resources')} style={{ fontWeight: '200', color: 'black', }}>
                 <Link to="/resources">Resources</Link>
               </Menu.Item>
 
               <Menu.Item
-                key="4"
+                key="5"
                 icon={<BulbOutlined />}
                 onClick={() => setShowContent('inspiration-space')}
                 style={{ fontWeight: '200', color: 'black', }}
@@ -184,7 +193,7 @@ const LayoutComponent = ({ children }) => {
               </Menu.Item>
 
               <Menu.Item
-                key="5"
+                key="6"
                 icon={<HomeOutlined />}
                 onClick={() => setShowContent('showroom')}
                 style={{ fontWeight: '200', color: 'black', }}
@@ -193,21 +202,12 @@ const LayoutComponent = ({ children }) => {
               </Menu.Item>
 
               <Menu.Item
-                key="6"
+                key="7"
                 icon={<UserOutlined />}
                 onClick={() => setShowContent('my-account')}
-                style={{ fontWeight: '200', color: 'black', }}
+                style={{ fontWeight: '200', color: 'black', marginRight: '30px', }}
               >
                 <Link to="/my-account">My Account</Link>
-              </Menu.Item>
-
-              <Menu.Item
-                key="7"
-                icon={<PhoneOutlined />}
-                onClick={() => setShowContent('contact')}
-                style={{ fontWeight: '200', color: 'black', marginRight: '30px' }}
-              >
-                <Link to="/contact">Contact</Link>
               </Menu.Item>
 
               <Menu.Item>
