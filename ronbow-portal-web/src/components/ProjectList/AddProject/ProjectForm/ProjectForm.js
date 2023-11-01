@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Button, Checkbox, Form, Input } from 'antd';
 
 
@@ -7,6 +8,7 @@ import { Button, Checkbox, Form, Input } from 'antd';
 const onFinish = (values) => {
     console.log('Success:', values);
 };
+
 const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
 };
@@ -94,6 +96,13 @@ const App = () => {
                 ]}
             >
                 <Input />
+            </Form.Item>
+
+            <Form.Item
+                label="Invitation Link"
+                name="invitation_link"
+            >
+                <span><Link href="www.google.com" target="_blank">Click to Join</Link></span>
             </Form.Item>
 
 

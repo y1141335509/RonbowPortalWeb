@@ -7,7 +7,8 @@ import CustomerProfile from './components/ProjectList/CustomerProfile/CustomerPr
 import ProjectList from './components/ProjectList/ProjectList.js';
 import LayoutComponent from './components/LayoutComponent/LayoutComponent.js';
 import Dashboard from './components/Dashboard/Dashboard.js';
-import Resource from './components/Resource/Resources.js';
+import Resources from './components/Resources/Resources.js';
+import PublicResources from './components/Resources/PublicResources/PublicResources.js';
 import Inspiration from './components/Inspiration/Inspiration.js';
 import Requests from './components/Requests/Requests.js';
 import MyAccount from './components/MyAccount/MyAccount.js';
@@ -37,11 +38,15 @@ const App = () => {
           <Route path="/project-list/proj/624691229" element={<ProjectProfile624691229 />} />
           <Route path="/project-list/cust/:id" element={<CustomerProfile />} />
           
-          <Route path="/resources" element={<Resource />} />
+          <Route path="/resources" element={<Resources />} />
+          <Route path="/resources/public-resources" element={<PublicResources />} />
+
           <Route path="/inspiration-space" element={<Inspiration />} />
           <Route path="/requests" element={<Requests />} />
+          
           <Route path="/my-account" element={<MyAccount />} />
           <Route path="/leads" element={<Leads />} />
+          
           
 
         </Routes>

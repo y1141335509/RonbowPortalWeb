@@ -4,13 +4,14 @@ import StickyBox from 'react-sticky-box';
 import ShowroomMaintenance from './ShowroomMaintenance/ShowroomMaintenance';
 import BookShowroomAppointment from './BookShowroomAppointment/BookShowroomAppointment';
 import RequestSample from './Samples/Samples';
+import Feedbacks from './Feedbacks/Feedbacks';
 
 
 
 
-const items = new Array(3).fill(null).map((_, i) => {
-  const names = ['Showroom Maintenance', 'Book Showroom Appointment', 'Samples', ];
-  const components = [<ShowroomMaintenance />, <BookShowroomAppointment />, <RequestSample />];
+const components = [<ShowroomMaintenance />, <BookShowroomAppointment />, <RequestSample />, <Feedbacks />];
+const names = ['Showroom Maintenance', 'Book Showroom Appointment', 'Samples', 'Feedbacks', ];
+const items = new Array(components.length).fill(null).map((_, i) => {
   return {
     label: names[i],
     key: i,

@@ -11,11 +11,27 @@ const cardData = [
   { title: "Card 3", description: "Description 3", imgSrc: "https://cdn.ronbow.com/images/IMG_0835.jpg", tags: ['Tag 1'] },
   { title: "Card 4", description: "Description 4", imgSrc: "https://cdn.ronbow.com/images/IMG_0835.jpg", tags: ['Tag 1', 'Tag 2', 'Tag 3'] },
   { title: "Card 5", description: "Description 4", imgSrc: "https://cdn.ronbow.com/images/IMG_0835.jpg", tags: ['Tag 1', 'Tag 2', 'Tag 3'] },
-  // { title: "Card 6", description: "Description 4", imgSrc: "https://cdn.ronbow.com/images/IMG_0835.jpg", tags: ['Tag 1', 'Tag 2', 'Tag 3'] },
 ];
 
 const Inspiration = () => (
   <>
+    <div className="header">
+      <p style={{ 
+          fontFamily: 'Roboto, sans-serif', 
+          fontSize: '18px', 
+          fontWeight: "400",
+          lineHeight: "14px",
+          letterSpacing: "0.02em",
+          textAlign: "left" 
+      }}>
+        Inspiration
+      </p>
+      <div style={{ marginRight: '50px', }}>
+        <FilterOutlined className="icon" />
+        <SearchOutlined className="icon" />
+      </div>
+    </div>
+
     <div className="card-container">
       {cardData.map((card, index) => (
         <ConfigProvider

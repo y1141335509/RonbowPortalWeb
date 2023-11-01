@@ -6,7 +6,7 @@ import {
   UserOutlined, ToolOutlined, BookOutlined, CustomerServiceOutlined, ExportOutlined,
   VideoCameraOutlined, PlusSquareOutlined, ReadOutlined, CheckCircleOutlined,
   FundProjectionScreenOutlined, BulbOutlined, SolutionOutlined, FormOutlined,
-  TableOutlined, PhoneOutlined,
+  TableOutlined, PhoneOutlined, LogoutOutlined, 
 } from '@ant-design/icons';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -46,8 +46,6 @@ const LayoutComponent = ({ children }) => {
   const [showContent, setShowContent] = useState("dashboard");
   const [selectedKey, setSelectedKey] = useState('1');
   const navigate = useNavigate();
-  // const [isAddShortcutVisible, setIsAddShortcutVisible] = useState(false);
-  const [shortcuts, setShortcuts] = useState(defaultShortcuts);
 
 
   const handleItemClick = key => {
@@ -82,9 +80,6 @@ const LayoutComponent = ({ children }) => {
     // Implement search functionality here
   };
 
-  const handleSaveShortcut = (newShortcuts) => {
-    setShortcuts(prevShortcuts => [...prevShortcuts, ...newShortcuts]);
-  };
 
 
 
@@ -205,9 +200,18 @@ const LayoutComponent = ({ children }) => {
                 key="7"
                 icon={<UserOutlined />}
                 onClick={() => setShowContent('my-account')}
-                style={{ fontWeight: '200', color: 'black', marginRight: '30px', }}
+                style={{ fontWeight: '200', color: 'black', }}
               >
                 <Link to="/my-account">My Account</Link>
+              </Menu.Item>
+
+              <Menu.Item
+                key="8"
+                icon={<LogoutOutlined />}
+                onClick={() => setShowContent('login')}
+                style={{ fontWeight: '200', color: 'black', marginRight: '15px', }}
+              >
+                <Link to="/login">Logout</Link>
               </Menu.Item>
 
               <Menu.Item>
