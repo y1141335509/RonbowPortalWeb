@@ -6,7 +6,7 @@ import {
 } from '@ant-design/icons';
 import Progress from './Progress/Progress';
 import Zoom from '../../Zoom/Zoom';
-import Calculator from './Calculator/Calculator';
+import CalculatorNoCity from './Calculator/CalculatorNoCity';
 import ProgressTest from './Progress/Progress-Test';
 import ProgressCollapsed from './Progress/ProgressCollapsed';
 import ModeIcon from '@mui/icons-material/Mode';
@@ -293,7 +293,7 @@ const ProjectProfile = () => (
         Price Calculator</span>
       <div style={{ textAlign: 'center', marginTop: '10px', }}>
 
-        <Calculator />
+        <CalculatorNoCity />
         <Divider />
       </div>
 
