@@ -6,9 +6,11 @@ import {
   ProCard,
   ProFormField,
 } from '@ant-design/pro-components';
-import { Button, Form, Input, Space, Tag, Divider, ConfigProvider } from 'antd';
+import { Button, Form, Input, Space, Tag, Divider, Select, ConfigProvider } from 'antd';
 import { Link, Routes, Route } from 'react-router-dom';
 
+
+const { Option } = Select;
 
 
 const waitTime = (time = 100) => {
@@ -72,7 +74,11 @@ const defaultData = [
     contact_name: 'Henry',
     address: '19479 Stevens Creek Blvd #110, Cupertino, CA 95014',
     leads_from: <Tag>Walk In</Tag>,
-    leads_quality: <Tag>Low Budget</Tag>,
+    leads_quality: <Select placeholder="Select Leads Quality" style={{ width: '140px' }}>
+      <Option value="Great">Great</Option>
+      <Option value="Style Mismatch">Style Mismatch</Option>
+      <Option value="Low Budget">Low Budget</Option>
+    </Select>,
     projects: <div><Tag>Kitchen</Tag><Tag>Bath</Tag></div>,
   },
   {
@@ -80,10 +86,15 @@ const defaultData = [
     contact_name: 'Jeff',
     address: '19479 Stevens Creek Blvd #110, Cupertino, CA 95014',
     leads_from: <Tag>Trade Pro</Tag>,
-    leads_quality: <Tag>Style Mismatch</Tag>,
+    leads_quality: <Select placeholder="Select Leads Quality" style={{ width: '140px' }}>
+      <Option value="Great">Great</Option>
+      <Option value="Style Mismatch">Style Mismatch</Option>
+      <Option value="Low Budget">Low Budget</Option>
+    </Select>,
     projects: <div><Tag>Kitchen</Tag></div>,
   },
 ];
+
 
 const columns = [
   {
@@ -105,6 +116,22 @@ const columns = [
     title: 'Leads Quality',
     dataIndex: 'leads_quality',
     width: '15%',
+    valueType: 'select',
+    valueEnum: {
+      Great: { text: 'Great' },
+      'Style Mismatch': { text: 'Style Mismatch' },
+      'Low Budget': { text: 'Low Budget' },
+    },
+    renderFormItem: (item, { defaultRender, ...rest }, form) => {
+      return (
+        <Select {...rest} placeholder="Select Leads Quality">
+          <Option value="Great">Great</Option>
+          <Option value="Style Mismatch">Style Mismatch</Option>
+          <Option value="Low Budget">Low Budget</Option>
+        </Select>
+      );
+    },
+    render: (text) => <Tag>{text}</Tag>
   },
   {
     title: 'Projects',
@@ -112,6 +139,7 @@ const columns = [
     width: '15%',
   }
 ];
+
 
 const EditableTable = () => {
   const actionRef = useRef();
