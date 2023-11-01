@@ -5,6 +5,7 @@ import {
   IconButton,
   InputAdornment,
   OutlinedInput,
+  Input,
 } from '@mui/material';
 import {
   Email as EmailIcon,
@@ -14,6 +15,7 @@ import {
   LinkedIn as LinkedInIcon,
   ContentCopy as CopyIcon,
 } from '@mui/icons-material';
+
 
 
 
@@ -39,14 +41,7 @@ const SocialSharing = () => {
     setEvent(event.target.value);
   };
 
-  const handleTextChange = (event) => {
-    setText(event.target.value);
-  };
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText(text);
-    alert('Text copied to clipboard!');
-  };
 
   return (
     <div style={{ textAlign: 'center', }}>
@@ -56,7 +51,7 @@ const SocialSharing = () => {
         value={event}
         onChange={handleChange}
         variant="outlined"
-        style={{ minWidth: '250px', }}
+        style={{ minWidth: '300px', }}
       >
         <MenuItem value="SJOpening">Holiday Events</MenuItem>
         <MenuItem value="SJOpening">SJ Opening</MenuItem>
@@ -64,9 +59,8 @@ const SocialSharing = () => {
         <MenuItem value="CEU">CEU</MenuItem>
       </TextField>
 
-      
 
-      <div>
+      <div style={{ marginTop: '15px', }}>
         <IconButton aria-label="Email">
           <EmailIcon />
         </IconButton>
@@ -87,18 +81,15 @@ const SocialSharing = () => {
         </IconButton>
       </div>
 
-      <OutlinedInput
-        value={text}
-        onChange={handleTextChange}
-        endAdornment={
-          <InputAdornment position="end">
-            <IconButton onClick={handleCopy}>
-              <CopyIcon />
-            </IconButton>
-          </InputAdornment>
-        }
-        placeholder="Enter your text"
-      />
+      <br />
+
+      <TextField
+          id="standard-textarea"
+          label="Share your comments!"
+          placeholder="Share your comments!"
+          multiline
+          style={{ minWidth: '300px', }}
+        />
     </div>
   );
 };
