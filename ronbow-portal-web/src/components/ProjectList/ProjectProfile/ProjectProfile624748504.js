@@ -1,5 +1,5 @@
 import React from 'react';
-import { Collapse, Divider, Button, ConfigProvider, Menu, Dropdown, Image, QRCode, } from 'antd';
+import { Collapse, Divider, Button, ConfigProvider, Menu, Dropdown, Image, QRCode, Input, } from 'antd';
 import './ProjectProfile624748504.css';
 import {
   ExportOutlined, FilterOutlined, SearchOutlined, DownloadOutlined,
@@ -11,6 +11,7 @@ import Calculator from './Calculator/Calculator';
 import ProgressTest from './Progress/Progress-Test';
 import ProgressCollapsed from './Progress/ProgressCollapsed';
 import ModeIcon from '@mui/icons-material/Mode';
+import FolderSharedIcon from '@mui/icons-material/FolderShared';
 
 
 
@@ -21,6 +22,7 @@ const text = `
 `;
 
 const { Panel } = Collapse;
+const { TextArea } = Input;
 
 
 const items = [
@@ -60,10 +62,47 @@ const items = [
   {
     key: '4',
     label: 'DOCUMENTS',
-    children: <div>
-      <Zoom />
-    </div>,
-    headerStyle: { fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
+    children: (
+      <div>
+        {[
+          { label: 'Others', link: 'https://example.com/others' },
+          { label: 'Invoices', link: 'https://example.com/invoices' },
+          { label: 'Item Lists', link: 'https://example.com/item-lists' },
+          { label: 'Final Document', link: 'https://example.com/final-document' },
+          { label: 'Appliances', link: 'https://example.com/appliances' },
+          { label: 'Drawings', link: 'https://example.com/drawings' },
+          { label: 'Design & Deposit Agreement', link: 'https://example.com/design-deposit-agreement' },
+        ].map((doc, index) => (
+          <a
+            href={doc.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ textDecoration: 'none', color: 'inherit' }}
+            key={index}
+          >
+            <p style={{
+              display: 'flex',
+              alignItems: 'center',
+              cursor: 'pointer',
+              verticalAlign: 'middle',
+              margin: 0,
+            }}>
+              <FolderSharedIcon style={{ color: '#5D6465', marginRight: '8px' }} />
+              {doc.label}
+            </p>
+          </a>
+        ))}
+        <Zoom />
+      </div>
+    ),
+    headerStyle: {
+      fontFamily: 'Roboto, sans-serif',
+      fontSize: '12px',
+      fontWeight: '400',
+      lineHeight: '14px',
+      letterSpacing: '0.02em',
+      textAlign: 'left',
+    },
   },
   {
     key: '5',
@@ -81,7 +120,9 @@ const items = [
   {
     key: '7',
     label: 'MEETING NOTES',
-    children: <div><img src="https://cdn.ronbow.com/images/video-poster.jpg" alt="Description" className='responsive-image' /></div>,
+    children: <div>
+      <TextArea rows={4} />
+    </div>,
     headerStyle: { fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
   },
   {
@@ -297,7 +338,10 @@ const ProjectProfile = () => (
             Pay Now
           </Button>
           <Button style={{ marginRight: '20px', }}>
-            Pay At Home
+            Pay Online
+          </Button>
+          <Button style={{ marginRight: '20px', }}>
+            Pay by Check
           </Button>
           <Button style={{ margin: 'auto', }}>
             Finance
