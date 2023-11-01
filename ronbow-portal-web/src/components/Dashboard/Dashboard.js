@@ -8,6 +8,7 @@ import { ExportOutlined, FilterOutlined, SearchOutlined, DownloadOutlined,
 import dayjs from 'dayjs';
 import IndustryNews from './IndustryNews/IndustryNews';
 import SalesTargetBar from './SalesTargetBar/SalesTargetBar';
+import CardList from './CardList/CardList';
 
 
 const dateFormat = 'YYYY/MM/DD';
@@ -43,11 +44,12 @@ const App = () => {
     newTodos[index].deadline = date;
     setTodos(newTodos);
   };
+  const [viewOption, setViewOption] = useState('Current Month');
 
   const displayedTodos = showCompleted ? todos : todos.filter(todo => !todo.completed);
 
   return (
-    <div style={{ maxWidth: '1000px', margin: '50px auto',}}>
+    <div style={{ maxWidth: '90%', margin: '50px auto',}}>
 
       {/* the progress bar starts here */}
       <div style={{ padding: "50px" }}>
@@ -174,7 +176,13 @@ const App = () => {
       <Divider />
 
       <div>
+
+        <CardList viewOption={viewOption} setViewOption={setViewOption} />
+        
+        <Divider />
+
         <IndustryNews />
+
       </div>
       
       

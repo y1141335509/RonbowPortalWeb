@@ -230,6 +230,7 @@ const LayoutComponent = ({ children }) => {
               padding: 24,
               minHeight: 280,
               backgroundColor: 'white',
+              width: '100%',
             }}
           >
             {children}
