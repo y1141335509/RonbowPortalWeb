@@ -131,36 +131,42 @@ const PriceCalculator = () => {
 
         <div style={{ textAlign: 'left', }}>
 
-          <Form.Item label="Trade Pro Discount (%)" name="tradeProDiscount" initialValue={0}>
-            <InputNumber min={0} max={100} style={{ width: '30%' }} />
-          </Form.Item>
+          
 
-          <Form.Item label="Customer Discount (%)" name="customerDiscount" initialValue={0}>
-            <InputNumber min={0} max={15} style={{ width: '30%' }} />
-          </Form.Item>
+          
           <Row span={12}>
-            
-            <Col >
-              <Button >Request</Button>
+            <Col span={6}><Form.Item label="Trade Pro Discount (%)" name="tradeProDiscount" initialValue={0}>
+            <InputNumber min={0} max={100} style={{ width: '80%', }} />
+          </Form.Item></Col>
+
+          <Col span={6}><Form.Item label="Customer Discount (%)" name="customerDiscount" initialValue={0}>
+            <InputNumber min={0} max={15} style={{ width: '80%', }} />
+          </Form.Item></Col>
+          
+          
+            <Col span={6}>
+              <br />
+              <Button style={{ marginTop: '9px', }}>Request</Button>
             </Col>
           </Row>
+
         </div>
         <br />
 
 
 
-        <Form.Item label="Tax (%)" name="tax" style={{ textAlign: 'left', }}>
+        <Form.Item label="Tax Rate" name="tax" style={{ textAlign: 'left', }}>
           <Tooltip title="Tax rate based on the job site address">
             <Select style={{ width: '30%' }} onChange={handleTaxChange}>
-              Regular: <Option value="Regular">9.875</Option>
-              Exempt: <Option value="Exempt">0</Option>
+            <Option value="Regular">Regular: 9.875%</Option>
+            <Option value="Exempt">Exempt: 0%</Option>
             </Select>
           </Tooltip>
         </Form.Item>
 
         <Form.Item label="Delivery ($)" name="delivery" style={{ textAlign: 'left' }}>
           <span >$</span>
-          <InputNumber value={deliveryFee} disabled id={'delivery-fee'} />
+          <InputNumber min={0} style={{ width: '15%', marginRight: '2%', }} value={deliveryFee} disabled id={'delivery-fee'} />
           <Dropdown overlay={menu} trigger={['click']}>
             <Button
               size='large'
