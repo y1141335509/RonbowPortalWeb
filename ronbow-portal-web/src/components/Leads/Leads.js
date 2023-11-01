@@ -74,7 +74,7 @@ const defaultData = [
     contact_name: 'Henry',
     address: '19479 Stevens Creek Blvd #110, Cupertino, CA 95014',
     leads_from: <Tag>Walk In</Tag>,
-    leads_quality: <Select placeholder="Select Leads Quality" style={{ width: '140px' }}>
+    leads_quality: <Select placeholder="Select Leads Quality" defaultValue={'Low Budget'} style={{ width: '140px' }}>
       <Option value="Great">Great</Option>
       <Option value="Style Mismatch">Style Mismatch</Option>
       <Option value="Low Budget">Low Budget</Option>
@@ -86,8 +86,8 @@ const defaultData = [
     contact_name: 'Jeff',
     address: '19479 Stevens Creek Blvd #110, Cupertino, CA 95014',
     leads_from: <Tag>Trade Pro</Tag>,
-    leads_quality: <Select placeholder="Select Leads Quality" style={{ width: '140px' }}>
-      <Option value="Great">Great</Option>
+    leads_quality: <Select placeholder="Select Leads Quality" defaultValue='Great' style={{ width: '140px' }}>
+      <Option value="Great" >Great</Option>
       <Option value="Style Mismatch">Style Mismatch</Option>
       <Option value="Low Budget">Low Budget</Option>
     </Select>,
