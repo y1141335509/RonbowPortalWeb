@@ -51,7 +51,7 @@ const HumanResource = () => {
         }
       }}
     >
-      <div className="hr-container">
+      <div className="hr-container" >
         <div className="commission-container">
           <Commission />
         </div>

@@ -106,6 +106,7 @@ const App = () => {
         current: currentPage,
         onChange: (page) => setCurrentPage(page)
       }}
+      style={{ maxWidth: '1200px', marginLeft: 'auto', marginRight: 'auto',  }}
       summary={() => {
         const visibleData = getVisibleData();
         return (
