@@ -1,16 +1,16 @@
 import React from 'react';
 import { Tabs, theme } from 'antd';
 import StickyBox from 'react-sticky-box';
-import RequestMaintenance from './RequestMaintenance/RequestMaintenance';
+import ShowroomMaintenance from './ShowroomMaintenance/ShowroomMaintenance';
 import BookShowroomAppointment from './BookShowroomAppointment/BookShowroomAppointment';
-import RequestSample from './RequestSample/RequestSample';
+import RequestSample from './Samples/Samples';
 
 
 
 
 const items = new Array(3).fill(null).map((_, i) => {
-  const names = ['Request Maintenance', 'Book Showroom Appointment', 'Request Sample', ];
-  const components = [<RequestMaintenance />, <BookShowroomAppointment />, <RequestSample />];
+  const names = ['Showroom Maintenance', 'Book Showroom Appointment', 'Samples', ];
+  const components = [<ShowroomMaintenance />, <BookShowroomAppointment />, <RequestSample />];
   return {
     label: names[i],
     key: i,

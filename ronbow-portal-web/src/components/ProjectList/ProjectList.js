@@ -278,7 +278,7 @@ const EditableTable = () => {
             x: 960,
           }}
           actionRef={actionRef}
-          headerTitle="Current Orders"
+          headerTitle="Current Pipeline"
           maxLength={5}
           recordCreatorProps={false}
           columns={columns}

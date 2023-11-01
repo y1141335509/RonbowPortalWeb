@@ -9,9 +9,10 @@ import LayoutComponent from './components/LayoutComponent/LayoutComponent.js';
 import Dashboard from './components/Dashboard/Dashboard.js';
 import Resource from './components/Resource/Resources.js';
 import Inspiration from './components/Inspiration/Inspiration.js';
-import Showroom from './components/Showroom/Showroom.js';
+import Requests from './components/Requests/Requests.js';
 import MyAccount from './components/MyAccount/MyAccount.js';
-import Contact from './components/Contact/Contact.js';
+import Leads from './components/Leads/Leads.js';
+import Login from './components/Login/Login.js';
 
 
 import './App.css';
@@ -28,7 +29,8 @@ const App = () => {
       <LayoutComponent>
         <Routes>
           {/* Add Components you want to route */}
-          <Route path="/" element={<Navigate to="/dashboard" replace />} />
+          <Route path="/" element={<Navigate to="/login" replace />} />
+          <Route path='/login' element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/project-list" element={<ProjectList />} />
           <Route path="/project-list/proj/624748504" element={<ProjectProfile624748504 />} />
@@ -37,9 +39,9 @@ const App = () => {
           
           <Route path="/resources" element={<Resource />} />
           <Route path="/inspiration-space" element={<Inspiration />} />
-          <Route path="/showroom" element={<Showroom />} />
+          <Route path="/requests" element={<Requests />} />
           <Route path="/my-account" element={<MyAccount />} />
-          <Route path="/contact" element={<Contact />} />
+          <Route path="/leads" element={<Leads />} />
           
 
         </Routes>

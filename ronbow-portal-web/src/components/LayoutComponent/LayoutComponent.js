@@ -173,10 +173,10 @@ const LayoutComponent = ({ children }) => {
               <Menu.Item
                 key="3"
                 icon={<PhoneOutlined />}
-                onClick={() => setShowContent('contact')}
+                onClick={() => setShowContent('leads')}
                 style={{ fontWeight: '200', color: 'black' }}
               >
-                <Link to="/contact">Contact</Link>
+                <Link to="/leads">Leads</Link>
               </Menu.Item>
 
               <Menu.Item key='4' icon={<ReadOutlined />} onClick={() => setShowContent('resources')} style={{ fontWeight: '200', color: 'black', }}>
@@ -195,10 +195,10 @@ const LayoutComponent = ({ children }) => {
               <Menu.Item
                 key="6"
                 icon={<HomeOutlined />}
-                onClick={() => setShowContent('showroom')}
+                onClick={() => setShowContent('requests')}
                 style={{ fontWeight: '200', color: 'black', }}
               >
-                <Link to="/showroom">Showroom</Link>
+                <Link to="/requests">Requests</Link>
               </Menu.Item>
 
               <Menu.Item

@@ -239,7 +239,7 @@ const EditableTable = () => {
             x: 960,
           }}
           actionRef={actionRef}
-          headerTitle="Archived Orders"
+          headerTitle="Archives"
           maxLength={5}
           recordCreatorProps={false}
           columns={columns}

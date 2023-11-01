@@ -224,13 +224,19 @@ const ProjectProfile = () => (
       <div style={{ textAlign: 'center', }}>
         <Button
           size='large'
-          icon={<ToolOutlined />}
           onClick={() => handleDesignButton()}
           style={{ backgroundColor: '#5D6465', color: '#F0ECEC', marginRight: '10px', }}
         >
           Design Now!
         </Button>
-
+        
+        <Button
+          size='large'
+          onClick={() => handleDesignButton()}
+          style={{ backgroundColor: '#5D6465', color: '#F0ECEC', marginRight: '10px', }}
+        >
+          Generate Proposal!
+        </Button>
 
       </div>
 

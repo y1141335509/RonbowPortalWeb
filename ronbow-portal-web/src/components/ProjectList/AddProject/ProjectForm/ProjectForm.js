@@ -4,7 +4,6 @@ import { Button, Checkbox, Form, Input } from 'antd';
 
 
 
-
 const onFinish = (values) => {
     console.log('Success:', values);
 };
@@ -33,12 +32,12 @@ const App = () => {
             autoComplete="off"
         >
             <Form.Item
-                label="Username"
-                name="username"
+                label="Project Name"
+                name="project_name"
                 rules={[
                     {
                         required: true,
-                        message: 'Please input your username!',
+                        message: 'Please input your project name!',
                     },
                 ]}
             >
@@ -46,16 +45,29 @@ const App = () => {
             </Form.Item>
 
             <Form.Item
-                label="Password"
-                name="password"
+                label="Customer Name"
+                name="customer_name"
                 rules={[
                     {
                         required: true,
-                        message: 'Please input your password!',
+                        message: 'Please input your customer name!',
                     },
                 ]}
             >
-                <Input.Password />
+                <Input />
+            </Form.Item>
+
+            <Form.Item
+                label="Email"
+                name="email"
+                rules={[
+                    {
+                        required: true,
+                        message: 'Please input your email',
+                    },
+                ]}
+            >
+                <Input />
             </Form.Item>
 
             <Form.Item
@@ -84,27 +96,7 @@ const App = () => {
                 <Input />
             </Form.Item>
 
-            {/* <Form.Item
-                name="remember"
-                valuePropName="checked"
-                wrapperCol={{
-                    offset: 8,
-                    span: 16,
-                }}
-            >
-                <Checkbox>Remember me</Checkbox>
-            </Form.Item> */}
 
-            {/* <Form.Item
-                wrapperCol={{
-                    offset: 8,
-                    span: 16,
-                }}
-            >
-                <Button type="primary" htmlType="submit">
-                    Submit
-                </Button>
-            </Form.Item> */}
         </Form>
     );
 }

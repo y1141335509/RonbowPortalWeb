@@ -69,18 +69,18 @@ const TagList = ({ value, onChange }) => {
 const defaultData = [
   {
     id: 624748504,
-    contact_name: 'Wendy',
+    contact_name: 'Henry',
     address: '19479 Stevens Creek Blvd #110, Cupertino, CA 95014',
     leads_from: <Tag>Walk In</Tag>,
-    leads_equity: <Tag>Low Budget</Tag>,
+    leads_quality: <Tag>Low Budget</Tag>,
     projects: <div><Tag>Kitchen</Tag><Tag>Bath</Tag></div>,
   },
   {
     id: 624691230,
-    contact_name: 'Wendy',
+    contact_name: 'Jeff',
     address: '19479 Stevens Creek Blvd #110, Cupertino, CA 95014',
     leads_from: <Tag>Trade Pro</Tag>,
-    leads_equity: <Tag>Style Mismatch</Tag>,
+    leads_quality: <Tag>Style Mismatch</Tag>,
     projects: <div><Tag>Kitchen</Tag></div>,
   },
 ];
@@ -102,8 +102,8 @@ const columns = [
     width: '15%',
   },
   {
-    title: 'Leads Equity',
-    dataIndex: 'leads_equity',
+    title: 'Leads Quality',
+    dataIndex: 'leads_quality',
     width: '15%',
   },
   {
