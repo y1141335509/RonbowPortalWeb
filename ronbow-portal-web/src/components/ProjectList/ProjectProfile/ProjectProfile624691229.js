@@ -1,5 +1,5 @@
 import React from 'react';
-import { Collapse, Divider, Button, ConfigProvider, Menu, Dropdown, Image, QRCode, Input, } from 'antd';
+import { Collapse, Divider, Button, ConfigProvider, Menu, Dropdown, Image, QRCode, Input, Switch, } from 'antd';
 import {
   ExportOutlined, FilterOutlined, SearchOutlined, DownloadOutlined,
   ToolOutlined, PrinterOutlined, MailOutlined, UserOutlined,
@@ -349,6 +349,23 @@ const ProjectProfile = () => (
         </div>
       </div>
     </div>
+
+    <Divider />
+
+      <div>
+        <span style={{
+          fontFamily: 'Roboto, sans-serif', fontSize: '18px', fontWeight: '300',
+          lineHeight: '30px', letterSpacing: '0.02em', textAlign: 'left',
+          backgroundColor: 'white', paddingTop: '20px', paddingBottom: '10px',
+        }}>
+          Submit</span>
+      </div>
+      <div style={{ textAlign: 'center', }}>
+        <span style={{ marginRight: '10px', }}>Auto Submit</span>
+        <Switch defaultChecked onChange={(checked) => {
+          console.log(`switch to ${checked}`);
+        }} />
+      </div>
   </div>
 
 );

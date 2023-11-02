@@ -53,16 +53,16 @@ const App = () => (
             title: 'Receive Lead',
             description: 
             <div> 
-              <p><Checkbox checked={true} /> Review Documents</p>
-              <p><Checkbox checked={true} /> Learn About Clients</p>
-              <p><Checkbox checked={true} /> Get Inspired</p>
+              <p><ProgressCheckbox checked={true} /> Review Documents</p>
+              <p><ProgressCheckbox checked={true} /> Learn About Clients</p>
+              <p><ProgressCheckbox checked={true} /> Get Inspired</p>
               by 01/01/2023
             </div>,
           },
           {
             title: '1st Meeting',
             description: <div>
-              <p><ProgressCheckbox/> Review Meeting Notes</p>
+              <p ><ProgressCheckbox/> Review Meeting Notes</p>
               <p><ProgressCheckbox/> Design</p>
               <p><ProgressCheckbox/> Generate Proposal</p>
               <p><ProgressCheckbox/> Validate Requirements</p>
