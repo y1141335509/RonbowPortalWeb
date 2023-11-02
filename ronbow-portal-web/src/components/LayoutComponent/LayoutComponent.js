@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Layout, Menu, Input, ConfigProvider, Image } from 'antd';
 import {
   HomeOutlined, ScheduleOutlined, ContactsOutlined, ProjectOutlined,
@@ -6,9 +6,10 @@ import {
   UserOutlined, ToolOutlined, BookOutlined, CustomerServiceOutlined, ExportOutlined,
   VideoCameraOutlined, PlusSquareOutlined, ReadOutlined, CheckCircleOutlined,
   FundProjectionScreenOutlined, BulbOutlined, SolutionOutlined, FormOutlined,
-  TableOutlined, PhoneOutlined, LogoutOutlined, 
+  TableOutlined, PhoneOutlined, LogoutOutlined,
 } from '@ant-design/icons';
 import { Link, useNavigate } from 'react-router-dom';
+import AddShortcut from '../AddShortcut/AddShortcut';
 
 
 
@@ -16,28 +17,32 @@ import { Link, useNavigate } from 'react-router-dom';
 const { Header, Content, Sider } = Layout;
 const { Search } = Input;
 
-const defaultShortcuts = [
+const allShortcuts = [
   { key: '1', icon: <HomeOutlined />, label: 'Homepage', path: '/' },
   { key: '2', icon: <FormOutlined />, label: 'Design Studio', path: 'https://designstudio.ronbow.com/' },
-  { key: '3', icon: <CommentOutlined />, label: 'Chat', path: '/chat' },
-  { key: '4', icon: <VideoCameraOutlined />, label: 'Zoom', path: '/zoom' },
+  { key: '3', icon: <CommentOutlined />, label: 'Chat', path: 'https://www.zoom.com/en/products/team-chat/', },
+  { key: '4', icon: <VideoCameraOutlined />, label: 'Zoom', path: 'https://zoom.us/meeting', },
   { key: '5', icon: <ScheduleOutlined />, label: 'Calendar', path: 'https://calendar.google.com/calendar/' },
   { key: '6', icon: <TableOutlined />, label: 'Clickup Form', path: 'https://app.clickup.com/10643463/v/fm/a4u07-7291' },
-  { key: '7', icon: <PlusSquareOutlined />, label: 'Add Shortcut', path: '/add-shortcut' },
+  { key: '7', icon: <ExportOutlined />, label: 'Export' },
+  { key: '8', icon: <ToolOutlined />, label: 'Tool' },
+  { key: '9', icon: <SettingOutlined />, label: 'Settings' },
+  { key: '10', icon: <PlusSquareOutlined />, label: 'Add Shortcut', iconStyle: { bottom: '10%', position: 'absolute', } },
+
 ];
 
-const allShortcuts = [
-  { key: '1', icon: <HomeOutlined />, label: 'Homepage' },
-  { key: '2', icon: <FormOutlined />, label: 'Design Studio' },
-  { key: '3', icon: <CommentOutlined />, label: 'Chat' },
-  { key: '4', icon: <VideoCameraOutlined />, label: 'Zoom' },
-  { key: '5', icon: <ScheduleOutlined />, label: 'Calendar' },
-  { key: '6', icon: <TableOutlined />, label: 'Clickup Form' },
-  { key: '7', icon: <PlusSquareOutlined />, label: 'Add Shortcut', iconStyle: { bottom: '10%', position: 'absolute', } },
-  { key: '8', icon: <ExportOutlined />, label: 'Export' },
-  { key: '9', icon: <ToolOutlined />, label: 'Tool' },
-  { key: '10', icon: <SettingOutlined />, label: 'Settings' },
-];
+// const allShortcuts = [
+//   { key: '1', icon: <HomeOutlined />, label: 'Homepage' },
+//   { key: '2', icon: <FormOutlined />, label: 'Design Studio' },
+//   { key: '3', icon: <CommentOutlined />, label: 'Chat' },
+//   { key: '4', icon: <VideoCameraOutlined />, label: 'Zoom' },
+//   { key: '5', icon: <ScheduleOutlined />, label: 'Calendar' },
+//   { key: '6', icon: <TableOutlined />, label: 'Clickup Form' },
+//   { key: '7', icon: <ExportOutlined />, label: 'Export' },
+//   { key: '8', icon: <ToolOutlined />, label: 'Tool' },
+//   { key: '9', icon: <SettingOutlined />, label: 'Settings' },
+//   { key: '10', icon: <PlusSquareOutlined />, label: 'Add Shortcut', iconStyle: { bottom: '10%', position: 'absolute', } },
+// ];
 
 
 
@@ -45,40 +50,96 @@ const LayoutComponent = ({ children }) => {
   const [collapsed, setCollapsed] = useState(true);
   const [showContent, setShowContent] = useState("dashboard");
   const [selectedKey, setSelectedKey] = useState('1');
+  const [shortcuts, setShortcuts] = useState(allShortcuts);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+
   const navigate = useNavigate();
 
 
-  const handleItemClick = key => {
-    setSelectedKey(key);
+  const handleShortcutSave = (selectedShortcutKeys) => {
+    console.log('Selected Shortcut Objects:', selectedShortcutKeys);
 
-    // paths defines the sider menu navigations
-    const paths = {
-      '1': '/',
-      '2': 'https://designstudio.ronbow.com/',
-      '3': 'https://www.zoom.com/en/products/team-chat/',
-      '4': 'https://zoom.us/meeting',
-      '5': 'https://calendar.google.com/calendar/',
-      '6': 'https://app.clickup.com/10643463/v/fm/a4u07-7291',
-      '7': '/add-shortcut',
-    };
+    const selectedKeys = selectedShortcutKeys.map(shortcut => shortcut.key);
+    console.log('Selected Shortcut Keys:', selectedKeys);
 
-    if (key === 'logo') {
-      setShowContent('dashboard'); // Clear the current content
-      setSelectedKey(null); // Clear all selections
-      navigate('/'); // Navigate to the homepage
-    } else if (2 <= parseInt(key) <= 6) {
-      window.open(paths[key], '_blank');
-    } else if (key === '1') {
-      navigate(paths[key]);
-    } else {
-      window.open(window.location.origin + paths[key], '_blank');
-    }
+    const newShortcuts = allShortcuts
+      .filter((shortcut) => selectedKeys.includes(shortcut.key))
+      .map((shortcut) => allShortcuts.find((s) => s.key === shortcut.key) || shortcut);
+
+    console.log('New Shortcuts:', newShortcuts);
+    setShortcuts(newShortcuts);
+    setIsModalVisible(isModalVisible);
   };
+
+
+
+
+
+  const renderMenuItems = (items) => (
+    <Menu mode="inline" selectedKeys={[selectedKey]} onClick={({ key }) => handleItemClick(key)}>
+      {items.map((item) => (
+        <Menu.Item key={item.key} icon={item.icon} disabled={isModalVisible && shortcuts.some(s => s.key === item.key)}>
+          {item.label}
+        </Menu.Item>
+      ))}
+    </Menu>
+  );
+
+  const handleItemClick = useCallback((key) => {
+    setSelectedKey(key);
+  
+    if (key === '10') {
+      setIsModalVisible(true);
+      return;
+    }
+  
+    const path = shortcuts.find((s) => s.key === key)?.path;
+    if (!path) return;
+  
+    if (path.startsWith('http')) {
+      window.open(path, '_blank');
+    } else {
+      navigate(path);
+    }
+  }, [navigate, shortcuts]);
+  
+
+
+  // const handleItemClick = key => {
+  //   setSelectedKey(key);
+
+  // paths defines the sider menu navigations
+  // const paths = {
+  //   '1': '/',
+  //   '2': 'https://designstudio.ronbow.com/',
+  //   '3': 'https://www.zoom.com/en/products/team-chat/',
+  //   '4': 'https://zoom.us/meeting',
+  //   '5': 'https://calendar.google.com/calendar/',
+  //   '6': 'https://app.clickup.com/10643463/v/fm/a4u07-7291',
+  //   '7': '/add-shortcut',
+  // };
+
+  // if (key === 'logo') {
+  //   setShowContent('dashboard'); // Clear the current content
+  //   setSelectedKey(null); // Clear all selections
+  //   navigate('/'); // Navigate to the homepage
+  // } else if (2 <= parseInt(key) <= 6) {
+  //   window.open(paths[key], '_blank');
+  // } else if (key === '1') {
+  //   navigate(paths[key]);
+  // } else if (key === '7') {
+  //   handleAddShortcut(true);
+  // } else {
+  //   window.open(window.location.origin + paths[key], '_blank');
+  // }
+  // };
 
   const handleSearch = (value) => {
     console.log('Search:', value);
     // Implement search functionality here
   };
+
 
 
 
@@ -92,8 +153,14 @@ const LayoutComponent = ({ children }) => {
       }}
     >
       <Layout style={{ minHeight: '100vh', backgroundColor: 'white', }}>
+        <Sider collapsible collapsed={collapsed} onCollapse={setCollapsed} theme='light' style={{ marginTop: '50px', backgroundColor: 'white' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', height: '85vh' }}>
+            {renderMenuItems(shortcuts.slice(0, -1))}
+            <div style={{ borderTop: '2px solid #333' }}>{renderMenuItems(shortcuts.slice(-1))}</div>
+          </div>
+        </Sider>
 
-        <Sider collapsible collapsed={collapsed}
+        {/* <Sider collapsible collapsed={collapsed}
           theme='light'
           onCollapse={value => setCollapsed(value)}
           style={{ marginTop: '50px', backgroundColor: 'white', }}
@@ -142,7 +209,7 @@ const LayoutComponent = ({ children }) => {
 
           </div>
 
-        </Sider>
+        </Sider> */}
 
         {/* Main Content */}
         <Layout style={{ padding: '0 5px 24px', backgroundColor: 'white' }}>
@@ -240,6 +307,17 @@ const LayoutComponent = ({ children }) => {
             {children}
 
           </Content>
+
+
+          <AddShortcut
+            visible={isModalVisible}
+            allShortcuts={allShortcuts}
+            selectedShortcuts={shortcuts.map((s) => s.key)}
+            onSave={handleShortcutSave}
+            onCancel={() => setIsModalVisible(false)}
+            open={true}
+          />
+
         </Layout>
 
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Collapse, Divider, Button, } from 'antd';
+import { Collapse, Divider, Button, Progress, } from 'antd';
 import './Resources.css';
 import { Link, } from 'react-router-dom';
 import { ExportOutlined, FilterOutlined, SearchOutlined } from '@ant-design/icons';
@@ -131,6 +131,14 @@ const KnowledgeBase = () => {
           <SearchOutlined className="icon" />
         </div>
       </div>
+
+      <div>
+      <Progress percent={76} strokeColor={'#5D6465'} trailColor={'#F0ECEC'} style={{ width: '80%', marginRight: '20px', }}/>
+      <Link to="https://app.clickup.com/login" target="_blank" rel="noopener noreferrer" style={{ color: '#5D6465', float: 'right', }}>
+        Go to LMS
+      </Link>
+      </div>
+
 
 
       <Collapse
