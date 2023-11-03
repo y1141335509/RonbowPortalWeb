@@ -1,5 +1,6 @@
 import React from 'react';
-import { Collapse, Divider, Button, ConfigProvider, Menu, Dropdown, Image, QRCode, Input, Switch, } from 'antd';
+import { Collapse, Divider, Button, ConfigProvider, Menu, 
+  Dropdown, Image, QRCode, Input, Switch, Form, } from 'antd';
 import './ProjectProfile624748504.css';
 import {
   ExportOutlined, FilterOutlined, SearchOutlined, DownloadOutlined,
@@ -7,7 +8,7 @@ import {
 } from '@ant-design/icons';
 import Progress from './Progress/Progress';
 import Zoom from '../../Zoom/Zoom';
-import Calculator from './Calculator/Calculator';
+import CalculatorNoCity from './Calculator/CalculatorNoCity';
 import ProgressTest from './Progress/Progress-Test';
 import ProgressCollapsed from './Progress/ProgressCollapsed';
 import ModeIcon from '@mui/icons-material/Mode';
@@ -294,7 +295,7 @@ const ProjectProfile = () => (
         Price Calculator</span>
       <div style={{ textAlign: 'center', marginTop: '10px', }}>
 
-        <Calculator />
+        <CalculatorNoCity />
         <Divider />
       </div>
 
@@ -328,48 +329,54 @@ const ProjectProfile = () => (
           lineHeight: '30px', letterSpacing: '0.02em', textAlign: 'left',
           backgroundColor: 'white', paddingTop: '20px', paddingBottom: '10px',
         }}>
-          Payment</span>
-        <div style={{ textAlign: 'center', }}>
-          <QRCode
-            errorLevel="H"
-            value="https://ant.design/"
-            icon="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg"
-          />
-          <Button style={{ marginRight: '20px', }}>
-            Pay Now
-          </Button>
-          <Button style={{ marginRight: '20px', }}>
-            Pay Online
-          </Button>
-          <Button style={{ marginRight: '20px', }}>
-            Pay by Check
-          </Button>
-          <Button style={{ margin: 'auto', }}>
-            Finance
-          </Button>
-        </div>
-      </div>
-
-      <Divider />
-
-      <div>
-        <span style={{
-          fontFamily: 'Roboto, sans-serif', fontSize: '18px', fontWeight: '300',
-          lineHeight: '30px', letterSpacing: '0.02em', textAlign: 'left',
-          backgroundColor: 'white', paddingTop: '20px', paddingBottom: '10px',
-        }}>
           Submit</span>
       </div>
+
       <div style={{ textAlign: 'center', }}>
-        <span style={{ marginRight: '10px', }}>Auto Submit</span>
-        <Switch defaultChecked onChange={(checked) => {
-          console.log(`switch to ${checked}`);
-        }} />
+
+        <Form
+          name="wrap"
+          labelCol={{ flex: '200px' }}
+          labelAlign="right"
+          labelWrap
+          wrapperCol={{ flex: 1 }}
+          colon={false}
+          style={{ maxWidth: 600 }}
+        >
+          <Form.Item label="Deal ID: " name="deal_id" rules={[{ required: true }]}>
+            <Input />
+          </Form.Item>
+
+          <Form.Item label="Design Studio Link: " name="design_studio_link" rules={[{ required: true }]}>
+            <Input />
+          </Form.Item>
+
+          <Form.Item label=" ">
+            <Button type="primary" htmlType="confirm" style={{ marginTop: '15px', }}>
+              Confirm
+            </Button>
+
+            <div style={{ float: 'right',  marginTop: '18px', }}>
+              <span style={{ marginRight: '10px', }}>Auto Submit</span>
+              <Switch defaultChecked onChange={(checked) => {
+                console.log(`switch to ${checked}`);
+              }} />
+            </div>
+
+          </Form.Item>
+        </Form>
+
+
+
       </div>
+
     </div>
+
+
   </div>
 
 );
+
 
 
 export default ProjectProfile;

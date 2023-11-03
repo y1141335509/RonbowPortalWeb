@@ -1,12 +1,15 @@
 import React from 'react';
-import { Collapse, Divider, Button, ConfigProvider, Menu, Dropdown, Image, QRCode, Input, Switch, } from 'antd';
+import {
+  Collapse, Divider, Button, ConfigProvider, Menu,
+  Dropdown, Image, QRCode, Input, Switch, Form,
+} from 'antd';
 import {
   ExportOutlined, FilterOutlined, SearchOutlined, DownloadOutlined,
   ToolOutlined, PrinterOutlined, MailOutlined, UserOutlined,
 } from '@ant-design/icons';
 import Progress from './Progress/Progress';
 import Zoom from '../../Zoom/Zoom';
-import CalculatorNoCity from './Calculator/CalculatorNoCity';
+import Calculator from './Calculator/Calculator';
 import ProgressTest from './Progress/Progress-Test';
 import ProgressCollapsed from './Progress/ProgressCollapsed';
 import ModeIcon from '@mui/icons-material/Mode';
@@ -271,7 +274,7 @@ const ProjectProfile = () => (
         >
           Design Now!
         </Button>
-        
+
         <Button
           size='large'
           onClick={() => handleDesignButton()}
@@ -293,7 +296,7 @@ const ProjectProfile = () => (
         Price Calculator</span>
       <div style={{ textAlign: 'center', marginTop: '10px', }}>
 
-        <CalculatorNoCity />
+        <Calculator />
         <Divider />
       </div>
 
@@ -348,9 +351,8 @@ const ProjectProfile = () => (
           </Button>
         </div>
       </div>
-    </div>
-
-    <Divider />
+      
+      <Divider />
 
       <div>
         <span style={{
@@ -360,12 +362,48 @@ const ProjectProfile = () => (
         }}>
           Submit</span>
       </div>
+
       <div style={{ textAlign: 'center', }}>
-        <span style={{ marginRight: '10px', }}>Auto Submit</span>
-        <Switch defaultChecked onChange={(checked) => {
-          console.log(`switch to ${checked}`);
-        }} />
+
+        <Form
+          name="wrap"
+          labelCol={{ flex: '200px' }}
+          labelAlign="right"
+          labelWrap
+          wrapperCol={{ flex: 1 }}
+          colon={false}
+          style={{ maxWidth: 600 }}
+        >
+          <Form.Item label="Deal ID: " name="deal_id" rules={[{ required: true }]}>
+            <Input />
+          </Form.Item>
+
+          <Form.Item label="Design Studio Link: " name="design_studio_link" rules={[{ required: true }]}>
+            <Input />
+          </Form.Item>
+
+          <Form.Item label=" ">
+            <Button type="primary" htmlType="confirm" style={{ marginTop: '15px', }}>
+              Confirm
+            </Button>
+
+            <div style={{ float: 'right',  marginTop: '18px', }}>
+              <span style={{ marginRight: '10px', }}>Auto Submit</span>
+              <Switch defaultChecked onChange={(checked) => {
+                console.log(`switch to ${checked}`);
+              }} />
+            </div>
+
+          </Form.Item>
+        </Form>
+
+
+
       </div>
+
+    </div>
+
+
   </div>
 
 );
