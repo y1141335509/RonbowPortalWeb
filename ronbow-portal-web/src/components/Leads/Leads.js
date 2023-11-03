@@ -1,13 +1,11 @@
-
 import React, { useRef, useState } from 'react';
-import { PlusOutlined, ExportOutlined } from '@ant-design/icons';
+import { PlusOutlined, ExportOutlined, DownOutlined, } from '@ant-design/icons';
 import {
   EditableProTable,
   ProCard,
   ProFormField,
 } from '@ant-design/pro-components';
-import { Button, Form, Input, Space, Tag, Divider, Select, ConfigProvider } from 'antd';
-import { Link, Routes, Route } from 'react-router-dom';
+import { Button, Form, Input, Space, Tag, Divider, Select, ConfigProvider, Menu, Dropdown, message, } from 'antd';
 
 
 const { Option } = Select;
@@ -21,124 +19,6 @@ const waitTime = (time = 100) => {
   });
 };
 
-const TagList = ({ value, onChange }) => {
-  const ref = useRef(null);
-  const [newTags, setNewTags] = useState([]);
-  const [inputValue, setInputValue] = useState('');
-
-  const handleInputChange = (e) => {
-    setInputValue(e.target.value);
-  };
-
-  const handleInputConfirm = () => {
-    let tempsTags = [...(value || [])];
-    if (
-      inputValue &&
-      tempsTags.filter((tag) => tag.label === inputValue).length === 0
-    ) {
-      tempsTags = [
-        ...tempsTags,
-        { key: `new-${tempsTags.length}`, label: inputValue },
-      ];
-    }
-    onChange?.(tempsTags);
-    setNewTags([]);
-    setInputValue('');
-  };
-
-
-  return (
-    <Space>
-      {(value || []).concat(newTags).map((item) => (
-        <Tag key={item.key}>{item.label}</Tag>
-      ))}
-      <Input
-        ref={ref}
-        type="text"
-        size="small"
-        style={{ width: 78 }}
-        value={inputValue}
-        onChange={handleInputChange}
-        onBlur={handleInputConfirm}
-        onPressEnter={handleInputConfirm}
-      />
-    </Space>
-  );
-};
-
-
-
-const defaultData = [
-  {
-    id: 624748504,
-    contact_name: 'Henry',
-    address: '19479 Stevens Creek Blvd #110, Cupertino, CA 95014',
-    leads_from: <Tag>Walk In</Tag>,
-    leads_quality: <Select placeholder="Select Leads Quality" defaultValue={'Low Budget'} style={{ width: '140px' }}>
-      <Option value="Great">Great</Option>
-      <Option value="Style Mismatch">Style Mismatch</Option>
-      <Option value="Low Budget">Low Budget</Option>
-    </Select>,
-    projects: <div><Tag>Kitchen</Tag><Tag>Bath</Tag></div>,
-  },
-  {
-    id: 624691230,
-    contact_name: 'Jeff',
-    address: '19479 Stevens Creek Blvd #110, Cupertino, CA 95014',
-    leads_from: <Tag>Trade Pro</Tag>,
-    leads_quality: <Select placeholder="Select Leads Quality" defaultValue='Great' style={{ width: '140px' }}>
-      <Option value="Great" >Great</Option>
-      <Option value="Style Mismatch">Style Mismatch</Option>
-      <Option value="Low Budget">Low Budget</Option>
-    </Select>,
-    projects: <div><Tag>Kitchen</Tag></div>,
-  },
-];
-
-
-const columns = [
-  {
-    title: 'Contact Name',
-    dataIndex: 'contact_name',
-    width: '13%',
-  },
-  {
-    title: 'Address',
-    dataIndex: 'address',
-    width: '25%',
-  },
-  {
-    title: 'Leads From',
-    dataIndex: 'leads_from',
-    width: '15%',
-  },
-  {
-    title: 'Leads Quality',
-    dataIndex: 'leads_quality',
-    width: '15%',
-    valueType: 'select',
-    valueEnum: {
-      Great: { text: 'Great' },
-      'Style Mismatch': { text: 'Style Mismatch' },
-      'Low Budget': { text: 'Low Budget' },
-    },
-    renderFormItem: (item, { defaultRender, ...rest }, form) => {
-      return (
-        <Select {...rest} placeholder="Select Leads Quality">
-          <Option value="Great">Great</Option>
-          <Option value="Style Mismatch">Style Mismatch</Option>
-          <Option value="Low Budget">Low Budget</Option>
-        </Select>
-      );
-    },
-    render: (text) => <Tag>{text}</Tag>
-  },
-  {
-    title: 'Projects',
-    dataIndex: 'projects',
-    width: '15%',
-  }
-];
 
 
 const EditableTable = () => {
@@ -146,6 +26,99 @@ const EditableTable = () => {
   const [editableKeys, setEditableRowKeys] = useState([]);
   const [dataSource, setDataSource] = useState([]);
   const [form] = Form.useForm();
+  const [data, setData] = useState([
+    {
+      id: 624748504,
+      contact_name: 'Henry',
+      address: '19479 Stevens Creek Blvd #110, Cupertino, CA 95014',
+      leads_from: <Tag>Walk In</Tag>,
+      projects: <div><Tag>Kitchen</Tag><Tag>Bath</Tag></div>,
+      leads_quality: 'Style Mismatch',  // Default value for the first row
+    },
+    {
+      id: 624691230,
+      contact_name: 'Jeff',
+      address: '19479 Stevens Creek Blvd #110, Cupertino, CA 95014',
+      leads_from: <Tag>Trade Pro</Tag>,
+      projects: <div><Tag>Kitchen</Tag></div>,
+      leads_quality: 'Great',  // Default value for the second row
+    },
+  ]);
+
+
+
+  const handleMenuClick = (record, e) => {
+
+    // Update the data state to reflect the menu selection
+    const newData = data.map((item) => {
+      if (item.id === record.id) {
+        return { ...item, leads_quality: e.domEvent.currentTarget.textContent };
+      }
+      return item;
+    });
+
+    setData(newData);
+  };
+
+
+  const columns = [
+    {
+      title: 'Contact Name',
+      dataIndex: 'contact_name',
+      width: '13%',
+    },
+    {
+      title: 'Address',
+      dataIndex: 'address',
+      width: '25%',
+    },
+    {
+      title: 'Leads From',
+      dataIndex: 'leads_from',
+      width: '15%',
+    },
+    {
+      title: 'Leads Quality',
+      dataIndex: 'leads_quality',
+      render: (text, record) => {
+        const items = [
+          {
+            label: 'Great',
+            key: '1',
+          },
+          {
+            label: 'Style Mismatch',
+            key: '2',
+          },
+          {
+            label: 'Low Budget',
+            key: '3',
+          },
+        ];
+
+        const menu = (
+          <Menu onClick={(e) => handleMenuClick(record, e)} items={items} />
+        );
+
+        return (
+          <Dropdown overlay={menu}>
+            <Button>
+              <Space>
+                {text || 'Select Quality'} <DownOutlined />
+              </Space>
+            </Button>
+          </Dropdown>
+        );
+      },
+    },
+    {
+      title: 'Projects',
+      dataIndex: 'projects',
+      width: '15%',
+    }
+  ];
+
+
   return (
     <ConfigProvider
       theme={{
@@ -166,12 +139,12 @@ const EditableTable = () => {
           recordCreatorProps={false}
           columns={columns}
           request={async () => ({
-            data: defaultData,
+            data: data,
             total: 3,
             success: true,
           })}
-          value={dataSource}
-          onChange={setDataSource}
+          value={data}
+          onChange={setData}
           editable={{
             form,
             editableKeys,
