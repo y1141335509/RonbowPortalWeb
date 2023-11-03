@@ -7,6 +7,17 @@ const sizeOptions = ['Simple', 'Regular'];
 const materialOptions = ['Material 1', 'Material 2', 'Material 3'];
 const colorOptions = ['Color 1', 'Color 2', 'Color 3'];
 
+
+const layout = {
+  labelCol: {
+    span: 8,
+  },
+  wrapperCol: {
+    span: 16,
+  },
+};
+
+
 const App = () => {
   const [form] = Form.useForm();
   const onFinish = (values) => {
@@ -15,6 +26,7 @@ const App = () => {
 
   return (
     <Form
+      {...layout}
       form={form}
       name="register"
       onFinish={onFinish}

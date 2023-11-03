@@ -21,8 +21,18 @@ const App = () => {
     setFileList(newFileList);
   };
 
+  const layout = {
+    labelCol: {
+      span: 8,
+    },
+    wrapperCol: {
+      span: 16,
+    },
+  };
+
   return (
     <Form
+      {...layout}
       form={form}
       name="register"
       onFinish={onFinish}
@@ -65,8 +75,9 @@ const App = () => {
           },
         ]}
       >
-        <Input />
+        <Input.TextArea showCount maxLength={300} />
       </Form.Item>
+
 
       <Form.Item
         name="upload"

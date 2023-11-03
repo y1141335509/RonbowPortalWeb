@@ -99,10 +99,10 @@ const App = () => {
             </Form.Item>
 
             <Form.Item
-                label="Invitation Link"
-                name="invitation_link"
+                label="Copy Link"
+                name="copy_link"
             >
-                <span><Link href="www.google.com" target="_blank">Click to Join</Link></span>
+                <span><Link href="www.google.com" target="_blank">www.google.com</Link></span>
             </Form.Item>
 
 

@@ -276,7 +276,7 @@ const ProjectProfile = () => (
         <Button
           size='large'
           onClick={() => handleDesignButton()}
-          style={{ backgroundColor: '#5D6465', color: '#F0ECEC', marginRight: '10px', }}
+          style={{ marginRight: '10px', }}
           disabled
         >
           Generate Proposal!

@@ -59,13 +59,13 @@ const MyAccount = () => {
                 onChange={handleChange}
               />
             </Form.Item>
-            <Form.Item label="bio">
+            {/* <Form.Item label="bio">
               <TextArea name="bio"
                 value={formData.bio}
                 onChange={handleChange}
                 rows={6}
                 maxLength={6} />
-            </Form.Item>
+            </Form.Item> */}
             <Form.Item>
               <Button type="primary" htmlType="submit">
                 Save

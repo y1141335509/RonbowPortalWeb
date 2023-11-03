@@ -70,6 +70,7 @@ const App = () => {
       <Form.Item
         name="feedback"
         label="Feedback"
+        required={true}
       >
         <Input.TextArea showCount maxLength={300} />
       </Form.Item>

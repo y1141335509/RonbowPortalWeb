@@ -36,7 +36,7 @@ const App = () => {
           //   Cancel
           // </Button>,
           <Button key="submit" type="primary" loading={loading} onClick={handleOk}>
-            Add
+            Add & Invite
           </Button>,
         ]}
       >
