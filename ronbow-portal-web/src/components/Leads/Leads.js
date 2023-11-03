@@ -6,9 +6,10 @@ import {
   ProFormField,
 } from '@ant-design/pro-components';
 import { Button, Form, Input, Space, Tag, Divider, Select, ConfigProvider, Menu, Dropdown, message, } from 'antd';
+import ImportDropdown from './ImportDropdown/ImportDropdown';
 
 
-const { Option } = Select;
+
 
 
 const waitTime = (time = 100) => {
@@ -119,6 +120,7 @@ const EditableTable = () => {
   ];
 
 
+
   return (
     <ConfigProvider
       theme={{
@@ -127,6 +129,8 @@ const EditableTable = () => {
         }
       }}
     >
+      <ImportDropdown />
+
       <div style={{ textAlign: 'center', }}>
         <EditableProTable
           rowKey="id"
@@ -134,7 +138,7 @@ const EditableTable = () => {
             x: 960,
           }}
           actionRef={actionRef}
-          headerTitle="Contact List"
+          headerTitle=""
           maxLength={5}
           recordCreatorProps={false}
           columns={columns}
