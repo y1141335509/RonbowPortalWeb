@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Form, Input, Button } from "antd";
+import { Form, Input, Button, ConfigProvider } from "antd";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -19,24 +19,36 @@ export const Login = () => {
   };
 
   return (
-    <Form name="login" onFinish={onFinish}>
-      <Form.Item
-        name="username"
-        rules={[{ required: true, message: "Please input your username!" }]}
-      >
-        <Input placeholder="Username" />
-      </Form.Item>
-      <Form.Item
-        name="password"
-        rules={[{ required: true, message: "Please input your password!" }]}
-      >
-        <Input type="password" placeholder="Password" />
-      </Form.Item>
-      <Form.Item>
-        <Button type="primary" htmlType="submit" loading={loading}>
-          Log in
-        </Button>
-      </Form.Item>
-    </Form>
+    <ConfigProvider
+      theme={{
+        token: {
+          colorPrimary: '#5D6465', colorSuccess: '#F0ECEC',
+        }
+      }}>
+
+      <div style={{ maxWidth: '500px', alignItems: 'center', textAlign: 'center', margin: '0 auto', }} >
+        <Form name="login" onFinish={onFinish}>
+          <Form.Item
+            name="username"
+            rules={[{ required: true, message: "Please input your username!" }]}
+          >
+            <Input placeholder="Username" />
+          </Form.Item>
+          <Form.Item
+            name="password"
+            rules={[{ required: true, message: "Please input your password!" }]}
+          >
+            <Input type="password" placeholder="Password" />
+          </Form.Item>
+          <Form.Item>
+            <Button type="primary" htmlType="submit" loading={loading}>
+              Log in
+            </Button>
+          </Form.Item>
+        </Form>
+
+      </div>
+
+    </ConfigProvider>
   );
 };

@@ -19,7 +19,6 @@ import { NotFoundPage } from './components/Login/NotFoundPage.js';
 
 
 
-
 import './App.css';
 
 
@@ -33,15 +32,6 @@ const LayoutWithOutlet = () => (
 
 
 function App() {
-  // const navigate = useNavigate();
-
-  // const handleLogin = async () => {
-  //   // Your login logic...
-  //   const isLoggedIn = true; // Replace with actual login logic
-  //   if (isLoggedIn) {
-  //     navigate('/dashboard');
-  //   }
-  // };
   return (
     <Router>
       <Routes>
@@ -70,76 +60,7 @@ function App() {
       </Routes>
     </Router>
   );
-
-  // return (
-  //   <Router>
-  //     <Routes>
-  //       {/* Default Route for Login */}
-  //       <Route path="/" element={<Navigate to="/login" replace />} />
-  //       <Route path="/login" element={<Login />} />
-
-  //       {/* Routes wrapped with LayoutComponent */}
-  //       <Route element={<LayoutComponent />}>
-  //         <Route index element={<Navigate to="/dashboard" replace />} />
-  //         <Route path="/dashboard" element={<Dashboard />} />
-  //         <Route path="/project-list" element={<ProjectList />} />
-  //         <Route path="/project-list/proj/624748504" element={<ProjectProfile624748504 />} />
-  //         <Route path="/project-list/proj/624691229" element={<ProjectProfile624691229 />} />
-  //         <Route path="/project-list/cust/:id" element={<CustomerProfile />} />
-  //         <Route path="/resources" element={<Resources />} />
-  //         <Route path="/resources/public-resources" element={<PublicResources />} />
-  //         <Route path="/inspiration-space" element={<Inspiration />} />
-  //         <Route path="/requests" element={<Requests />} />
-  //         <Route path="/my-account" element={<MyAccount />} />
-  //         <Route path="/leads" element={<Leads />} />
-  //       </Route>
-
-  //     </Routes>
-  //   </Router>
-  // )
 }
-
-
-
-
-// const App = () => {
-//   return (
-
-//     <Router>
-//       {/* Add any components that have the <Link to> component */}
-//       <LayoutComponent>
-//         <Routes>
-//           {/* Add Components you want to route */}
-//           <Route path="/dashboard" element={<Dashboard />} />
-//           <Route path="/project-list" element={<ProjectList />} />
-//           <Route path="/project-list/proj/624748504" element={<ProjectProfile624748504 />} />
-//           <Route path="/project-list/proj/624691229" element={<ProjectProfile624691229 />} />
-//           <Route path="/project-list/cust/:id" element={<CustomerProfile />} />
-
-//           <Route path="/resources" element={<Resources />} />
-//           <Route path="/resources/public-resources" element={<PublicResources />} />
-
-//           <Route path="/inspiration-space" element={<Inspiration />} />
-//           <Route path="/requests" element={<Requests />} />
-
-//           <Route path="/my-account" element={<MyAccount />} />
-//           <Route path="/leads" element={<Leads />} />
-
-//         </Routes>
-//       </LayoutComponent>
-
-
-//       <Routes>
-//         <Route path="/" element={<Navigate to="/login" replace />} />
-
-//         <Route path='/login' element={<Login />} />
-//       </Routes>
-
-//     </Router>
-
-
-//   )
-// }
 
 
 export default App;
