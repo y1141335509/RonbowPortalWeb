@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, Outlet, } from 'react-router-dom';
 import ProjectProfile624748504 from './components/ProjectList/ProjectProfile/ProjectProfile624748504.js';
 import ProjectProfile624691229 from './components/ProjectList/ProjectProfile/ProjectProfile624691229.js';
 import CustomerProfile from './components/ProjectList/CustomerProfile/CustomerProfile.js';
@@ -13,13 +13,23 @@ import Inspiration from './components/Inspiration/Inspiration.js';
 import Requests from './components/Requests/Requests.js';
 import MyAccount from './components/MyAccount/MyAccount.js';
 import Leads from './components/Leads/Leads.js';
-import Login from './components/Login/Login.js';
+import { ProtectedRoute } from './components/Login/ProtectedRoute.js';
+import { Login } from './components/Login/Login.js';
+import { NotFoundPage } from './components/Login/NotFoundPage.js';
+
+
 
 
 import './App.css';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+const LayoutWithOutlet = () => (
+  <LayoutComponent>
+    <Outlet />
+  </LayoutComponent>
+);
 
 
 function App() {
@@ -32,17 +42,16 @@ function App() {
   //     navigate('/dashboard');
   //   }
   // };
-
   return (
     <Router>
       <Routes>
-        {/* Default Route for Login */}
-        <Route path="/" element={<Navigate to="/login" replace />} />
+        {/* Public Routes */}
         <Route path="/login" element={<Login />} />
-        
-        {/* Routes wrapped with LayoutComponent */}
-        <Route element={<LayoutComponent />}>
-          <Route index element={<Navigate to="/dashboard" replace />} />
+        <Route path="/" element={<Navigate replace to="/dashboard" />} />
+        <Route path="*" element={<NotFoundPage />} />
+
+        {/* Protected Routes with Layout */}
+        <Route element={<ProtectedRoute><LayoutWithOutlet /></ProtectedRoute>}>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/project-list" element={<ProjectList />} />
           <Route path="/project-list/proj/624748504" element={<ProjectProfile624748504 />} />
@@ -55,10 +64,39 @@ function App() {
           <Route path="/my-account" element={<MyAccount />} />
           <Route path="/leads" element={<Leads />} />
         </Route>
+        {/*  */}
+
 
       </Routes>
     </Router>
-  )
+  );
+
+  // return (
+  //   <Router>
+  //     <Routes>
+  //       {/* Default Route for Login */}
+  //       <Route path="/" element={<Navigate to="/login" replace />} />
+  //       <Route path="/login" element={<Login />} />
+
+  //       {/* Routes wrapped with LayoutComponent */}
+  //       <Route element={<LayoutComponent />}>
+  //         <Route index element={<Navigate to="/dashboard" replace />} />
+  //         <Route path="/dashboard" element={<Dashboard />} />
+  //         <Route path="/project-list" element={<ProjectList />} />
+  //         <Route path="/project-list/proj/624748504" element={<ProjectProfile624748504 />} />
+  //         <Route path="/project-list/proj/624691229" element={<ProjectProfile624691229 />} />
+  //         <Route path="/project-list/cust/:id" element={<CustomerProfile />} />
+  //         <Route path="/resources" element={<Resources />} />
+  //         <Route path="/resources/public-resources" element={<PublicResources />} />
+  //         <Route path="/inspiration-space" element={<Inspiration />} />
+  //         <Route path="/requests" element={<Requests />} />
+  //         <Route path="/my-account" element={<MyAccount />} />
+  //         <Route path="/leads" element={<Leads />} />
+  //       </Route>
+
+  //     </Routes>
+  //   </Router>
+  // )
 }
 
 
