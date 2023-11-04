@@ -34,12 +34,12 @@ const App = () => {
             autoComplete="off"
         >
             <Form.Item
-                label="Project Name"
-                name="project_name"
+                label="Lead Name"
+                name="lead_name"
                 rules={[
                     {
                         required: true,
-                        message: 'Please input your project name!',
+                        message: 'Please input your lead name!',
                     },
                 ]}
             >

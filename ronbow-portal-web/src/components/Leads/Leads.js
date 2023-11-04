@@ -8,6 +8,7 @@ import {
 import { Button, Form, Input, Space, Tag, Divider, Select, ConfigProvider, Menu, Dropdown, message, } from 'antd';
 import ImportDropdown from './ImportDropdown/ImportDropdown';
 import ProjectQuality from './ProjectQuality/ProjectQuality';
+import AddProject from './AddLead/AddProject';
 
 
 
@@ -186,6 +187,8 @@ const EditableTable = () => {
         />
 
         <Divider />
+
+        <AddProject />
 
       </div>
     </ConfigProvider>
