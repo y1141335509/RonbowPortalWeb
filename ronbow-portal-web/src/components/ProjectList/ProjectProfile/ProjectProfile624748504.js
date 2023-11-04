@@ -1,6 +1,8 @@
 import React from 'react';
-import { Collapse, Divider, Button, ConfigProvider, Menu, 
-  Dropdown, Image, QRCode, Input, Switch, Form, } from 'antd';
+import {
+  Collapse, Divider, Button, ConfigProvider, Menu,
+  Dropdown, Image, QRCode, Input, Switch, Form,
+} from 'antd';
 import './ProjectProfile624748504.css';
 import {
   ExportOutlined, FilterOutlined, SearchOutlined, DownloadOutlined,
@@ -121,8 +123,9 @@ const items = [
   {
     key: '7',
     label: 'MEETING NOTES',
-    children: <div>
+    children: <div style={{ textAlign: 'center', }}>
       <TextArea rows={4} />
+      <Button style={{ backgroundColor: '#5D6465', color: '#F0ECEC', marginTop: '10px', }}>Save</Button>
     </div>,
     headerStyle: { fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
   },
@@ -356,7 +359,7 @@ const ProjectProfile = () => (
               Confirm
             </Button>
 
-            <div style={{ float: 'right',  marginTop: '18px', }}>
+            <div style={{ float: 'right', marginTop: '18px', }}>
               <span style={{ marginRight: '10px', }}>Auto Submit</span>
               <Switch defaultChecked onChange={(checked) => {
                 console.log(`switch to ${checked}`);

@@ -74,22 +74,22 @@ const LayoutComponent = ({ children }) => {
 
   const handleItemClick = useCallback((key) => {
     setSelectedKey(key);
-  
+
     if (key === '10') {
       setIsModalVisible(true);
       return;
     }
-  
+
     const path = shortcuts.find((s) => s.key === key)?.path;
     if (!path) return;
-  
+
     if (path.startsWith('http')) {
       window.open(path, '_blank');
     } else {
       navigate(path);
     }
   }, [navigate, shortcuts]);
-  
+
 
   const handleSearch = (value) => {
     console.log('Search:', value);
@@ -131,19 +131,19 @@ const LayoutComponent = ({ children }) => {
 
               <Menu.Item
                 key="2"
-                icon={<FundProjectionScreenOutlined />}
-                onClick={() => setShowContent('project-list')}
-                style={{ fontWeight: '200', color: 'black', }}>
-                <Link to="/project-list">Projects</Link>
-              </Menu.Item>
-
-              <Menu.Item
-                key="3"
                 icon={<PhoneOutlined />}
                 onClick={() => setShowContent('leads')}
                 style={{ fontWeight: '200', color: 'black' }}
               >
                 <Link to="/leads">Leads</Link>
+              </Menu.Item>
+
+              <Menu.Item
+                key="3"
+                icon={<FundProjectionScreenOutlined />}
+                onClick={() => setShowContent('project-list')}
+                style={{ fontWeight: '200', color: 'black', }}>
+                <Link to="/project-list">Projects</Link>
               </Menu.Item>
 
               <Menu.Item key='4' icon={<ReadOutlined />} onClick={() => setShowContent('resources')} style={{ fontWeight: '200', color: 'black', }}>

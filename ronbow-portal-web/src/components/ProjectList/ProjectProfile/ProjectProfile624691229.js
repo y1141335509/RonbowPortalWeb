@@ -123,8 +123,9 @@ const items = [
   {
     key: '7',
     label: 'MEETING NOTES',
-    children: <div>
+    children: <div style={{ textAlign: 'center', }}>
       <TextArea rows={4} />
+      <Button style={{ backgroundColor: '#5D6465', color: '#F0ECEC', marginTop: '10px', }}>Save</Button>
     </div>,
     headerStyle: { fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
   },

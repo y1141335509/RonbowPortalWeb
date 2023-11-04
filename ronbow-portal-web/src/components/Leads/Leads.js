@@ -7,7 +7,7 @@ import {
 } from '@ant-design/pro-components';
 import { Button, Form, Input, Space, Tag, Divider, Select, ConfigProvider, Menu, Dropdown, message, } from 'antd';
 import ImportDropdown from './ImportDropdown/ImportDropdown';
-
+import ProjectQuality from './ProjectQuality/ProjectQuality';
 
 
 
@@ -22,6 +22,8 @@ const waitTime = (time = 100) => {
 
 
 
+
+
 const EditableTable = () => {
   const actionRef = useRef();
   const [editableKeys, setEditableRowKeys] = useState([]);
@@ -30,21 +32,33 @@ const EditableTable = () => {
   const [data, setData] = useState([
     {
       id: 624748504,
-      contact_name: 'Henry',
-      address: '19479 Stevens Creek Blvd #110, Cupertino, CA 95014',
+      name: 'Henry',
       leads_from: <Tag>Walk In</Tag>,
-      projects: <div><Tag>Kitchen</Tag><Tag>Bath</Tag></div>,
       leads_quality: 'Style Mismatch',  // Default value for the first row
+      projects: ['Kitchen', 'Bath'], // Initial values set here as an array
+      phone: '123-456-7890',
+      email: 'hen123@gmail.com',
     },
     {
       id: 624691230,
-      contact_name: 'Jeff',
-      address: '19479 Stevens Creek Blvd #110, Cupertino, CA 95014',
+      name: 'Jeff',
       leads_from: <Tag>Trade Pro</Tag>,
-      projects: <div><Tag>Kitchen</Tag></div>,
       leads_quality: 'Great',  // Default value for the second row
+      projects: ['Kitchen'], // Initial value set here as an array
+      phone: '123-456-0987',
+      email: 'jeff123@hotmail.com',
+    },
+    {
+      id: 624693456,
+      name: 'Diana',
+      leads_from: <Tag>Website</Tag>,
+      leads_quality: 'Low Budget',  // Default value for the second row
+      projects: ['Bath'], // Initial value set here as an array
+      phone: '345-456-0987',
+      email: 'diana222@outlook.com',
     },
   ]);
+  
 
 
 
@@ -64,20 +78,25 @@ const EditableTable = () => {
 
   const columns = [
     {
-      title: 'Contact Name',
-      dataIndex: 'contact_name',
-      width: '13%',
+      title: 'Customer ID',
+      dataIndex: 'id',
+      width: '10%',
     },
     {
-      title: 'Address',
-      dataIndex: 'address',
-      width: '25%',
+      title: 'Name',
+      dataIndex: 'name',
+      width: '13%',
     },
     {
       title: 'Leads From',
       dataIndex: 'leads_from',
       width: '15%',
     },
+    {
+      title: 'Projects',
+      dataIndex: 'projects',
+      render: (_, record) => <ProjectQuality initialProjects={record.projects} />,
+    },    
     {
       title: 'Leads Quality',
       dataIndex: 'leads_quality',
@@ -113,10 +132,16 @@ const EditableTable = () => {
       },
     },
     {
-      title: 'Projects',
-      dataIndex: 'projects',
+      title: 'Phone',
+      dataIndex: 'phone',
       width: '15%',
-    }
+    },
+    {
+      title: 'Email',
+      dataIndex: 'email',
+      width: '15%',
+    },
+    
   ];
 
 
