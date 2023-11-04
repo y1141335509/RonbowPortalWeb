@@ -1,8 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {
   Collapse, Divider, Button, ConfigProvider, Menu,
   Dropdown, Image, QRCode, Input, Switch, Form,
+  List, Typography
 } from 'antd';
+import './ProjectProfile624748504.css';
 import {
   ExportOutlined, FilterOutlined, SearchOutlined, DownloadOutlined,
   ToolOutlined, PrinterOutlined, MailOutlined, UserOutlined,
@@ -25,6 +28,11 @@ const text = `
 
 const { Panel } = Collapse;
 const { TextArea } = Input;
+
+
+const data = [
+  "Your Wet Bar at San Mateo with L-shape style is being designed by Wendy from 2023/9/5.",
+];
 
 
 
@@ -133,7 +141,18 @@ const items = [
     key: '8',
     label: 'ALL PROJECTS',
     children: <div>
-      <Zoom />
+      <List
+        header={<div style={{ fontWeight: '400', }}>All Your Projects:</div>}
+        // footer={<div>Footer</div>}
+        bordered
+        dataSource={data}
+        renderItem={(item) => (
+          <List.Item>
+            <Typography.Text mark></Typography.Text> {item}
+            <Link to='https://designstudio.ronbow.com/' target="_blank" rel="noreferrer">  Check it Out! <ExportOutlined /></Link>
+          </List.Item>
+        )}
+      />
     </div>,
     headerStyle: { fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
   },

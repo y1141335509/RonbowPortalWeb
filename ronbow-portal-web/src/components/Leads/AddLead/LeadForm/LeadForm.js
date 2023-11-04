@@ -33,7 +33,7 @@ const App = () => {
             onFinishFailed={onFinishFailed}
             autoComplete="off"
         >
-            <Form.Item
+            {/* <Form.Item
                 label="Lead Name"
                 name="lead_name"
                 rules={[
@@ -44,7 +44,7 @@ const App = () => {
                 ]}
             >
                 <Input />
-            </Form.Item>
+            </Form.Item> */}
 
             <Form.Item
                 label="Customer Name"

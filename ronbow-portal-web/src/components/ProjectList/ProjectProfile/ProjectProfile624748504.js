@@ -1,7 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {
   Collapse, Divider, Button, ConfigProvider, Menu,
   Dropdown, Image, QRCode, Input, Switch, Form,
+  List, Typography
 } from 'antd';
 import './ProjectProfile624748504.css';
 import {
@@ -26,6 +28,10 @@ const text = `
 
 const { Panel } = Collapse;
 const { TextArea } = Input;
+
+const data = [
+  "Your Kitchen at Palo Alto New Lead with Modern style is being designed by Wendy from 2023/10/10.",
+];
 
 
 const items = [
@@ -133,7 +139,18 @@ const items = [
     key: '8',
     label: 'ALL PROJECTS',
     children: <div>
-      <Zoom />
+      <List
+        header={<div style={{ fontWeight: '400', }}>All Your Projects:</div>}
+        // footer={<div>Footer</div>}
+        bordered
+        dataSource={data}
+        renderItem={(item) => (
+          <List.Item>
+            <Typography.Text mark></Typography.Text> {item}
+            <Link to='https://designstudio.ronbow.com/' target="_blank" rel="noreferrer">  Check it Out! <ExportOutlined /></Link>
+          </List.Item>
+        )}
+      />
     </div>,
     headerStyle: { fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
   },
@@ -271,7 +288,7 @@ const ProjectProfile = () => (
         <Button
           size='large'
           onClick={() => handleDesignButton()}
-          style={{ backgroundColor: '#5D6465', color: '#F0ECEC', marginRight: '10px', }}
+          style={{ backgroundColor: '#5D6465', color: '#F0ECEC', marginRight: '10px', marginTop: '20px', }}
         >
           Design Now!
         </Button>
