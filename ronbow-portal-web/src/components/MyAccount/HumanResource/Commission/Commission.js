@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Table, Divider, Tag } from 'antd';
+import { Button } from 'antd';
+import { LeftOutlined, DownOutlined } from '@ant-design/icons';
 
 
 
@@ -45,10 +47,15 @@ const data = [
     key: '1',
     orderNumber: 'SO#',
     date: '01/01/2023',
-    status: <Tag>Paid</Tag>, 
+    status: <Tag>Paid</Tag>,
     // customer: 'customer 1',
     cashIn: 10000,
     commissionAmount: 400,
+    expandable: {
+      orderNumbers: ['SO#1', 'SO#2'],
+      cashIns: ['Cash In 1', 'Cash In 2'], // Example sub-data
+      commissionAmounts: [100, 300],
+    },
   },
   {
     key: '2',
@@ -90,6 +97,44 @@ const data = [
 
 
 
+const expandedRowRender = (record, index, indent, expanded) => {
+  // Match the sub-columns to the main columns where necessary
+  const subColumns = [
+    { title: 'Date', dataIndex: 'date', key: 'date' }, // for alignment with 'Date'
+    { title: 'Status', dataIndex: 'status', key: 'status' }, // for alignment with 'Status'
+    // ... you can add more to match the main columns structure
+    { title: 'Cash In Detail', dataIndex: 'detail', key: 'detail' },
+    { title: 'Commission Detail', dataIndex: 'commissionDetail', key: 'commissionDetail' }, // if needed
+    // The rest of the columns can remain empty for alignment
+    { title: '', dataIndex: 'empty1', key: 'empty1', render: () => <span></span> },
+    { title: '', dataIndex: 'empty2', key: 'empty2', render: () => <span></span> },
+    // Add more empty columns as needed to align with the main columns
+  ];
+
+  // Generate sub-data that includes fields to match the empty cells in subColumns
+  const data = record.expandable.cashIns.map((item, idx) => ({
+    key: idx,
+    date: record.date, // assuming you want to replicate the date for sub-rows
+    status: record.status, // replicate status if necessary
+    detail: item,
+    commissionDetail: record.expandable.commissionAmounts[idx], // if you have this detail
+    // Empty data for alignment
+    empty1: '',
+    empty2: '',
+    // Add more empty data if you added more empty columns
+  }));
+
+  return (
+    <Table
+      columns={subColumns}
+      dataSource={data}
+      pagination={false}
+      showHeader={false} // Hide the header if you prefer
+    />
+  );
+};
+
+
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -105,23 +150,59 @@ const App = () => {
     return visibleData.reduce((sum, record) => sum + record[key], 0);
   };
 
+  const customExpandIcon = (props) => {
+    if (props.expanded) {
+      return <Button onClick={e => { e.stopPropagation(); props.onExpand(props.record, e); }} icon={<DownOutlined />} />;
+    } else {
+      return <Button onClick={e => { e.stopPropagation(); props.onExpand(props.record, e); }} icon={<LeftOutlined />} />;
+    }
+  };
+
+  const newColumns = [
+    ...columns,
+    {
+      title: 'Expand',
+      key: 'expand',
+      render: (text, record, index) => {
+        return {
+          children: customExpandIcon({
+            expanded: expandedRowKeys.includes(record.key),
+            record,
+            onExpand: onRowExpand,
+          }),
+        };
+      },
+    },
+  ];
+
+  const [expandedRowKeys, setExpandedRowKeys] = useState([]);
+
+  const onRowExpand = (record, event) => {
+    const keys = expandedRowKeys.includes(record.key)
+      ? expandedRowKeys.filter(key => key !== record.key)
+      : [...expandedRowKeys, record.key];
+    setExpandedRowKeys(keys);
+  };
+
   return (
     <Table
-      columns={columns}
+      columns={newColumns}
       dataSource={data}
-      size="small"
+      expandedRowRender={expandedRowRender}
+      expandIcon={() => null} // Hide the default expand icon
+      expandedRowKeys={expandedRowKeys} // Control which rows are expanded
+      onExpand={(expanded, record) => onRowExpand(record)}
       pagination={{
         pageSize: pageSize,
         current: currentPage,
-        onChange: (page) => setCurrentPage(page)
+        onChange: setCurrentPage,
       }}
-      style={{ maxWidth: '1200px', marginLeft: 'auto', marginRight: 'auto',  }}
       summary={() => {
         const visibleData = getVisibleData();
         return (
           <Table.Summary.Row style={{ fontWeight: 'bold', }}>
             <Table.Summary.Cell>Total</Table.Summary.Cell>
-            {/* <Table.Summary.Cell></Table.Summary.Cell> */}
+            <Table.Summary.Cell></Table.Summary.Cell>
             <Table.Summary.Cell></Table.Summary.Cell>
             <Table.Summary.Cell></Table.Summary.Cell>
             <Table.Summary.Cell>
@@ -138,15 +219,4 @@ const App = () => {
 };
 
 export default App;
-
-
-
-
-
-
-
-
-
-
-
 
