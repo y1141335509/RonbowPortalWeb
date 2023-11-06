@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 import Box from '../../../../../node_modules/@mui/material/Box';
 import Stepper from '../../../../../node_modules/@mui/material/Stepper';
 import Step from '../../../../../node_modules/@mui/material/Step';
@@ -83,50 +84,63 @@ const steps = [
 export default function VerticalLinearStepper() {
   const [activeStep, setActiveStep] = React.useState(0);
 
+  // Initialize state for deadlines, spreading the original deadline dates
+  const [deadlines, setDeadlines] = useState(steps.map(step => step.deadline));
+
+  // Handler for next button
   const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    setActiveStep(prevActiveStep => prevActiveStep + 1);
   };
 
+  // Handler for back button
   const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+    setActiveStep(prevActiveStep => prevActiveStep - 1);
   };
 
+  // Handler for reset button
   const handleReset = () => {
     setActiveStep(0);
   };
 
+  // Function to handle deadline changes
+  const handleDeadlineChange = (index, event) => {
+    const newDeadlines = [...deadlines];
+    newDeadlines[index] = event.target.value;
+    setDeadlines(newDeadlines);
+  };
+
   return (
     <ThemeProvider theme={MUITheme}>
-      <Box sx={{ maxWidth: 400, }}>
-        <Stepper activeStep={activeStep} orientation="vertical" >
+      <Box sx={{ maxWidth: 400 }}>
+        <Stepper activeStep={activeStep} orientation="vertical">
           {steps.map((step, index) => (
             <Step key={step.label}>
-              <StepLabel key={step.deadline}
+              <StepLabel
                 optional={
-                  <Typography variant="caption" color="rgba(0, 0, 0, 0.38)">
-                    {step.deadline}
-                  </Typography>
+                  index < 4 ? (
+                    <input
+                      type="text"
+                      value={deadlines[index]}
+                      onChange={event => handleDeadlineChange(index, event)}
+                      style={{ fontSize: '12px', border: 'none', borderBottom: '1px solid rgba(0, 0, 0, 0.42)' }}
+                    />
+                  ) : (
+                    <Typography variant="caption" color="rgba(0, 0, 0, 0.38)">
+                      {deadlines[index]}
+                    </Typography>
+                  )
                 }
               >
-              
                 {step.label}
               </StepLabel>
               <StepContent>
                 <Typography>{step.description}</Typography>
                 <Box sx={{ mb: 2 }}>
                   <div>
-                    <Button
-                      variant="contained"
-                      onClick={handleNext}
-                      sx={{ mt: 1, mr: 1 }}
-                    >
+                    <Button variant="contained" onClick={handleNext} sx={{ mt: 1, mr: 1 }}>
                       {index === steps.length - 1 ? 'Finish' : 'Continue'}
                     </Button>
-                    <Button
-                      disabled={index === 0}
-                      onClick={handleBack}
-                      sx={{ mt: 1, mr: 1 }}
-                    >
+                    <Button disabled={index === 0} onClick={handleBack} sx={{ mt: 1, mr: 1 }}>
                       Back
                     </Button>
                   </div>
@@ -137,7 +151,7 @@ export default function VerticalLinearStepper() {
         </Stepper>
         {activeStep === steps.length && (
           <Paper square elevation={0} sx={{ p: 3 }}>
-            <Typography>All steps completed - you&apos;re finished</Typography>
+            <Typography>All steps completed - you're finished</Typography>
             <Button onClick={handleReset} sx={{ mt: 1, mr: 1 }}>
               Reset
             </Button>

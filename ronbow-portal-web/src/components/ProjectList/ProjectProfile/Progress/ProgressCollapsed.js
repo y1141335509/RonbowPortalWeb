@@ -182,6 +182,12 @@ const steps = [
 export default function VerticalLinearStepper() {
   const [activeStep, setActiveStep] = React.useState(0);
   const [allStepsExpanded, setAllStepsExpanded] = React.useState(false);
+  const [deadlines, setDeadlines] = React.useState({ // Step 1: Initialize state for deadlines
+    0: 'by 01/01/2023',
+    1: 'by 01/04/2023',
+    2: 'by 01/06/2023',
+    3: 'by 01/09/2023',
+  });
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -193,6 +199,11 @@ export default function VerticalLinearStepper() {
 
   const handleReset = () => {
     setActiveStep(0);
+  };
+
+  const handleDeadlineChange = (index, event) => { // Step 2: Function to update deadlines
+    const newDeadlines = { ...deadlines, [index]: event.target.value };
+    setDeadlines(newDeadlines);
   };
 
   return (
@@ -209,12 +220,21 @@ export default function VerticalLinearStepper() {
 
         <Stepper activeStep={activeStep} orientation="vertical">
           {steps.map((step, index) => (
-            <Step key={step.label} expanded={allStepsExpanded || (activeStep === index && !allStepsExpanded)}>  {/* Adjust expanded property */}
+            <Step key={step.label} expanded={allStepsExpanded || (activeStep === index && !allStepsExpanded)}>
               <StepLabel
                 optional={
-                  <Typography variant="caption" color="rgba(0, 0, 0, 0.38)">
-                    {step.deadline}
-                  </Typography>
+                  index < 4 ? ( // Step 3: Make first 4 steps' deadlines editable
+                    <input
+                      type="text"
+                      value={deadlines[index]}
+                      onChange={(event) => handleDeadlineChange(index, event)}
+                      style={{ fontSize: '12px', border: '1px solid gray', borderRadius: '4px', padding: '2px', textAlign: 'center' }}
+                    />
+                  ) : (
+                    <Typography variant="caption" color="rgba(0, 0, 0, 0.38)">
+                      {step.deadline}
+                    </Typography>
+                  )
                 }
               >
                 {step.label}
