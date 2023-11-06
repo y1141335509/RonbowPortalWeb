@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   TextField,
   MenuItem,
   IconButton,
+  Tooltip,
   InputAdornment,
   OutlinedInput,
   Input,
@@ -15,6 +16,7 @@ import {
   LinkedIn as LinkedInIcon,
   ContentCopy as CopyIcon,
 } from '@mui/icons-material';
+import { Divider } from 'antd';
 
 
 
@@ -37,8 +39,35 @@ const SocialSharing = () => {
   const [event, setEvent] = useState('');
   const [text, setText] = useState('');
 
+  // Define an object mapping event values to their respective comments
+  const eventComments = {
+    SJOpening: 'Join us for the SJ Opening Event!',
+    PaintingLineAnnounce: 'Check out our new Painting Line Announcement!',
+    CEU: 'Don’t miss our CEU events coming up!',
+    // Add more mappings as needed
+  };
+
+  useEffect(() => {
+    // Update the text state when the event changes
+    if (event) {
+      setText(eventComments[event] || '');
+    }
+  }, [event]); // Only re-run the effect if the event changes
+
+
   const handleChange = (event) => {
     setEvent(event.target.value);
+  };
+
+  // Handler for copying the link to clipboard
+  const handleCopyLink = () => {
+    navigator.clipboard.writeText('Your link here').then(() => {
+      // Handle successful copy to clipboard here, if needed
+      console.log('Link copied to clipboard!');
+    }).catch(err => {
+      // Handle errors here
+      console.error('Could not copy text: ', err);
+    });
   };
 
 
@@ -60,6 +89,20 @@ const SocialSharing = () => {
       </TextField>
 
 
+      <Divider />
+
+
+      <TextField
+        id="standard-textarea"
+        label="Share your comments!"
+        placeholder="Share your comments!"
+        multiline
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        style={{ minWidth: '300px', }}
+      />
+
+
       <div style={{ marginTop: '15px', }}>
         <IconButton aria-label="Email">
           <EmailIcon />
@@ -79,17 +122,13 @@ const SocialSharing = () => {
         <IconButton aria-label="WeChat">
           <WechatIcon />
         </IconButton>
+        <Tooltip title="Copy Link">
+          <IconButton aria-label="Copy Link" onClick={handleCopyLink}>
+            <CopyIcon />
+          </IconButton>
+        </Tooltip>
       </div>
 
-      <br />
-
-      <TextField
-          id="standard-textarea"
-          label="Share your comments!"
-          placeholder="Share your comments!"
-          multiline
-          style={{ minWidth: '300px', }}
-        />
     </div>
   );
 };
