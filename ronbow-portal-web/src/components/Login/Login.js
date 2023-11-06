@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Form, Input, Button, ConfigProvider } from "antd";
+import { Form, Input, Button, ConfigProvider, Image, } from "antd";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -27,6 +27,11 @@ export const Login = () => {
       }}>
 
       <div style={{ maxWidth: '500px', alignItems: 'center', textAlign: 'center', margin: '0 auto', }} >
+        <Image src="https://www.2020spaces.com/wp-content/uploads/2021/06/thumbnail_300x200_Spotlight_Ronbow.jpg"
+          width={500} height={300} preview={false}
+          >
+
+        </Image>
         <Form name="login" onFinish={onFinish}>
           <Form.Item
             name="username"

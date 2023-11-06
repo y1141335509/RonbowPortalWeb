@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { Input, List, Button, Checkbox, Divider, DatePicker, Tag, Select, } from 'antd';
 import moment from 'moment';
 import './Dashboard.css';
-import { ExportOutlined, FilterOutlined, SearchOutlined, DownloadOutlined, 
-  ToolOutlined, PrinterOutlined, MailOutlined 
+import {
+  ExportOutlined, FilterOutlined, SearchOutlined, DownloadOutlined,
+  ToolOutlined, PrinterOutlined, MailOutlined
 } from '@ant-design/icons';
 import dayjs from 'dayjs';
 import IndustryNews from './IndustryNews/IndustryNews';
@@ -15,9 +16,9 @@ const dateFormat = 'YYYY/MM/DD';
 
 const App = () => {
   const [todos, setTodos] = useState([
-    {text: <a href="./project-list/proj/624748504" target="_blank">Kevin's Kitchen - Palo Alto</a>, tag: 'Project', completed: 'false', deadline: dayjs('2023/10/01', dateFormat) },
-    {text: <a href="https://calendar.google.com/calendar/u/0/r" target="_blank">John's Wet Bar - San Mateo</a>, tag:'New Leads', completed: 'false', deadline: dayjs('2023/10/03', dateFormat) },
-    {text: <a href="https://designstudio.ronbow.com/" target="_blank">Kitty's Closet - Cupertino</a>, tag: 'Meeting', completed: 'false', deadline: dayjs('2023/10/05', dateFormat) },
+    { text: <a href="./project-list/proj/624748504" target="_blank">Kevin's Kitchen - Palo Alto</a>, tag: 'Project', completed: 'false', deadline: dayjs('2023/10/01', dateFormat) },
+    { text: <a href="https://calendar.google.com/calendar/u/0/r" target="_blank">John's Wet Bar - San Mateo</a>, tag: 'New Leads', completed: 'false', deadline: dayjs('2023/10/03', dateFormat) },
+    { text: <a href="https://designstudio.ronbow.com/" target="_blank">Kitty's Closet - Cupertino</a>, tag: 'Meeting', completed: 'false', deadline: dayjs('2023/10/05', dateFormat) },
   ]);
   const [input, setInput] = useState('');
   const [showCompleted, setShowCompleted] = useState(true);
@@ -49,7 +50,7 @@ const App = () => {
   const displayedTodos = showCompleted ? todos : todos.filter(todo => !todo.completed);
 
   return (
-    <div style={{ maxWidth: '90%', margin: '50px auto',}}>
+    <div style={{ maxWidth: '90%', margin: '50px auto', }}>
 
       {/* the progress bar starts here */}
       <div style={{ padding: "50px" }}>
@@ -63,43 +64,45 @@ const App = () => {
       </div>
 
       <Divider />
-      
-      <div  style={{ display: 'flex',  justifyContent: 'center', flexDirection: 'row', width: '100%', }}>
+
+      <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'row', width: '100%', }}>
 
         <div style={{ float: 'left', marginRight: '20px', float: 'left', width: '65%', }}>
-        <div style={{   justifyContent: 'center', flexDirection: 'row', maxWidth: '1000px', }}>
-        <h1 style={{ fontFamily: 'Roboto, sans-serif' }}>Your Todo</h1>
-        <div style={{ display: 'flex', }}>
-          <Input
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            placeholder="Add a new task"
-            onPressEnter={addTodo}
-            style={{ height: '40px'}}
-          />
-          <Button onClick={addTodo} type="primary" style={{ height: '40px', marginLeft: '5px', backgroundColor: '#5D6465', }}>
-            +
-          </Button>
-          <Button onClick={toggleShowCompleted} type="primary" 
-                  style={{ height: '40px', marginLeft: '5px', backgroundColor: 'white', 
-                          color: '#5D6465', borderColor: '#5D6465'}}>
-            {showCompleted ? 'Hide Completed' : ' Show All Tasks '}
-          </Button>
+          <div style={{ justifyContent: 'center', flexDirection: 'row', maxWidth: '1000px', }}>
+            <h1 style={{ fontFamily: 'Roboto, sans-serif' }}>Your Todo</h1>
+            <div style={{ display: 'flex', }}>
+              <Input
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="Add a new task"
+                onPressEnter={addTodo}
+                style={{ height: '40px' }}
+              />
+              <Button onClick={addTodo} type="primary" style={{ height: '40px', marginLeft: '5px', backgroundColor: '#5D6465', }}>
+                +
+              </Button>
+              <Button onClick={toggleShowCompleted} type="primary"
+                style={{
+                  height: '40px', marginLeft: '5px', backgroundColor: 'white',
+                  color: '#5D6465', borderColor: '#5D6465'
+                }}>
+                {showCompleted ? 'Hide Completed' : ' Show All Tasks '}
+              </Button>
 
-        </div>
+            </div>
 
-        <List
-          style={{ marginTop: '20px', borderRadius: '0px', }}
-          bordered={false}
-          dataSource={displayedTodos}
-          locale={{ emptyText: 'Add your first task!' }}
-          renderItem={(todo, index) => (
-              <List.Item>
+            <List
+              style={{ marginTop: '20px', borderRadius: '0px', }}
+              bordered={false}
+              dataSource={displayedTodos}
+              locale={{ emptyText: 'Add your first task!' }}
+              renderItem={(todo, index) => (
+                <List.Item>
                   <Checkbox
-                  checked={todo.completed}
-                  onChange={() => toggleComplete(index)}
+                    checked={todo.completed}
+                    onChange={() => toggleComplete(index)}
                   >
-                  {todo.text}
+                    {todo.text}
                   </Checkbox>
                   <div>
                     <Select
@@ -125,30 +128,30 @@ const App = () => {
                       ]}
                     />
                     <DatePicker
-                    value={todo.deadline}
-                    onChange={(date) => setDeadline(index, date)}
-                    className={
-                        todo.deadline && moment(todo.deadline).isBefore(moment("2023/10/10")) 
-                        ? 'redDate' 
-                        : ''
-                    }
-                    style={{ marginLeft: '15px' }}
+                      value={todo.deadline}
+                      onChange={(date) => setDeadline(index, date)}
+                      className={
+                        todo.deadline && moment(todo.deadline).isBefore(moment("2023/10/10"))
+                          ? 'redDate'
+                          : ''
+                      }
+                      style={{ marginLeft: '15px' }}
                     />
                   </div>
-              </List.Item>
-            )}
-        />
-      </div>
+                </List.Item>
+              )}
+            />
+          </div>
 
-    </div>
-        
-      
-        
+        </div>
+
+
+
         <div style={{ fontFamily: 'Roboto, sans-serif', width: '30%', marginLeft: '20px', float: 'right', }}>
           <h2>Announcement</h2>
           <ul>
-            <li>Product: Vertical Gola is now available. 
-              <a href="https://www.ronbow.com/products" target="_blank"> 
+            <li>Product: Vertical Gola is now available.
+              <a href="https://www.ronbow.com/products" target="_blank">
                 <ExportOutlined />
                 <span style={{ color: 'red', marginLeft: '10px', fontSize: '14px', }}>
                   New
@@ -156,7 +159,7 @@ const App = () => {
               </a>
             </li>
             <li>HR: We're actively hiring designers！
-              <a href="https://www.indeed.com/cmp/Ronbow-Corporation-1/jobs?jk=72d3f937c6debc6d&start=0&clearPrefilter=1" target="_blank"> 
+              <a href="https://www.indeed.com/cmp/Ronbow-Corporation-1/jobs?jk=72d3f937c6debc6d&start=0&clearPrefilter=1" target="_blank">
                 <ExportOutlined />
                 <span style={{ color: 'red', marginLeft: '10px', fontSize: '14px', }}>
                   New
@@ -172,20 +175,24 @@ const App = () => {
         </div>
 
       </div>
-      
+
       <Divider />
 
       <div>
+        <div style={{ marginTop: '50px', marginBottom: '30px', }}>
 
-        <CardList viewOption={viewOption} setViewOption={setViewOption} />
-        
+          <h1 style={{ fontFamily: 'Roboto, sans-serif' }}>Pipeline</h1>
+
+          <CardList viewOption={viewOption} setViewOption={setViewOption} />
+        </div>
+
         <Divider />
 
         <IndustryNews />
 
       </div>
-      
-      
+
+
     </div>
   );
 };
