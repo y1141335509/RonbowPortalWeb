@@ -8,10 +8,11 @@
 
 
 /* in your .css file */
-.redDate .ant-picker-input > input {
+.redDate .ant-picker-input>input {
     color: red;
 }
 
-
-
-
+:where(.css-dev-only-do-not-override-sefxp4) a {
+    color: rgb(0, 0, 0, 0.88);
+    text-decoration: underline;
+}

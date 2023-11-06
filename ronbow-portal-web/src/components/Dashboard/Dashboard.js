@@ -16,9 +16,10 @@ const dateFormat = 'YYYY/MM/DD';
 
 const App = () => {
   const [todos, setTodos] = useState([
-    { text: <a href="./project-list/proj/624748504" target="_blank">Kevin's Kitchen - Palo Alto</a>, tag: 'Project', completed: 'false', deadline: dayjs('2023/10/01', dateFormat) },
-    { text: <a href="https://calendar.google.com/calendar/u/0/r" target="_blank">John's Wet Bar - San Mateo</a>, tag: 'New Leads', completed: 'false', deadline: dayjs('2023/10/03', dateFormat) },
-    { text: <a href="https://designstudio.ronbow.com/" target="_blank">Kitty's Closet - Cupertino</a>, tag: 'Meeting', completed: 'false', deadline: dayjs('2023/10/05', dateFormat) },
+    { text: <a href="./project-list/proj/624748504" target="_blank" >Kevin's Kitchen - Palo Alto</a>, tag: 'Clickup Assigned', completed: 'false', deadline: dayjs('2023/10/01', dateFormat) },
+    { text: <a href="https://calendar.google.com/calendar/u/0/r" target="_blank">John's Wet Bar - San Mateo</a>, tag: 'New Lead', completed: 'false', deadline: dayjs('2023/10/03', dateFormat) },
+    { text: <a href="https://designstudio.ronbow.com/" target="_blank">Kitty's Closet - Cupertino</a>, tag: 'Meeting Scheduled', completed: 'false', deadline: dayjs('2023/10/05', dateFormat) },
+    { text: <a href="https://designstudio.ronbow.com/" target="_blank">Kevin's Bath - Palo Alto</a>, tag: 'Current Project', completed: 'false', deadline: dayjs('2023/12/05', dateFormat) },
   ]);
   const [input, setInput] = useState('');
   const [showCompleted, setShowCompleted] = useState(true);
@@ -92,6 +93,41 @@ const App = () => {
             </div>
 
             <List
+              style={{ marginTop: '20px', borderRadius: '0px' }}
+              bordered={false}
+              dataSource={displayedTodos}
+              locale={{ emptyText: 'Add your first task!' }}
+              renderItem={(todo, index) => (
+                <List.Item>
+                  <Checkbox
+                    checked={todo.completed}
+                    onChange={() => toggleComplete(index)}
+                    style={{ color: 'rgba(0, 0, 0, 0.88)' }}
+                  >
+                    {todo.text}
+                  </Checkbox>
+                  <div>
+                    {/* Render the tag based on the todo's tag value */}
+                    {todo.tag && (
+                      <Tag style={{ margin: '0 8px' }}>
+                        {todo.tag}
+                      </Tag>
+                    )}
+                    <DatePicker
+                      value={todo.deadline}
+                      onChange={(date) => setDeadline(index, date)}
+                      className={
+                        // todo.deadline && moment(todo.deadline).isBefore(moment()) ? 'redDate' : ''
+                        todo.deadline && moment(todo.deadline).isBefore(moment()) ? '' : ''
+                      }
+                      style={{ marginLeft: '15px' }}
+                    />
+                  </div>
+                </List.Item>
+              )}
+            />
+
+            {/* <List
               style={{ marginTop: '20px', borderRadius: '0px', }}
               bordered={false}
               dataSource={displayedTodos}
@@ -101,6 +137,7 @@ const App = () => {
                   <Checkbox
                     checked={todo.completed}
                     onChange={() => toggleComplete(index)}
+                    style={{ color: 'rgba(0, 0, 0, 0.88)' }} // Add this line to apply the text color
                   >
                     {todo.text}
                   </Checkbox>
@@ -140,7 +177,9 @@ const App = () => {
                   </div>
                 </List.Item>
               )}
-            />
+              
+           
+            /> */}
           </div>
 
         </div>
