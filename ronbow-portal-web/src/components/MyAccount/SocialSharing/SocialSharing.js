@@ -94,8 +94,8 @@ const SocialSharing = () => {
 
       <TextField
         id="standard-textarea"
-        label="Share your comments!"
-        placeholder="Share your comments!"
+        label="Enter Your Message Here"
+        placeholder="Enter Your Message Here"
         multiline
         value={text}
         onChange={(e) => setText(e.target.value)}

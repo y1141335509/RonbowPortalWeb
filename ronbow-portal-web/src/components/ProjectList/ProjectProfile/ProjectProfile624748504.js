@@ -17,6 +17,8 @@ import ProgressTest from './Progress/Progress-Test';
 import ProgressCollapsed from './Progress/ProgressCollapsed';
 import ModeIcon from '@mui/icons-material/Mode';
 import FolderSharedIcon from '@mui/icons-material/FolderShared';
+import Signature from './Signature/Signature';
+
 
 
 
@@ -320,12 +322,17 @@ const ProjectProfile = () => (
       </div>
 
       <div>
-        <span style={{
+      <span style={{
           fontFamily: 'Roboto, sans-serif', fontSize: '18px', fontWeight: '300',
           lineHeight: '30px', letterSpacing: '0.02em', textAlign: 'left',
           backgroundColor: 'white', paddingTop: '20px', paddingBottom: '10px',
         }}>
-          Signature</span>    <br />
+          Signature</span>
+
+        <Signature />
+
+        <br />
+
 
         <div style={{ textAlign: 'center', }}>
           <Dropdown overlay={menu} trigger={['click']}>

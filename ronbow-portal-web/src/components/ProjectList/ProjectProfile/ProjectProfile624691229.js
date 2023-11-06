@@ -17,6 +17,7 @@ import ProgressTest from './Progress/Progress-Test';
 import ProgressCollapsed from './Progress/ProgressCollapsed';
 import ModeIcon from '@mui/icons-material/Mode';
 import FolderSharedIcon from '@mui/icons-material/FolderShared';
+import Signature from './Signature/Signature';
 
 
 
@@ -326,7 +327,11 @@ const ProjectProfile = () => (
           lineHeight: '30px', letterSpacing: '0.02em', textAlign: 'left',
           backgroundColor: 'white', paddingTop: '20px', paddingBottom: '10px',
         }}>
-          Signature</span>    <br />
+          Signature</span>
+
+        <Signature />
+
+        <br />
 
         <div style={{ textAlign: 'center', }}>
           <Dropdown overlay={menu} trigger={['click']}>
@@ -371,7 +376,7 @@ const ProjectProfile = () => (
           </Button>
         </div>
       </div>
-      
+
       <Divider />
 
       <div>
@@ -407,7 +412,7 @@ const ProjectProfile = () => (
               Confirm
             </Button>
 
-            <div style={{ float: 'right',  marginTop: '18px', }}>
+            <div style={{ float: 'right', marginTop: '18px', }}>
               <span style={{ marginRight: '10px', }}>Auto Submit</span>
               <Switch defaultChecked onChange={(checked) => {
                 console.log(`switch to ${checked}`);
