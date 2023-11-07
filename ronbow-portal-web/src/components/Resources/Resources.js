@@ -134,7 +134,7 @@ const KnowledgeBase = () => {
 
       <div>
       <Progress percent={76} strokeColor={'#5D6465'} trailColor={'#F0ECEC'} style={{ width: '80%', marginRight: '20px', }}/>
-      <Link to="https://app.clickup.com/login" target="_blank" rel="noopener noreferrer" style={{ color: '#5D6465', float: 'right', }}>
+      <Link to="https://app.clickup.com/login" target="_blank" rel="noopener noreferrer" style={{ color: '#5D6465', float: 'right', textDecoration: 'underline'}}>
         Go to LMS
       </Link>
       </div>

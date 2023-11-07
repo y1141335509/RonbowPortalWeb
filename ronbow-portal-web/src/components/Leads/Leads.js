@@ -36,6 +36,7 @@ const EditableTable = () => {
       customer_id: 'ABC123',
       name: 'Henry',
       leads_from: <Tag>Walk In</Tag>,
+      trade_pro: 'Pro 1',
       leads_quality: 'Style Mismatch',  // Default value for the first row
       projects: ['Kitchen', 'Bath',], // Initial values set here as an array
       phone: '123-456-7890',
@@ -46,6 +47,7 @@ const EditableTable = () => {
       customer_id: 'BCD234',
       name: 'Jeff',
       leads_from: <Tag>Trade Pro</Tag>,
+      trade_pro: 'Pro 2',
       leads_quality: 'Great',  // Default value for the second row
       projects: ['Kitchen'], // Initial value set here as an array
       phone: '123-456-0987',
@@ -56,6 +58,7 @@ const EditableTable = () => {
       customer_id: 'DEF345',
       name: 'Diana',
       leads_from: <Tag>Website</Tag>,
+      trade_pro: 'Pro 3',
       leads_quality: 'Low Budget',  // Default value for the second row
       projects: ['Bath'], // Initial value set here as an array
       phone: '345-456-0987',
@@ -102,6 +105,11 @@ const EditableTable = () => {
       render: (_, record) => <ProjectQuality initialProjects={record.projects} />,
       width: '30%',
     },    
+    {
+      title: 'Trade Pro',
+      dataIndex: 'trade_pro',
+      width: '10%',
+    },
     {
       title: 'Leads Quality',
       dataIndex: 'leads_quality',

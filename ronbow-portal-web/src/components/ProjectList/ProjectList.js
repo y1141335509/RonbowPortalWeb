@@ -72,6 +72,7 @@ const TagList = ({ value, onChange }) => {
 const defaultData = [
   {
     id: 624748504,
+    deal_id: 'ABC123',
     title: <div key='1'>
       <span
         style={{ textDecoration: 'underline', }}
@@ -92,7 +93,6 @@ const defaultData = [
         </Link>
       </span>
     </div>,
-    tradePro: 'trade pro 1',
     designer: 'Wendy',
     ETA: 'TBD',
     view_desing: <a href="https://designstudio.ronbow.com/" target="_blank" rel="noopener noreferrer" style={{ color: '#5d6465', textDecoration: 'underline', }}>View Design</a>,
@@ -101,6 +101,7 @@ const defaultData = [
   },
   {
     id: 624691229,
+    deal_id: 'BCD234',
     title: <div key='2'>
       <span
         style={{ textDecoration: 'underline', }}
@@ -121,7 +122,6 @@ const defaultData = [
         </Link>
       </span>
     </div>,
-    tradePro: 'trade pro 2',
     designer: 'Wendy',
     ETA: '9/16',
     view_desing: <a href="https://designstudio.ronbow.com/" target="_blank" rel="noopener noreferrer" style={{ color: '#5d6465', textDecoration: 'underline', }}>View Design</a>,
@@ -130,6 +130,7 @@ const defaultData = [
   },
   {
     id: 624691230,
+    deal_id: 'DEF345',
     title: <div key='3'>
       <span
         style={{ textDecoration: 'underline', }}
@@ -150,7 +151,6 @@ const defaultData = [
         </Link>
       </span>
     </div>,
-    tradePro: 'trade pro 3',
     designer: 'Wendy',
     ETA: '8/16',
     view_desing: <a href="https://designstudio.ronbow.com/" target="_blank" rel="noopener noreferrer" style={{ color: '#5d6465', textDecoration: 'underline', }}>View Design</a>,
@@ -160,6 +160,11 @@ const defaultData = [
 ];
 
 const columns = [
+  {
+    title: 'Deal ID',
+    dataIndex: 'deal_id',
+    width: '10%',
+  },
   {
     title: 'Project Name',
     dataIndex: 'title',
@@ -217,11 +222,6 @@ const columns = [
     title: 'Client Name',
     dataIndex: 'client',
     width: '15%',
-  },
-  {
-    title: 'Trade Pro',
-    dataIndex: 'tradePro',
-    width: '10%',
   },
   {
     title: 'Designer',

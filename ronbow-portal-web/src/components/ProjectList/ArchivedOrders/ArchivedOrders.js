@@ -69,6 +69,7 @@ const TagList = ({ value, onChange }) => {
 const defaultData = [
   {
     id: 624748504,
+    deal_id: 'ABC123',
     title: <div key='1'>
       <span
         style={{ textDecoration: 'underline', }}
@@ -89,7 +90,6 @@ const defaultData = [
         </Link>
       </span>
     </div>,
-    tradePro: 'trade pro 1',
     designer: 'Wendy',
     view_desing: <a href="https://designstudio.ronbow.com/" target="_blank" rel="noopener noreferrer" style={{ color: '#5d6465', textDecoration: 'underline', }}>View Design</a>,
     address: '7150 Patterson Pass Rd # F, Livermore, CA 94550',
@@ -97,6 +97,7 @@ const defaultData = [
   },
   {
     id: 624691230,
+    deal_id: 'DEF345',
     title: <div key='3'>
       <span
         style={{ textDecoration: 'underline', }}
@@ -117,7 +118,6 @@ const defaultData = [
         </Link>
       </span>
     </div>,
-    tradePro: 'trade pro 3',
     designer: 'Wendy',
     view_desing: <a href="https://designstudio.ronbow.com/" target="_blank" rel="noopener noreferrer" style={{ color: '#5d6465', textDecoration: 'underline', }}>View Design</a>,
     address: '19479 Stevens Creek Blvd #110, Cupertino, CA 95014',
@@ -126,6 +126,11 @@ const defaultData = [
 ];
 
 const columns = [
+  {
+    title: 'Deal ID',
+    dataIndex: 'deal_id',
+    width: '10%',
+  },
   {
     title: 'Project Name',
     dataIndex: 'title',
@@ -183,11 +188,6 @@ const columns = [
     title: 'Client Name',
     dataIndex: 'client',
     width: '15%',
-  },
-  {
-    title: 'Trade Pro',
-    dataIndex: 'tradePro',
-    width: '10%',
   },
   {
     title: 'Designer',

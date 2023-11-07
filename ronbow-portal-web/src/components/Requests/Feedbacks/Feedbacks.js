@@ -61,7 +61,7 @@ const App = () => {
       onFinish={onFinish}
       labelWrap
       style={{
-        maxWidth: 600,
+        maxWidth: 700,
       }}
       scrollToFirstError
     >

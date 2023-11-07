@@ -92,9 +92,12 @@ const App = () => {
       </Form.Item>
 
       <img
+        width={200}
+        height={200}
         src="https://cdn.ronbow.com/images/cabinets/Blue-Moon-Bay-SM-M12058.jpg"
         alt="Sample"
-        style={{ width: '100%', height: 'auto' }}
+        style={{ marginLeft: '300px', }}
+        // style={{ width: '100%', height: 'auto' }}
       />
     </Form>
   );
