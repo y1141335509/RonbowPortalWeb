@@ -208,7 +208,7 @@ const ProjectProfile = () => (
 
     {/* Current progress bar */}
     <div style={{ float: 'left', width: '20%', marginLeft: '20px', fontFamily: 'Roboto, sans-serif', }}>
-      <ProgressTest />
+      <ProgressCollapsed />
     </div>
 
     {/* Progress bar collapsed: */}

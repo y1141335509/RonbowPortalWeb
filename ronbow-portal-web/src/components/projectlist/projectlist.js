@@ -189,7 +189,7 @@ const columns = [
         status: 'Error',
       },
       closed: {
-        text: 'Paid',
+        text: 'Manufacturing',
         status: 'Success',
       },
     },

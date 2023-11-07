@@ -1,7 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Checkbox, Form, Input } from 'antd';
+import { Button, Checkbox, Form, Input, message, } from 'antd';
+import { CopyOutlined } from '@ant-design/icons'; // Import the CopyOutlined icon
 
 
 
@@ -12,6 +13,18 @@ const onFinish = (values) => {
 const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
 };
+
+const copyLinkToClipboard = async (link) => {
+    try {
+        await navigator.clipboard.writeText(link);
+        // Display a "Copied" message when the link is copied
+        message.success('Copied!');
+    } catch (err) {
+        // Display an error message if there was an issue copying the link
+        message.error('Failed to copy link.');
+    }
+};
+
 
 const App = () => {
     return (
@@ -98,12 +111,19 @@ const App = () => {
                 <Input />
             </Form.Item>
 
-            <Form.Item
-                label="Copy Link"
-                name="copy_link"
-            >
-                <span><Link href="www.google.com" target="_blank">www.google.com</Link></span>
+            <Form.Item label="Copy Link" name="copy_link">
+                <Input
+                    addonAfter={
+                        <CopyOutlined
+                            onClick={() => copyLinkToClipboard("https://ronbow.com/invite/abcd.com")}
+                            style={{ cursor: 'pointer' }}
+                        />
+                    }
+                    defaultValue="https://ronbow.com/invite/abcd.com"
+                    readOnly
+                />
             </Form.Item>
+
 
 
         </Form>

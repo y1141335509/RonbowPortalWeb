@@ -59,7 +59,7 @@ const App = () => {
       form={form}
       name="register"
       onFinish={onFinish}
-
+      labelWrap
       style={{
         maxWidth: 600,
       }}
@@ -68,8 +68,8 @@ const App = () => {
       
 
       <Form.Item
-        name="feedback"
-        label="Feedback"
+        name="feedback_about_workstations"
+        label="Feedback About Workstations"
         required={true}
       >
         <Input.TextArea showCount maxLength={300} />

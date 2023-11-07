@@ -1,7 +1,7 @@
 // ImportDropdown.js
 import React, { useRef } from 'react';
 import { Menu, Dropdown, Button, Space, message } from 'antd';
-import { DownOutlined } from '@ant-design/icons';
+import { PlusCircleOutlined } from '@ant-design/icons';
 
 const ImportDropdown = () => {
   const fileInputRef = useRef(null);
@@ -42,7 +42,7 @@ const ImportDropdown = () => {
         Import from Google Sheet
       </Menu.Item>
       <Menu.Item key="3">
-        Download Example
+        Download an Example
       </Menu.Item>
     </Menu>
   );
@@ -52,7 +52,7 @@ const ImportDropdown = () => {
       <Dropdown overlay={menu}>
         <Button>
           <Space>
-            Input From Your Upload <DownOutlined />
+          <PlusCircleOutlined /> Input From Your Upload
           </Space>
         </Button>
       </Dropdown>
