@@ -39,16 +39,6 @@ const data = [
 const items = [
   {
     key: '1',
-    label: 'FLOOR PLAN',
-    children: <div>
-      <p>Hello world, check out this <a href="https://www.ronbow.com" target="_blank" rel="noopener noreferrer">Ronbow Site <ExportOutlined /></a>.</p>
-      <Zoom />
-    </div>
-    ,
-    headerStyle: { fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
-  },
-  {
-    key: '2',
     label: 'BASIC INFO',
     children: <div>
       <ul>
@@ -62,7 +52,7 @@ const items = [
     headerStyle: { fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
   },
   {
-    key: '3',
+    key: '2',
     label: 'INSPIRATION',
     children: <div>
       <img src="https://cdn.ronbow.com/images/video-poster.jpg" alt="Description" className='responsive-image' />
@@ -71,7 +61,23 @@ const items = [
     headerStyle: { fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
   },
   {
+    key: '3',
+    label: 'LIFESTYLE',
+    children: <div><img src="https://cdn.ronbow.com/images/video-poster.jpg" alt="Description" className='responsive-image' /></div>,
+    headerStyle: { fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
+  },
+  {
     key: '4',
+    label: 'FLOOR PLAN',
+    children: <div>
+      <p>Hello world, check out this <a href="https://www.ronbow.com" target="_blank" rel="noopener noreferrer">Ronbow Site <ExportOutlined /></a>.</p>
+      <Zoom />
+    </div>
+    ,
+    headerStyle: { fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
+  },
+  {
+    key: '5',
     label: 'DOCUMENTS',
     children: (
       <div>
@@ -114,12 +120,6 @@ const items = [
       letterSpacing: '0.02em',
       textAlign: 'left',
     },
-  },
-  {
-    key: '5',
-    label: 'LIFESTYLE',
-    children: <div><img src="https://cdn.ronbow.com/images/video-poster.jpg" alt="Description" className='responsive-image' /></div>,
-    headerStyle: { fontFamily: 'Roboto, sans-serif', fontSize: '12px', fontWeight: '400', lineHeight: '14px', letterSpacing: '0.02em', textAlign: 'left', },
   },
   {
     key: '6',
