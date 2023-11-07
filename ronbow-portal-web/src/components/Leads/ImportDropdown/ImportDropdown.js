@@ -48,7 +48,7 @@ const ImportDropdown = () => {
   );
 
   return (
-    <div style={{ float: 'right', marginBottom: '10px', marginRight: '30px', }}>
+    <div style={{ marginBottom: '10px', marginRight: '30px', alignItems: 'center', }}>
       <Dropdown overlay={menu}>
         <Button>
           <Space>

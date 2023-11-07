@@ -21,7 +21,7 @@ const App = () => {
   };
 
   return (
-    <>
+    <div style={{ marginBottom: '10px', alignItems: 'center', }}>
       <Button type="primary" onClick={() => setModalOpen(true)}>
         Add a Lead
       </Button>
@@ -44,7 +44,7 @@ const App = () => {
         <LeadForm />
       
       </Modal>
-    </>
+    </div>
   );
 };
 export default App;

@@ -8,7 +8,7 @@ import {
 import { Button, Form, Input, Space, Tag, Divider, Select, ConfigProvider, Menu, Dropdown, message, } from 'antd';
 import ImportDropdown from './ImportDropdown/ImportDropdown';
 import ProjectQuality from './ProjectQuality/ProjectQuality';
-import AddProject from './AddLead/AddProject';
+import AddLead from './AddLead/AddLead';
 
 
 
@@ -65,7 +65,7 @@ const EditableTable = () => {
       email: 'diana222@outlook.com',
     },
   ]);
-  
+
 
 
 
@@ -104,7 +104,7 @@ const EditableTable = () => {
       dataIndex: 'projects',
       render: (_, record) => <ProjectQuality initialProjects={record.projects} />,
       width: '30%',
-    },    
+    },
     {
       title: 'Trade Pro',
       dataIndex: 'trade_pro',
@@ -155,7 +155,7 @@ const EditableTable = () => {
       dataIndex: 'email',
       width: '15%',
     },
-    
+
   ];
 
 
@@ -168,7 +168,6 @@ const EditableTable = () => {
         }
       }}
     >
-      <ImportDropdown />
 
       <div style={{ textAlign: 'center', }}>
         <EditableProTable
@@ -201,7 +200,15 @@ const EditableTable = () => {
 
         <Divider />
 
-        <AddProject />
+        <div style={{
+          display: 'flex',         // Use flex display to align children inline
+          justifyContent: 'center', // Center the children horizontally
+          alignItems: 'center',     // Center the children vertically (if they have different heights)
+          gap: '16px',             // Optional: define gap between children
+        }}>          
+          <AddLead style={{ float: 'left', }} />
+          <ImportDropdown style={{ float: 'right', }} />
+        </div>
 
       </div>
     </ConfigProvider>
