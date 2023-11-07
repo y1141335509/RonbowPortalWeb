@@ -16,10 +16,10 @@ const dateFormat = 'YYYY/MM/DD';
 
 const App = () => {
   const [todos, setTodos] = useState([
-    { text: <a href="./project-list/proj/624748504" target="_blank" >Kevin's Kitchen - Palo Alto</a>, tag: 'Clickup Assigned', completed: 'false', deadline: dayjs('2023/10/01', dateFormat) },
-    { text: <a href="https://calendar.google.com/calendar/u/0/r" target="_blank">John's Wet Bar - San Mateo</a>, tag: 'New Lead', completed: 'false', deadline: dayjs('2023/10/03', dateFormat) },
-    { text: <a href="https://designstudio.ronbow.com/" target="_blank">Kitty's Closet - Cupertino</a>, tag: 'Meeting Scheduled', completed: 'false', deadline: dayjs('2023/10/05', dateFormat) },
-    { text: <a href="https://designstudio.ronbow.com/" target="_blank">Kevin's Bath - Palo Alto</a>, tag: 'Current Project', completed: 'false', deadline: dayjs('2023/12/05', dateFormat) },
+    { text: <a href="./project-list/proj/624748504" target="_blank"><p className='todo-names'>Kevin's Kitchen - Palo Alto</p></a>, tag: 'Clickup Assigned', completed: 'false', deadline: dayjs('2023/10/01', dateFormat) },
+    { text: <a href="https://calendar.google.com/calendar/u/0/r" target="_blank"><p className='todo-names'>John's Wet Bar - San Mateo</p></a>, tag: 'New Lead', completed: 'false', deadline: dayjs('2023/10/03', dateFormat) },
+    { text: <a href="https://designstudio.ronbow.com/" target="_blank"><p className='todo-names'>Kitty's Closet - Cupertino</p></a>, tag: 'Meeting Scheduled', completed: 'false', deadline: dayjs('2023/10/05', dateFormat) },
+    { text: <a href="https://designstudio.ronbow.com/" target="_blank"><p className='todo-names'>Kevin's Bath - Palo Alto</p></a>, tag: 'Current Project', completed: 'false', deadline: dayjs('2023/12/05', dateFormat) },
   ]);
   const [input, setInput] = useState('');
   const [showCompleted, setShowCompleted] = useState(true);
@@ -127,59 +127,6 @@ const App = () => {
               )}
             />
 
-            {/* <List
-              style={{ marginTop: '20px', borderRadius: '0px', }}
-              bordered={false}
-              dataSource={displayedTodos}
-              locale={{ emptyText: 'Add your first task!' }}
-              renderItem={(todo, index) => (
-                <List.Item>
-                  <Checkbox
-                    checked={todo.completed}
-                    onChange={() => toggleComplete(index)}
-                    style={{ color: 'rgba(0, 0, 0, 0.88)' }} // Add this line to apply the text color
-                  >
-                    {todo.text}
-                  </Checkbox>
-                  <div>
-                    <Select
-                      defaultValue={""}
-                      value={todo.tag}
-                      style={{
-                        width: 150,
-                      }}
-                      allowClear
-                      options={[
-                        {
-                          value: 'new_leads',
-                          label: 'New Leads',
-                        },
-                        {
-                          value: 'finalize_design',
-                          label: 'Finalize Design',
-                        },
-                        {
-                          value: 'project',
-                          label: 'Project',
-                        },
-                      ]}
-                    />
-                    <DatePicker
-                      value={todo.deadline}
-                      onChange={(date) => setDeadline(index, date)}
-                      className={
-                        todo.deadline && moment(todo.deadline).isBefore(moment("2023/10/10"))
-                          ? 'redDate'
-                          : ''
-                      }
-                      style={{ marginLeft: '15px' }}
-                    />
-                  </div>
-                </List.Item>
-              )}
-              
-           
-            /> */}
           </div>
 
         </div>
@@ -191,7 +138,7 @@ const App = () => {
           <ul>
             <li>Product: Vertical Gola is now available.
               <a href="https://www.ronbow.com/products" target="_blank">
-                <ExportOutlined />
+                <ExportOutlined style={{ color: 'rgb(0, 0, 0, 0.88)' }} />
                 <span style={{ color: 'red', marginLeft: '10px', fontSize: '14px', }}>
                   New
                 </span>
@@ -199,7 +146,7 @@ const App = () => {
             </li>
             <li>HR: We're actively hiring designers！
               <a href="https://www.indeed.com/cmp/Ronbow-Corporation-1/jobs?jk=72d3f937c6debc6d&start=0&clearPrefilter=1" target="_blank">
-                <ExportOutlined />
+                <ExportOutlined style={{ color: 'rgb(0, 0, 0, 0.88)' }} />
                 <span style={{ color: 'red', marginLeft: '10px', fontSize: '14px', }}>
                   New
                 </span>
