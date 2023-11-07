@@ -13,6 +13,7 @@ import Inspiration from './components/Inspiration/Inspiration.js';
 import Requests from './components/Requests/Requests.js';
 import MyAccount from './components/MyAccount/MyAccount.js';
 import Leads from './components/Leads/Leads.js';
+import Leads1 from './components/Leads/Leads-1.js';
 import { ProtectedRoute } from './components/Login/ProtectedRoute.js';
 import { Login } from './components/Login/Login.js';
 import { NotFoundPage } from './components/Login/NotFoundPage.js';
@@ -53,6 +54,7 @@ function App() {
           <Route path="/requests" element={<Requests />} />
           <Route path="/my-account" element={<MyAccount />} />
           <Route path="/leads" element={<Leads />} />
+          <Route path="/leads-1" element={<Leads1 />} />
         </Route>
         {/*  */}
 

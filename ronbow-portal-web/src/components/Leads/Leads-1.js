@@ -103,8 +103,8 @@ const EditableTable = () => {
     {
       title: 'Projects',
       dataIndex: 'projects',
-      render: (_, record) => <AddableProjectsColumn />,
-      // render: (_, record) => <ProjectQuality initialProjects={record.projects} />,
+      // render: (_, record) => <AddableProjectsColumn />,
+      render: (_, record) => <ProjectQuality initialProjects={record.projects} />,
       width: '30%',
     },
     {

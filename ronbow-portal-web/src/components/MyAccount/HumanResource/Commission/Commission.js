@@ -52,9 +52,10 @@ const data = [
     cashIn: 10000,
     commissionAmount: 400,
     expandable: {
+      items: ['Item 1', 'Item 2'],
       orderNumbers: ['SO#1', 'SO#2'],
       cashIns: ['Cash In 1', 'Cash In 2'], // Example sub-data
-      commissionAmounts: [100, 300],
+      commissionAmounts: ['$100', '$300'],
     },
   },
   {
@@ -65,6 +66,12 @@ const data = [
     // customer: 'customer 2',
     cashIn: 13000,
     commissionAmount: 450,
+    expandable: {
+      items: ['Item 1', 'Item 2'],
+      orderNumbers: ['SO#1', 'SO#2'],
+      cashIns: ['Cash In 1', 'Cash In 2'], // Example sub-data
+      commissionAmounts: ['$100', '$350'],
+    },
   },
   {
     key: '3',
@@ -74,6 +81,12 @@ const data = [
     // customer: 'customer 3',
     cashIn: 20000,
     commissionAmount: 900,
+    expandable: {
+      items: ['Item 1', 'Item 2', 'Item 3'],
+      orderNumbers: ['SO#1', 'SO#2', 'SO#3'],
+      cashIns: ['Cash In 1', 'Cash In 2', 'Cash In 3'], // Example sub-data
+      commissionAmounts: ['$200', '$300', '$400'],
+    },
   },
   {
     key: '4',
@@ -83,6 +96,12 @@ const data = [
     // customer: 'customer 3',
     cashIn: '',
     commissionAmount: 100,
+    expandable: {
+      items: ['Item 1', 'Item 2'],
+      orderNumbers: ['SO#1', 'SO#2'],
+      cashIns: ['Cash In 1', 'Cash In 2'], // Example sub-data
+      commissionAmounts: ['$50', '$50'],
+    },
   },
   {
     key: '5',
@@ -92,6 +111,12 @@ const data = [
     // customer: 'customer 4',
     cashIn: 10000,
     commissionAmount: 450,
+    expandable: {
+      items: ['Item 1', 'Item 2'],
+      orderNumbers: ['SO#1', 'SO#2'],
+      cashIns: ['Cash In 1', 'Cash In 2'], // Example sub-data
+      commissionAmounts: ['$150', '$300'],
+    },
   },
 ];
 
@@ -115,7 +140,7 @@ const expandedRowRender = (record, index, indent, expanded) => {
   const data = record.expandable.cashIns.map((item, idx) => ({
     key: idx,
     date: record.date, // assuming you want to replicate the date for sub-rows
-    status: record.status, // replicate status if necessary
+    status: record.expandable.items[idx], // replicate status if necessary
     detail: item,
     commissionDetail: record.expandable.commissionAmounts[idx], // if you have this detail
     // Empty data for alignment

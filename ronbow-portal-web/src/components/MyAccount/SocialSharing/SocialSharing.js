@@ -6,7 +6,6 @@ import {
   Tooltip,
   InputAdornment,
   OutlinedInput,
-  Input,
 } from '@mui/material';
 import {
   Email as EmailIcon,
@@ -16,10 +15,11 @@ import {
   LinkedIn as LinkedInIcon,
   ContentCopy as CopyIcon,
 } from '@mui/icons-material';
-import { Divider } from 'antd';
+import { Input, Divider } from 'antd';
 
 
 
+const { TextArea } = Input;
 
 
 const width_height = "24px";
@@ -89,17 +89,20 @@ const SocialSharing = () => {
       </TextField>
 
 
-      <Divider />
+      {/* <Divider /> */}
+      <br />
 
 
-      <TextField
+
+      <TextArea
         id="standard-textarea"
         label="Enter Your Message Here"
         placeholder="Enter Your Message Here"
-        multiline
-        value={text}
+        showCount
+        maxLength={300}
         onChange={(e) => setText(e.target.value)}
-        style={{ minWidth: '300px', }}
+        style={{ maxWidth: '300px', height: '100px', marginTop: '30px', marginBottom: '20px', }}
+
       />
 
 
