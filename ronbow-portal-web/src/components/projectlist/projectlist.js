@@ -1,6 +1,6 @@
 
 import React, { useRef, useState } from 'react';
-import { PlusOutlined, ExportOutlined } from '@ant-design/icons';
+import { PlusOutlined, ExportOutlined, SearchOutlined, FilterOutlined, } from '@ant-design/icons';
 import {
   EditableProTable,
   ProCard,
@@ -271,6 +271,22 @@ const EditableTable = () => {
         }
       }}
     >
+      <div className="header">
+        <p style={{
+          fontFamily: 'Roboto, sans-serif',
+          fontSize: '18px',
+          fontWeight: "400",
+          lineHeight: "14px",
+          letterSpacing: "0.02em",
+          textAlign: "left"
+        }}>
+        </p>
+        <div style={{ marginRight: '50px', }}>
+          <FilterOutlined className="icon" />
+          <SearchOutlined className="icon" />
+        </div>
+      </div>
+
       <div style={{ textAlign: 'center', }}>
         <EditableProTable
           rowKey="id"

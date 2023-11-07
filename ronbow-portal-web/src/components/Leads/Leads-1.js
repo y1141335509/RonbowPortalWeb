@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { PlusOutlined, ExportOutlined, DownOutlined, } from '@ant-design/icons';
+import { PlusOutlined, ExportOutlined, DownOutlined, SearchOutlined, FilterOutlined, } from '@ant-design/icons';
 import {
   EditableProTable,
   ProCard,
@@ -171,6 +171,22 @@ const EditableTable = () => {
       }}
     >
 
+      <div className="header">
+        <p style={{
+          fontFamily: 'Roboto, sans-serif',
+          fontSize: '18px',
+          fontWeight: "400",
+          lineHeight: "14px",
+          letterSpacing: "0.02em",
+          textAlign: "left"
+        }}>
+        </p>
+        <div style={{ marginRight: '50px', }}>
+          <FilterOutlined className="icon" />
+          <SearchOutlined className="icon" />
+        </div>
+      </div>
+
       <div style={{ textAlign: 'center', }}>
         <EditableProTable
           rowKey="id"
@@ -207,7 +223,7 @@ const EditableTable = () => {
           justifyContent: 'center', // Center the children horizontally
           alignItems: 'center',     // Center the children vertically (if they have different heights)
           gap: '16px',             // Optional: define gap between children
-        }}>          
+        }}>
           <AddLead style={{ float: 'left', }} />
           <ImportDropdown style={{ float: 'right', }} />
         </div>

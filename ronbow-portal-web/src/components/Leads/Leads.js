@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { PlusOutlined, ExportOutlined, DownOutlined, } from '@ant-design/icons';
+import { PlusOutlined, ExportOutlined, DownOutlined, SearchOutlined, FilterOutlined, } from '@ant-design/icons';
 import {
   EditableProTable,
   ProCard,
@@ -84,6 +84,18 @@ const EditableTable = () => {
   };
 
 
+  const handleProjectsChange = (id, newProjects) => {
+    const newData = data.map((item) => {
+      if (item.id === id) {
+        return { ...item, projects: newProjects };
+      }
+      return item;
+    });
+    setData(newData);
+  };
+  
+
+
   const columns = [
     {
       title: 'Customer ID',
@@ -103,10 +115,25 @@ const EditableTable = () => {
     {
       title: 'Projects',
       dataIndex: 'projects',
-      render: (_, record) => <AddableProjectsColumn />,
-      // render: (_, record) => <ProjectQuality initialProjects={record.projects} />,
+      render: (projects, record) => (
+        <>
+          {projects.map((project, index) => (
+            <Tag key={project}>
+              <a href={`your/project/path/${project}`} target="_blank" rel="noopener noreferrer">
+                {project}
+              </a>
+            </Tag>
+          ))}
+          <AddableProjectsColumn 
+            initialProjects={record.projects}
+            onProjectsChange={(newProjects) => {
+              handleProjectsChange(record.id, newProjects);
+            }}
+          />
+        </>
+      ),
       width: '30%',
-    },
+    },       
     {
       title: 'Trade Pro',
       dataIndex: 'trade_pro',
@@ -170,6 +197,21 @@ const EditableTable = () => {
         }
       }}
     >
+      <div className="header">
+        <p style={{
+          fontFamily: 'Roboto, sans-serif',
+          fontSize: '18px',
+          fontWeight: "400",
+          lineHeight: "14px",
+          letterSpacing: "0.02em",
+          textAlign: "left"
+        }}>
+        </p>
+        <div style={{ marginRight: '50px', }}>
+          <FilterOutlined className="icon" />
+          <SearchOutlined className="icon" />
+        </div>
+      </div>
 
       <div style={{ textAlign: 'center', }}>
         <EditableProTable
