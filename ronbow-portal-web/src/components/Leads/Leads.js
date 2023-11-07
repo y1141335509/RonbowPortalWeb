@@ -32,16 +32,18 @@ const EditableTable = () => {
   const [form] = Form.useForm();
   const [data, setData] = useState([
     {
-      id: 624748504,
+      id: 624748505,
+      customer_id: 'ABC123',
       name: 'Henry',
       leads_from: <Tag>Walk In</Tag>,
       leads_quality: 'Style Mismatch',  // Default value for the first row
-      projects: ['Kitchen', 'Bath'], // Initial values set here as an array
+      projects: ['Kitchen', 'Bath',], // Initial values set here as an array
       phone: '123-456-7890',
       email: 'hen123@gmail.com',
     },
     {
       id: 624691230,
+      customer_id: 'BCD234',
       name: 'Jeff',
       leads_from: <Tag>Trade Pro</Tag>,
       leads_quality: 'Great',  // Default value for the second row
@@ -51,6 +53,7 @@ const EditableTable = () => {
     },
     {
       id: 624693456,
+      customer_id: 'DEF345',
       name: 'Diana',
       leads_from: <Tag>Website</Tag>,
       leads_quality: 'Low Budget',  // Default value for the second row
@@ -80,7 +83,7 @@ const EditableTable = () => {
   const columns = [
     {
       title: 'Customer ID',
-      dataIndex: 'id',
+      dataIndex: 'customer_id',
       width: '10%',
     },
     {
@@ -97,10 +100,12 @@ const EditableTable = () => {
       title: 'Projects',
       dataIndex: 'projects',
       render: (_, record) => <ProjectQuality initialProjects={record.projects} />,
+      width: '30%',
     },    
     {
       title: 'Leads Quality',
       dataIndex: 'leads_quality',
+      width: '15%',
       render: (text, record) => {
         const items = [
           {

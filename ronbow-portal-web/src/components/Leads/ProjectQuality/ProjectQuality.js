@@ -1,36 +1,34 @@
+// Assuming ProjectQuality.js looks something like this
 import React, { useState } from 'react';
-import { Radio, Select, Space } from 'antd';
+import { Tag, Select } from 'antd';
 
+const ProjectQuality = ({ initialProjects }) => {
+  // Use the initialProjects for the initial state
+  const [selectedProjects, setSelectedProjects] = useState(initialProjects);
 
-const options = [
-  {
-    value: 'Kitchen',
-    label: 'Kitchen',
-  },
-  {
-    value: 'Bath',
-    label: 'Bath',
-  },
-];
+  // Handler for when projects are selected or deselected
+  const handleChange = (value) => {
+    setSelectedProjects(value);
+  };
 
-
-
-const ProjectQuality = (props) => {
-  const { initialProjects } = props; // Accept initialProjects as a prop
+  // Additional project options
+  const projectOptions = [
+    'Kitchen',
+    'Bath',
+    'Living Room',  // Adding more options
+    'Dining Room',  // Adding more options
+    'Bedroom',      // Adding more options
+    // Add as many as you need
+  ];
 
   return (
-    <>
-      <Select
-        mode="multiple"
-        size='small'
-        placeholder="Please select"
-        defaultValue={initialProjects} // Use the initialProjects prop as defaultValue
-        style={{
-          width: '100%',
-        }}
-        options={options}
-      />
-    </>
+    <Select
+      mode="multiple"
+      style={{ minWidth: 120 }}
+      value={selectedProjects}
+      onChange={handleChange}
+      options={projectOptions.map((project) => ({ value: project, label: project }))}
+    />
   );
 };
 
